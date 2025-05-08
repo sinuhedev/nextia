@@ -1,7 +1,8 @@
-import { loadEnvConfig } from '@next/env'
+import nextEnv from '@next/env'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
+const { loadEnvConfig } = nextEnv
 const CWD = process.cwd()
 
 loadEnvConfig(CWD)
