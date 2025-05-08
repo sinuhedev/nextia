@@ -1,7 +1,7 @@
 {
 	"name": "nextia",
 	"description": "Create... to produce, to show, manifest, demonstrate, make known to the public",
-	"version": "0.18.0",
+	"version": "0.19.0",
 	"type": "module",
 	"license": "MIT",
 	"author": {
