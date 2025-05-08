@@ -1,0 +1,53 @@
+.App {
+
+	background-color: var(--bs-secondary);
+
+	@media (orientation: landscape) {
+		.landscape {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@media (orientation: portrait) {
+		.portrait {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--xs: true) {
+		.xs {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--sm: true) {
+		.sm {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--md: true) {
+		.md {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--lg: true) {
+		.lg {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--xl: true) {
+		.xl {
+			background-color: var(--bs-primary);
+		}
+	}
+
+	@container style(--xxl: true) {
+		.xxl {
+			background-color: var(--bs-primary);
+		}
+	}
+
+}

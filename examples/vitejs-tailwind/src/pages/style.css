@@ -1,0 +1,66 @@
+@reference "tailwindcss";
+
+/**
+ * Media query
+ */
+
+@custom-variant only-xs (@media (width < theme(breakpoint-sm)));
+@custom-variant only-sm (@media (width >=theme(breakpoint-sm)) and (width < theme(breakpoint-md)));
+@custom-variant only-md (@media (width >=theme(breakpoint-md)) and (width < theme(breakpoint-lg)));
+@custom-variant only-lg (@media (width >=theme(breakpoint-lg)) and (width < theme(breakpoint-xl)));
+@custom-variant only-xl (@media (width >=theme(breakpoint-xl)) and (width < theme(breakpoint-2xl)));
+@custom-variant only-2xl (@media (width >=theme(breakpoint-2xl)));
+
+.Pages {
+	background-color: var(--secondary);
+
+
+	@media (orientation: landscape) {
+		.landscape {
+			background-color: var(--primary);
+		}
+	}
+
+	@media (orientation: portrait) {
+		.portrait {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-xs {
+		.xs {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-sm {
+		.sm {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-md {
+		.md {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-lg {
+		.lg {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-xl {
+		.xl {
+			background-color: var(--primary);
+		}
+	}
+
+	@variant only-2xl {
+		.xxl {
+			background-color: var(--primary);
+		}
+	}
+
+}

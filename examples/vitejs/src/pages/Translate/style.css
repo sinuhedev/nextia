@@ -1,0 +1,12 @@
+.Translate {
+	margin: 20px;
+
+	h3 {
+		color: gray;
+	}
+
+	button {
+		width: 40px;
+		margin: 15px;
+	}
+}

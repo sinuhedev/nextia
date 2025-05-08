@@ -1,0 +1,30 @@
+{
+	"name": "vitejs-tailwind",
+	"description": "vitejs-tailwind",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"start": "vite --mode development",
+		"clean": "rm -fr .coverage node_modules out package-lock.json",
+		"make": "npm run clean && npm install",
+		"build": "vite build --mode",
+		"serve": "vite preview",
+		"page": "nextia page",
+		"component": "nextia component",
+		"container": "nextia container",
+		"eslint": "standard src"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.5",
+		"@vitejs/plugin-react": "^4.4.1",
+		"autoprefixer": "^10.4.21",
+		"tailwindcss": "^4.0.17",
+		"vite": "^6.3.4"
+	},
+	"dependencies": {
+		"nextia": "file:../..",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
+	}
+}

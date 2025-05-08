@@ -1,7 +1,6 @@
 # nextia
 
-## Create fast web applications
-
+## Create... to produce, to show, manifest, demonstrate, make known to the public
 
 ```bash
 npm i

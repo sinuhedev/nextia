@@ -1,0 +1,10 @@
+.Image {
+
+  .img {
+    background: url('assets/img/penguin.jpg') no-repeat;
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

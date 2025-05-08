@@ -1,6 +1,6 @@
 {
 	"name": "nextia",
-	"description": "ui",
+	"description": "Create... to produce, to show, manifest, demonstrate, make known to the public",
 	"version": "0.18.0",
 	"type": "module",
 	"license": "MIT",
@@ -17,6 +17,9 @@
 		"react"
 	],
 	"main": "src/lib.js",
+	"bin": {
+		"nextia": "src/bin.js"
+	},
 	"eslintConfig": {
 		"extends": "./node_modules/standard/eslintrc.json"
 	},
@@ -32,6 +35,5 @@
 	},
 	"devDependencies": {
 		"standard": "^17.1.2"
-	},
-	"dependencies": {}
+	}
 }

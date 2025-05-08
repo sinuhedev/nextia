@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import './util.css';
+
+@layer theme, base, components, utilities;
+
+@theme {
+  --font-sans: "Roboto";
+  --primary: #17344b;
+  --secondary: #353a42;
+  --body-bg: black;
+  --body-color: #a8a8a8;
+}
+
+@layer base {
+  body {
+    background-color: var(--body-bg);
+    color: var(--body-color);
+  }
+}

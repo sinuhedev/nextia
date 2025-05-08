@@ -1,0 +1,164 @@
+/*
+ * Bootstrap
+ * https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ */
+
+$enable-dark-mode: false;
+$enable-rfs: false;
+$enable-shadows: true;
+$enable-gradients: true;
+
+$font-family-base: 'Roboto';
+$primary: #344188;
+$secondary: #353a42;
+$bar-style: #252629;
+$body-bg: #282c34;
+$body-color: #a8a8a8;
+
+$x-border: 1px solid rgba($body-color, 0.25);
+$x-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.8);
+$x-zindex-shadow: 2000;
+$x-zindex-loading: 2010;
+
+$transition-fade: opacity 0.2s linear !default;
+
+$font-size-base: 0.9rem;
+$font-weight-normal: 500;
+
+$border-radius: 0.8rem;
+$spacer: 12px;
+
+$btn-close-color: $body-color;
+$btn-close-focus-shadow: none;
+$btn-close-width: 10px;
+
+$dropdown-min-width: 100%;
+$dropdown-border-width: 0;
+
+$modal-content-border-width: 0;
+$modal-content-bg: rgba($body-bg, 0.8);
+$modal-header-padding-y: 5px;
+$modal-header-padding-x: 15px;
+
+$link-decoration: none;
+$link-color: $body-color;
+$link-hover-color: rgba($body-color, 0.7);
+
+$card-bg: rgba($primary, 0.2);
+
+$dropdown-bg: rgba($body-bg, 0.8);
+$dropdown-link-hover-bg: rgba($primary, 0.4);
+$dropdown-link-active-bg: rgba($primary, 0.6);
+
+$input-bg: rgba($primary, 0.2);
+$input-border-color: rgba($secondary, 0.2);
+$input-border-width: 2px;
+$input-box-shadow: 0;
+$input-focus-box-shadow: 0;
+
+$form-floating-height: 40px;
+$form-floating-padding-y: 10px;
+$form-feedback-icon-invalid: unset;
+$form-feedback-icon-valid: unset;
+
+$toast-background-color: rgba($secondary, 0.95);
+$toast-header-color: unset;
+$toast-header-background-color: unset;
+$toast-border-color: transparent;
+$toast-header-border-color: rgba($body-color, 0.5);
+
+$nav-tabs-border-color: rgba($body-color, 0.25);
+$nav-tabs-border-width: 1.5px;
+$nav-tabs-link-active-bg: rgba($body-bg, 0.6);
+$nav-tabs-link-active-border-color: $nav-tabs-border-color $nav-tabs-border-color $nav-tabs-link-active-bg;
+$nav-tabs-link-hover-border-color: transparent;
+$nav-tabs-link-active-color: unset;
+
+$list-group-border-color: rgba($body-color, 0.25);
+$list-group-border-width: 1.5px;
+$list-group-bg: transparent;
+$list-group-action-active-bg: transparent;
+$list-group-action-color: $body-color;
+$list-group-action-hover-color: $body-color;
+$list-group-active-bg: rgba($primary, 0.3);
+$list-group-hover-bg: rgba($primary, 0.2);
+
+$table-color: rgba($body-color, 0.5);
+$table-bg: transparent;
+$table-border-width: 0;
+$table-striped-bg: rgba(white, 0.2);
+$table-hover-color: rgba($body-color, 1);
+$table-hover-bg: unset;
+
+@import 'bootstrap/scss/bootstrap';
+
+/**
+ * Cursor type
+ */
+$cursors: // General
+  auto, default, none,
+  //Links & status
+  pointer,
+  progress, wait, cell, crosshair, text,
+  // Drag & drop
+  copy,
+  move, not-allowed, grabbing,
+  // Resizing & scrolling
+  all-scroll,
+  col-resize, row-resize, n-resize, e-resize, s-resize, w-resize, ne-resize,
+  nw-resize, se-resize, sw-resize, ew-resize, ns-resize, nesw-resize,
+  nwse-resize;
+
+@each $cursor in $cursors {
+  .cursor-#{$cursor} {
+    cursor: #{$cursor};
+  }
+}
+
+/**
+ * Media query
+ */
+:root {
+  --xs: false;
+  --sm: false;
+  --md: false;
+  --lg: false;
+  --xl: false;
+  --xxl: false;
+}
+
+@include media-breakpoint-down(sm) {
+  :root {
+    --xs: true;
+  }
+}
+
+@include media-breakpoint-only(sm) {
+  :root {
+    --sm: true;
+  }
+}
+
+@include media-breakpoint-only(md) {
+  :root {
+    --md: true;
+  }
+}
+
+@include media-breakpoint-only(lg) {
+  :root {
+    --lg: true;
+  }
+}
+
+@include media-breakpoint-only(xl) {
+  :root {
+    --xl: true;
+  }
+}
+
+@include media-breakpoint-only(xxl) {
+  :root {
+    --xxl: true;
+  }
+}
