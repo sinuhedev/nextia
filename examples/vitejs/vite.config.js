@@ -1,5 +1,6 @@
 import { version } from './package.json'
 import { execSync } from 'node:child_process'
+import { readFile } from 'node:fs/promises'
 import { defineConfig } from 'vite'
 import autoprefixer from 'autoprefixer'
 import react from '@vitejs/plugin-react'
@@ -29,7 +30,6 @@ export default defineConfig(({ mode }) => {
         components: CWD + '/src/components',
         containers: CWD + '/src/containers',
         services: CWD + '/src/services',
-        theme: CWD + '/src/theme',
         utils: CWD + '/src/utils'
       }
     },
@@ -57,6 +57,23 @@ export default defineConfig(({ mode }) => {
           } catch (e) { }
 
           return html.replaceAll('%VERSION%', `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`)
+        }
+      },
+      {
+        name: 'svg',
+        async transform (src, id) {
+          const type = '?raw'
+          if (id.endsWith(`.svg${type}`)) {
+            let code = await readFile(id.split(type)[0], 'utf8')
+
+            code = code.replace(/\s{2,}/g, ' ') // multiple spaces to single space
+              .replace(/\n/g, '') // remove newlines
+              .replace(/\t/g, '') // remove tabs
+              .replace(/>\s+</g, '><') // remove space between tags
+              .trim()
+
+            return `export default new window.DOMParser().parseFromString(${JSON.stringify(code)}, 'image/svg+xml').documentElement;`
+          }
         }
       }
     ],

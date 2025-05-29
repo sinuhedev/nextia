@@ -1,21 +1,38 @@
-import React from 'react'
-import icons from 'assets/icon/icons.svg?url'
+import { useEffect, useRef } from 'react'
+import icons from 'assets/icon/icons.svg?raw'
+import { css } from 'nextia'
 
 export default function Icon ({
   value,
-  width = 24,
+  className,
+  style,
+  width = '48',
   height,
-  viewBox = '0 0 24 24',
+  viewBox = '0 0 48 48',
   fill = 'none',
   stroke = 'currentColor',
-  strokeWidth = 2,
+  strokeWidth = '2',
   strokeLinecap = 'round',
   strokeLinejoin = 'round',
   ...props
 }) {
+  const ref = useRef()
+
+  useEffect(() => {
+    const svg = icons.getElementById(value)
+    if (svg.getAttribute('x-animation') === 'true') {
+      import(`assets/icon/${value}.css`).catch(() => {})
+    }
+    ref.current.innerHTML = svg.innerHTML.replaceAll('xmlns="http://www.w3.org/2000/svg"', '')
+  }, [value])
+
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
+      ref={ref}
+      id={value}
+      className={css('Icon-component', className)}
+      style={style}
       width={width}
       height={height}
       viewBox={viewBox}
@@ -25,8 +42,6 @@ export default function Icon ({
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       {...props}
-    >
-      <use href={`${icons}#${value}`} />
-    </svg>
+    />
   )
 }
