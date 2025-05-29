@@ -5,7 +5,7 @@ import { useFx, Context } from 'nextia'
 import functions from './functions'
 import { Icon, Icons, Menu } from 'components'
 import { Translate, I18n } from 'containers'
-import 'theme/index.css'
+import 'assets/theme/index.css'
 
 function Layout ({ children }) {
   const self = useFx(functions)
