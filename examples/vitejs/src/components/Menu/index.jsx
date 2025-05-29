@@ -33,8 +33,8 @@ export default function ({ className, style }) {
       <Link href='#/CounterPage' className='mr-2'>
         CounterPage
       </Link>
-      <Link href='#/Image' className='mr-2'>
-        Image
+      <Link href='#/Images' className='mr-2'>
+        Images
       </Link>
       <Link href='#/MediaQuery' className='mr-2'>
         MediaQuery
