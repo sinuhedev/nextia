@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useFx, Context } from 'nextia'
 import functions from './functions'
-import { Icon, Icons, Menu } from 'components'
+import { Icon, Menu } from 'components'
 import { Translate, I18n } from 'containers'
 import 'assets/theme/index.css'
 
@@ -34,11 +34,10 @@ function Layout ({ children }) {
       <body>
         {start &&
           <>
-
             <Context value={self}>
 
               <header className='m-2' style={{ display: 'flex', gap: '20px' }}>
-                <Icon value='globe' />
+                <Icon value='help' />
                 <Translate value={state.i18nLocale} onChange={e => fx.changeI18n(e)} />
 
                 <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
@@ -61,9 +60,6 @@ function Layout ({ children }) {
               </main>
 
             </Context>
-
-            <Icons />
-
           </>}
 
       </body>
