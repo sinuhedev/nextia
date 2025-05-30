@@ -1,22 +1,35 @@
 'use client'
 
+/**
+ * Copyright (c) 2025 Sinuhe Maceda https://sinuhe.dev
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * https://github.com/sinuhedev/nextia
+ */
+
 import { useReducer, createContext, use } from 'react'
 
 /**
  * css
  */
-const css = (...classNames) => (
-  classNames.filter(e => e).reduce((accumulator, currentValue) => {
-    if (typeof currentValue === 'string') {
-      return accumulator + currentValue + ' '
-    } else if (!Array.isArray(currentValue) && typeof currentValue === 'object') {
-      for (const e in currentValue) {
-        if (currentValue[e]) return accumulator + e + ' '
+const css = (...classNames) => {
+  classNames = classNames
+    .filter(e => e)
+    .reduce((accumulator, currentValue) => {
+      if (typeof currentValue === 'string') {
+        accumulator.push(currentValue)
+      } else if (!Array.isArray(currentValue) && typeof currentValue === 'object') {
+        for (const e in currentValue) {
+          if (currentValue[e]) accumulator.push(e)
+        }
       }
-    }
-    return accumulator
-  }, '').trim()
-)
+      return accumulator
+    }, [])
+
+  return ([...new Set(classNames)]).join(' ')
+}
 
 /**
  * set*
