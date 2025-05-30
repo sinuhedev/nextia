@@ -88,7 +88,7 @@
      style="display:none"
      sodipodi:insensitive="true">
     <path
-       d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z"
+       d="M 11,13 7.8,11 6.3,12 11,16 18,9.2 16,7.8 Z"
        fill="currentColor"
        id="path5" />
   </g>
@@ -165,9 +165,9 @@
        id="rect12" />
   </g>
   <g
+     id="g12"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="g12">
+     sodipodi:insensitive="true">
     <circle
        cx="12"
        cy="12"
@@ -180,13 +180,13 @@
        y2="12"
        id="line12" />
     <path
-       d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+       d="M 12,2 A 15,15 0 0 1 16,12 15,15 0 0 1 12,22 15,15 0 0 1 8,12 15,15 0 0 1 12,2 Z"
        id="path12" />
   </g>
   <g
+     id="help"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="help">
+     sodipodi:insensitive="true">
     <circle
        cx="12"
        cy="12"
@@ -203,9 +203,9 @@
        id="line13" />
   </g>
   <g
+     id="layer"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="layer">
+     sodipodi:insensitive="true">
     <polygon
        points="12 2 2 7 12 12 22 7 12 2"
        id="polygon13" />
@@ -217,9 +217,9 @@
        id="polyline14" />
   </g>
   <g
+     id="log-in"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="log-in">
+     sodipodi:insensitive="true">
     <path
        d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
        id="path14" />
@@ -234,17 +234,17 @@
        id="line15" />
   </g>
   <g
+     id="maximize"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="maximize">
+     sodipodi:insensitive="true">
     <path
        d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
        id="path15" />
   </g>
   <g
+     id="menu"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="menu">
+     sodipodi:insensitive="true">
     <line
        x1="3"
        y1="12"
@@ -265,9 +265,9 @@
        id="line18" />
   </g>
   <g
+     id="minus"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="minus">
+     sodipodi:insensitive="true">
     <line
        x1="5"
        y1="12"
@@ -276,9 +276,9 @@
        id="line19" />
   </g>
   <g
+     id="plus-circle"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="plus-circle">
+     sodipodi:insensitive="true">
     <circle
        cx="12"
        cy="12"
@@ -298,9 +298,9 @@
        id="line21" />
   </g>
   <g
+     id="plus-square"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="plus-square">
+     sodipodi:insensitive="true">
     <rect
        x="3"
        y="3"
@@ -323,9 +323,9 @@
        id="line23" />
   </g>
   <g
+     id="plus"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="plus">
+     sodipodi:insensitive="true">
     <line
        x1="12"
        y1="5"
@@ -340,9 +340,9 @@
        id="line25" />
   </g>
   <g
+     id="point"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="point">
+     sodipodi:insensitive="true">
     <circle
        cx="12"
        cy="12"
@@ -351,9 +351,9 @@
        id="circle25" />
   </g>
   <g
+     id="power-off"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="power-off">
+     sodipodi:insensitive="true">
     <path
        d="M18.36 6.64a9 9 0 1 1-12.73 0"
        id="path25" />
@@ -365,9 +365,9 @@
        id="line26" />
   </g>
   <g
+     id="rotate"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="rotate">
+     sodipodi:insensitive="true">
     <polyline
        points="23 4 23 10 17 10"
        id="polyline26" />
@@ -376,9 +376,9 @@
        id="path26" />
   </g>
   <g
+     id="share"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="share">
+     sodipodi:insensitive="true">
     <circle
        cx="18"
        cy="5"
@@ -408,9 +408,9 @@
        id="line29" />
   </g>
   <g
+     id="trash"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="trash">
+     sodipodi:insensitive="true">
     <polyline
        points="3 6 5 6 21 6"
        id="polyline29" />
@@ -431,9 +431,9 @@
        id="line31" />
   </g>
   <g
+     id="upload"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="upload">
+     sodipodi:insensitive="true">
     <path
        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
        id="path31" />
@@ -448,9 +448,9 @@
        id="line32" />
   </g>
   <g
+     id="user"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="user">
+     sodipodi:insensitive="true">
     <path
        d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
        id="path32" />
@@ -461,9 +461,9 @@
        id="circle32" />
   </g>
   <g
+     id="users"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="users">
+     sodipodi:insensitive="true">
     <path
        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
        id="path33" />
@@ -480,9 +480,9 @@
        id="path35" />
   </g>
   <g
+     id="video"
      style="display:none"
-     sodipodi:insensitive="true"
-     id="video">
+     sodipodi:insensitive="true">
     <polygon
        points="23 7 16 12 23 17 23 7"
        id="polygon35" />
