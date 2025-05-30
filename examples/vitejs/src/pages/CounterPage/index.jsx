@@ -8,7 +8,8 @@ export default function CounterPage () {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('CounterPage', '', 'class-test', {}, null, true, false, [], { 'css-false': false }, undefined, { 'css-true': true })}>
+    <section className={css('CounterPage', '', 'class-test', 'class-test', {}, null, true, false, [], { 'css-false': false }, undefined, { 'css-true': true }, { 'css-true': true })}>
+
       CounterPage
 
       <div className={css(null)} />

@@ -10,11 +10,9 @@ export default function CounterPage () {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('CounterPage')}>
+    <section className={css('CounterPage', '', 'class-test', 'class-test', {}, null, true, false, [], { 'css-false': false }, undefined, { 'css-true': true }, { 'css-true': true })}>
 
-      <div className={css('', 'class-test', {}, null, true, false, [], { 'css-false': false }, undefined, { 'css-true': true })}>
-        CSS
-      </div>
+      CounterPage
 
       <div className={css(null)} />
       <div className={css(undefined)} />
@@ -33,10 +31,10 @@ export default function CounterPage () {
       <br />
       <Counter
         value={state.count2}
+        animation='count2'
         onChange={() => {
           fx.set({ count2: state.count2 + 10 })
         }}
-        animation='count2'
       />
 
     </section>
