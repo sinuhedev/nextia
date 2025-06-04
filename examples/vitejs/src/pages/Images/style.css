@@ -1,9 +1,0 @@
-.Images {
-
-  .css-img {
-    background: url('assets/img/penguin.jpg') no-repeat;
-    height: 200px;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-}
