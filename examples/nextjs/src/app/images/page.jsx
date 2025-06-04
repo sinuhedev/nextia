@@ -7,11 +7,11 @@ import Image from 'next/image'
 import penguin from 'assets/img/penguin.jpg'
 import './style.css'
 
-export default function Images () {
+export default function ImagesPage () {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('Images', '')}>
+    <section className={css('ImagesPage', '')}>
 
       <br />
 

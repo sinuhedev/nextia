@@ -8,11 +8,11 @@ import { I18n } from 'containers'
 
 import './style.css'
 
-export default function Translate () {
+export default function TranslatePage () {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('Translate', '')}>
+    <section className={css('TranslatePage', '')}>
       <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
       <ul>

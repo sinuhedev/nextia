@@ -5,11 +5,11 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function Mockapi () {
+export default function MockapiPage () {
   const { initialState, state, fx } = useFx(functions)
 
   return (
-    <section className={css('Mockapi', 'container')}>
+    <section className={css('MockapiPage', 'container')}>
       <div>
         <button onClick={() => fx.reset(['users', 'user'])}>Reset</button>
 

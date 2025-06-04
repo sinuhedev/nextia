@@ -5,12 +5,12 @@ import functions from './functions'
 import { useResize } from 'utils'
 import './style.css'
 
-export default function MediaQuery () {
+export default function MediaQueryPage () {
   const { state, fx } = useFx(functions)
   const resize = useResize()
 
   return (
-    <section className={css('MediaQuery', '')}>
+    <section className={css('MediaQueryPage', '')}>
       <div>
         <section>CSS @container </section>
 

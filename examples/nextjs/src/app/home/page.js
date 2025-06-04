@@ -6,7 +6,7 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import { sum } from 'utils'
 
-export default function Home () {
+export default function HomePage () {
   const { state, initialState, fx, context } = useFx(functions)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Home () {
   }, [])
 
   return (
-    <section className={css('Home', 'container')}>
+    <section className={css('HomePage', 'container')}>
       <div>
         <div>
           <p>set</p>

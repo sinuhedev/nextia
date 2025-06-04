@@ -1,14 +1,8 @@
-.Mockapi {
+.HomePage {
   background-color: #21252b;
 
   &.container {
     display: flex;
-    gap: 20px;
-    padding: 20px;
-
-    div {
-      width: 300px;
-    }
   }
 
   p {
@@ -24,9 +18,9 @@
   }
 
   button {
-    margin: 10px;
+    margin: 12px;
     height: 50px;
-    width: 180px;
+    width: 200px;
   }
 
   input[type='text'] {

@@ -1,4 +1,4 @@
-.MediaQuery {
+.MediaQueryPage {
   @container style(--landscape: true) {
     .landscape {
       color: #5ba15f;

@@ -5,7 +5,7 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function ContextPage () {
+export default function MyContextPage () {
   const { state, fx, context } = useFx(functions)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function ContextPage () {
   }, [])
 
   return (
-    <section className={css('ContextPage', '')}>
+    <section className={css('MyContextPage', '')}>
       <br />
       <button onClick={e => context.fx.increment(e)}>increment</button>
       {'  '}

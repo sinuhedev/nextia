@@ -7,26 +7,28 @@ import { useSearchParams } from 'next/navigation'
 import { Link } from 'components'
 import './style.css'
 
-export default function URLSearchParams () {
+export default function SearchParamsPage () {
   const { state, fx } = useFx(functions)
   const searchParams = useSearchParams()
 
   return (
-    <section className={css('URLSearchParams', '')}>
-      URLSearchParams
-      <br />
+    <section className={css('SearchParamsPage', '')}>
       <br />
 
-      <Link href='/URLSearchParams'>
-        Link
-      </Link>
-      <br />
-      <Link href='/URLSearchParams' value={{ id: 4000 }}>
+      <Link href='/search-params' value={{ id: 4000 }}>
         Link id=4000
       </Link>
+
       <br />
-      <Link href='/URLSearchParams' value={{ user: 'Maceda', demo: 200 }}>
+
+      <Link value={{ user: 'Maceda', demo: 200 }}>
         Link user=Maceda demo=200
+      </Link>
+
+      <br />
+
+      <Link value={{ user: 'Sinuhe', demo: 10 }}>
+        Link user=Sinuhe demo=10
       </Link>
 
       <br />
