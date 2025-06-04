@@ -16,7 +16,7 @@
 		"eslint": "standard src"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-react": "^4.5.0",
+		"@vitejs/plugin-react": "^4.5.1",
 		"autoprefixer": "^10.4.21",
 		"bootstrap": "^5.3.6",
 		"sass": "1.78.0",
