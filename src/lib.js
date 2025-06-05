@@ -9,14 +9,14 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { useReducer, createContext, use } from 'react'
+import { useState, createContext, use } from 'react'
 
 const Context = createContext()
 
 /**
  * css
  */
-const css = (...classNames) => {
+function css (...classNames) {
   classNames = classNames
     .filter(e => e)
     .reduce((accumulator, currentValue) => {
@@ -82,81 +82,76 @@ function merge (target, source) {
   return output
 }
 
-/**
- * useFxReducer
- */
-function useFxReducer (initialState) {
-  const reducer = (state, action) => {
-    const { type, payload } = action
+// Common actions
+function commonActions (state, setState, initialState) {
+  let newState
 
-    switch (type) {
-      case 'set':
-        // Merge only item
-        if (Object.keys(payload).length === 1) {
-          const key = Object.keys(payload)[0]
-          return values(state, key, payload[key])
-        }
-
+  return {
+    set: payload => {
+      // Merge only item
+      if (Object.keys(payload).length === 1) {
+        const key = Object.keys(payload)[0]
+        newState = values(state, key, payload[key])
+      } else {
         // Merge all json
-        return merge(state, payload)
+        newState = merge(state, payload)
+      }
 
-      case 'show':
-        return values(state, payload, true)
+      setState(newState)
+    },
 
-      case 'hide':
-        return values(state, payload, false)
+    show: payload => {
+      newState = values(state, payload, true)
+      setState(newState)
+    },
 
-      case 'change':
-        return values(
-          state,
-          payload.target.name,
-          payload.target.type === 'checkbox' ? payload.target.checked : payload.target.value
-        )
+    hide: payload => {
+      newState = values(state, payload, false)
+      setState(newState)
+    },
 
-      case 'reset':
-        // value reset
-        if (payload) {
-          const paths = Array.isArray(payload) ? payload : [payload]
+    change: payload => {
+      newState = values(
+        state,
+        payload.target.name,
+        payload.target.type === 'checkbox' ? payload.target.checked : payload.target.value
+      )
+      setState(newState)
+    },
 
-          return paths.reduce((ac, path) => {
-            const value = path.split('.').reduce((ac, e) => ac[e], initialState)
-            return values(ac, path, value)
-          }, state)
-        }
+    reset: payload => {
+      // value reset
+      if (payload) {
+        const paths = Array.isArray(payload) ? payload : [payload]
 
+        newState = paths.reduce((ac, path) => {
+          const value = path.split('.').reduce((ac, e) => ac[e], initialState)
+          return values(ac, path, value)
+        }, state)
+      } else {
         // all reset
-        return initialState
+        newState = initialState
+      }
 
-      default:
-        return state
+      setState(newState)
     }
   }
-
-  return useReducer(reducer, initialState)
 }
 
 /**
  * useFx
  */
 function useFx (functions = { initialState: {} }) {
-  // reducer
-  const [state, dispatch] = useFxReducer(functions.initialState)
-
-  // context
   const context = use(Context)
-
-  // Common actions
-  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce((acc, e) => {
-    acc[e] = payload => dispatch({ type: e, payload })
-    return acc
-  }, {})
+  const { initialState } = functions
+  const [state, setState] = useState(initialState)
 
   // Actions
   const actions = Object.keys(functions).reduce((ac, e) => {
     if (functions[e] instanceof Function) {
       ac[e] = payload => {
         const props = {
-          ...commonActions,
+          ...commonActions(state, setState, initialState),
           state,
           payload
         }
@@ -168,11 +163,11 @@ function useFx (functions = { initialState: {} }) {
     return ac
   }, {})
 
-  // Context, State and Actions
+  // return initialState, state, actions and context
   const props = {
-    initialState: functions.initialState,
+    initialState,
     state,
-    fx: { ...commonActions, ...actions }
+    fx: { ...commonActions(state, setState, initialState), ...actions }
   }
   if (context) { props.context = context }
 
