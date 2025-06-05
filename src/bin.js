@@ -11,16 +11,14 @@
 
 import fs from 'node:fs'
 
-function convertToPascalCase (str) {
-  return str
+function createPage (name, isNext, isType) {
+  const toPascalCase = str => str
     .toLowerCase()
     .replace(/[^a-zA-Z0-9 ]/g, ' ') // replace special characters
     .split(/\s+/) // split by spaces
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('')
-}
 
-function createPage (name, isNext, isType) {
   const index = isNext ? 1 : 0
   const config = {
     root: ['pages', 'app'],
@@ -37,7 +35,7 @@ function createPage (name, isNext, isType) {
   if (fs.existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' page : File exists`) } else {
     fs.mkdirSync(dirName, { recursive: true })
 
-    const pageName = convertToPascalCase(name) + 'Page'
+    const pageName = toPascalCase(name) + 'Page'
 
     // index.jsx
     fs.writeFileSync(`${dirName}/${config.file[index]}`,
@@ -145,7 +143,7 @@ export default { initialState }
 }
 
 /**
- * run template
+ * main
  */
 
 const CMD = process.argv[2]
