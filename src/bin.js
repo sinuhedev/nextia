@@ -9,7 +9,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import fs from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 
 function createPage (name, isNext, isType) {
   const toPascalCase = str => str
@@ -32,13 +32,15 @@ function createPage (name, isNext, isType) {
 
   const dirName = `./src/${config.root[index]}/${name}`
 
-  if (fs.existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' page : File exists`) } else {
-    fs.mkdirSync(dirName, { recursive: true })
+  if (existsSync(dirName)) {
+    console.error(`Error: Can't create '${dirName}' page : File exists`)
+  } else {
+    mkdirSync(dirName, { recursive: true })
 
     const pageName = toPascalCase(name) + 'Page'
 
     // index.jsx
-    fs.writeFileSync(`${dirName}/${config.file[index]}`,
+    writeFileSync(`${dirName}/${config.file[index]}`,
 `${config.directive[index]}import React, { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
@@ -56,12 +58,12 @@ export default function ${pageName} () {
 `)
 
     // style.sss
-    fs.writeFileSync(`${dirName}/style.css`,
+    writeFileSync(`${dirName}/style.css`,
 `.${pageName} {
 }`)
 
     // function.js
-    fs.writeFileSync(`${dirName}/functions.js`,
+    writeFileSync(`${dirName}/functions.js`,
 `const initialState = {
 }
 
@@ -73,13 +75,15 @@ export default { initialState }
 function createComponent (name, isNext, isType) {
   const dirName = `./src/components/${name}`
 
-  if (fs.existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' component : File exists`) } else {
-    fs.mkdirSync(dirName, { recursive: true })
+  if (existsSync(dirName)) {
+    console.error(`Error: Can't create '${dirName}' component : File exists`)
+  } else {
+    mkdirSync(dirName, { recursive: true })
 
     const componentName = name.replaceAll('/', '') + '-component'
 
     // index.jsx
-    fs.writeFileSync(`${dirName}/index.jsx`,
+    writeFileSync(`${dirName}/index.jsx`,
 `import React, { useEffect } from 'react'
 import './style.css'
 import { css } from 'nextia'
@@ -94,7 +98,7 @@ export default function ${name} ({ className, style }) {
 `)
 
     // style.css
-    fs.writeFileSync(`${dirName}/style.css`,
+    writeFileSync(`${dirName}/style.css`,
 `.${componentName}  {
 }`
     )
@@ -104,13 +108,13 @@ export default function ${name} ({ className, style }) {
 function createContainer (name, isNext, isType) {
   const dirName = `./src/containers/${name}`
 
-  if (fs.existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' container : File exists`) } else {
-    fs.mkdirSync(dirName, { recursive: true })
+  if (existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' container : File exists`) } else {
+    mkdirSync(dirName, { recursive: true })
 
     const containerName = name.replaceAll('/', '') + '-container'
 
     // index.jsx
-    fs.writeFileSync(`${dirName}/index.jsx`,
+    writeFileSync(`${dirName}/index.jsx`,
 `import React, { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
@@ -128,12 +132,12 @@ export default function ${name} ({ className, style }) {
 `)
 
     // style.css
-    fs.writeFileSync(`${dirName}/style.css`,
+    writeFileSync(`${dirName}/style.css`,
 `.${containerName}  {
 }`)
 
     // function.js
-    fs.writeFileSync(`${dirName}/functions.js`,
+    writeFileSync(`${dirName}/functions.js`,
 `const initialState = {
 }
 
