@@ -72,7 +72,7 @@ export default { initialState }
   }
 }
 
-function createComponent (name, isNext, isType) {
+function createComponent (name, isType) {
   const dirName = `./src/components/${name}`
 
   if (existsSync(dirName)) {
@@ -105,7 +105,7 @@ export default function ${name} ({ className, style }) {
   }
 }
 
-function createContainer (name, isNext, isType) {
+function createContainer (name, isType) {
   const dirName = `./src/containers/${name}`
 
   if (existsSync(dirName)) { console.error(`Error: Can't create '${dirName}' container : File exists`) } else {
@@ -151,6 +151,7 @@ export default { initialState }
  */
 
 const CMD = process.argv[2]
+const PROJECT_NAME = process.argv[2]
 const FILE_NAME = process.argv[3]
 
 switch (CMD) {
@@ -163,22 +164,24 @@ switch (CMD) {
         FILE_NAME,
         ['next:page', 'next:page:type'].includes(CMD),
         ['page:type', 'next:page:type'].includes(CMD))
-    } else console.warn('npm run page <PageName>')
+    } else console.warn('npm run page <page-name>')
     break
 
   case 'component':
   case 'component:type':
-    if (FILE_NAME) createComponent(FILE_NAME, null, CMD === 'component:type')
+    if (FILE_NAME) createComponent(FILE_NAME, CMD === 'component:type')
     else console.warn('npm run component <ComponentName>')
     break
 
   case 'container':
   case 'container:type':
-    if (FILE_NAME) createContainer(FILE_NAME, null, CMD === 'component:type')
+    if (FILE_NAME) createContainer(FILE_NAME, CMD === 'component:type')
     else console.warn('npm run container <ContainerName>')
     break
 
   default:
-    console.info('nextia')
+    // create project
+    if (PROJECT_NAME) console.info(`Project name: ${PROJECT_NAME}`)
+    else console.warn('npx nextia@latest <my-app>')
     break
 }
