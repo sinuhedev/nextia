@@ -11,6 +11,8 @@
 
 import { useReducer, createContext, use } from 'react'
 
+const Context = createContext()
+
 /**
  * css
  */
@@ -32,15 +34,12 @@ const css = (...classNames) => {
 }
 
 /**
- * set*
+ * values
  */
-
-function setValue (state, payload, value) {
+function values (state, payload, value) {
   const paths = payload.split('.')
 
-  /**
-   * one level
-   */
+  // one level
   if (paths.length === 1) {
     // set Object and exist Object
     if (value && typeof value === 'object' && Object.keys(value).length) {
@@ -54,9 +53,7 @@ function setValue (state, payload, value) {
     }
   }
 
-  /**
-   * multi level
-   */
+  // multi level
   const stateClone = structuredClone(state)
   const finalPath = paths.pop()
   const stateRef = paths.reduce((ac, e) => ac[e], stateClone)
@@ -65,7 +62,10 @@ function setValue (state, payload, value) {
   return stateClone
 }
 
-function setMerge (target, source) {
+/**
+ * merge
+ */
+function merge (target, source) {
   // in array return all source
   if (Array.isArray(target)) return source
 
@@ -75,7 +75,7 @@ function setMerge (target, source) {
   // merge
   Object.keys(source).forEach(key => {
     if (isObject(target[key]) && isObject(source[key])) {
-      output[key] = setMerge(target[key], source[key])
+      output[key] = merge(target[key], source[key])
     } else output[key] = structuredClone(source[key])
   })
 
@@ -94,20 +94,20 @@ function useFxReducer (initialState) {
         // Merge only item
         if (Object.keys(payload).length === 1) {
           const key = Object.keys(payload)[0]
-          return setValue(state, key, payload[key])
+          return values(state, key, payload[key])
         }
 
         // Merge all json
-        return setMerge(state, payload)
+        return merge(state, payload)
 
       case 'show':
-        return setValue(state, payload, true)
+        return values(state, payload, true)
 
       case 'hide':
-        return setValue(state, payload, false)
+        return values(state, payload, false)
 
       case 'change':
-        return setValue(
+        return values(
           state,
           payload.target.name,
           payload.target.type === 'checkbox' ? payload.target.checked : payload.target.value
@@ -120,7 +120,7 @@ function useFxReducer (initialState) {
 
           return paths.reduce((ac, path) => {
             const value = path.split('.').reduce((ac, e) => ac[e], initialState)
-            return setValue(ac, path, value)
+            return values(ac, path, value)
           }, state)
         }
 
@@ -134,11 +134,6 @@ function useFxReducer (initialState) {
 
   return useReducer(reducer, initialState)
 }
-
-/**
- * Create context
- */
-const Context = createContext()
 
 /**
  * useFx
