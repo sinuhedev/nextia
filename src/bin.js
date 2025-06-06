@@ -82,8 +82,8 @@ async function createComponent (name, isType) {
     // index.jsx
     writeFile(`${dirName}/index.jsx`,
 `import React, { useEffect } from 'react'
-import './style.css'
 import { css } from 'nextia'
+import './style.css'
 
 export default function ${name} ({ className, style }) {
   return (
