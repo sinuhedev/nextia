@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import icons from 'assets/icon/icons.svg'
-import { css } from 'nextia'
+import { css } from 'fx1'
 
 export default function Icon ({
   value,

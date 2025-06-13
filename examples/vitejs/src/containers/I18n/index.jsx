@@ -1,4 +1,4 @@
-import { useFx } from 'nextia'
+import { useFx } from 'fx1'
 import i18nFile from 'assets/i18n'
 
 export default function I18n ({ value, args = [] }) {

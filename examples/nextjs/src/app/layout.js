@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useFx, Context } from 'nextia'
+import { useFx, Context } from 'fx1'
 import functions from './functions'
 import { Icon, Link } from 'components'
 import { Translate, I18n } from 'containers'

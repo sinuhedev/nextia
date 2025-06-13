@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './style.css'
-import { css } from 'nextia'
+import { css } from 'fx1'
 
 export default function Button ({ children, name, value, type, className, style, readOnly, disabled, onClick = () => {} }) {
   return (

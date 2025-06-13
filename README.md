@@ -1,6 +1,6 @@
-# nextia
+# fx1
 
-## Create... to produce, to show, manifest, demonstrate, make known to the public
+## Create fast web applications
 
 ```sh
 npm i
@@ -10,7 +10,7 @@ cd examples
 
 ```sh
 # create project
-npx nextia@latest my-app
+npx fx1@latest my-app
 ```
 
-[npm](https://www.npmjs.com/package/nextia)
+[npm](https://www.npmjs.com/package/fx1)

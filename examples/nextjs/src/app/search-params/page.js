@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useFx, css } from 'nextia'
+import { useFx, css } from 'fx1'
 import functions from './functions'
 import { useSearchParams } from 'next/navigation'
 import { Link } from 'components'

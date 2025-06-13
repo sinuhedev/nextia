@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import functions from './functions'
-import { useFx, css } from 'nextia'
+import { useFx, css } from 'fx1'
 import './style.css'
 import { Translation } from 'components'
 import { I18n } from 'containers'

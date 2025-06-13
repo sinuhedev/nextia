@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { css } from 'nextia'
+import { css } from 'fx1'
 import './style.css'
 
 export default function HttpNotFoundPage () {
