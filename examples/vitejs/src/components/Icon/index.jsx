@@ -19,11 +19,15 @@ export default function Icon ({
   const ref = useRef()
 
   useEffect(() => {
-    const svg = icons.getElementById(value)
-    if (svg.getAttribute('x-animation') === 'true') {
-      import(`assets/icon/${value}.css`).catch(() => {})
+    const svg = new window.DOMParser().parseFromString(icons, 'image/svg+xml')
+      .documentElement.getElementById(value)
+
+    if (svg) {
+      if (svg.getAttribute('x-animation') === 'true') {
+        import(`assets/icon/${value}.css`).catch(() => {})
+      }
+      ref.current.innerHTML = svg.innerHTML
     }
-    ref.current.innerHTML = svg.innerHTML.replaceAll('xmlns="http://www.w3.org/2000/svg"', '')
   }, [value])
 
   return (

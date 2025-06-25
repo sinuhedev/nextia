@@ -41,7 +41,9 @@ export default defineConfig(({ mode }) => {
 
     css: {
       postcss: {
-        plugins: [autoprefixer]
+        plugins: [
+          autoprefixer
+        ]
       }
     },
 
@@ -52,7 +54,7 @@ export default defineConfig(({ mode }) => {
         transformIndexHtml (html) {
           let gitHash = ''
           try {
-            gitHash = execSync('git rev-parse --short HEAD 2> /dev/null').toString()
+            gitHash = execSync('git rev-parse --short HEAD 2> /dev/null').toString().trim()
           } catch (e) { }
 
           return html.replaceAll('%VERSION%', `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`)
@@ -61,17 +63,18 @@ export default defineConfig(({ mode }) => {
       {
         name: 'svg',
         async transform (src, id) {
-          const type = '?raw'
-          if (id.endsWith(`.svg${type}`)) {
-            let code = await readFile(id.split(type)[0], 'utf8')
+          let code = id.split('?')[0]
+          const type = id.split('?')[1]
 
-            code = code.replace(/\s{2,}/g, ' ') // multiple spaces to single space
+          if (type === 'raw') {
+            code = await readFile(code, 'utf8')
+            code = code
+              .replace(/\s{2,}/g, ' ') // multiple spaces to single space
               .replace(/\n/g, '') // remove newlines
               .replace(/\t/g, '') // remove tabs
               .replace(/>\s+</g, '><') // remove space between tags
               .trim()
-
-            return `export default new window.DOMParser().parseFromString(${JSON.stringify(code)}, 'image/svg+xml').documentElement;`
+            return `export default ${JSON.stringify(code)};`
           }
         }
       }

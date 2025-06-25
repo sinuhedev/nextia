@@ -22,13 +22,15 @@ export default function Icon ({
     fetch(icons.src)
       .then(res => res.text())
       .then(e => {
-        const icons = new window.DOMParser().parseFromString(e, 'image/svg+xml').documentElement
+        const svg = new window.DOMParser().parseFromString(e, 'image/svg+xml')
+          .documentElement.getElementById(value)
 
-        const svg = icons.getElementById(value)
-        if (svg.getAttribute('x-animation') === 'true') {
-          import(`assets/icon/${value}.css`).catch(() => {})
+        if (svg) {
+          if (svg.getAttribute('x-animation') === 'true') {
+            import(`assets/icon/${value}.css`).catch(() => {})
+          }
+          ref.current.innerHTML = svg.innerHTML
         }
-        ref.current.innerHTML = svg.innerHTML.replaceAll('xmlns="http://www.w3.org/2000/svg"', '')
       })
   }, [value])
 
