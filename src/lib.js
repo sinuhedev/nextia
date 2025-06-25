@@ -9,7 +9,7 @@
  * https://github.com/sinuhedev/fx1
  */
 
-import { createContext, use, useState } from 'react'
+import { createContext, use, useReducer, useCallback } from 'react'
 
 const Context = createContext()
 
@@ -82,59 +82,84 @@ function merge (target, source) {
   return output
 }
 
-// Common actions
-function commonActions (state, setState, initialState) {
-  let newState
+/**
+ * logger
+ */
+const Logger = () => {
+  let instance
 
   return {
-    set: payload => {
+    getInstance: logger => {
+      if (!instance) {
+        instance = logger === 'true'
+      }
+      return instance
+    }
+  }
+}
+
+const logger = Logger().getInstance
+
+const log = (reducer) => {
+  const reducerWithLogger = useCallback((state, action) => {
+    const newState = reducer(state, action)
+    const { type, payload } = action
+
+    console.groupCollapsed('%cAction', 'color: #00A7F7', type)
+    console.log('%cPrevious State: ', 'color: #9E9E9E', state)
+    console.log('%cAction:\t\t\t', 'color: #00A7F7', { type, payload })
+    console.log('%cNew State:\t\t', 'color: #47B04B', newState)
+    console.groupEnd()
+
+    return newState
+  }, [reducer])
+
+  return reducerWithLogger
+}
+
+/**
+ * reducer
+ */
+const reducer = (state, action) => {
+  const { type, payload, initialState } = action
+
+  switch (type) {
+    case 'set':
       // Merge only item
       if (Object.keys(payload).length === 1) {
         const key = Object.keys(payload)[0]
-        newState = values(state, key, payload[key])
-      } else {
-        // Merge all json
-        newState = merge(state, payload)
+        return values(state, key, payload[key])
       }
 
-      setState(newState)
-    },
+      // Merge all json
+      return merge(state, payload)
 
-    show: payload => {
-      newState = values(state, payload, true)
-      setState(newState)
-    },
+    case 'show':
+      return values(state, payload, true)
 
-    hide: payload => {
-      newState = values(state, payload, false)
-      setState(newState)
-    },
+    case 'hide':
+      return values(state, payload, false)
 
-    change: payload => {
-      newState = values(
+    case 'change':
+      return values(
         state,
         payload.target.name,
         payload.target.type === 'checkbox' ? payload.target.checked : payload.target.value
       )
-      setState(newState)
-    },
 
-    reset: payload => {
+    case 'reset':
       // value reset
       if (payload) {
         const paths = Array.isArray(payload) ? payload : [payload]
 
-        newState = paths.reduce((ac, path) => {
+        return paths.reduce((ac, path) => {
           const value = path.split('.').reduce((ac, e) => ac[e], initialState)
           return values(ac, path, value)
         }, state)
-      } else {
-        // all reset
-        newState = initialState
       }
 
-      setState(newState)
-    }
+      // all reset
+      return initialState
   }
 }
 
@@ -144,14 +169,20 @@ function commonActions (state, setState, initialState) {
 function useFx (functions = { initialState: {} }) {
   const context = use(Context)
   const { initialState } = functions
-  const [state, setState] = useState(initialState)
+  const [state, dispatch] = useReducer(logger() ? log(reducer) : reducer, initialState)
+
+  // Common actions
+  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce((acc, e) => {
+    acc[e] = payload => dispatch({ type: e, payload, initialState })
+    return acc
+  }, {})
 
   // Actions
   const actions = Object.keys(functions).reduce((ac, e) => {
     if (functions[e] instanceof Function) {
       ac[e] = payload => {
         const props = {
-          ...commonActions(state, setState, initialState),
+          ...commonActions,
           state,
           payload
         }
@@ -167,11 +198,11 @@ function useFx (functions = { initialState: {} }) {
   const props = {
     initialState,
     state,
-    fx: { ...commonActions(state, setState, initialState), ...actions }
+    fx: { ...commonActions, ...actions }
   }
   if (context) { props.context = context }
 
   return Object.freeze(props)
 }
 
-export { css, useFx, Context }
+export { css, Context, logger, useFx }
