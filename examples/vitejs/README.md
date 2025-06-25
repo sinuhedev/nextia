@@ -22,6 +22,7 @@ node --run start
  * .env.test
  
 ```env
-WEB_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
-WEB_TITLE=<ENV>-vite
+VITE_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
+VITE_TITLE=<ENV>-vite
+VITE_LOGGER=true
 ```

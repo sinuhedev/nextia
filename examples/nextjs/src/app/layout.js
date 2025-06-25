@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useFx, Context } from 'fx1'
+import { useFx, Context, logger } from 'fx1'
 import functions from './functions'
 import { Icon, Link } from 'components'
 import { Translate, I18n } from 'containers'
 import 'assets/theme/index.css'
+
+logger(process.env.NEXT_PUBLIC_LOGGER)
 
 function Layout ({ children }) {
   const self = useFx(functions)
