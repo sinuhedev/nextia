@@ -121,7 +121,10 @@ const log = (reducer) => {
   const reducerWithLogger = useCallback((state, action) => {
     const newState = reducer(state, action)
 
-    console.log(`%c${action.type}`, 'color: #7ee5cc', getPayload(action), { a_State: state, b_NewState: newState })
+    console.log(
+      `%c${action.isContext ? 'Context' : 'Page   '} : %c${action.type}`, 'color: #60a495', 'color: #7ee5cc',
+      getPayload(action), { a_State: state, b_NewState: newState }
+    )
 
     return newState
   }, [reducer])
@@ -185,7 +188,7 @@ function useFx (functions = { initialState: {} }) {
 
   // Common actions
   const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce((acc, e) => {
-    acc[e] = payload => dispatch({ type: e, payload, initialState })
+    acc[e] = payload => dispatch({ type: e, payload, initialState, isContext: !context })
     return acc
   }, {})
 
