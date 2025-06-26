@@ -111,15 +111,17 @@ const log = (reducer) => {
       }
     }
 
+    if (typeof payload !== 'object') {
+      return `(${payload ?? ''})`
+    }
+
     return payload
   }
 
   const reducerWithLogger = useCallback((state, action) => {
     const newState = reducer(state, action)
 
-    console.log(`%c${action.type}`, 'color: #8eb9ff', getPayload(action))
-    console.log('%cPrevious State: ', 'color: #9E9E9E', state)
-    console.log('%cNew State:\t\t', 'color: #4edac2', newState, '\n\n')
+    console.log(`%c${action.type}`, 'color: #7ee5cc', getPayload(action), { a_State: state, b_NewState: newState })
 
     return newState
   }, [reducer])
