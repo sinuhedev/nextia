@@ -101,15 +101,25 @@ const Logger = () => {
 const logger = Logger().getInstance
 
 const log = (reducer) => {
-  const reducerWithLogger = useCallback((state, action) => {
-    const newState = reducer(state, action)
+  const getPayload = (action) => {
     const { type, payload } = action
 
-    console.groupCollapsed('%cAction', 'color: #00A7F7', type)
+    if (type === 'change') {
+      const { name, type, checked, value } = payload.target
+      return {
+        name, type, checked, value
+      }
+    }
+
+    return payload
+  }
+
+  const reducerWithLogger = useCallback((state, action) => {
+    const newState = reducer(state, action)
+
+    console.log(`%c${action.type}`, 'color: #8eb9ff', getPayload(action))
     console.log('%cPrevious State: ', 'color: #9E9E9E', state)
-    console.log('%cAction:\t\t\t', 'color: #00A7F7', { type, payload })
-    console.log('%cNew State:\t\t', 'color: #47B04B', newState)
-    console.groupEnd()
+    console.log('%cNew State:\t\t', 'color: #4edac2', newState, '\n\n')
 
     return newState
   }, [reducer])
