@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import i18nFile from 'assets/i18n'
 import './style.css'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import { useResize } from 'utils'
 import './style.css'

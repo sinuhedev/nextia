@@ -11,9 +11,9 @@
     "make": "npm run clean && npm install",
     "build": "next build",
     "serve": "next start",
-    "page": "fx1 next:page",
-    "component": "fx1 component",
-    "container": "fx1 container",
+    "page": "nextia next:page",
+    "component": "nextia component",
+    "container": "nextia container",
     "eslint": "standard src",
     "test": "vitest",
     "test:name": "vitest --testNamePattern",
@@ -27,7 +27,7 @@
     "vitest": "^3.0.4"
   },
   "dependencies": {
-    "fx1": "file:../..",
+    "nextia": "file:../..",
     "next": "^15.3.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

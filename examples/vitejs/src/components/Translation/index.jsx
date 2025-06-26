@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './style.css'
-import { css } from 'fx1'
+import { css } from 'nextia'
 import { I18n } from 'containers'
 
 export default function Translation ({ children, name, value, type, className, style, readOnly, disabled, onClick = () => {} }) {

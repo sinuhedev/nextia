@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import { Button } from 'components'
 import functions from './functions'
 import './style.css'

@@ -10,9 +10,9 @@
 		"make": "npm run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
-		"page": "fx1 page",
-		"component": "fx1 component",
-		"container": "fx1 container",
+		"page": "nextia page",
+		"component": "nextia component",
+		"container": "nextia container",
 		"eslint": "standard src"
 	},
 	"devDependencies": {
@@ -23,7 +23,7 @@
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
-		"fx1": "file:../..",
+		"nextia": "file:../..",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"
 	}

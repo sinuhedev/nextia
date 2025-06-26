@@ -1,5 +1,5 @@
 {
-	"name": "fx1",
+	"name": "nextia",
 	"description": "Create fast web applications",
 	"version": "2.1.0",
 	"type": "module",
@@ -11,14 +11,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sinuhedev/fx1.git"
+		"url": "git+https://github.com/sinuhedev/nextia.git"
 	},
 	"keywords": [
 		"react"
 	],
 	"main": "src/lib.js",
 	"bin": {
-		"fx1": "src/bin.js"
+		"nextia": "src/bin.js"
 	},
 	"eslintConfig": {
 		"extends": "./node_modules/standard/eslintrc.json"
@@ -28,8 +28,8 @@
 		"clean": "rm -fr node_modules package-lock.json",
 		"make": "npm run clean && npm install",
 		"eslint": "standard src",
-		"fx1": "node src/bin.js",
-		"fx1:my-app": "node src/bin.js my-app"
+		"nextia": "node src/bin.js",
+		"nextia:my-app": "node src/bin.js my-app"
 	},
 	"peerDependencies": {
 		"react": "^19.0.0",

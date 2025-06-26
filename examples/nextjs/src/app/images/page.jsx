@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import Image from 'next/image'
 import penguin from 'assets/img/penguin.jpg'

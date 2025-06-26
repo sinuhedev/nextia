@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import penguin from 'assets/img/penguin.jpg'
 import './style.css'

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import { Translation } from 'components'
 import { I18n } from 'containers'

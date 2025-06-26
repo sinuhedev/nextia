@@ -1,4 +1,4 @@
-# fx1
+# nextia
 
 ## Create fast web applications
 
@@ -10,7 +10,7 @@ cd examples
 
 ```sh
 # create project
-npx fx1@latest my-app
+npx nextia@latest my-app
 ```
 
-[npm](https://www.npmjs.com/package/fx1)
+[npm](https://www.npmjs.com/package/nextia)

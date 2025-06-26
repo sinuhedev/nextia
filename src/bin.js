@@ -6,7 +6,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * https://github.com/sinuhedev/fx1
+ * https://github.com/sinuhedev/nextia
  */
 
 import { mkdir, writeFile } from 'node:fs/promises'
@@ -40,7 +40,7 @@ async function createPage (name, isNext, isType) {
     // index.jsx
     writeFile(`${dirName}/${config.file[index]}`,
   `${config.directive[index]}import React, { useEffect } from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
@@ -82,7 +82,7 @@ async function createComponent (name, isType) {
     // index.jsx
     writeFile(`${dirName}/index.jsx`,
 `import React, { useEffect } from 'react'
-import { css } from 'fx1'
+import { css } from 'nextia'
 import './style.css'
 
 export default function ${name} ({ className, style }) {
@@ -114,7 +114,7 @@ async function createContainer (name, isType) {
     // index.jsx
     writeFile(`${dirName}/index.jsx`,
 `import React, { useEffect } from 'react'
-import { useFx, css } from 'fx1'
+import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
@@ -182,6 +182,6 @@ switch (CMD) {
   default:
     // create project
     if (PROJECT_NAME) console.info(`Project name: ${PROJECT_NAME}`)
-    else console.warn('npx fx1@latest <my-app>')
+    else console.warn('npx nextia@latest <my-app>')
     break
 }
