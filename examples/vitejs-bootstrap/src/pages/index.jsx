@@ -22,12 +22,13 @@ export default function Pages () {
       </div>
 
       <div>
+        <br />
         <section>CSS @container </section>
+        <br />
 
         <ul>
           <li className='landscape'>landscape</li>
           <li className='portrait'>portrait</li>
-          <li><br /></li>
           <li className='xs'>XS</li>
           <li className='sm'>SM</li>
           <li className='md'>MD</li>

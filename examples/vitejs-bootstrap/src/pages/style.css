@@ -1,52 +1,52 @@
-.App {
+.Pages {
 
-	background-color: var(--bs-secondary);
+	background-color: var(--secondary);
 
 	@media (orientation: landscape) {
 		.landscape {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@media (orientation: portrait) {
 		.portrait {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--xs: true) {
 		.xs {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--sm: true) {
 		.sm {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--md: true) {
 		.md {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--lg: true) {
 		.lg {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--xl: true) {
 		.xl {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 
 	@container style(--xxl: true) {
 		.xxl {
-			background-color: var(--bs-primary);
+			background-color: var(--primary);
 		}
 	}
 

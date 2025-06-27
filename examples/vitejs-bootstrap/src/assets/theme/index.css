@@ -23,7 +23,7 @@
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 14px;
-		background-color: var(--bs-primary);
+		background-color: var(--primary);
 		background-clip: content-box;
 		border: 3px solid transparent;
 	}
