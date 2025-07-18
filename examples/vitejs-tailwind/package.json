@@ -16,11 +16,11 @@
 		"eslint": "standard src"
 	},
 	"devDependencies": {
-		"@tailwindcss/vite": "^4.1.10",
-		"@vitejs/plugin-react": "^4.6.0",
+		"@tailwindcss/vite": "^4.1.11",
+		"@vitejs/plugin-react": "^4.7.0",
 		"autoprefixer": "^10.4.21",
 		"tailwindcss": "^4.0.17",
-		"vite": "^7.0.0"
+		"vite": "^7.0.5"
 	},
 	"dependencies": {
 		"nextia": "file:../..",

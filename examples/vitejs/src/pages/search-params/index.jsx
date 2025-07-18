@@ -15,8 +15,8 @@ export default function SearchParamsPage ({ qs }) {
     <section className={css('SearchParamsPage', '')}>
       <br />
 
-      <Link href='/search-params' value={{ id: 4000 }}>
-        Link id=4000
+      <Link href='/'>
+        Go to href=/
       </Link>
 
       <br />
