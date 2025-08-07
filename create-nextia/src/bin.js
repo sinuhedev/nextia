@@ -15,7 +15,7 @@ import { mkdir, writeFile, cp, rename, access } from 'node:fs/promises'
 import readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
-async function createPage (name, isNext, isType) {
+async function createPage (name, isNext) {
   const toPascalCase = str => str
     .toLowerCase()
     .replace(/[^a-zA-Z0-9 ]/g, ' ') // replace special characters
@@ -76,7 +76,7 @@ export default { initialState }
   }
 }
 
-async function createComponent (name, isType) {
+async function createComponent (name) {
   const dirName = `./src/components/${name}`
 
   try {
@@ -108,7 +108,7 @@ export default function ${name} ({ className, style }) {
   }
 }
 
-async function createContainer (name, isType) {
+async function createContainer (name) {
   const dirName = `./src/containers/${name}`
 
   try {
@@ -208,27 +208,23 @@ const FILE_NAME = process.argv[3]
 
 switch (CMD) {
   case 'page':
-  case 'page:type':
-  case 'next:page':
-  case 'next:page:type':
-    if (FILE_NAME) {
-      createPage(
-        FILE_NAME,
-        ['next:page', 'next:page:type'].includes(CMD),
-        ['page:type', 'next:page:type'].includes(CMD))
-    } else console.warn('npm run page <page-name>')
+    if (FILE_NAME) createPage(FILE_NAME, false)
+    else console.warn('npm run page <page-name>')
     break
 
   case 'component':
-  case 'component:type':
-    if (FILE_NAME) createComponent(FILE_NAME, CMD === 'component:type')
+    if (FILE_NAME) createComponent(FILE_NAME)
     else console.warn('npm run component <ComponentName>')
     break
 
   case 'container':
-  case 'container:type':
-    if (FILE_NAME) createContainer(FILE_NAME, CMD === 'component:type')
+    if (FILE_NAME) createContainer(FILE_NAME)
     else console.warn('npm run container <ContainerName>')
+    break
+
+  case 'next:page':
+    if (FILE_NAME) createPage(FILE_NAME, true)
+    else console.warn('npm run next:page <page-name>')
     break
 
   default:
