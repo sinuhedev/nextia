@@ -155,7 +155,7 @@ async function createProject () {
 
   try {
     const projectName = await rl.question('Project name: ')
-    const technology = await rl.question('1) vitejs  2) nextjs : ')
+    // const technology = await rl.question('1) vitejs  2) nextjs : ')
 
     const template = dirname(fileURLToPath(import.meta.url)) + '/../templates/vitejs'
     const project = process.cwd() + `/${projectName}`
