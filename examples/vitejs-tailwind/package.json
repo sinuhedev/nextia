@@ -10,9 +10,6 @@
 		"make": "npm run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
-		"page": "nextia page",
-		"component": "nextia component",
-		"container": "nextia container",
 		"eslint": "standard src"
 	},
 	"devDependencies": {
