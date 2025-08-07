@@ -25,7 +25,7 @@
 		"create-nextia": "src/bin.js"
 	},
 	"scripts": {
-		"start": "echo 'run tests'",
+		"start": "node src/bin.js ",
 		"clean": "rm -fr node_modules package-lock.json && [ -d 'my-app' ] && rm -r 'my-app'",
 		"make": "npm run clean && npm install",
 		"eslint": "standard src",

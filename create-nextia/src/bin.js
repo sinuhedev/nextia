@@ -9,10 +9,10 @@
  * https://github.com/sinuhedev/nextia/create-nextia
  */
 
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-import { mkdir, writeFile, cp, rename } from 'node:fs/promises'
-import readline from 'readline/promises'
+import { fileURLToPath } from 'node:url'
+import { dirname } from 'node:path'
+import { mkdir, writeFile, cp, rename, access } from 'node:fs/promises'
+import readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 async function createPage (name, isNext, isType) {
@@ -152,14 +152,40 @@ export default { initialState }
 
 async function createProject () {
   const rl = readline.createInterface({ input, output })
+  const templates = ['', 'vitejs', 'nextjs']
+  let projectName, project, template
 
+  // inputs
   try {
-    const projectName = await rl.question('Project name: ')
-    // const technology = await rl.question('1) vitejs  2) nextjs : ')
+    projectName = await rl.question('Project name: ')
+    template = await rl.question('1) vitejs  \n2) nextjs \n: ')
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      console.error('Unexpected error:', err)
+    }
+  } finally {
+    rl.close()
+  }
 
-    const template = dirname(fileURLToPath(import.meta.url)) + '/../templates/vitejs'
-    const project = process.cwd() + `/${projectName}`
+  // Is new project
+  try {
+    project = process.cwd() + `/${projectName}`
+    await access(project)
+    console.error(`The "${projectName}" already exists.`)
+    return
+  } catch (error) {
+  }
 
+  // templates
+  const num = Number(template)
+  if (!(Number.isInteger(num) && num >= 1 && num <= templates.length)) {
+    console.error('The template does not exist.')
+    return
+  }
+  template = dirname(fileURLToPath(import.meta.url)) + '/../templates/' + templates[template]
+
+  // Create new project
+  try {
     const mv = fileName => rename(project + `/_${fileName}`, project + `/.${fileName}`)
 
     await cp(template, project, { recursive: true })
@@ -169,11 +195,7 @@ async function createProject () {
     await mv('env.test')
     await mv('gitignore')
   } catch (err) {
-    if (err.name !== 'AbortError') {
-      console.error('Unexpected error:', err)
-    }
-  } finally {
-    rl.close()
+    console.error(err)
   }
 }
 

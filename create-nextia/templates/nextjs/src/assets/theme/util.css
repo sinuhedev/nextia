@@ -1,0 +1,177 @@
+/**
+ * Fonts
+ */
+@font-face {
+	font-family: Roboto;
+	font-style: normal;
+	font-display: swap;
+	font-weight: bold;
+	src: url('../fonts/Roboto-Regular.ttf');
+}
+
+/**
+ * Scrollbar
+ */
+
+@media (pointer: fine) {
+	::-webkit-scrollbar {
+		width: 14px;
+		height: 14px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 14px;
+		border: 3px solid transparent;
+		background-clip: content-box;
+		background-color: var(--primary-color);
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: var(--primary-color-50);
+	}
+
+	::-webkit-scrollbar,
+	::-webkit-scrollbar-track,
+	::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+}
+
+/**
+ * Media query
+ */
+:root {
+	--landscape: false;
+	--portrait: false;
+	--xs: false;
+	--sm: false;
+	--md: false;
+	--lg: false;
+	--xl: false;
+	--xxl: false;
+
+	@media (orientation: landscape) {
+		--landscape: true;
+	}
+
+	@media (orientation: portrait) {
+		--portrait: true;
+	}
+
+	@media (width < 576px) {
+		--xs: true;
+	}
+
+	@media (576px <=width < 768px) {
+		--sm: true;
+	}
+
+	@media (768px <=width < 992px) {
+		--md: true;
+	}
+
+	@media (992px <=width < 1200px) {
+		--lg: true;
+	}
+
+	@media (1200px <=width < 1400px) {
+		--xl: true;
+	}
+
+	@media (1400px <=width) {
+		--xxl: true;
+	}
+}
+
+/**
+ * View transitions
+ */
+
+:root {
+	view-transition-name: none;
+}
+
+/**
+ * fade 
+ */
+
+@keyframes fade {
+	0% {
+		opacity: var(--start, 1);
+	}
+
+	100% {
+		opacity: var(--end, 1);
+	}
+}
+
+::view-transition-new(fade),
+::view-transition-old(fade) {
+	animation: fade ease 0.3s;
+}
+
+::view-transition-new(fade) {
+	--start: 0;
+}
+
+::view-transition-old(fade) {
+	--end: 0;
+}
+
+/**
+ * count 
+ */
+
+@keyframes count {
+	0% {
+		scale: 1 var(--start, 1);
+	}
+
+	100% {
+		scale: 1 var(--end, 1);
+	}
+}
+
+::view-transition-new(count),
+::view-transition-old(count) {
+	animation: count 0.25s;
+}
+
+::view-transition-new(count) {
+	--start: 0;
+	transform-origin: 50% 0;
+}
+
+::view-transition-old(count) {
+	--end: 0;
+	transform-origin: 50% 100%;
+}
+
+/**
+ * count2 
+ */
+
+@keyframes count2 {
+	0% {
+		scale: 1 var(--start, 1);
+	}
+
+	100% {
+		scale: 1 var(--end, 1);
+	}
+}
+
+::view-transition-new(count2),
+::view-transition-old(count2) {
+	animation: count2 0.25s;
+}
+
+::view-transition-new(count2) {
+	--start: 0;
+	transform-origin: 10% 1000;
+}
+
+::view-transition-old(count2) {
+	--end: 0;
+	transform-origin: 10% 0%;
+}
