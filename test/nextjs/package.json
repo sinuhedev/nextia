@@ -11,7 +11,7 @@
     "make": "npm run clean && npm install",
     "build": "next build",
     "serve": "next start",
-    "eslint": "standard src",
+    "lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
     "test": "vitest",
     "test:name": "vitest --testNamePattern",
     "test:silent": "vitest --silent",
