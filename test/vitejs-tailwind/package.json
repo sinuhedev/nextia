@@ -10,7 +10,10 @@
 		"make": "npm run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
-		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose"
+		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
+		"page": "create-nextia page",
+		"component": "create-nextia component",
+		"container": "create-nextia container"
 	},
 	"devDependencies": {
 		"@tailwindcss/vite": "^4.1.11",
@@ -20,6 +23,7 @@
 		"vite": "^7.0.5"
 	},
 	"dependencies": {
+		"create-nextia": "file:../../create-nextia",
 		"nextia": "file:../..",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"

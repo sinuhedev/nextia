@@ -12,6 +12,9 @@
     "build": "next build",
     "serve": "next start",
     "lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
+    "page": "create-nextia next:page",
+    "component": "create-nextia component",
+    "container": "create-nextia container",
     "test": "vitest",
     "test:name": "vitest --testNamePattern",
     "test:silent": "vitest --silent",
@@ -24,6 +27,7 @@
     "vitest": "^3.0.4"
   },
   "dependencies": {
+    "create-nextia": "file:../../create-nextia",
     "next": "^15.4.1",
     "nextia": "file:../..",
     "react": "^19.1.0",

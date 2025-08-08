@@ -11,6 +11,9 @@
 		"build": "vite build --mode",
 		"preview": "vite preview",
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
+		"page": "create-nextia page",
+		"component": "create-nextia component",
+		"container": "create-nextia container",
 		"test": "vitest",
 		"test:name": "vitest --testNamePattern",
 		"test:silent": "vitest --silent",
@@ -25,6 +28,7 @@
 		"vitest": "^3.0.4"
 	},
 	"dependencies": {
+		"create-nextia": "file:../../create-nextia",
 		"nextia": "file:../..",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"
