@@ -11,7 +11,7 @@
 
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
-import { mkdir, writeFile, cp, rename, access } from 'node:fs/promises'
+import { mkdir, writeFile, readFile, cp, rename, access } from 'node:fs/promises'
 import readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
@@ -153,7 +153,7 @@ export default { initialState }
 async function createProject () {
   const rl = readline.createInterface({ input, output })
   const templates = ['', 'vitejs', 'nextjs']
-  let projectName, project, template
+  let projectName, projectPath, template
 
   // inputs
   try {
@@ -169,8 +169,8 @@ async function createProject () {
 
   // Is new project
   try {
-    project = process.cwd() + `/${projectName}`
-    await access(project)
+    projectPath = process.cwd() + `/${projectName}/`
+    await access(projectPath)
     console.error(`The "${projectName}" already exists.`)
     return
   } catch (error) {
@@ -186,14 +186,22 @@ async function createProject () {
 
   // Create new project
   try {
-    const mv = fileName => rename(project + `/_${fileName}`, project + `/.${fileName}`)
-
-    await cp(template, project, { recursive: true })
+    const mv = fileName => rename(projectPath + `_${fileName}`, projectPath + `.${fileName}`)
+    await cp(template, projectPath, { recursive: true })
+    const replaceToken = async (filename, token, value) => {
+      const content = await readFile(projectPath + filename, 'utf8')
+      const updated = content.replaceAll(token, value)
+      await writeFile(projectPath + filename, updated, 'utf8')
+    }
 
     await mv('env.development')
     await mv('env.production')
     await mv('env.test')
     await mv('gitignore')
+
+    // replace tokens
+    await replaceToken('README.md', 'TEMPLATE', projectName)
+    await replaceToken('package.json', 'TEMPLATE', projectName)
   } catch (err) {
     console.error(err)
   }
