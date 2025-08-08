@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  },
   "scripts": {
     "start": "NODE_OPTIONS='--inspect' next dev",
     "start:turbopack": "NODE_OPTIONS='--inspect' next dev --turbopack",
@@ -11,7 +14,7 @@
     "make": "npm run clean && npm install",
     "build": "next build",
     "serve": "next start",
-    "eslint": "standard src",
+    "lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
     "page": "npm create nextia@latest next:page",
     "component": "npm create nextia@latest component",
     "container": "npm create nextia@latest container",

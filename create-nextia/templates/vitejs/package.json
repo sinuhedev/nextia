@@ -13,7 +13,7 @@
 		"make": "npm run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
-		"eslint": "standard src",
+		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
 		"page": "npm create nextia@latest page",
 		"component": "npm create nextia@latest component",
 		"container": "npm create nextia@latest container",
