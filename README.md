@@ -2,10 +2,10 @@
 
 ## Create fast web applications
 
-# Go to examples
+# Go to test
 ```sh
 npm i
-cd examples
+cd test
 ```
 
 [npm](https://www.npmjs.com/package/nextia)

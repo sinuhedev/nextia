@@ -1,8 +1,8 @@
-examples
-
 .git
 .gitignore
 .vscode
 
 .env
 .env.*
+
+test
