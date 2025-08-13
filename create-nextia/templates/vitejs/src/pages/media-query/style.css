@@ -1,24 +1,4 @@
 .MediaQueryPage {
-	@container style(--landscape: true) {
-		.landscape {
-			color: #5ba15f;
-			font-weight: 400;
-		}
-	}
-
-	@container style(--portrait: true) {
-		.portrait {
-			color: #5ba15f;
-			font-weight: 400;
-		}
-	}
-
-	@container style(--xs: true) {
-		.xs {
-			color: #5ba15f;
-			font-weight: 400;
-		}
-	}
 
 	@container style(--sm: true) {
 		.sm {

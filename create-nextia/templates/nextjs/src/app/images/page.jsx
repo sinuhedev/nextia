@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
 import Image from 'next/image'
-import penguin from 'assets/img/penguin.jpg'
+import image from 'assets/img/image.jpg'
 import './style.css'
 
 export default function ImagesPage () {
@@ -14,12 +14,12 @@ export default function ImagesPage () {
     <section className={css('ImagesPage', '')}>
 
       <br />
-
+      <p>css-img</p>
       <div className='css-img' />
 
       <br />
-
-      <Image src={penguin} height={200} />
+      <p>img</p>
+      <Image src={image} height={200} alt='image' />
 
     </section>
   )
