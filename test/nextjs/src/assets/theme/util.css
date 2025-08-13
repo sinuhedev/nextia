@@ -41,44 +41,29 @@
  * Media query
  */
 :root {
-	--landscape: false;
-	--portrait: false;
-	--xs: false;
 	--sm: false;
 	--md: false;
 	--lg: false;
 	--xl: false;
 	--xxl: false;
 
-	@media (orientation: landscape) {
-		--landscape: true;
-	}
-
-	@media (orientation: portrait) {
-		--portrait: true;
-	}
-
-	@media (width < 576px) {
-		--xs: true;
-	}
-
-	@media (576px <=width < 768px) {
+	@media (640px <=width <768px) {
 		--sm: true;
 	}
 
-	@media (768px <=width < 992px) {
+	@media (768px <=width <1024px) {
 		--md: true;
 	}
 
-	@media (992px <=width < 1200px) {
+	@media (1024px <=width <1280px) {
 		--lg: true;
 	}
 
-	@media (1200px <=width < 1400px) {
+	@media (1280px <=width < 1536px) {
 		--xl: true;
 	}
 
-	@media (1400px <=width) {
+	@media (width >=1536px) {
 		--xxl: true;
 	}
 }

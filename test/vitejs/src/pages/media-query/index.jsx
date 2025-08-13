@@ -12,9 +12,6 @@ export default function MediaQueryPage ({ resize }) {
         <section>CSS @container </section>
 
         <ul>
-          <li className='landscape'>landscape</li>
-          <li className='portrait'>portrait</li>
-          <li className='xs'>XS</li>
           <li className='sm'>SM</li>
           <li className='md'>MD</li>
           <li className='lg'>LG</li>

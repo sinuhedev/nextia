@@ -24,9 +24,6 @@ export function useResize () {
   const getResize = () => ({
     width: window.innerWidth,
     height: window.innerHeight,
-    landscape: cssVar('--landscape'),
-    portrait: cssVar('--portrait'),
-    xs: cssVar('--xs'),
     sm: cssVar('--sm'),
     md: cssVar('--md'),
     lg: cssVar('--lg'),
