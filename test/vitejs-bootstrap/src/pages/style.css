@@ -2,24 +2,6 @@
 
 	background-color: var(--secondary);
 
-	@media (orientation: landscape) {
-		.landscape {
-			background-color: var(--primary);
-		}
-	}
-
-	@media (orientation: portrait) {
-		.portrait {
-			background-color: var(--primary);
-		}
-	}
-
-	@container style(--xs: true) {
-		.xs {
-			background-color: var(--primary);
-		}
-	}
-
 	@container style(--sm: true) {
 		.sm {
 			background-color: var(--primary);

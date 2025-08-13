@@ -14,25 +14,6 @@
 .Pages {
 	background-color: var(--secondary);
 
-
-	@media (orientation: landscape) {
-		.landscape {
-			background-color: var(--primary);
-		}
-	}
-
-	@media (orientation: portrait) {
-		.portrait {
-			background-color: var(--primary);
-		}
-	}
-
-	@variant only-xs {
-		.xs {
-			background-color: var(--primary);
-		}
-	}
-
 	@variant only-sm {
 		.sm {
 			background-color: var(--primary);

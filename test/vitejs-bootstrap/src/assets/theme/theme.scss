@@ -120,18 +120,11 @@ $cursors: // General
  * Media query
  */
 :root {
-  --xs: false;
   --sm: false;
   --md: false;
   --lg: false;
   --xl: false;
   --xxl: false;
-}
-
-@include media-breakpoint-down(sm) {
-  :root {
-    --xs: true;
-  }
 }
 
 @include media-breakpoint-only(sm) {
