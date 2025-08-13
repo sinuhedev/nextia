@@ -23,7 +23,7 @@
 		"test:coverage": "vitest --silent --coverage"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-react": "^4.7.0",
+		"@vitejs/plugin-react": "^5.0.0",
 		"@vitest/coverage-v8": "^3.2.4",
 		"autoprefixer": "^10.4.21",
 		"jsdom": "^26.1.0",
@@ -32,7 +32,7 @@
 		"standard": "^17.1.2"
 	},
 	"dependencies": {
-		"nextia": "3.0.2",
+		"nextia": "4.0.0",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1"
 	}
