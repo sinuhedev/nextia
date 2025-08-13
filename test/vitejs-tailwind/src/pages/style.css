@@ -4,7 +4,6 @@
  * Media query
  */
 
-@custom-variant only-xs (@media (width < theme(breakpoint-sm)));
 @custom-variant only-sm (@media (width >=theme(breakpoint-sm)) and (width < theme(breakpoint-md)));
 @custom-variant only-md (@media (width >=theme(breakpoint-md)) and (width < theme(breakpoint-lg)));
 @custom-variant only-lg (@media (width >=theme(breakpoint-lg)) and (width < theme(breakpoint-xl)));
