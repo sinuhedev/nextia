@@ -1,4 +1,4 @@
-# TEMPLATE
+# nextjs
 
 ## To start
 
@@ -10,7 +10,7 @@ npm start
 node --run start
 #
 npm test
-npm run build <ENV>
+npm run build
 npm run serve
 ```
 

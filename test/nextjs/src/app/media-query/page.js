@@ -12,7 +12,6 @@ export default function MediaQueryPage () {
   return (
     <section className={css('MediaQueryPage', '')}>
       <div>
-        <section>CSS @container </section>
 
         <ul>
           <li className='sm'>SM</li>
