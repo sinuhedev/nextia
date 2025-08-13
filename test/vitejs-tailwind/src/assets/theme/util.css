@@ -35,3 +35,34 @@
 		background-color: transparent;
 	}
 }
+
+/**
+ * Media query
+ */
+:root {
+	--sm: false;
+	--md: false;
+	--lg: false;
+	--xl: false;
+	--xxl: false;
+
+	@media (theme(breakpoint-sm) <=width <theme(breakpoint-md)) {
+		--sm: true;
+	}
+
+	@media (theme(breakpoint-md) <=width <theme(breakpoint-lg)) {
+		--md: true;
+	}
+
+	@media (theme(breakpoint-lg) <=width <theme(breakpoint-xl)) {
+		--lg: true;
+	}
+
+	@media (theme(breakpoint-xl) <=width < theme(breakpoint-2xl)) {
+		--xl: true;
+	}
+
+	@media (width >=theme(breakpoint-2xl)) {
+		--xxl: true;
+	}
+}

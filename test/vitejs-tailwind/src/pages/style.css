@@ -1,46 +1,33 @@
-@reference "tailwindcss";
-
-/**
- * Media query
- */
-
-@custom-variant only-sm (@media (width >=theme(breakpoint-sm)) and (width < theme(breakpoint-md)));
-@custom-variant only-md (@media (width >=theme(breakpoint-md)) and (width < theme(breakpoint-lg)));
-@custom-variant only-lg (@media (width >=theme(breakpoint-lg)) and (width < theme(breakpoint-xl)));
-@custom-variant only-xl (@media (width >=theme(breakpoint-xl)) and (width < theme(breakpoint-2xl)));
-@custom-variant only-2xl (@media (width >=theme(breakpoint-2xl)));
-
 .Pages {
 	background-color: var(--secondary);
 
-	@variant only-sm {
+	@container style(--sm: true) {
 		.sm {
 			background-color: var(--primary);
 		}
 	}
 
-	@variant only-md {
+	@container style(--md: true) {
 		.md {
 			background-color: var(--primary);
 		}
 	}
 
-	@variant only-lg {
+	@container style(--lg: true) {
 		.lg {
 			background-color: var(--primary);
 		}
 	}
 
-	@variant only-xl {
+	@container style(--xl: true) {
 		.xl {
 			background-color: var(--primary);
 		}
 	}
 
-	@variant only-2xl {
+	@container style(--xxl: true) {
 		.xxl {
 			background-color: var(--primary);
 		}
 	}
-
 }

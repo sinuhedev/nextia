@@ -8,7 +8,7 @@ export default function Pages () {
   const { state, fx } = useFx(functions)
 
   return (
-    <main className={css('Pages', 'container m-5')}>
+    <main className={css('Pages', 'm-5')}>
 
       <div>
         <Button onClick={e => fx.increment(e)}>+</Button>
