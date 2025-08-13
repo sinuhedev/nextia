@@ -1,6 +1,7 @@
 /**
- * fonts
+ * Fonts
  */
+
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
@@ -10,8 +11,9 @@
 }
 
 /** 
- * scrollbar
+ * Scrollbar
  */
+
 @media (pointer: fine) {
 	::-webkit-scrollbar {
 		width: 14px;
@@ -39,6 +41,7 @@
 /**
  * Media query
  */
+
 :root {
 	--sm: false;
 	--md: false;

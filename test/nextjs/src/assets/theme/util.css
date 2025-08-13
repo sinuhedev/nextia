@@ -1,6 +1,7 @@
 /**
  * Fonts
  */
+
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
@@ -40,6 +41,7 @@
 /**
  * Media query
  */
+
 :root {
 	--sm: false;
 	--md: false;
