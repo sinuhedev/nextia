@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import functions from './functions'
 import { useFx, css } from 'nextia'
 import './style.css'
-import { Translation } from 'components'
+import { Message } from 'components'
 import { I18n } from 'containers'
 
 export default function TranslatePage () {
@@ -25,8 +25,9 @@ export default function TranslatePage () {
         <li>
           <I18n value='page.module.block.docker' />
         </li>
-        <li><Translation /></li>
       </ul>
+
+      <Message />
     </section>
   )
 }
