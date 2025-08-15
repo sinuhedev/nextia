@@ -7,3 +7,6 @@ out
 .env.*
 .swc
 .vercel
+
+deploy
+deploy-variables

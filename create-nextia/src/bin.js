@@ -194,8 +194,8 @@ async function createProject () {
       await writeFile(projectPath + filename, updated, 'utf8')
     }
 
-    await mv('env.development')
-    await mv('env.production')
+    await mv('env.dev')
+    await mv('env.prod')
     await mv('env.test')
     await mv('gitignore')
 

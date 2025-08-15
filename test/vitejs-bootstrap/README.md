@@ -18,11 +18,11 @@ npm run preview
 
 ```.env
 .env               # loaded in all cases
-.env.[ENV]    # only loaded in specified ENV [ development, test, production ]
+.env.[ENV]    # only loaded in specified ENV [ dev, test, prod ]
 ```
 
- * .env.development
- * .env.production
+ * .env.dev
+ * .env.prod
  * .env.test
  
 ```env

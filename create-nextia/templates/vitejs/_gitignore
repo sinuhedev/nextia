@@ -4,3 +4,6 @@ out
 .coverage
 .env
 .env.*
+
+deploy
+deploy-variables
