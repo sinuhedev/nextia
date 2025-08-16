@@ -17,7 +17,7 @@
 		"url": "git+https://github.com/sinuhedev/nextia.git",
 		"directory": "create-nextia"
 	},
-	"homepage": "https://github.com/sinuhedev/nextia/create-nextia#readme",
+	"homepage": "https://github.com/sinuhedev/nextia/tree/main/create-nextia#readme",
 	"keywords": [
 		"react"
 	],
