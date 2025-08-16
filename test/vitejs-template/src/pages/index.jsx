@@ -3,7 +3,7 @@ import { useFx, Context } from 'nextia'
 import { Icon, Link } from 'components'
 import { Translate, I18n } from 'containers'
 import functions from './functions.js'
-import { startViewTransition, useResize, useQueryString } from 'utils'
+import { startViewTransition, useQueryString } from 'utils'
 
 export default function Pages () {
   const self = useFx(functions)
@@ -11,7 +11,6 @@ export default function Pages () {
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
-  const resize = useResize()
 
   const ref = useRef()
 
@@ -45,58 +44,20 @@ export default function Pages () {
 
         <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-        <button onClick={e => fx.increment(e)}>increment</button>
-        {'  '}
-        <button onClick={e => fx.decrement(e)}>decrement</button>
-        {'  '}
-        <button onClick={() => fx.zero({ value: 0 })}>zero</button>
-        {'  '}
-        {state.num}
-        {'  '}
-        {state.loading ? <span> Loading... </span> : <span> View.. </span>}
-      </header>
-
-      <aside className='m-2'>
         <Link href='/' className='mr-2'>
           /
         </Link>
         <Link href='#/' className='mr-2'>
           /home
         </Link>
-        <Link href='#/env' className='mr-2'>
-          /env
+        <Link href='#/demo' className='mr-2'>
+          /demo
         </Link>
-        <Link href='#/my-context' className='mr-2'>
-          /my-context
-        </Link>
-        <Link href='#/mockapi' className='mr-2'>
-          /mockapi
-        </Link>
-        <Link href='#/search-params' value={{ id: 20, user: 'Sinuhe' }} className='mr-2'>
-          /search-params
-        </Link>
-        <Link href='#/subpage/hello' className='mr-2'>
-          /subpage/hello
-        </Link>
-        <Link href='#/translate' className='mr-2'>
-          /translate
-        </Link>
-        <Link href='#/counter' className='mr-2'>
-          /counter
-        </Link>
-        <Link href='#/images' className='mr-2'>
-          /images
-        </Link>
-        <Link href='#/media-query' className='mr-2'>
-          /media-query
-        </Link>
-        <Link href='#/no' className='mr-2'>
-          /no
-        </Link>
-      </aside>
+
+      </header>
 
       <main ref={ref} className='m-2'>
-        {Page && <Page qs={qs.queryString} resize={resize} />}
+        {Page && <Page qs={qs.queryString} />}
       </main>
 
     </Context>

@@ -23,6 +23,7 @@ function Layout ({ children }) {
 
   return (
     <html>
+
       <head>
         <title>{process.env.NEXT_PUBLIC_TITLE}</title>
         <link rel='shortcut icon' href='logo.svg' />
@@ -41,58 +42,17 @@ function Layout ({ children }) {
               <header className='m-2' style={{ display: 'flex', gap: '20px' }}>
                 <Icon value='help' />
                 <Translate value={state.i18nLocale} onChange={e => fx.changeI18n(e)} />
-
                 <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-                <button onClick={e => fx.increment(e)}>increment</button>
-                {'  '}
-                <button onClick={e => fx.decrement(e)}>decrement</button>
-                {'  '}
-                <button onClick={() => fx.zero({ value: 0 })}>zero</button>
-                {'  '}
-                {state.num}
-                {'  '}
-                {state.loading ? <span> Loading... </span> : <span> View.. </span>}
-              </header>
-
-              <aside className='m-2'>
-                <Link href='/' className='mr-2'>
-                  /
-                </Link>
                 <Link href='/home' className='mr-2'>
-                  /home
+                  home
                 </Link>
-                <Link href='/env' className='mr-2'>
-                  /env
+
+                <Link href='/demo' className='mr-2'>
+                  demo
                 </Link>
-                <Link href='/my-context' className='mr-2'>
-                  /my-context
-                </Link>
-                <Link href='/mockapi' className='mr-2'>
-                  /mockapi
-                </Link>
-                <Link href='/search-params' value={{ id: 20, user: 'Sinuhe' }} className='mr-2'>
-                  /search-params
-                </Link>
-                <Link href='/subpage/hello' className='mr-2'>
-                  /subpage/hello
-                </Link>
-                <Link href='/translate' className='mr-2'>
-                  /translate
-                </Link>
-                <Link href='/counter' className='mr-2'>
-                  /counter
-                </Link>
-                <Link href='/images' className='mr-2'>
-                  /images
-                </Link>
-                <Link href='/media-query' className='mr-2'>
-                  /media-query
-                </Link>
-                <Link href='/no' className='mr-2'>
-                  /no
-                </Link>
-              </aside>
+
+              </header>
 
               <main className='m-2'>
                 {children}

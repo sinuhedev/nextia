@@ -1,4 +1,2 @@
-NEXT_PUBLIC_TITLE=development-nextjs
+NEXT_PUBLIC_TITLE=development
 NEXT_PUBLIC_LOGGER=true
-#
-API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1

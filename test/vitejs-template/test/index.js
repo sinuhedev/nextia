@@ -1,11 +1,5 @@
 import { test } from 'vitest'
-import { env, sum } from 'utils'
-
-let a
-
-test('hi', () => {
-  console.info(sum(1, 20))
-})
+import { env } from 'utils'
 
 test('env', () => {
   console.info(env.VITE_TITLE)

@@ -153,12 +153,13 @@ export default { initialState }
 async function createProject () {
   const rl = readline.createInterface({ input, output })
   const templates = ['', 'vitejs', 'nextjs']
-  let projectName, projectPath, template
+  let projectName, projectPath, templateId
 
   // inputs
   try {
     projectName = await rl.question('Project name: ')
-    template = await rl.question('1) vitejs  \n2) nextjs \n: ')
+    templateId = await rl.question('1) vitejs  \n2) nextjs \n: ')
+    templateId = Number(templateId)
   } catch (err) {
     if (err.name !== 'AbortError') {
       console.error('Unexpected error:', err)
@@ -177,12 +178,12 @@ async function createProject () {
   }
 
   // templates
-  const num = Number(template)
-  if (!(Number.isInteger(num) && num >= 1 && num <= templates.length)) {
+  if (!(Number.isInteger(templateId) && templateId >= 1 && templateId <= templates.length)) {
     console.error('The template does not exist.')
     return
   }
-  template = dirname(fileURLToPath(import.meta.url)) + '/../templates/' + templates[template]
+
+  const template = dirname(fileURLToPath(import.meta.url)) + '/../templates/' + templates[templateId]
 
   // Create new project
   try {
@@ -194,8 +195,13 @@ async function createProject () {
       await writeFile(projectPath + filename, updated, 'utf8')
     }
 
-    await mv('env.dev')
-    await mv('env.prod')
+    if (templateId === 1) {
+      await mv('env.dev')
+      await mv('env.prod')
+    } else if (templateId === 2) {
+      await mv('env.development')
+      await mv('env.production')
+    }
     await mv('env.test')
     await mv('gitignore')
 

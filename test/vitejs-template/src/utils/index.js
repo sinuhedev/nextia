@@ -1,4 +1,4 @@
-import { useResize, useQueryString } from './hooks'
+import { useQueryString } from './hooks'
 
 const env = import.meta.env
 
@@ -10,16 +10,8 @@ async function startViewTransition (fun = () => {}, ref, animation) {
   ref.style.viewTransitionName = ''
 }
 
-function sum (a, b) {
-  return a + b
-}
-
 export {
   env,
-  // hooks
-  useResize,
   useQueryString,
-  // util
-  startViewTransition,
-  sum
+  startViewTransition
 }
