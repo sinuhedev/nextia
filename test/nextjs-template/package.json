@@ -1,0 +1,36 @@
+{
+  "name": "nextjs-template",
+  "description": "nextjs-template",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "NODE_OPTIONS='--inspect' next dev",
+    "start:turbopack": "NODE_OPTIONS='--inspect' next dev --turbopack",
+    "clean": "rm -fr package-lock.json node_modules .next .coverage .swc",
+    "make": "npm run clean && npm install",
+    "build": "next build",
+    "serve": "next start",
+    "lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
+    "page": "create-nextia next:page",
+    "component": "create-nextia component",
+    "container": "create-nextia container",
+    "test": "vitest",
+    "test:name": "vitest --testNamePattern",
+    "test:silent": "vitest --silent",
+    "test:coverage": "vitest --coverage --silent"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.0.4"
+  },
+  "dependencies": {
+    "create-nextia": "file:../../create-nextia",
+    "next": "^15.4.6",
+    "nextia": "file:../..",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

@@ -1,0 +1,71 @@
+/**
+ * Fonts
+ */
+
+@font-face {
+	font-family: Roboto;
+	font-style: normal;
+	font-display: swap;
+	font-weight: bold;
+	src: url('/assets/fonts/Roboto-Regular.ttf');
+}
+
+/**
+ * Scrollbar
+ */
+
+@media (pointer: fine) {
+	::-webkit-scrollbar {
+		width: 14px;
+		height: 14px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 14px;
+		border: 3px solid transparent;
+		background-clip: content-box;
+		background-color: var(--primary-color);
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: var(--primary-color-50);
+	}
+
+	::-webkit-scrollbar,
+	::-webkit-scrollbar-track,
+	::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+}
+
+/**
+ * Media query
+ */
+
+:root {
+	--sm: false;
+	--md: false;
+	--lg: false;
+	--xl: false;
+	--xxl: false;
+
+	@media (640px <=width <768px) {
+		--sm: true;
+	}
+
+	@media (768px <=width <1024px) {
+		--md: true;
+	}
+
+	@media (1024px <=width <1280px) {
+		--lg: true;
+	}
+
+	@media (1280px <=width < 1536px) {
+		--xl: true;
+	}
+
+	@media (width >=1536px) {
+		--xxl: true;
+	}
+}
