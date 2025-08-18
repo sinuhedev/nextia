@@ -32,7 +32,7 @@
 		"standard": "^17.1.2"
 	},
 	"dependencies": {
-		"nextia": "^4.0.5",
+		"nextia": "^4.0.6",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1"
 	}

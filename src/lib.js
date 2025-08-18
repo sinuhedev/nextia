@@ -123,7 +123,7 @@ const log = (reducer) => {
 
     console.log(
       `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`, 'color: #90b1d1', 'color: #6592c8',
-      getPayload(action), { a_State: state, b_NewState: newState }
+      getPayload(action), { state, new_state: newState }
     )
 
     return newState
