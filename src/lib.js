@@ -1,5 +1,3 @@
-'use client'
-
 /**
  * Copyright (c) 2025 Sinuhe Maceda https://sinuhe.dev
  *

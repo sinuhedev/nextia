@@ -2,6 +2,9 @@
 	"name": "nextia",
 	"description": "Create fast web applications",
 	"version": "4.0.6",
+	"engines": {
+		"node": ">22"
+	},
 	"type": "module",
 	"license": "MIT",
 	"author": {
@@ -13,9 +16,13 @@
 		"type": "git",
 		"url": "git+https://github.com/sinuhedev/nextia.git"
 	},
+	"homepage": "https://github.com/sinuhedev/nextia",
 	"keywords": [
 		"react"
 	],
+	"bin": {
+		"nextia": "src/bin.js"
+	},
 	"main": "src/lib.js",
 	"eslintConfig": {
 		"extends": "./node_modules/standard/eslintrc.json"
@@ -24,7 +31,8 @@
 		"start": "echo 'go to test'",
 		"clean": "rm -fr node_modules package-lock.json",
 		"make": "npm run clean && npm install",
-		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose"
+		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
+		"test:my-app": " [ -d 'my-app' ] && rm -r 'my-app' ; node src/bin.js "
 	},
 	"peerDependencies": {
 		"react": "^19.0.0",

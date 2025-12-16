@@ -1,9 +1,0 @@
-node_modules
-out
-
-.coverage
-.next
-.env
-.env.*
-.swc
-.vercel
