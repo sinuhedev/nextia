@@ -1,4 +1,4 @@
-# vitejs-template
+# bootstrap
 
 ## To start
 
@@ -17,7 +17,7 @@ npm run preview
 ## env
 
 ```.env
-.env               # loaded in all cases
+.env          # loaded in all cases
 .env.[ENV]    # only loaded in specified ENV [ dev, test, prod ]
 ```
 
@@ -28,5 +28,6 @@ npm run preview
 ```env
 VITE_LOGGER=true
 #
-VITE_TITLE=TITLE
+VITE_API=https://66cf1f94901aab248420fea0.mockapi.io/api/v1
+VITE_TITLE=<ENV>-vite
 ```

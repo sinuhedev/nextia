@@ -1,6 +1,6 @@
 {
-	"name": "vitejs",
-	"description": "vitejs",
+	"name": "template",
+	"description": "template",
 	"version": "0.0.0",
 	"type": "module",
 	"private": true,

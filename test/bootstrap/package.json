@@ -1,6 +1,6 @@
 {
-	"name": "vitejs-bootstrap",
-	"description": "vitejs-bootstrap",
+	"name": "bootstrap",
+	"description": "bootstrap",
 	"version": "0.0.0",
 	"type": "module",
 	"private": true,
