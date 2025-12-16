@@ -35,8 +35,8 @@
 		"test:my-app": " [ -d 'my-app' ] && rm -r 'my-app' ; node src/bin.js "
 	},
 	"peerDependencies": {
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3"
 	},
 	"devDependencies": {
 		"standard": "^17.1.2"
