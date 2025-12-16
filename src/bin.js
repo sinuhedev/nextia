@@ -12,8 +12,6 @@
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
 import { mkdir, writeFile, readFile, cp, rename, access } from 'node:fs/promises'
-import readline from 'node:readline/promises'
-import { stdin as input, stdout as output } from 'node:process'
 
 async function createPage (name) {
   const toPascalCase = str => str
@@ -139,26 +137,13 @@ export default { initialState }
   }
 }
 
-async function createProject () {
-  const rl = readline.createInterface({ input, output })
-  let projectName, projectPath
+async function createProject (name) {
+  let projectPath
 
-  // inputs
   try {
-    projectName = await rl.question('Project name: ')
-  } catch (err) {
-    if (err.name !== 'AbortError') {
-      console.error('Unexpected error:', err)
-    }
-  } finally {
-    rl.close()
-  }
-
-  // Is new project
-  try {
-    projectPath = process.cwd() + `/${projectName}/`
+    projectPath = process.cwd() + `/${name}/`
     await access(projectPath)
-    console.error(`The "${projectName}" already exists.`)
+    console.error(`The "${name}" already exists.`)
     return
   } catch (error) {
   }
@@ -181,8 +166,8 @@ async function createProject () {
     await mv('gitignore')
 
     // replace tokens
-    await replaceToken('README.md', 'TEMPLATE', projectName)
-    await replaceToken('package.json', 'TEMPLATE', projectName)
+    await replaceToken('README.md', 'TEMPLATE', name)
+    await replaceToken('package.json', 'TEMPLATE', name)
   } catch (err) {
     console.error(err)
   }
@@ -212,6 +197,7 @@ switch (CMD) {
     break
 
   default:
-    createProject()
+    if (FILE_NAME) createProject(FILE_NAME)
+    else console.warn('npm nextia@latest <ProjectName>')
     break
 }
