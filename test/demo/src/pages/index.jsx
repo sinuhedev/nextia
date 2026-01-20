@@ -90,6 +90,9 @@ export default function Pages () {
         <Link href='#/media-query' className='mr-2'>
           /media-query
         </Link>
+        <Link href='#/icons' className='mr-2'>
+          /icons
+        </Link>
         <Link href='#/no' className='mr-2'>
           /no
         </Link>
