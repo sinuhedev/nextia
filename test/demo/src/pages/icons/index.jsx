@@ -9,7 +9,7 @@ export default function IconsPage () {
 
   return (
     <section className={css('IconsPage', '')}>
-      <Icon value='globe' />
+      <Icon value='globe' width='32' />
     </section>
   )
 }
