@@ -12,6 +12,7 @@ export default function IconsPage () {
       <Icon value='globe' width='32' />
       <Icon value='camera' width='32' />
       <Icon value='video' width='32' />
+      <Icon value='exit' width='32' />
     </section>
   )
 }
