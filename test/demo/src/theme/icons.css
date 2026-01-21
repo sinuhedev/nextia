@@ -1,4 +1,4 @@
-.Icon-component#exit {
+.exit-anim {
   --primary-color: #821e8f;
 
   transition: transform 200ms linear 0ms;
@@ -41,7 +41,6 @@
     }
   }
 }
-
 
 @keyframes arrow {
   0% {

@@ -39,7 +39,7 @@ export default function Pages () {
   return (
     <Context value={self}>
       <header style={{ display: 'flex', gap: '20px' }}>
-        <Icon value='globe' width='24' />
+        <Icon id='globe' width='24' />
 
         <Translate value={state.i18nLocale} onChange={e => fx.changeI18n(e)} />
 

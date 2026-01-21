@@ -20,7 +20,7 @@ node --run test:my-app
 create project
 
 ```sh
-npm nextia@latest my-app
+npx nextia@latest my-app
 ```
 
 [npm](https://www.npmjs.com/package/nextia)

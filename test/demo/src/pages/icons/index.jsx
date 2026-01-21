@@ -9,10 +9,11 @@ export default function IconsPage () {
 
   return (
     <section className={css('IconsPage', '')}>
-      <Icon value='globe' width='32' />
-      <Icon value='camera' width='32' />
-      <Icon value='video' width='32' />
-      <Icon value='exit' width='32' />
+      <Icon id='globe' width='32' />
+      <Icon id='camera' width='32' />
+      <Icon id='video' width='32' />
+      <Icon id='exit' width='32' />
+      <Icon id='exit' className='exit-anim' width='32' />
     </section>
   )
 }
