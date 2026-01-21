@@ -32,7 +32,7 @@
 		"clean": "rm -fr node_modules package-lock.json my-app",
 		"make": "npm run clean && npm install",
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
-		"test:my-app": "node src/bin.js -- my-app"
+		"test:my-app": "node src/bin.js my-app"
 	},
 	"peerDependencies": {
 		"react": "^19.2.0",

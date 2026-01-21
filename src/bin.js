@@ -177,27 +177,27 @@ async function createProject (name) {
  * main
  */
 
-const CMD = process.argv[2]
-const FILE_NAME = process.argv[3]
+const ARG1 = process.argv[2]
+const ARG2 = process.argv[3]
 
-switch (CMD) {
+switch (ARG1) {
   case 'page':
-    if (FILE_NAME) createPage(FILE_NAME)
+    if (ARG2) createPage(ARG2)
     else console.warn('npm run page <page-name>')
     break
 
   case 'component':
-    if (FILE_NAME) createComponent(FILE_NAME)
+    if (ARG2) createComponent(ARG2)
     else console.warn('npm run component <ComponentName>')
     break
 
   case 'container':
-    if (FILE_NAME) createContainer(FILE_NAME)
+    if (ARG2) createContainer(ARG2)
     else console.warn('npm run container <ContainerName>')
     break
 
   default:
-    if (FILE_NAME) createProject(FILE_NAME)
+    if (ARG1) createProject(ARG1)
     else console.warn('npm nextia@latest <ProjectName>')
     break
 }
