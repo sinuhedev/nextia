@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import icons from 'theme/icons.svg?raw'
+import icons from 'theme/icons/icons.svg?raw'
 
 export default function Icon ({
   id,

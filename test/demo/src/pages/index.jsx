@@ -87,11 +87,11 @@ export default function Pages () {
         <Link href='#/images' className='mr-2'>
           /images
         </Link>
-        <Link href='#/media-query' className='mr-2'>
-          /media-query
-        </Link>
         <Link href='#/icons' className='mr-2'>
           /icons
+        </Link>
+        <Link href='#/media-query' className='mr-2'>
+          /media-query
         </Link>
         <Link href='#/no' className='mr-2'>
           /no

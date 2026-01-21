@@ -1,5 +1,6 @@
 @import './util.css';
-@import './icons.css';
+@import './fonts/index.css';
+@import './icons/index.css';
 @import './animations.css';
 
 :root {

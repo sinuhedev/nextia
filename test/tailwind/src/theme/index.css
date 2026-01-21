@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import './util.css';
+@import './fonts/index.css';
 
 @layer theme, base, components, utilities;
 
