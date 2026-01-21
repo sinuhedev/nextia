@@ -1,7 +1,7 @@
 {
 	"name": "nextia",
 	"description": "Create fast web applications",
-	"version": "4.0.9",
+	"version": "4.0.10",
 	"engines": {
 		"node": ">22"
 	},
