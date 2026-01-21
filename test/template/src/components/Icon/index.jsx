@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react'
-import icons from 'assets/icon/icons.svg?raw'
-import { css } from 'nextia'
+import icons from 'theme/icons.svg?raw'
 
 export default function Icon ({
-  value,
+  id,
   className,
   style,
   width = '48',
@@ -20,22 +19,19 @@ export default function Icon ({
 
   useEffect(() => {
     const svg = new window.DOMParser().parseFromString(icons, 'image/svg+xml')
-      .documentElement.getElementById(value)
+      .documentElement.getElementById(id)
 
     if (svg) {
-      if (svg.getAttribute('x-animation') === 'true') {
-        import(`assets/icon/${value}.css`).catch(() => {})
-      }
       ref.current.innerHTML = svg.innerHTML
     }
-  }, [value])
+  }, [id])
 
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       ref={ref}
-      id={value}
-      className={css('Icon-component', className)}
+      id={id}
+      className={className}
       style={style}
       width={width}
       height={height}
