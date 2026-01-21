@@ -8,3 +8,6 @@
 test
 
 my-app
+
+src/template/node_modules
+src/template/package-lock.json
