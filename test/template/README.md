@@ -26,7 +26,8 @@ npm run preview
  * .env.test
  
 ```env
+VITE_TITLE=dev
+
 VITE_LOGGER=true
-#
-VITE_TITLE=TITLE
+VITE_VIEW_TRANSITION=false
 ```
