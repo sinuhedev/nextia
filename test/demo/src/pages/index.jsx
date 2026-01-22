@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, lazy } from 'react'
 import { useFx, Context } from 'nextia'
-import { Icon, Link } from 'components'
-import { Translate, I18n } from 'containers'
+import { Icon, Link, Translate, I18n } from 'components'
 import functions from './functions.js'
 import { startViewTransition, useResize, useQueryString } from 'utils'
 

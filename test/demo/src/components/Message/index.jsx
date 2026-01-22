@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './style.css'
 import { css } from 'nextia'
-import { I18n } from 'containers'
+import { I18n } from 'components'
 
 export default function Messages ({ children, name, value, type, className, style, readOnly, disabled, onClick = () => {} }) {
   return (

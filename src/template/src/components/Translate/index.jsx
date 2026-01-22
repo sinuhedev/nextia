@@ -7,7 +7,7 @@ export default function Translate ({ className, style }) {
   const { context } = useFx()
 
   return (
-    <article className={css('Translate-container', className, '')} style={style}>
+    <article className={css('Translate-component', className, '')} style={style}>
 
       <select
         name='i18n'

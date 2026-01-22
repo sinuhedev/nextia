@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import functions from './functions'
 import { useFx, css } from 'nextia'
 import './style.css'
-import { Message } from 'components'
-import { I18n } from 'containers'
+import { Message, I18n } from 'components'
 
 export default function TranslatePage () {
   const { state, fx } = useFx(functions)

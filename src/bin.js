@@ -95,12 +95,12 @@ export default function ${name} ({ className, style }) {
   }
 }
 
-async function createContainer (name) {
-  const dirName = `./src/containers/${name}`
+async function createComponentFx (name) {
+  const dirName = `./src/components/${name}`
 
   try {
     await mkdir(dirName)
-    const containerName = name.replaceAll('/', '') + '-container'
+    const containerName = name.replaceAll('/', '') + '-component'
 
     // index.jsx
     writeFile(`${dirName}/index.jsx`,
@@ -192,7 +192,7 @@ switch (ARG1) {
     break
 
   case 'container':
-    if (ARG2) createContainer(ARG2)
+    if (ARG2) createComponentFx(ARG2)
     else console.warn('npm run container <ContainerName>')
     break
 

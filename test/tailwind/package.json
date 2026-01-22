@@ -13,7 +13,7 @@
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
 		"page": "nextia page",
 		"component": "nextia component",
-		"container": "nextia container"
+		"componentFx": "nextia componentFx"
 	},
 	"devDependencies": {
 		"@tailwindcss/vite": "^4.1.18",
