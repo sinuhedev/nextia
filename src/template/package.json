@@ -10,7 +10,7 @@
 	"scripts": {
 		"start": "vite --mode dev",
 		"clean": "rm -fr .coverage node_modules out package-lock.json",
-		"make": "npm run clean && npm install",
+		"make": "node --run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",

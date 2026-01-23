@@ -5,13 +5,12 @@
 Open http://localhost:3000 to view it in the browser.
 
 ```sh
-npm i
-npm start
+npm install
 node --run start
 #
-npm test
-npm run build <ENV>
-npm run preview
+node --run test
+node --run build <ENV>
+node --run preview
 ```
 
 ## env

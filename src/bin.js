@@ -185,21 +185,21 @@ const ARG2 = process.argv[3]
 switch (ARG1) {
   case 'page':
     if (ARG2) createPage(ARG2)
-    else console.warn('npm run page <page-name>')
+    else console.warn('node --run page <page-name>')
     break
 
   case 'component':
     if (ARG2) createComponent(ARG2)
-    else console.warn('npm run component <ComponentName>')
+    else console.warn('node --run component <ComponentName>')
     break
 
   case 'container':
     if (ARG2) createComponentFx(ARG2)
-    else console.warn('npm run container <ContainerName>')
+    else console.warn('node --run container <ContainerName>')
     break
 
   default:
     if (ARG1) createProject(ARG1)
-    else console.warn('npm nextia@latest <ProjectName>')
+    else console.warn('npx nextia@latest <ProjectName>')
     break
 }
