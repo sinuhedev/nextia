@@ -27,7 +27,5 @@ npm run preview
  
 ```env
 VITE_TITLE=dev
-
-VITE_LOGGER=true
 VITE_VIEW_TRANSITION=false
 ```

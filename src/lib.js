@@ -83,20 +83,12 @@ function merge (target, source) {
 /**
  * logger
  */
-const Logger = () => {
-  let instance
 
-  return {
-    getInstance: logger => {
-      if (!instance) {
-        instance = logger === 'true'
-      }
-      return instance
-    }
+const logger = () => {
+  if (import.meta?.env) {
+    return import.meta.env.DEV
   }
 }
-
-const logger = Logger().getInstance
 
 const log = (reducer) => {
   const getPayload = (action) => {
@@ -218,4 +210,4 @@ function useFx (functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { css, Context, logger, useFx }
+export { css, Context, useFx }

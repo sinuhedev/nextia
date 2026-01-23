@@ -27,8 +27,6 @@ npm run preview
  
 ```env
 VITE_TITLE=dev
-
-VITE_LOGGER=true
 VITE_VIEW_TRANSITION=false
 VITE_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
 ```
