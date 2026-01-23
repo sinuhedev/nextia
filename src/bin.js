@@ -9,6 +9,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
+import pkg from "../package.json" with { type: "json" };
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
 import { mkdir, writeFile, readFile, cp, rename, access } from 'node:fs/promises'
@@ -168,6 +169,7 @@ async function createProject (name) {
     // replace tokens
     await replaceToken('README.md', 'TEMPLATE', name)
     await replaceToken('package.json', 'TEMPLATE', name)
+    await replaceToken('package.json', 'VERSION', pkg.version)
   } catch (err) {
     console.error(err)
   }
