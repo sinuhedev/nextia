@@ -6,8 +6,7 @@
 	"private": true,
 	"scripts": {
 		"start": "vite --mode dev",
-		"clean": "rm -fr .coverage node_modules out package-lock.json",
-		"make": "node --run clean && npm install",
+		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
 		"build": "vite build --mode",
 		"preview": "vite preview",
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",

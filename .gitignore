@@ -15,3 +15,6 @@ my-app
 
 src/template/package-lock.json
 test/*/package-lock.json
+
+src/template/pnpm-lock.yaml
+test/*/pnpm-lock.yaml

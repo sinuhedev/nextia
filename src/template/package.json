@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "vite --mode dev",
-		"clean": "rm -fr .coverage node_modules out package-lock.json",
+		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
 		"make": "node --run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
