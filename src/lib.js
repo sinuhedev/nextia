@@ -86,7 +86,7 @@ function merge (target, source) {
 
 const logger = () => {
   if (import.meta?.env) {
-    return import.meta.env.DEV
+    return import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
   }
 }
 

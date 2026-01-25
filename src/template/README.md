@@ -26,5 +26,6 @@ node --run preview
  
 ```env
 VITE_TITLE=TITLE
+VITE_LOGGER=false
 VITE_VIEW_TRANSITION=false
 ```
