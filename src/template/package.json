@@ -10,7 +10,6 @@
 	"scripts": {
 		"start": "vite --mode dev",
 		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
-		"make": "node --run clean && npm install",
 		"build": "vite build --mode",
 		"preview": "vite preview",
 		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
