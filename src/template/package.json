@@ -8,7 +8,7 @@
 		"extends": "./node_modules/standard/eslintrc.json"
 	},
 	"scripts": {
-		"start": "vite --mode dev",
+		"dev": "vite --mode dev",
 		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
 		"build": "vite build --mode",
 		"preview": "vite preview",

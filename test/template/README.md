@@ -8,7 +8,7 @@ Open http://localhost:3000 to view it in the browser.
 npm install
 pnpm install
 #
-node --run start
+node --run dev
 node --run test
 node --run build <ENV>
 node --run preview

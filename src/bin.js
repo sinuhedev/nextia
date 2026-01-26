@@ -200,6 +200,10 @@ switch (ARG1) {
 
   default:
     if (ARG1) createProject(ARG1)
-    else console.warn('npx nextia@latest <ProjectName>')
+    else console.info(`
+  Version ${pkg.version}
+  
+  npx nextia@latest <ProjectName>
+    `)
     break
 }
