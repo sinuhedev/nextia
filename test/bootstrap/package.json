@@ -15,14 +15,14 @@
 		"componentFx": "nextia componentFx"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-react": "^5.1.2",
+		"@vitejs/plugin-react": "^5.1.3",
 		"bootstrap": "^5.3.8",
 		"sass": "1.78.0",
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
 		"nextia": "file:../..",
-		"react": "^19.2.3",
-		"react-dom": "^19.2.3"
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
 	}
 }
