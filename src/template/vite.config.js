@@ -83,19 +83,17 @@ export default defineConfig(({ mode }) => {
 
     test: {
       root: './',
-      watch: false,
       environment: 'jsdom',
-      include: ['test/**/*.js', 'test/**/*.jsx'],
       coverage: {
-        all: true,
         reportsDirectory: '.coverage',
-        include: ['src/**/*.js', 'src/**/*.jsx'],
+        include: ['src/**/*.{js,jsx}'],
         exclude: [
+          '.coverage', 
+          'src/assets',
           'src/index.jsx',
-          'src/assets/i18n'
         ]
       }
     }
-
   }
+  
 })

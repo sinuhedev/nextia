@@ -14,9 +14,9 @@
 		"component": "nextia component",
 		"componentFx": "nextia componentFx",
 		"test": "vitest",
-		"test:name": "vitest --testNamePattern",
-		"test:silent": "vitest --silent",
-		"test:coverage": "vitest --silent --coverage"
+		"test:name": "vitest run --testNamePattern",
+		"test:silent": "vitest run --silent",
+		"test:coverage": "vitest run --silent --coverage"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-react": "^5.1.3",
