@@ -13,4 +13,4 @@ src/template/node_modules
 src/template/package-lock.json
 src/template/pnpm-lock.yaml
 
-biome.json
+/biome.json
