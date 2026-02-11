@@ -14,13 +14,16 @@ const Context = createContext()
 /**
  * css
  */
-function css (...classNames) {
+function css(...classNames) {
   classNames = classNames
-    .filter(e => e)
+    .filter((e) => e)
     .reduce((accumulator, currentValue) => {
       if (typeof currentValue === 'string') {
         accumulator.push(currentValue)
-      } else if (!Array.isArray(currentValue) && typeof currentValue === 'object') {
+      } else if (
+        !Array.isArray(currentValue) &&
+        typeof currentValue === 'object'
+      ) {
         for (const e in currentValue) {
           if (currentValue[e]) accumulator.push(e)
         }
@@ -28,13 +31,13 @@ function css (...classNames) {
       return accumulator
     }, [])
 
-  return ([...new Set(classNames)]).join(' ')
+  return [...new Set(classNames)].join(' ')
 }
 
 /**
  * values
  */
-function values (state, payload, value) {
+function values(state, payload, value) {
   const paths = payload.split('.')
 
   // one level
@@ -63,15 +66,15 @@ function values (state, payload, value) {
 /**
  * merge
  */
-function merge (target, source) {
+function merge(target, source) {
   // in array return all source
   if (Array.isArray(target)) return source
 
-  const isObject = obj => obj && typeof obj === 'object'
+  const isObject = (obj) => obj && typeof obj === 'object'
   const output = { ...target }
 
   // merge
-  Object.keys(source).forEach(key => {
+  Object.keys(source).forEach((key) => {
     if (isObject(target[key]) && isObject(source[key])) {
       output[key] = merge(target[key], source[key])
     } else output[key] = structuredClone(source[key])
@@ -97,7 +100,10 @@ const log = (reducer) => {
     if (type === 'change') {
       const { name, type, checked, value } = payload.target
       return {
-        name, type, checked, value
+        name,
+        type,
+        checked,
+        value
       }
     }
 
@@ -108,16 +114,22 @@ const log = (reducer) => {
     return payload
   }
 
-  const reducerWithLogger = useCallback((state, action) => {
-    const newState = reducer(state, action)
+  const reducerWithLogger = useCallback(
+    (state, action) => {
+      const newState = reducer(state, action)
 
-    console.log(
-      `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`, 'color: #90b1d1', 'color: #6592c8',
-      getPayload(action), { state, new_state: newState }
-    )
+      console.log(
+        `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`,
+        'color: #90b1d1',
+        'color: #6592c8',
+        getPayload(action),
+        { state, new_state: newState }
+      )
 
-    return newState
-  }, [reducer])
+      return newState
+    },
+    [reducer]
+  )
 
   return reducerWithLogger
 }
@@ -149,7 +161,9 @@ const reducer = (state, action) => {
       return values(
         state,
         payload.target.name,
-        payload.target.type === 'checkbox' ? payload.target.checked : payload.target.value
+        payload.target.type === 'checkbox'
+          ? payload.target.checked
+          : payload.target.value
       )
 
     case 'reset':
@@ -171,27 +185,36 @@ const reducer = (state, action) => {
 /**
  * useFx
  */
-function useFx (functions = { initialState: {} }) {
+function useFx(functions = { initialState: {} }) {
   const context = use(Context)
   const { initialState } = functions
-  const [state, dispatch] = useReducer(logger() ? log(reducer) : reducer, initialState)
+  const [state, dispatch] = useReducer(
+    logger() ? log(reducer) : reducer,
+    initialState
+  )
 
   // Common actions
-  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce((acc, e) => {
-    acc[e] = payload => dispatch({ type: e, payload, initialState, isContext: !context })
-    return acc
-  }, {})
+  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
+    (acc, e) => {
+      acc[e] = (payload) =>
+        dispatch({ type: e, payload, initialState, isContext: !context })
+      return acc
+    },
+    {}
+  )
 
   // Actions
   const actions = Object.keys(functions).reduce((ac, e) => {
     if (functions[e] instanceof Function) {
-      ac[e] = payload => {
+      ac[e] = (payload) => {
         const props = {
           ...commonActions,
           state,
           payload
         }
-        if (context) { props.context = context }
+        if (context) {
+          props.context = context
+        }
 
         return functions[e](Object.freeze(props))
       }
@@ -205,7 +228,9 @@ function useFx (functions = { initialState: {} }) {
     state,
     fx: { ...commonActions, ...actions }
   }
-  if (context) { props.context = context }
+  if (context) {
+    props.context = context
+  }
 
   return Object.freeze(props)
 }

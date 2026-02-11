@@ -5,8 +5,4 @@ import Message from './Message'
 import Link from './Link'
 import Icon from './Icon'
 
-export {
-  I18n,
-  Translate,
-  Counter, Message, Icon, Link
-}
+export { I18n, Translate, Counter, Message, Icon, Link }

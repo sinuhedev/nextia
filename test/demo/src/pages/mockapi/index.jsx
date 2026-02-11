@@ -3,14 +3,12 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function MockapiPage () {
+export default function MockapiPage() {
   const { initialState, state, fx } = useFx(functions)
 
   return (
     <section className={css('MockapiPage', 'container')}>
-
       <div>
-
         <button onClick={() => fx.reset(['users', 'user'])}>Reset</button>
 
         <button
@@ -60,25 +58,24 @@ export default function MockapiPage () {
       </div>
 
       <div>
-
         <h1>MockapiPage</h1>
 
         <div>
           id:{' '}
           <input
-            type='text'
-            name='form.id'
+            type="text"
+            name="form.id"
             value={state.form.id}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
         </div>
         <div>
           name:{' '}
           <input
-            type='text'
-            name='form.name'
+            type="text"
+            name="form.name"
             value={state.form.name}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
         </div>
       </div>

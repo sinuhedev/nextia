@@ -4,7 +4,7 @@ import { Link } from 'components'
 import functions from './functions'
 import './style.css'
 
-export default function SearchParamsPage ({ qs }) {
+export default function SearchParamsPage({ qs }) {
   const { state, fx } = useFx(functions)
 
   useEffect(() => {
@@ -15,9 +15,7 @@ export default function SearchParamsPage ({ qs }) {
     <section className={css('SearchParamsPage', '')}>
       <br />
 
-      <Link href='/'>
-        Go to href=/
-      </Link>
+      <Link href="/">Go to href=/</Link>
 
       <br />
 
@@ -27,9 +25,7 @@ export default function SearchParamsPage ({ qs }) {
 
       <br />
 
-      <Link value={{ user: 'Sinuhe', demo: 10 }}>
-        Link user=Sinuhe demo=10
-      </Link>
+      <Link value={{ user: 'Sinuhe', demo: 10 }}>Link user=Sinuhe demo=10</Link>
 
       <br />
       <br />

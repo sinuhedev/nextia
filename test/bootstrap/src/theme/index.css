@@ -1,26 +1,26 @@
-@import './fonts/index.css';
-@import './theme.scss';
+@import "./fonts/index.css";
+@import "./theme.scss";
 
 /**
  * Scrollbar
  */
 
 @media (pointer: fine) {
-	::-webkit-scrollbar {
-		width: 14px;
-		height: 14px;
-	}
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
 
-	::-webkit-scrollbar-thumb {
-		border-radius: 14px;
-		background-color: var(--primary);
-		background-clip: content-box;
-		border: 3px solid transparent;
-	}
+  ::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    background-color: var(--primary);
+    background-clip: content-box;
+    border: 3px solid transparent;
+  }
 
-	::-webkit-scrollbar,
-	::-webkit-scrollbar-track,
-	::-webkit-scrollbar-corner {
-		background-color: transparent;
-	}
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }

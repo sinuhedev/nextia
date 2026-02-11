@@ -4,15 +4,14 @@ import functions from './functions'
 import { Button } from 'components'
 import './style.css'
 
-export default function Pages () {
+export default function Pages() {
   const { state, fx } = useFx(functions)
 
   return (
     <main className={css('Pages', 'm-5')}>
-
       <div>
-        <Button onClick={e => fx.increment(e)}>+</Button>
-        <Button onClick={e => fx.decrement(e)}>-</Button>
+        <Button onClick={(e) => fx.increment(e)}>+</Button>
+        <Button onClick={(e) => fx.decrement(e)}>-</Button>
       </div>
 
       <div style={{ display: 'flex' }}>
@@ -23,33 +22,35 @@ export default function Pages () {
 
       <div>
         <ul>
-          <li className='sm'>SM</li>
-          <li className='md'>MD</li>
-          <li className='lg'>LG</li>
-          <li className='xl'>XL</li>
-          <li className='xxl'>XXL</li>
+          <li className="sm">SM</li>
+          <li className="md">MD</li>
+          <li className="lg">LG</li>
+          <li className="xl">XL</li>
+          <li className="xxl">XXL</li>
         </ul>
-
       </div>
 
       <br />
       <br />
       <br />
 
-      <div className='grid grid-cols-12'>
-        <div className='col-span-6'>col-span-6</div>
-        <div className='col-span-6'>col-span-6</div>
+      <div className="grid grid-cols-12">
+        <div className="col-span-6">col-span-6</div>
+        <div className="col-span-6">col-span-6</div>
       </div>
 
       <br />
       <br />
       <br />
 
-      <div className='grid grid-cols-12'>
-        <div className='col-span-12 md:col-span-6'>col-span-12 md:col-span-6</div>
-        <div className='col-span-12 md:col-span-6'>col-span-12 md:col-span-6</div>
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 md:col-span-6">
+          col-span-12 md:col-span-6
+        </div>
+        <div className="col-span-12 md:col-span-6">
+          col-span-12 md:col-span-6
+        </div>
       </div>
-
     </main>
   )
 }

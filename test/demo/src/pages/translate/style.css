@@ -1,12 +1,12 @@
 .TranslatePage {
-	margin: 20px;
+  margin: 20px;
 
-	h3 {
-		color: gray;
-	}
+  h3 {
+    color: gray;
+  }
 
-	button {
-		width: 40px;
-		margin: 15px;
-	}
+  button {
+    width: 40px;
+    margin: 15px;
+  }
 }

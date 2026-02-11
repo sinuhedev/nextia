@@ -4,20 +4,18 @@ import functions from './functions'
 import image from 'assets/img/image.jpg'
 import './style.css'
 
-export default function ImagesPage () {
+export default function ImagesPage() {
   const { state, fx } = useFx(functions)
 
   return (
     <section className={css('ImagesPage', '')}>
-
       <br />
       <p>css-img</p>
-      <div className='css-img' />
+      <div className="css-img" />
 
       <br />
       <p>img</p>
       <img src={image} height={200} />
-
     </section>
   )
 }

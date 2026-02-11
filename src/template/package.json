@@ -1,38 +1,41 @@
 {
-	"name": "TEMPLATE",
-	"description": "description",
-	"version": "0.0.0",
-	"type": "module",
-	"private": true,
-	"eslintConfig": {
-		"extends": "./node_modules/standard/eslintrc.json"
-	},
-	"scripts": {
-		"dev": "vite --mode dev",
-		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
-		"build": "vite build --mode",
-		"preview": "vite preview",
-		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
-		"page": "nextia page",
-		"component": "nextia component",
-		"componentFx": "nextia componentFx",
-		"test": "vitest",
-		"test:name": "vitest run --testNamePattern",
-		"test:silent": "vitest run --silent",
-		"test:coverage": "vitest run --silent --coverage"
-	},
-	"devDependencies": {
-		"@vitejs/plugin-react": "^5.1.3",
-		"@vitest/coverage-v8": "4.0.18",
-		"autoprefixer": "^10.4.24",
-		"jsdom": "^28.0.0",
-		"standard": "^17.1.2",
-		"vite": "^7.3.1",
-		"vitest": "4.0.18"
-	},
-	"dependencies": {
-		"nextia": "^VERSION",
-		"react": "^19.2.4",
-		"react-dom": "^19.2.4"
-	}
+  "name": "TEMPLATE",
+  "description": "description",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "scripts": {
+    "dev": "vite --mode dev",
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
+    "build": "vite build --mode",
+    "preview": "vite preview",
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "biome check --reporter=summary",
+    "page": "nextia page",
+    "component": "nextia component",
+    "componentFx": "nextia componentFx",
+    "test": "vitest",
+    "test:name": "vitest run --testNamePattern",
+    "test:silent": "vitest run --silent",
+    "test:coverage": "vitest run --silent --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14",
+    "@vitejs/plugin-react": "^5.1.3",
+    "@vitest/coverage-v8": "4.0.18",
+    "autoprefixer": "^10.4.24",
+    "jsdom": "^28.0.0",
+    "standard": "^17.1.2",
+    "vite": "^7.3.1",
+    "vitest": "4.0.18"
+  },
+  "dependencies": {
+    "nextia": "^VERSION",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
 }

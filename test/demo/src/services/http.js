@@ -1,4 +1,4 @@
-function urlTemplate (url, path) {
+function urlTemplate(url, path) {
   const params = url.match(/:\w+/g) ?? []
 
   return params.reduce((acc, e) => {
@@ -10,7 +10,7 @@ function urlTemplate (url, path) {
 /**
  * get
  */
-export async function GET (url = '', path = {}, body = {}, headers = {}) {
+export async function GET(url = '', path = {}, body = {}, headers = {}) {
   // url and path
   url = urlTemplate(url, path)
 
@@ -44,7 +44,7 @@ export async function GET (url = '', path = {}, body = {}, headers = {}) {
 /**
  * post
  */
-export async function POST (url = '', path = {}, body = {}, headers = {}) {
+export async function POST(url = '', path = {}, body = {}, headers = {}) {
   // url and path
   url = urlTemplate(url, path)
 
@@ -75,7 +75,7 @@ export async function POST (url = '', path = {}, body = {}, headers = {}) {
 /**
  * put
  */
-export async function PUT (url = '', path = {}, body = {}, headers = {}) {
+export async function PUT(url = '', path = {}, body = {}, headers = {}) {
   // url and path
   url = urlTemplate(url, path)
 
@@ -106,7 +106,7 @@ export async function PUT (url = '', path = {}, body = {}, headers = {}) {
 /**
  * delete
  */
-export async function DELETE (url = '', path = {}, body = {}, headers = {}) {
+export async function DELETE(url = '', path = {}, body = {}, headers = {}) {
   // url and path
   url = urlTemplate(url, path)
 

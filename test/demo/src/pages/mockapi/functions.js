@@ -9,7 +9,7 @@ const initialState = {
   }
 }
 
-async function handlerUser ({ payload, set }) {
+async function handlerUser({ payload, set }) {
   try {
     const { data } = await getUser({ path: { id: payload } })
     set({ users: data, user: {} })
@@ -18,7 +18,7 @@ async function handlerUser ({ payload, set }) {
   }
 }
 
-async function handlerCreateUser ({ state, set }) {
+async function handlerCreateUser({ state, set }) {
   try {
     const { data } = await createUser({
       body: {
@@ -35,7 +35,7 @@ async function handlerCreateUser ({ state, set }) {
   }
 }
 
-async function handlerUpdateUser ({ payload, state, set }) {
+async function handlerUpdateUser({ payload, state, set }) {
   try {
     const { data } = await updateUser({
       path: { id: payload },
@@ -53,7 +53,7 @@ async function handlerUpdateUser ({ payload, state, set }) {
   }
 }
 
-async function handlerDeleteUser ({ payload }) {
+async function handlerDeleteUser({ payload }) {
   try {
     const { data } = await deleteUser({ path: { id: payload } })
     console.info(data)

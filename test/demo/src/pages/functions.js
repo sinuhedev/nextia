@@ -7,15 +7,15 @@ const initialState = {
   num: 0
 }
 
-function increment ({ state, set }) {
+function increment({ state, set }) {
   set({ num: state.num + 1 })
 }
 
-function decrement ({ state, set }) {
+function decrement({ state, set }) {
   set({ num: state.num - 1 })
 }
 
-function zero ({ payload, set }) {
+function zero({ payload, set }) {
   set({ num: payload.value })
 }
 

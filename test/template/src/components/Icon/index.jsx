@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import icons from 'theme/icons/icons.svg?raw'
 
-export default function Icon ({
+export default function Icon({
   id,
   className,
   style,
@@ -18,7 +18,8 @@ export default function Icon ({
   const ref = useRef()
 
   useEffect(() => {
-    const svg = new window.DOMParser().parseFromString(icons, 'image/svg+xml')
+    const svg = new window.DOMParser()
+      .parseFromString(icons, 'image/svg+xml')
       .documentElement.getElementById(id)
 
     if (svg) {
@@ -28,7 +29,7 @@ export default function Icon ({
 
   return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       id={id}
       className={className}

@@ -42,9 +42,7 @@ export default defineConfig(({ mode }) => {
 
     css: {
       postcss: {
-        plugins: [
-          autoprefixer
-        ]
+        plugins: [autoprefixer]
       }
     },
 
@@ -52,18 +50,23 @@ export default defineConfig(({ mode }) => {
       react(),
       {
         name: 'html',
-        transformIndexHtml (html) {
+        transformIndexHtml(html) {
           let gitHash = ''
           try {
-            gitHash = execSync('git rev-parse --short HEAD 2> /dev/null').toString().trim()
-          } catch (e) { }
+            gitHash = execSync('git rev-parse --short HEAD 2> /dev/null')
+              .toString()
+              .trim()
+          } catch (e) {}
 
-          return html.replaceAll('%VERSION%', `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`)
+          return html.replaceAll(
+            '%VERSION%',
+            `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`
+          )
         }
       },
       {
         name: 'svg',
-        async transform (src, id) {
+        async transform(src, id) {
           let code = id.split('?')[0]
           const type = id.split('?')[1]
 
@@ -87,13 +90,8 @@ export default defineConfig(({ mode }) => {
       coverage: {
         reportsDirectory: '.coverage',
         include: ['src/**/*.{js,jsx}'],
-        exclude: [
-          '.coverage', 
-          'src/assets',
-          'src/index.jsx',
-        ]
+        exclude: ['.coverage', 'src/assets', 'src/index.jsx']
       }
     }
-  
   }
 })

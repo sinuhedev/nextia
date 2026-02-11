@@ -4,7 +4,7 @@ import { Translate, I18n, Icon, Link } from 'components'
 import functions from './functions.js'
 import { startViewTransition, useQueryString } from 'utils'
 
-export default function Pages () {
+export default function Pages() {
   const self = useFx(functions)
   const { state, fx } = self
 
@@ -37,28 +37,29 @@ export default function Pages () {
   return (
     <Context value={self}>
       <header style={{ display: 'flex', gap: '20px' }}>
-        <Icon id='globe' width='24' />
+        <Icon id="globe" width="24" />
 
-        <Translate value={state.i18nLocale} onChange={e => fx.changeI18n(e)} />
+        <Translate
+          value={state.i18nLocale}
+          onChange={(e) => fx.changeI18n(e)}
+        />
 
-        <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
+        <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-        <Link href='/' className='mr-2'>
+        <Link href="/" className="mr-2">
           /
         </Link>
-        <Link href='#/' className='mr-2'>
+        <Link href="#/" className="mr-2">
           /home
         </Link>
-        <Link href='#/demo' className='mr-2'>
+        <Link href="#/demo" className="mr-2">
           /demo
         </Link>
-
       </header>
 
-      <main ref={ref} className='m-2'>
+      <main ref={ref} className="m-2">
         {Page && <Page qs={qs.queryString} />}
       </main>
-
     </Context>
   )
 }

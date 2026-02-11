@@ -4,7 +4,7 @@ import functions from './functions'
 import { env } from 'utils'
 import './style.css'
 
-export default function EnvPage () {
+export default function EnvPage() {
   const { state, fx } = useFx(functions)
 
   // env
@@ -14,7 +14,6 @@ export default function EnvPage () {
 
   return (
     <section className={css('EnvPage', '')}>
-
       <br />
       <br />
 

@@ -4,7 +4,7 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import { sum } from 'utils'
 
-export default function HomePage () {
+export default function HomePage() {
   const { state, initialState, fx, context } = useFx(functions)
 
   useEffect(() => {
@@ -16,7 +16,10 @@ export default function HomePage () {
       <div>
         <div>
           <p>set</p>
-          <button className='' onClick={() => fx.set({ setNameValue: 'set 1 level' })}>
+          <button
+            className=""
+            onClick={() => fx.set({ setNameValue: 'set 1 level' })}
+          >
             set Value
           </button>
           <button
@@ -28,7 +31,8 @@ export default function HomePage () {
                     lastName: '***********'
                   }
                 }
-              })}
+              })
+            }
           >
             set Json
           </button>
@@ -43,7 +47,8 @@ export default function HomePage () {
             onClick={() =>
               fx.set({
                 'form.name': { firstName: 'SINUHE', lastName: 'MACEDA' }
-              })}
+              })
+            }
           >
             set mulit level (Json)
           </button>
@@ -68,8 +73,8 @@ export default function HomePage () {
 
         <div>
           <p>Simple actions/Reducer:</p>
-          <button onClick={e => fx.increment(e)}>+</button>
-          <button onClick={e => fx.decrement(e)}>-</button>
+          <button onClick={(e) => fx.increment(e)}>+</button>
+          <button onClick={(e) => fx.decrement(e)}>-</button>
 
           <button
             onClick={() =>
@@ -101,7 +106,8 @@ export default function HomePage () {
                     }
                   ]
                 }
-              })}
+              })
+            }
           >
             256
           </button>
@@ -112,45 +118,45 @@ export default function HomePage () {
 
           {/* input text */}
           <input
-            type='text'
-            name='form.name.firstName'
+            type="text"
+            name="form.name.firstName"
             value={state.form.name.firstName}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
 
           {/* checkbox */}
           <input
-            type='checkbox'
-            name='form.funny'
+            type="checkbox"
+            name="form.funny"
             checked={state.form.funny}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
-          <label htmlFor='form.funny'>Funny</label>
+          <label htmlFor="form.funny">Funny</label>
 
           {/* radio */}
           <input
-            type='radio'
-            name='form.gender'
-            value='M'
+            type="radio"
+            name="form.gender"
+            value="M"
             checked={state.form.gender === 'M'}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
-          <label htmlFor='M'>M</label>
+          <label htmlFor="M">M</label>
           <input
-            type='radio'
-            name='form.gender'
-            value='F'
+            type="radio"
+            name="form.gender"
+            value="F"
             checked={state.form.gender === 'F'}
-            onChange={evt => fx.change(evt)}
+            onChange={(evt) => fx.change(evt)}
           />
-          <label htmlFor='F'>F</label>
+          <label htmlFor="F">F</label>
 
           {/* select */}
-          <select name='form.year' onChange={evt => fx.change(evt)}>
-            <option value='20'>20</option>
-            <option value='21'>21</option>
-            <option value='22'>22</option>
-            <option value='33'>33</option>
+          <select name="form.year" onChange={(evt) => fx.change(evt)}>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="33">33</option>
           </select>
         </div>
       </div>

@@ -1,43 +1,42 @@
 {
-	"name": "nextia",
-	"description": "Create fast web applications",
-	"version": "5.0.2",
-	"engines": {
-		"node": ">22"
-	},
-	"type": "module",
-	"license": "MIT",
-	"author": {
-		"name": "Sinuhe Dev.",
-		"email": "sinuhe.dev@gmail.com",
-		"url": "https://sinuhe.dev"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/sinuhedev/nextia.git"
-	},
-	"homepage": "https://github.com/sinuhedev/nextia",
-	"keywords": [
-		"react"
-	],
-	"bin": {
-		"nextia": "src/bin.js"
-	},
-	"main": "src/lib.js",
-	"eslintConfig": {
-		"extends": "./node_modules/standard/eslintrc.json"
-	},
-	"scripts": {
-		"clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out my-app",
-		"lint": "standard 'src/**/*.{js,jsx}' 'test/**/*.{js,jsx}' --verbose",
-		"test": "node src/bin.js",
-		"test:my-app": "node src/bin.js my-app"
-	},
-	"peerDependencies": {
-		"react": "^19.2.3",
-		"react-dom": "^19.2.3"
-	},
-	"devDependencies": {
-		"standard": "^17.1.2"
-	}
+  "name": "nextia",
+  "description": "Create fast web applications",
+  "version": "5.0.2",
+  "engines": {
+    "node": ">22"
+  },
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Sinuhe Dev.",
+    "email": "sinuhe.dev@gmail.com",
+    "url": "https://sinuhe.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinuhedev/nextia.git"
+  },
+  "homepage": "https://github.com/sinuhedev/nextia",
+  "keywords": [
+    "react"
+  ],
+  "bin": {
+    "nextia": "src/bin.js"
+  },
+  "main": "src/lib.js",
+  "scripts": {
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out my-app",
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "biome check --reporter=summary",
+    "test": "node src/bin.js",
+    "test:my-app": "node src/bin.js my-app"
+  },
+  "peerDependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14"
+  }
 }

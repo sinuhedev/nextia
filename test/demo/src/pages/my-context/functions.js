@@ -1,7 +1,6 @@
-const initialState = {
-}
+const initialState = {}
 
-function init ({ context }) {
+function init({ context }) {
   context.fx.set({ num: 300 })
 }
 

@@ -28,11 +28,11 @@ const initialState = {
   }
 }
 
-function increment ({ state, set }) {
+function increment({ state, set }) {
   set({ channel: state.channel + 1 })
 }
 
-function decrement ({ state, set }) {
+function decrement({ state, set }) {
   set({ channel: state.channel - 1 })
 }
 

@@ -37,10 +37,6 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true
     },
 
-    plugins: [
-      react(),
-      tailwindcss()
-    ]
-
+    plugins: [react(), tailwindcss()]
   }
 })

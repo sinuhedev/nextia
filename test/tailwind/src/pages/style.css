@@ -1,33 +1,33 @@
 .Pages {
-	background-color: var(--secondary);
+  background-color: var(--secondary);
 
-	@container style(--sm: true) {
-		.sm {
-			background-color: var(--primary);
-		}
-	}
+  @container style(--sm: true) {
+    .sm {
+      background-color: var(--primary);
+    }
+  }
 
-	@container style(--md: true) {
-		.md {
-			background-color: var(--primary);
-		}
-	}
+  @container style(--md: true) {
+    .md {
+      background-color: var(--primary);
+    }
+  }
 
-	@container style(--lg: true) {
-		.lg {
-			background-color: var(--primary);
-		}
-	}
+  @container style(--lg: true) {
+    .lg {
+      background-color: var(--primary);
+    }
+  }
 
-	@container style(--xl: true) {
-		.xl {
-			background-color: var(--primary);
-		}
-	}
+  @container style(--xl: true) {
+    .xl {
+      background-color: var(--primary);
+    }
+  }
 
-	@container style(--xxl: true) {
-		.xxl {
-			background-color: var(--primary);
-		}
-	}
+  @container style(--xxl: true) {
+    .xxl {
+      background-color: var(--primary);
+    }
+  }
 }

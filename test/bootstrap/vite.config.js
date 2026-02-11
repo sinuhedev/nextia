@@ -36,9 +36,6 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true
     },
 
-    plugins: [
-      react()
-    ]
-
+    plugins: [react()]
   }
 })

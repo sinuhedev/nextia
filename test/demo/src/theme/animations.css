@@ -3,7 +3,7 @@
 }
 
 /**
- * fade 
+ * fade
  */
 
 @keyframes fade {
@@ -29,9 +29,8 @@
   --end: 0;
 }
 
-
 /**
- * count 
+ * count
  */
 
 @keyframes count {
@@ -60,7 +59,7 @@
 }
 
 /**
- * count2 
+ * count2
  */
 
 @keyframes count2 {

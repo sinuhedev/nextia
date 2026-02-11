@@ -3,7 +3,7 @@ import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function MyContext () {
+export default function MyContext() {
   const { state, fx, context } = useFx(functions)
 
   useEffect(() => {
@@ -12,16 +12,14 @@ export default function MyContext () {
 
   return (
     <section className={css('MyContext', '')}>
-
       <br />
-      <button onClick={e => context.fx.increment(e)}>increment</button>
+      <button onClick={(e) => context.fx.increment(e)}>increment</button>
       {'  '}
-      <button onClick={e => context.fx.decrement(e)}>decrement</button>
+      <button onClick={(e) => context.fx.decrement(e)}>decrement</button>
       {'  '}
       <button onClick={() => context.fx.zero({ value: 0 })}>zero</button>
       {'  '}
       {context.state.num}
-
     </section>
   )
 }

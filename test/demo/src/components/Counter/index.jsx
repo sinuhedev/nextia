@@ -3,7 +3,7 @@ import './style.css'
 import { css } from 'nextia'
 import { startViewTransition } from 'utils'
 
-export default function Counter ({
+export default function Counter({
   children,
   name,
   value,
@@ -22,10 +22,9 @@ export default function Counter ({
       className={css('Counter-component', className)}
       style={style}
       name={name}
-
     >
       <button
-        onClick={e => {
+        onClick={(e) => {
           startViewTransition(onChange(e), ref.current, animation)
         }}
       >

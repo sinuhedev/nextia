@@ -4,7 +4,7 @@ import { Icon, Link, Translate, I18n } from 'components'
 import functions from './functions.js'
 import { startViewTransition, useResize, useQueryString } from 'utils'
 
-export default function Pages () {
+export default function Pages() {
   const self = useFx(functions)
   const { state, fx } = self
 
@@ -38,15 +38,18 @@ export default function Pages () {
   return (
     <Context value={self}>
       <header style={{ display: 'flex', gap: '20px' }}>
-        <Icon id='globe' width='24' />
+        <Icon id="globe" width="24" />
 
-        <Translate value={state.i18nLocale} onChange={e => fx.changeI18n(e)} />
+        <Translate
+          value={state.i18nLocale}
+          onChange={(e) => fx.changeI18n(e)}
+        />
 
-        <I18n value='page.name' args={['Sinuhe', 'Maceda', 'Bouchan']} />
+        <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-        <button onClick={e => fx.increment(e)}>increment</button>
+        <button onClick={(e) => fx.increment(e)}>increment</button>
         {'  '}
-        <button onClick={e => fx.decrement(e)}>decrement</button>
+        <button onClick={(e) => fx.decrement(e)}>decrement</button>
         {'  '}
         <button onClick={() => fx.zero({ value: 0 })}>zero</button>
         {'  '}
@@ -55,52 +58,55 @@ export default function Pages () {
         {state.loading ? <span> Loading... </span> : <span> View.. </span>}
       </header>
 
-      <aside className='m-2'>
-        <Link href='/' className='mr-2'>
+      <aside className="m-2">
+        <Link href="/" className="mr-2">
           /
         </Link>
-        <Link href='#/' className='mr-2'>
+        <Link href="#/" className="mr-2">
           /home
         </Link>
-        <Link href='#/env' className='mr-2'>
+        <Link href="#/env" className="mr-2">
           /env
         </Link>
-        <Link href='#/my-context' className='mr-2'>
+        <Link href="#/my-context" className="mr-2">
           /my-context
         </Link>
-        <Link href='#/mockapi' className='mr-2'>
+        <Link href="#/mockapi" className="mr-2">
           /mockapi
         </Link>
-        <Link href='#/search-params' value={{ id: 20, user: 'Sinuhe' }} className='mr-2'>
+        <Link
+          href="#/search-params"
+          value={{ id: 20, user: 'Sinuhe' }}
+          className="mr-2"
+        >
           /search-params
         </Link>
-        <Link href='#/subpage/hello' className='mr-2'>
+        <Link href="#/subpage/hello" className="mr-2">
           /subpage/hello
         </Link>
-        <Link href='#/translate' className='mr-2'>
+        <Link href="#/translate" className="mr-2">
           /translate
         </Link>
-        <Link href='#/counter' className='mr-2'>
+        <Link href="#/counter" className="mr-2">
           /counter
         </Link>
-        <Link href='#/images' className='mr-2'>
+        <Link href="#/images" className="mr-2">
           /images
         </Link>
-        <Link href='#/icons' className='mr-2'>
+        <Link href="#/icons" className="mr-2">
           /icons
         </Link>
-        <Link href='#/media-query' className='mr-2'>
+        <Link href="#/media-query" className="mr-2">
           /media-query
         </Link>
-        <Link href='#/no' className='mr-2'>
+        <Link href="#/no" className="mr-2">
           /no
         </Link>
       </aside>
 
-      <main ref={ref} className='m-2'>
+      <main ref={ref} className="m-2">
         {Page && <Page qs={qs.queryString} resize={resize} />}
       </main>
-
     </Context>
   )
 }
