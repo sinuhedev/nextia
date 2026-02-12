@@ -192,7 +192,7 @@ async function createProject(name) {
     // replace tokens
     await replaceToken('README.md', 'TEMPLATE', name)
     await replaceToken('package.json', 'TEMPLATE', name)
-    await replaceToken('package.json', 'VERSION', pkg.version)
+    await replaceToken('package.json', 'file:../..', `^${pkg.version}`)
   } catch (err) {
     console.error(err)
   }
