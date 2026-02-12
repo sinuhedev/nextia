@@ -7,9 +7,14 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useReducer, useCallback } from 'react'
+import { createContext, use, useReducer } from 'react'
 
 const Context = createContext()
+
+/**
+ * logger
+ */
+const isLogger = import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
 
 /**
  * css
@@ -84,57 +89,6 @@ function merge(target, source) {
 }
 
 /**
- * logger
- */
-
-const logger = () => {
-  if (import.meta?.env) {
-    return import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
-  }
-}
-
-const log = (reducer) => {
-  const getPayload = (action) => {
-    const { type, payload } = action
-
-    if (type === 'change') {
-      const { name, type, checked, value } = payload.target
-      return {
-        name,
-        type,
-        checked,
-        value
-      }
-    }
-
-    if (typeof payload !== 'object') {
-      return `(${payload ?? ''})`
-    }
-
-    return payload
-  }
-
-  const reducerWithLogger = useCallback(
-    (state, action) => {
-      const newState = reducer(state, action)
-
-      console.log(
-        `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`,
-        'color: #90b1d1',
-        'color: #6592c8',
-        getPayload(action),
-        { state, new_state: newState }
-      )
-
-      return newState
-    },
-    [reducer]
-  )
-
-  return reducerWithLogger
-}
-
-/**
  * reducer
  */
 const reducer = (state, action) => {
@@ -182,6 +136,40 @@ const reducer = (state, action) => {
   }
 }
 
+const reducerLogger = (state, action) => {
+  const newState = reducer(state, action)
+
+  const payloadLog = (action) => {
+    const { type, payload } = action
+
+    if (type === 'change') {
+      const { name, type, checked, value } = payload.target
+      return {
+        name,
+        type,
+        checked,
+        value
+      }
+    }
+
+    if (typeof payload !== 'object') {
+      return `(${payload ?? ''})`
+    }
+
+    return payload
+  }
+
+  console.log(
+    `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`,
+    'color: #90b1d1',
+    'color: #6592c8',
+    payloadLog(action),
+    { state, new_state: newState }
+  )
+
+  return newState
+}
+
 /**
  * useFx
  */
@@ -189,7 +177,7 @@ function useFx(functions = { initialState: {} }) {
   const context = use(Context)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
-    logger() ? log(reducer) : reducer,
+    isLogger ? reducerLogger : reducer,
     initialState
   )
 
@@ -235,4 +223,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { css, Context, useFx }
+export { Context, useFx, css }
