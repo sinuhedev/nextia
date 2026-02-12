@@ -13,8 +13,8 @@ deploy-variables
 
 my-app
 
-src/template/package-lock.json
-test/*/package-lock.json
+template/package-lock.json
+template/pnpm-lock.yaml
 
-src/template/pnpm-lock.yaml
+test/*/package-lock.json
 test/*/pnpm-lock.yaml

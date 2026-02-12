@@ -171,19 +171,25 @@ async function createProject(name) {
     return
   } catch {}
 
-  const template = `${dirname(fileURLToPath(import.meta.url))}/template/`
+  const template = `${dirname(fileURLToPath(import.meta.url))}/../template/`
 
   // Create new project
   try {
     const mv = (fileName) =>
       rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
-    await cp(template, projectPath, { recursive: true })
     const replaceToken = async (filename, token, value) => {
       const content = await readFile(projectPath + filename, 'utf8')
       const updated = content.replaceAll(token, value)
       await writeFile(projectPath + filename, updated, 'utf8')
     }
 
+    await cp(template, projectPath, { recursive: true })
+    await cp(
+      `${dirname(fileURLToPath(import.meta.url))}/../biome.json`,
+      `${projectPath}/biome.json`
+    )
+
+    // mv
     await mv('env.dev')
     await mv('env.prod')
     await mv('env.test')
@@ -192,7 +198,7 @@ async function createProject(name) {
     // replace tokens
     await replaceToken('README.md', 'TEMPLATE', name)
     await replaceToken('package.json', 'TEMPLATE', name)
-    await replaceToken('package.json', 'file:../..', `^${pkg.version}`)
+    await replaceToken('package.json', 'file:../', `^${pkg.version}`)
   } catch (err) {
     console.error(err)
   }
@@ -227,7 +233,7 @@ switch (ARG1) {
       console.info(`
   Version ${pkg.version}
   
-  npx nextia@latest <ProjectName>
+  nextia <ProjectName>
     `)
     break
 }

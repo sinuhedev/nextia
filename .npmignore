@@ -9,8 +9,8 @@ test
 
 my-app
 
-src/template/node_modules
-src/template/package-lock.json
-src/template/pnpm-lock.yaml
+template/node_modules
+template/package-lock.json
+template/pnpm-lock.yaml
 
 /biome.json
