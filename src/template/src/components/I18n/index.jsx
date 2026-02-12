@@ -16,8 +16,8 @@ export default function I18n({ value, args = [] }) {
     }
 
     return text
-  } catch (e) {
-    console.error('Error in [il8n] => ' + value)
+  } catch {
+    console.error(`Error in [il8n] => ${value}`)
     return value
   }
 }

@@ -35,7 +35,7 @@ async function createPage(name) {
   try {
     await mkdir(dirName)
 
-    const pageName = toPascalCase(name) + 'Page'
+    const pageName = `${toPascalCase(name)}Page`
 
     // index.jsx
     writeFile(
@@ -83,7 +83,7 @@ async function createComponent(name) {
 
   try {
     await mkdir(dirName)
-    const componentName = name.replaceAll('/', '') + '-component'
+    const componentName = `${name.replaceAll('/', '')}-component`
 
     // index.jsx
     writeFile(
@@ -118,7 +118,7 @@ async function createComponentFx(name) {
 
   try {
     await mkdir(dirName)
-    const containerName = name.replaceAll('/', '') + '-component'
+    const containerName = `${name.replaceAll('/', '')}-component`
 
     // index.jsx
     writeFile(
@@ -165,18 +165,18 @@ async function createProject(name) {
   let projectPath
 
   try {
-    projectPath = process.cwd() + `/${name}/`
+    projectPath = `${process.cwd()}/${name}/`
     await access(projectPath)
     console.error(`The "${name}" already exists.`)
     return
-  } catch (error) {}
+  } catch {}
 
-  const template = dirname(fileURLToPath(import.meta.url)) + '/template/'
+  const template = `${dirname(fileURLToPath(import.meta.url))}/template/`
 
   // Create new project
   try {
     const mv = (fileName) =>
-      rename(projectPath + `_${fileName}`, projectPath + `.${fileName}`)
+      rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
     await cp(template, projectPath, { recursive: true })
     const replaceToken = async (filename, token, value) => {
       const content = await readFile(projectPath + filename, 'utf8')

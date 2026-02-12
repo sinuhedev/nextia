@@ -15,7 +15,7 @@ export async function GET(url = '', path = {}, body = {}, headers = {}) {
   url = urlTemplate(url, path)
 
   // query
-  const queryParameters = body ? '' : '?' + new URLSearchParams(body).toString()
+  const queryParameters = body ? '' : `?${new URLSearchParams(body).toString()}`
 
   // http
   const response = await fetch(url + queryParameters, {

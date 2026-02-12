@@ -15,7 +15,7 @@ export default function ImagesPage() {
 
       <br />
       <p>img</p>
-      <img src={image} height={200} />
+      <img src={image} alt="img" height={200} />
     </section>
   )
 }

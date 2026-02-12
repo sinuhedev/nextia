@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   const CWD = process.cwd()
   const port = 3000
 
@@ -17,16 +17,16 @@ export default defineConfig(({ mode }) => {
 
     base: '',
     envDir: CWD,
-    root: CWD + '/src',
-    publicDir: CWD + '/public',
+    root: `${CWD}/src`,
+    publicDir: `${CWD}/public`,
     resolve: {
       alias: {
-        assets: CWD + '/src/assets',
-        components: CWD + '/src/components',
-        containers: CWD + '/src/containers',
-        services: CWD + '/src/services',
-        theme: CWD + '/src/theme',
-        utils: CWD + '/src/utils'
+        assets: `${CWD}/src/assets`,
+        components: `${CWD}/src/components`,
+        containers: `${CWD}/src/containers`,
+        services: `${CWD}/src/services`,
+        theme: `${CWD}/src/theme`,
+        utils: `${CWD}/src/utils`
       }
     },
 

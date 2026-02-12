@@ -47,11 +47,17 @@ export default function Pages() {
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-        <button onClick={(e) => fx.increment(e)}>increment</button>
+        <button type="button" onClick={(e) => fx.increment(e)}>
+          increment
+        </button>
         {'  '}
-        <button onClick={(e) => fx.decrement(e)}>decrement</button>
+        <button type="button" onClick={(e) => fx.decrement(e)}>
+          decrement
+        </button>
         {'  '}
-        <button onClick={() => fx.zero({ value: 0 })}>zero</button>
+        <button type="button" onClick={() => fx.zero({ value: 0 })}>
+          zero
+        </button>
         {'  '}
         {state.num}
         {'  '}

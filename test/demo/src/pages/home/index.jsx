@@ -17,12 +17,14 @@ export default function HomePage() {
         <div>
           <p>set</p>
           <button
+            type="button"
             className=""
             onClick={() => fx.set({ setNameValue: 'set 1 level' })}
           >
             set Value
           </button>
           <button
+            type="button"
             onClick={() =>
               fx.set({
                 form: {
@@ -39,11 +41,15 @@ export default function HomePage() {
         </div>
 
         <div>
-          <button onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}>
+          <button
+            type="button"
+            onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}
+          >
             set mulit level (Value)
           </button>
 
           <button
+            type="button"
             onClick={() =>
               fx.set({
                 'form.name': { firstName: 'SINUHE', lastName: 'MACEDA' }
@@ -56,27 +62,41 @@ export default function HomePage() {
 
         <div>
           <p>Show and Hide :</p>
-          <button onClick={() => fx.show('form.funny')}>show</button>
-          <button onClick={() => fx.hide('form.funny')}>hide</button>
+          <button type="button" onClick={() => fx.show('form.funny')}>
+            show
+          </button>
+          <button type="button" onClick={() => fx.hide('form.funny')}>
+            hide
+          </button>
         </div>
 
         <div>
           <p>Reset :</p>
-          <button onClick={() => fx.reset('ls')}>Reset (ls)</button>
-          <button onClick={() => fx.reset('form.name')}>
+          <button type="button" onClick={() => fx.reset('ls')}>
+            Reset (ls)
+          </button>
+          <button type="button" onClick={() => fx.reset('form.name')}>
             Reset (form.name)
           </button>
-          <button onClick={() => fx.reset(['channel', 'msg', 'form.name'])}>
+          <button
+            type="button"
+            onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
+          >
             Reset ([channel,msg,form.name])
           </button>
         </div>
 
         <div>
           <p>Simple actions/Reducer:</p>
-          <button onClick={(e) => fx.increment(e)}>+</button>
-          <button onClick={(e) => fx.decrement(e)}>-</button>
+          <button type="button" onClick={(e) => fx.increment(e)}>
+            +
+          </button>
+          <button type="button" onClick={(e) => fx.decrement(e)}>
+            -
+          </button>
 
           <button
+            type="button"
             onClick={() =>
               fx.set({
                 channel: 256,
@@ -163,8 +183,11 @@ export default function HomePage() {
 
       <div>
         <div style={{ textAlign: 'center' }}>
-          <button onClick={() => fx.reset()}>RESET</button>
+          <button type="button" onClick={() => fx.reset()}>
+            RESET
+          </button>
           <button
+            type="button"
             onClick={() => {
               if (context.state.loading) context.fx.hide('loading')
               else context.fx.show('loading')

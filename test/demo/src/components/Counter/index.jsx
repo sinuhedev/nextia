@@ -24,6 +24,7 @@ export default function Counter({
       name={name}
     >
       <button
+        type="button"
         onClick={(e) => {
           startViewTransition(onChange(e), ref.current, animation)
         }}
@@ -31,7 +32,7 @@ export default function Counter({
         Increment
       </button>
 
-      <label ref={ref}>{value}</label>
+      <span ref={ref}>{value}</span>
     </article>
   )
 }

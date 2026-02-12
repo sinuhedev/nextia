@@ -13,11 +13,17 @@ export default function MyContext() {
   return (
     <section className={css('MyContext', '')}>
       <br />
-      <button onClick={(e) => context.fx.increment(e)}>increment</button>
+      <button type="button" onClick={(e) => context.fx.increment(e)}>
+        increment
+      </button>
       {'  '}
-      <button onClick={(e) => context.fx.decrement(e)}>decrement</button>
+      <button type="button" onClick={(e) => context.fx.decrement(e)}>
+        decrement
+      </button>
       {'  '}
-      <button onClick={() => context.fx.zero({ value: 0 })}>zero</button>
+      <button type="button" onClick={() => context.fx.zero({ value: 0 })}>
+        zero
+      </button>
       {'  '}
       {context.state.num}
     </section>

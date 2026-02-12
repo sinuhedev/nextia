@@ -9,9 +9,12 @@ export default function MockapiPage() {
   return (
     <section className={css('MockapiPage', 'container')}>
       <div>
-        <button onClick={() => fx.reset(['users', 'user'])}>Reset</button>
+        <button type="button" onClick={() => fx.reset(['users', 'user'])}>
+          Reset
+        </button>
 
         <button
+          type="button"
           onClick={() => {
             fx.reset(['users', 'user'])
             fx.handlerUser()
@@ -21,6 +24,7 @@ export default function MockapiPage() {
         </button>
 
         <button
+          type="button"
           onClick={() => {
             fx.reset(['users', 'user'])
             fx.handlerUser(state.form.id)
@@ -30,6 +34,7 @@ export default function MockapiPage() {
         </button>
 
         <button
+          type="button"
           onClick={() => {
             fx.reset(['users', 'user'])
             fx.handlerCreateUser()
@@ -39,6 +44,7 @@ export default function MockapiPage() {
         </button>
 
         <button
+          type="button"
           onClick={() => {
             fx.reset(['users', 'user'])
             fx.handlerUpdateUser(state.form.id)
@@ -48,6 +54,7 @@ export default function MockapiPage() {
         </button>
 
         <button
+          type="button"
           onClick={() => {
             fx.reset(['users', 'user'])
             fx.handlerDeleteUser(state.form.id)

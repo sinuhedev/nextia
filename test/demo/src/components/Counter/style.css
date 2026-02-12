@@ -1,5 +1,5 @@
 .Counter-component {
-  label {
+  span {
     font-size: 60px;
   }
 }
