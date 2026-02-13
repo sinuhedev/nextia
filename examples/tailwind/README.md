@@ -1,6 +1,7 @@
-# TEMPLATE
+# tailwind
 
-# To start
+## To start
+
 Open http://localhost:3000 to view it in the browser.
 
 ```sh
@@ -13,7 +14,8 @@ node --run build <ENV>
 node --run preview
 ```
 
-# env
+## env
+
 ```.env
 .env          # loaded in all cases
 .env.[ENV]    # only loaded in specified ENV [ dev, test, prod ]
@@ -24,7 +26,7 @@ node --run preview
  * .env.test
  
 ```env
-VITE_TITLE=TITLE
-VITE_LOGGER=false
+VITE_TITLE=dev
+VITE_LOGGER=true
 VITE_VIEW_TRANSITION=false
 ```

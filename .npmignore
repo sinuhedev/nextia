@@ -1,16 +1,16 @@
 .git
 .gitignore
-.vscode
+
+node_modules
 
 .env
 .env.*
 
+.vscode
+.coverage
+.vercel
+.next
+.swc
+
+examples
 test
-
-my-app
-
-template/node_modules
-template/package-lock.json
-template/pnpm-lock.yaml
-
-/biome.json

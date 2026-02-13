@@ -20,17 +20,12 @@
   "keywords": [
     "react"
   ],
-  "bin": {
-    "nextia": "src/bin.js"
-  },
   "main": "src/lib.js",
   "scripts": {
-    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out my-app",
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage",
     "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check --reporter=summary",
-    "test": "node src/bin.js",
-    "test:my-app": "node src/bin.js my-app"
+    "lint": "biome lint src",
+    "check": "biome check --reporter=summary src"
   },
   "peerDependencies": {
     "react": "^19.2.3",
