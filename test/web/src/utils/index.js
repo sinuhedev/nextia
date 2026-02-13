@@ -15,12 +15,4 @@ function sum(a, b) {
   return a + b
 }
 
-export {
-  env,
-  // hooks
-  useResize,
-  useQueryString,
-  // util
-  startViewTransition,
-  sum
-}
+export { env, useResize, useQueryString, startViewTransition, sum }

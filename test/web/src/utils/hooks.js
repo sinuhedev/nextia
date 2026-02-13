@@ -26,20 +26,13 @@ export function useQueryString() {
 }
 
 export function useResize() {
-  const getResize = useCallback(() => {
-    const cssVar = (e) =>
-      window.getComputedStyle(document.body).getPropertyValue(e) === 'true'
-
-    return {
+  const getResize = useCallback(
+    () => ({
       width: window.innerWidth,
-      height: window.innerHeight,
-      sm: cssVar('--sm'),
-      md: cssVar('--md'),
-      lg: cssVar('--lg'),
-      xl: cssVar('--xl'),
-      xxl: cssVar('--xxl')
-    }
-  }, [])
+      height: window.innerHeight
+    }),
+    []
+  )
 
   const [resize, setResize] = useState(getResize)
 

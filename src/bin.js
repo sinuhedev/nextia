@@ -9,17 +9,17 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import pkg from '../package.json' with { type: 'json' }
-import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path'
 import {
-  mkdir,
-  writeFile,
-  readFile,
+  access,
   cp,
+  mkdir,
+  readFile,
   rename,
-  access
+  writeFile
 } from 'node:fs/promises'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import pkg from '../package.json' with { type: 'json' }
 
 async function createPage(name) {
   const toPascalCase = (str) =>

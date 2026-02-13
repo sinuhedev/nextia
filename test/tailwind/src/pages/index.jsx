@@ -19,18 +19,6 @@ export default function Pages() {
         </pre>
       </div>
 
-      <div>
-        <ul>
-          <li className="sm">SM</li>
-          <li className="md">MD</li>
-          <li className="lg">LG</li>
-          <li className="xl">XL</li>
-          <li className="xxl">XXL</li>
-        </ul>
-      </div>
-
-      <br />
-      <br />
       <br />
 
       <div className="grid grid-cols-12">

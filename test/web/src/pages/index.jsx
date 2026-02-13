@@ -11,7 +11,6 @@ export default function Pages() {
   const [Page, setPage] = useState()
   const qs = useQueryString()
   const resize = useResize()
-
   const ref = useRef()
 
   useEffect(() => {
@@ -102,8 +101,8 @@ export default function Pages() {
         <Link href="#/icons" className="mr-2">
           /icons
         </Link>
-        <Link href="#/media-query" className="mr-2">
-          /media-query
+        <Link href="#/resize" className="mr-2">
+          /resize
         </Link>
         <Link href="#/no" className="mr-2">
           /no
