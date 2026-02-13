@@ -82,7 +82,7 @@ export default function Pages() {
         </Link>
         <Link
           href="#/search-params"
-          value={{ id: 20, user: 'Sinuhe' }}
+          value={{ id: 1, user: 'Sinuhe' }}
           className="mr-2"
         >
           /search-params

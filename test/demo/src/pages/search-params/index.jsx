@@ -19,13 +19,11 @@ export default function SearchParamsPage({ qs }) {
 
       <br />
 
-      <Link value={{ user: 'Maceda', demo: 200 }}>
-        Link user=Maceda demo=200
-      </Link>
+      <Link value={{ id: 2, user: 'Maceda' }}>Link id=2 user=Maceda </Link>
 
       <br />
 
-      <Link value={{ user: 'Sinuhe', demo: 10 }}>Link user=Sinuhe demo=10</Link>
+      <Link value={{ id: 1, user: 'Sinuhe' }}>Link id=1 user=Sinuhe</Link>
 
       <br />
       <br />
