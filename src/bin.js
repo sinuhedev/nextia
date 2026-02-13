@@ -41,7 +41,7 @@ async function createPage(name) {
     writeFile(
       `${dirName}/index.jsx`,
       `import { useEffect } from 'react'
-import { useFx, css } from 'nextia'
+import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 
@@ -125,7 +125,7 @@ async function createContainer(name) {
     writeFile(
       `${dirName}/index.jsx`,
       `import { useEffect } from 'react'
-import { useFx, css } from 'nextia'
+import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 
