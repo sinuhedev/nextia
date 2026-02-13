@@ -14,7 +14,7 @@
     "check": "biome check --reporter=summary",
     "page": "nextia page",
     "component": "nextia component",
-    "componentFx": "nextia componentFx"
+    "container": "nextia container"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.15",

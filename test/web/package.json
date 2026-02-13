@@ -14,7 +14,7 @@
     "check": "biome check --reporter=summary",
     "page": "nextia page",
     "component": "nextia component",
-    "componentFx": "nextia componentFx",
+    "container": "nextia container",
     "test": "vitest",
     "test:name": "vitest run --testNamePattern",
     "test:silent": "vitest run --silent",

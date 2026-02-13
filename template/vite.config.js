@@ -1,9 +1,9 @@
-import { version } from './package.json'
 import { execSync } from 'node:child_process'
 import { readFile } from 'node:fs/promises'
-import { defineConfig } from 'vite'
-import autoprefixer from 'autoprefixer'
 import react from '@vitejs/plugin-react'
+import autoprefixer from 'autoprefixer'
+import { defineConfig } from 'vite'
+import { version } from './package.json'
 
 export default defineConfig(({ mode }) => {
   const CWD = process.cwd()
@@ -66,7 +66,7 @@ export default defineConfig(({ mode }) => {
       },
       {
         name: 'svg',
-        async transform(src, id) {
+        async transform(_src, id) {
           let code = id.split('?')[0]
           const type = id.split('?')[1]
 

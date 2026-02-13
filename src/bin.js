@@ -113,7 +113,7 @@ export default function ${name} ({ className, style }) {
   }
 }
 
-async function createComponentFx(name) {
+async function createContainer(name) {
   const dirName = `./src/components/${name}`
 
   try {
@@ -223,7 +223,7 @@ switch (ARG1) {
     break
 
   case 'container':
-    if (ARG2) createComponentFx(ARG2)
+    if (ARG2) createContainer(ARG2)
     else console.warn('node --run container <ContainerName>')
     break
 
