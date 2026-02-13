@@ -61,14 +61,14 @@ export default function ${pageName} () {
     writeFile(
       `${dirName}/style.css`,
       `.${pageName} {
-}`
+}
+`
     )
 
     // function.js
     writeFile(
       `${dirName}/functions.js`,
-      `const initialState = {
-}
+      `const initialState = {}
 
 export default { initialState }
 `
@@ -106,7 +106,8 @@ export default function ${name} ({ className, style }) {
     writeFile(
       `${dirName}/style.css`,
       `.${componentName}  {
-}`
+}
+`
     )
   } catch (err) {
     console.error(err)
@@ -144,14 +145,14 @@ export default function ${name} ({ className, style }) {
     writeFile(
       `${dirName}/style.css`,
       `.${containerName}  {
-}`
+}
+`
     )
 
     // function.js
     writeFile(
       `${dirName}/functions.js`,
-      `const initialState = {
-}
+      `const initialState = {}
 
 export default { initialState }
 `
