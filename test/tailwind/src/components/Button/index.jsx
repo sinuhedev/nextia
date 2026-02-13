@@ -4,12 +4,8 @@ import { css } from 'nextia'
 export default function Button({
   children,
   name,
-  value,
-  type,
   className,
   style,
-  readOnly,
-  disabled,
   onClick = () => {}
 }) {
   return (

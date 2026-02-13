@@ -1,11 +1,10 @@
-@reference "tailwindcss";
-
 .Button-component {
   .btn-primary {
     border-radius: calc(infinity * 1px);
     background-color: var(--primary);
-    padding-inline: --spacing(5);
-    padding-block: --spacing(2);
+    padding-inline: calc(var(--spacing) * 5);
+    padding-block: calc(var(--spacing) * 2);
+    margin: calc(var(--spacing) * 2);
     font-weight: var(--font-weight-semibold);
     color: var(--color-white);
     box-shadow: var(--shadow-md);

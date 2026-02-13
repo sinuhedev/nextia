@@ -1,6 +1,6 @@
-import { useFx, css } from 'nextia'
-import functions from './functions'
 import { Button } from 'components'
+import { css, useFx } from 'nextia'
+import functions from './functions'
 import './style.css'
 
 export default function Pages() {
@@ -8,7 +8,7 @@ export default function Pages() {
 
   return (
     <main className={css('Pages', 'm-5')}>
-      <div>
+      <div className="flex">
         <Button onClick={(e) => fx.increment(e)}>+</Button>
         <Button onClick={(e) => fx.decrement(e)}>-</Button>
       </div>

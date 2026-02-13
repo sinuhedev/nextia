@@ -1,31 +1,36 @@
+/** biome-ignore-all lint/correctness/noUnknownFunction: tailwindcss theme() */
+@reference "tailwindcss";
+
 .Pages {
   background-color: var(--secondary);
 
-  @container style(--sm: true) {
+  @media (min-width: theme(breakpoint-sm)) and (max-width: theme(breakpoint-md)) {
     .sm {
       background-color: var(--primary);
     }
   }
 
-  @container style(--md: true) {
+  @media (min-width: theme(breakpoint-md)) and (max-width: theme(breakpoint-lg)) {
     .md {
       background-color: var(--primary);
     }
   }
 
-  @container style(--lg: true) {
+  @media (min-width: theme(breakpoint-lg)) and (max-width: theme(breakpoint-xl)) {
     .lg {
       background-color: var(--primary);
     }
   }
 
-  @container style(--xl: true) {
+  @media (min-width: theme(breakpoint-xl)) and (
+      max-width: theme(breakpoint-2xl)
+    ) {
     .xl {
       background-color: var(--primary);
     }
   }
 
-  @container style(--xxl: true) {
+  @media (min-width: theme(breakpoint-2xl)) {
     .xxl {
       background-color: var(--primary);
     }
