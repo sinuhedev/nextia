@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import { Link } from 'components'
 import functions from './functions'

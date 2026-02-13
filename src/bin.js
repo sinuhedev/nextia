@@ -40,7 +40,7 @@ async function createPage(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import React, { useEffect } from 'react'
+      `import { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'
@@ -88,7 +88,7 @@ async function createComponent(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import React, { useEffect } from 'react'
+      `import { useEffect } from 'react'
 import { css } from 'nextia'
 import './style.css'
 
@@ -123,7 +123,7 @@ async function createComponentFx(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import React, { useEffect } from 'react'
+      `import { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
 import './style.css'

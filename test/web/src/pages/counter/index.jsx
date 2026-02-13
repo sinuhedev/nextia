@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
 import { Counter } from 'components'

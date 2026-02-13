@@ -1,4 +1,3 @@
-import React from 'react'
 import { useFx, css } from 'nextia'
 import functions from './functions'
 import { Button } from 'components'

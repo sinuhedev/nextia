@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import functions from './functions'
 import { useFx, css } from 'nextia'
 import './style.css'

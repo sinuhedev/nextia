@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, lazy } from 'react'
+import { useEffect, useState, useRef, lazy } from 'react'
 import { useFx, Context } from 'nextia'
 import { Icon, Link, Translate, I18n } from 'components'
 import functions from './functions.js'
