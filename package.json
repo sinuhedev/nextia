@@ -37,6 +37,6 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.14"
+    "@biomejs/biome": "^2.3.15"
   }
 }
