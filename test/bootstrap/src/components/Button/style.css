@@ -1,2 +1,5 @@
 .Button-component {
+  button {
+    margin: 20px;
+  }
 }
