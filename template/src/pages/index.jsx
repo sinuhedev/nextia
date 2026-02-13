@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef, lazy } from 'react'
-import { useFx, Context } from 'nextia'
-import { Translate, I18n, Icon, Link } from 'components'
-import functions from './functions.js'
+import { I18n, Icon, Link, Translate } from 'components'
+import { Context, useFx } from 'nextia'
+import { lazy, useEffect, useRef, useState } from 'react'
 import { startViewTransition, useQueryString } from 'utils'
+import functions from './functions.js'
 
 export default function Pages() {
   const self = useFx(functions)

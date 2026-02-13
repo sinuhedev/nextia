@@ -1,4 +1,4 @@
-import { useFx, css } from 'nextia'
+import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 

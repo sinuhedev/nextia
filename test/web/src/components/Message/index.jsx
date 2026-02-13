@@ -1,24 +1,8 @@
-import './style.css'
-import { css } from 'nextia'
 import { I18n } from 'components'
 
-export default function Messages({
-  children,
-  name,
-  value,
-  type,
-  className,
-  style,
-  readOnly,
-  disabled,
-  onClick = () => {}
-}) {
+export default function Messages({ name, className, style }) {
   return (
-    <article
-      className={css('Messages-component', className)}
-      style={style}
-      name={name}
-    >
+    <article className={className} style={style} name={name}>
       Message-component :{' '}
       <span>
         <I18n value="page.user.family" />

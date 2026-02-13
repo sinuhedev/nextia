@@ -1,5 +1,5 @@
-import { useFx } from 'nextia'
 import i18nFile from 'assets/i18n'
+import { useFx } from 'nextia'
 
 export default function I18n({ value, args = [] }) {
   const { context } = useFx()
@@ -11,7 +11,7 @@ export default function I18n({ value, args = [] }) {
     if (args) {
       text = text.replace(
         /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
-        (match, literal, number) => args[number] || match
+        (match, _literal, number) => args[number] || match
       )
     }
 

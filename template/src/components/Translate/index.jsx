@@ -1,5 +1,5 @@
-import { useFx, css } from 'nextia'
 import i18nFile from 'assets/i18n'
+import { css, useFx } from 'nextia'
 import './style.css'
 
 export default function Translate({ className, style }) {

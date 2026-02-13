@@ -1,4 +1,4 @@
-import { getUser, createUser, updateUser, deleteUser } from 'services/api'
+import { createUser, deleteUser, getUser, updateUser } from 'services/api'
 
 const initialState = {
   users: {},

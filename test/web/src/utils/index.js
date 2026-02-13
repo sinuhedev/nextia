@@ -1,4 +1,4 @@
-import { useResize, useQueryString } from './hooks'
+import { useQueryString, useResize } from './hooks'
 
 const env = import.meta.env
 

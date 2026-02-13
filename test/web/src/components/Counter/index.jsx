@@ -4,14 +4,10 @@ import { css } from 'nextia'
 import { startViewTransition } from 'utils'
 
 export default function Counter({
-  children,
   name,
   value,
-  type,
   className,
   style,
-  readOnly,
-  disabled,
   animation = 'count',
   onChange
 }) {

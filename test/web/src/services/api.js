@@ -1,5 +1,5 @@
 import { env } from 'utils'
-import { GET, POST, PUT, DELETE } from './http'
+import { DELETE, GET, POST, PUT } from './http'
 
 const API = env.VITE_API
 

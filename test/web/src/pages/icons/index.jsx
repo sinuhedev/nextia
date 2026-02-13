@@ -1,5 +1,5 @@
-import { useFx, css } from 'nextia'
 import { Icon } from 'components'
+import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 

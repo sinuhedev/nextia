@@ -1,15 +1,11 @@
-import { useFx, css } from 'nextia'
 import i18nFile from 'assets/i18n'
-import './style.css'
+import { useFx } from 'nextia'
 
 export default function Translate({ className, style }) {
   const { context } = useFx()
 
   return (
-    <article
-      className={css('Translate-component', className, '')}
-      style={style}
-    >
+    <article className={className} style={style}>
       <select
         name="i18n"
         value={context.state.i18n}

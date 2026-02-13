@@ -1,6 +1,6 @@
-import { useFx, css } from 'nextia'
-import functions from './functions'
 import { Counter } from 'components'
+import { css, useFx } from 'nextia'
+import functions from './functions'
 import './style.css'
 
 export default function CounterPage() {

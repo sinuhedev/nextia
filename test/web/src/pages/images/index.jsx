@@ -1,6 +1,6 @@
-import { useFx, css } from 'nextia'
-import functions from './functions'
 import image from 'assets/img/image.jpg'
+import { css, useFx } from 'nextia'
+import functions from './functions'
 import './style.css'
 
 export default function ImagesPage() {
