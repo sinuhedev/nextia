@@ -36,6 +36,14 @@ export default defineConfig(() => {
       emptyOutDir: true
     },
 
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: "@import 'theme/theme.scss';"
+        }
+      }
+    },
+
     plugins: [react()]
   }
 })

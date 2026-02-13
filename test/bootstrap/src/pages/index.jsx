@@ -1,7 +1,7 @@
 import { Button } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
-import './style.css'
+import './style.scss'
 
 export default function Pages() {
   const { state, fx } = useFx(functions)
