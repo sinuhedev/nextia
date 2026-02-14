@@ -87,10 +87,11 @@ export default defineConfig(({ mode }) => {
     test: {
       root: './',
       environment: 'jsdom',
+      include: ['test/**/*.test.{js,jsx,ts,tsx}'],
       coverage: {
         reportsDirectory: '.coverage',
-        include: ['src/**/*.{js,jsx}'],
-        exclude: ['.coverage', 'src/assets', 'src/index.jsx']
+        exclude: ['src/assets', 'src/components/index.js', 'src/index.jsx'],
+        include: ['src/**/*.{js,jsx,ts,tsx}']
       }
     }
   }

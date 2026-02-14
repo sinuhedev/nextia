@@ -15,7 +15,7 @@
     "page": "npm create nextia page",
     "component": "npm create nextia component",
     "container": "npm create nextia container",
-    "test": "vitest",
+    "test": "vitest run",
     "test:name": "vitest run --testNamePattern",
     "test:silent": "vitest run --silent",
     "test:coverage": "vitest run --silent --coverage"
