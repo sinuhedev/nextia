@@ -1,5 +1,5 @@
-import { test } from 'vitest'
 import { env, sum } from 'utils'
+import { test } from 'vitest'
 
 test('hi', () => {
   console.info(sum(1, 20))

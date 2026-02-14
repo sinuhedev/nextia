@@ -1,26 +1,27 @@
 # nextia
+
 Create fast web applications
 
 ### To start
+
 ```sh
 npm install
-pnpm install
-#
-cd test
 ```
 
 ### To test
+
 ```sh
-npm install
-pnpm install
-#
-node --run test:my-app
+node --run test
 ```
 
 ### To create project
+
 ```sh
-pnpm i -g nextia
-nextia my-app
+npm create nextia hola
 ```
 
+### npmjs
+
 [npmjs.com/package/nextia](https://www.npmjs.com/package/nextia)
+
+[npmjs.com/package/create-nextia](https://www.npmjs.com/package/create-nextia)
