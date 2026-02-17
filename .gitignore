@@ -9,9 +9,5 @@ node_modules
 .next
 .swc
 
-deploy
-deploy-variables
-my-app
-
-examples/*/package-lock.json
-examples/*/pnpm-lock.yaml
+test-webapp/package-lock.json
+test-webapp/pnpm-lock.yaml

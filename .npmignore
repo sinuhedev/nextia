@@ -12,5 +12,8 @@ node_modules
 .next
 .swc
 
-examples
 test
+test-webapp
+
+biome.json
+vitest.config.js
