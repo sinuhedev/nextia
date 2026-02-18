@@ -6,22 +6,11 @@ Create fast web applications
 
 ```sh
 npm install
-```
-
-### To test
-
-```sh
-node --run test
-```
-
-### To create project
-
-```sh
-npm create nextia hola
+cd test-webapp
+npm install
+node --run dev
 ```
 
 ### npmjs
 
 [npmjs.com/package/nextia](https://www.npmjs.com/package/nextia)
-
-[npmjs.com/package/create-nextia](https://www.npmjs.com/package/create-nextia)
