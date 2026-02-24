@@ -1,7 +1,16 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
+const CWD = process.cwd()
+
 export default defineConfig({
+  root: `${CWD}/src`,
+  resolve: {
+    alias: {
+      lib: `${CWD}/src/lib`
+    }
+  },
+
   plugins: [react()],
 
   test: {
