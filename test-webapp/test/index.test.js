@@ -1,10 +1,10 @@
 import { env, sum } from 'utils'
 import { test } from 'vitest'
 
-test('hi', () => {
+test('sumTest', () => {
   console.info(sum(1, 20))
 })
 
-test('env', () => {
-  console.info(env.VITE_TITLE)
+test('envTest', () => {
+  console.info(`VITE_TITLE : ${env.VITE_TITLE}`)
 })
