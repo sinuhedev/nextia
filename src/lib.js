@@ -206,16 +206,16 @@ function useFx(functions = { initialState: {} }) {
   const actions = Object.keys(functions).reduce((ac, e) => {
     if (functions[e] instanceof Function) {
       ac[e] = (payload) => {
-        const props = {
+        const actionsProps = {
           ...commonActions,
           state,
           payload
         }
         if (context) {
-          props.context = context
+          actionsProps.context = context
         }
 
-        return functions[e](Object.freeze(props))
+        return functions[e](Object.freeze(actionsProps))
       }
     }
     return ac
