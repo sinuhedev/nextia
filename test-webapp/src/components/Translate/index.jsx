@@ -1,21 +1,14 @@
-import i18nFile from 'assets/i18n'
-import { useFx } from 'nextia'
-
-export default function Translate({ className, style }) {
-  const { context } = useFx()
-
+export default function Translate({
+  value,
+  onChange = () => {},
+  locales,
+  className,
+  style
+}) {
   return (
     <article className={className} style={style}>
-      <select
-        name="i18n"
-        value={context.state.i18n}
-        onChange={(e) => {
-          const { value } = e.target
-          context.fx.set({ i18n: value })
-          window.localStorage.setItem('i18n', value)
-        }}
-      >
-        {i18nFile.locales.map((e) => (
+      <select name="i18n" value={value} onChange={onChange}>
+        {locales.map((e) => (
           <option key={e} value={e} className="m-2">
             {e}
           </option>

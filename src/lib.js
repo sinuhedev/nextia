@@ -10,15 +10,12 @@
 import { createContext, use, useReducer } from 'react'
 
 const Context = createContext()
-
-/**
- * logger
- */
 const isLogger = import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
 
 /**
- * css
+ * util
  */
+
 function css(...classNames) {
   return classNames
     .reduce((accumulator, currentValue) => {
@@ -38,9 +35,25 @@ function css(...classNames) {
     .join(' ')
 }
 
-/**
- * values
- */
+function i18n(value, args = [], i18nFile, i18nLocale) {
+  try {
+    let text = value.split('.').reduce((ac, el) => ac[el], i18nFile)
+    text = text[i18nFile.locales.indexOf(i18nLocale)]
+
+    if (args) {
+      text = text.replace(
+        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
+        (match, _literal, number) => args[number] || match
+      )
+    }
+
+    return text
+  } catch {
+    console.error(`Error in [il8n] => ${value}`)
+    return value
+  }
+}
+
 function values(state, payload, value) {
   const paths = payload.split('.')
 
@@ -67,9 +80,6 @@ function values(state, payload, value) {
   return stateClone
 }
 
-/**
- * merge
- */
 function merge(target, source) {
   // in array return all source
   if (Array.isArray(target)) return source
@@ -90,6 +100,7 @@ function merge(target, source) {
 /**
  * reducer
  */
+
 const reducer = (state, action) => {
   const { type, payload, initialState } = action
 
@@ -172,6 +183,7 @@ const reducerLogger = (state, action) => {
 /**
  * useFx
  */
+
 function useFx(functions = { initialState: {} }) {
   const context = use(Context)
   const { initialState } = functions
@@ -222,4 +234,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { Context, useFx, css }
+export { Context, useFx, css, i18n }
