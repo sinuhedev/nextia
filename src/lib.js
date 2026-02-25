@@ -20,23 +20,22 @@ const isLogger = import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
  * css
  */
 function css(...classNames) {
-  classNames = classNames
-    .filter((e) => e)
+  return classNames
     .reduce((accumulator, currentValue) => {
       if (typeof currentValue === 'string') {
-        accumulator.push(currentValue)
+        accumulator.push(currentValue.trim())
       } else if (
         !Array.isArray(currentValue) &&
         typeof currentValue === 'object'
       ) {
         for (const e in currentValue) {
-          if (currentValue[e]) accumulator.push(e)
+          if (currentValue[e]) accumulator.push(e.trim())
         }
       }
       return accumulator
     }, [])
-
-  return [...new Set(classNames)].join(' ')
+    .filter((e) => e)
+    .join(' ')
 }
 
 /**
