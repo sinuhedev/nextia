@@ -9,7 +9,7 @@
 
 import { createContext, use, useReducer } from 'react'
 
-const Context = createContext()
+const PagesContext = createContext()
 const isLogger = import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
 
 /**
@@ -185,7 +185,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useFx(functions = { initialState: {} }) {
-  const context = use(Context)
+  const context = use(PagesContext)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     isLogger ? reducerLogger : reducer,
@@ -234,4 +234,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { Context, useFx, css, i18n }
+export { PagesContext, useFx, css, i18n }

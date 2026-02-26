@@ -1,12 +1,12 @@
 import { I18n, Icon, Link, Translate } from 'components'
-import { Context, useFx } from 'nextia'
+import { PagesContext, useFx } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
 import { startViewTransition, useQueryString, useResize } from 'utils'
 import functions from './functions.js'
 
 export default function Pages() {
-  const self = useFx(functions)
-  const { state, fx } = self
+  const pagesState = useFx(functions)
+  const { state, fx } = pagesState
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
@@ -35,7 +35,7 @@ export default function Pages() {
   }, [qs.hash])
 
   return (
-    <Context value={self}>
+    <PagesContext value={pagesState}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 
@@ -113,6 +113,6 @@ export default function Pages() {
       <main ref={ref} className="m-2">
         {Page && <Page qs={qs.queryString} resize={resize} />}
       </main>
-    </Context>
+    </PagesContext>
   )
 }
