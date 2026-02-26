@@ -170,7 +170,7 @@ const reducerLogger = (state, action) => {
   }
 
   console.log(
-    `%c${action.isContext ? 'Context' : 'Page   '} %c${action.type}`,
+    `%c${action.isContext ? 'Pages Context' : 'Page'} %c${action.type}`,
     'color: #90b1d1',
     'color: #6592c8',
     payloadLog(action),
