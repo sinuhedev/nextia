@@ -10,7 +10,7 @@
 import { createContext, use, useReducer } from 'react'
 
 const PagesContext = createContext()
-const isLogger = import.meta.env.DEV && import.meta.env.VITE_LOGGER !== 'false'
+const isLogger = import.meta.env.DEV
 
 /**
  * util
