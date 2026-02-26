@@ -35,25 +35,6 @@ function css(...classNames) {
     .join(' ')
 }
 
-function i18n(value, args = [], currentLocale, i18nFile) {
-  try {
-    let text = value.split('.').reduce((ac, el) => ac[el], i18nFile)
-    text = text[i18nFile.locales.indexOf(currentLocale)]
-
-    if (args) {
-      text = text.replace(
-        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
-        (match, _literal, number) => args[number] || match
-      )
-    }
-
-    return text
-  } catch {
-    console.error(`Error in [il8n] => ${value}`)
-    return value
-  }
-}
-
 function values(state, payload, value) {
   const paths = payload.split('.')
 
@@ -185,7 +166,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useFx(functions = { initialState: {} }) {
-  const context = use(PagesContext)
+  const pageContext = use(PagesContext)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     isLogger ? reducerLogger : reducer,
@@ -196,7 +177,7 @@ function useFx(functions = { initialState: {} }) {
   const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
     (acc, e) => {
       acc[e] = (payload) =>
-        dispatch({ type: e, payload, initialState, isContext: !context })
+        dispatch({ type: e, payload, initialState, isContext: !pageContext })
       return acc
     },
     {}
@@ -211,8 +192,8 @@ function useFx(functions = { initialState: {} }) {
           state,
           payload
         }
-        if (context) {
-          actionsProps.context = context
+        if (pageContext) {
+          actionsProps.context = pageContext
         }
 
         return functions[e](Object.freeze(actionsProps))
@@ -227,11 +208,11 @@ function useFx(functions = { initialState: {} }) {
     state,
     fx: { ...commonActions, ...actions }
   }
-  if (context) {
-    props.context = context
+  if (pageContext) {
+    props.context = pageContext
   }
 
   return Object.freeze(props)
 }
 
-export { PagesContext, useFx, css, i18n }
+export { PagesContext, useFx, css }

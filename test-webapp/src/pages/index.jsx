@@ -5,8 +5,8 @@ import { startViewTransition, useQueryString, useResize } from 'utils'
 import functions from './functions.js'
 
 export default function Pages() {
-  const pagesState = useFx(functions)
-  const { state, fx } = pagesState
+  const pagesContext = useFx(functions)
+  const { state, fx } = pagesContext
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
@@ -35,7 +35,7 @@ export default function Pages() {
   }, [qs.hash])
 
   return (
-    <PagesContext value={pagesState}>
+    <PagesContext value={pagesContext}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 
