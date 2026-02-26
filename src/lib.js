@@ -35,10 +35,10 @@ function css(...classNames) {
     .join(' ')
 }
 
-function i18n(value, args = [], i18nFile, i18nLocale) {
+function i18n(value, args = [], currentLocale, i18nFile) {
   try {
     let text = value.split('.').reduce((ac, el) => ac[el], i18nFile)
-    text = text[i18nFile.locales.indexOf(i18nLocale)]
+    text = text[i18nFile.locales.indexOf(currentLocale)]
 
     if (args) {
       text = text.replace(

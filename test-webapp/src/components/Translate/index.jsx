@@ -1,14 +1,13 @@
 export default function Translate({
   value,
   onChange = () => {},
-  locales,
   className,
   style
 }) {
   return (
     <article className={className} style={style}>
-      <select name="i18n" value={value} onChange={onChange}>
-        {locales.map((e) => (
+      <select name="i18n" value={value.currentLocale} onChange={onChange}>
+        {value.locales.map((e) => (
           <option key={e} value={e} className="m-2">
             {e}
           </option>
