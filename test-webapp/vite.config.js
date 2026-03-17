@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
     },
 
     build: {
-      outDir: '../out',
+      outDir: '../target',
       assetsDir: 'assets',
       emptyOutDir: true
     },
@@ -78,7 +78,11 @@ export default defineConfig(({ mode }) => {
               .replace(/\t/g, '') // remove tabs
               .replace(/>\s+</g, '><') // remove space between tags
               .trim()
-            return `export default ${JSON.stringify(code)};`
+
+            return {
+              code: `export default ${JSON.stringify(code)};`,
+              moduleType: 'js'
+            }
           }
         }
       }

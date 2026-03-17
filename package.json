@@ -22,7 +22,7 @@
   ],
   "main": "src/lib.js",
   "scripts": {
-    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage",
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage target",
     "format": "biome format",
     "lint": "biome lint src",
     "check": "biome check --reporter=summary src",

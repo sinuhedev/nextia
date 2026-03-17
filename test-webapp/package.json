@@ -1,12 +1,12 @@
 {
   "name": "test-webapp",
   "description": "test-webapp",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage target",
     "build": "vite build --mode",
     "preview": "vite preview",
     "format": "biome format",
