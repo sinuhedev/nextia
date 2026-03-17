@@ -1,7 +1,7 @@
 {
   "name": "test-webapp",
   "description": "test-webapp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "private": true,
   "scripts": {
@@ -21,7 +21,6 @@
     "test:coverage": "vitest run --silent --coverage"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.4",
     "@vitejs/plugin-react": "^5.1.4",
     "@vitest/coverage-v8": "^4.0.18",
     "autoprefixer": "^10.4.24",
