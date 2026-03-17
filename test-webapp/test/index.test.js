@@ -1,6 +1,8 @@
 import { env, sum } from 'utils'
 import { test } from 'vitest'
 
+test('test', () => {})
+
 test('sumTest', () => {
   console.info(sum(1, 20))
 })
