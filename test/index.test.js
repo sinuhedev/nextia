@@ -1,4 +1,4 @@
-import { css } from 'lib'
+import { css } from 'nextia'
 import { test } from 'vitest'
 
 test('cssTest', () => {

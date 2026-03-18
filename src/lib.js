@@ -215,4 +215,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { PagesContext, useFx, css }
+export { css, PagesContext, useFx }

@@ -5,9 +5,10 @@ const CWD = process.cwd()
 
 export default defineConfig({
   root: `${CWD}/src`,
+
   resolve: {
     alias: {
-      lib: `${CWD}/src/lib`
+      nextia: `${CWD}/src/lib`
     }
   },
 
