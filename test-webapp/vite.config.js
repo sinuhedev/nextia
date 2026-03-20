@@ -1,7 +1,6 @@
 import { execSync } from 'node:child_process'
 import { readFile } from 'node:fs/promises'
 import react from '@vitejs/plugin-react'
-import autoprefixer from 'autoprefixer'
 import { defineConfig } from 'vite'
 import { version } from './package.json'
 
@@ -40,9 +39,7 @@ export default defineConfig(({ mode }) => {
     },
 
     css: {
-      postcss: {
-        plugins: [autoprefixer]
-      }
+      postcss: {}
     },
 
     plugins: [
