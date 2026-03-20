@@ -26,19 +26,15 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: Object.fromEntries(
-        [
-          'assets',
-          'components',
-          'containers',
-          'services',
-          'theme',
-          'utils'
-        ].map((dir) => [dir, `${CWD}/src/${dir}`])
+        ['assets', 'components', 'services', 'theme', 'utils'].map((dir) => [
+          dir,
+          `${CWD}/src/${dir}`
+        ])
       )
     },
 
     build: {
-      outDir: '../target',
+      outDir: '../out',
       assetsDir: 'assets',
       emptyOutDir: true
     },

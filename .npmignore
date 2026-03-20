@@ -2,7 +2,7 @@
 .gitignore
 
 node_modules
-target
+out
 
 .env
 .env.*

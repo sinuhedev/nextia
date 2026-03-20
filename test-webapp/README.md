@@ -9,6 +9,7 @@ npm install
 #
 node --run dev
 node --run test
+node --run prod
 node --run build <ENV>
 node --run preview
 ```

@@ -22,7 +22,7 @@
   ],
   "main": "src/lib.js",
   "scripts": {
-    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage target",
+    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
     "format": "biome format",
     "lint": "biome lint src",
     "check": "biome check --reporter=summary src",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.0.18",
-    "jsdom": "^29.0.0",
+    "jsdom": "^29.0.1",
     "vitest": "^4.0.18"
   }
 }
