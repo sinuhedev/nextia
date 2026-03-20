@@ -5,4 +5,4 @@ import Icon from './ui/Icon'
 import Link from './ui/Link'
 import Translate from './ui/Translate'
 
-export { I18n, Translate, Counter, Message, Icon, Link }
+export { Counter, I18n, Icon, Link, Message, Translate }
