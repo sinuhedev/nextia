@@ -25,7 +25,7 @@ node --run preview
  * .env.test
  
 ```env
-VITE_TITLE=dev
-VITE_VIEW_TRANSITION=false
-VITE_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
+PUBLIC_TITLE=dev
+PUBLIC_VIEW_TRANSITION=false
+PUBLIC_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
 ```

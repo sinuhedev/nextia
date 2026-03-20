@@ -8,5 +8,5 @@ test('sumTest', () => {
 })
 
 test('envTest', () => {
-  console.info(`VITE_TITLE : ${env.VITE_TITLE}`)
+  console.info(`PUBLIC_TITLE : ${env.PUBLIC_TITLE}`)
 })

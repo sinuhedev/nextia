@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => {
 
     base: '',
     envDir: CWD,
+    envPrefix: 'PUBLIC_',
     root: `${CWD}/src`,
     publicDir: `${CWD}/public`,
 
