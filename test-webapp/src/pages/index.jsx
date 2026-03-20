@@ -31,7 +31,7 @@ export default function Pages() {
       }
     })
 
-    startViewTransition(setPage(page), ref.current, 'fade')
+    startViewTransition(setPage(page), ref.current)
   }, [qs.hash])
 
   return (
