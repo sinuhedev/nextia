@@ -9,8 +9,8 @@
 
 import { createContext, use, useReducer } from 'react'
 
+const LOGGER = import.meta.env.DEV || process.env.NODE_ENV === 'dev'
 const PagesContext = createContext()
-const isLogger = import.meta.env.DEV
 
 /**
  * util
@@ -169,7 +169,7 @@ function useFx(functions = { initialState: {} }) {
   const pageContext = use(PagesContext)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
-    isLogger ? reducerLogger : reducer,
+    LOGGER ? reducerLogger : reducer,
     initialState
   )
 
