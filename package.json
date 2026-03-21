@@ -20,6 +20,9 @@
   "keywords": [
     "react"
   ],
+  "bin": {
+    "nextia": "src/bin.js"
+  },
   "main": "src/lib.js",
   "scripts": {
     "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
@@ -29,7 +32,13 @@
     "test": "vitest run",
     "test:name": "vitest run --testNamePattern",
     "test:silent": "vitest run --silent",
-    "test:coverage": "vitest run --silent --coverage"
+    "test:coverage": "vitest run --silent --coverage",
+    "test:version": "./src/bin.js",
+    "test:my-app": "rm -fr my-app && src/bin.js my-app",
+    "test:my-app:exists": "src/bin.js my-app",
+    "test:my-page": "cd my-app && ../src/bin.js page my-page",
+    "test:my-component": "cd my-app && ../src/bin.js component MyComponent",
+    "test:my-container": "cd my-app && ../src/bin.js container MyContainer"
   },
   "peerDependencies": {
     "react": "^19.2.3",

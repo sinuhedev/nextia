@@ -1,0 +1,22 @@
+import './style.css'
+import { css } from 'nextia'
+
+export default function Button({
+  children,
+  name,
+  className,
+  style,
+  onClick = () => {}
+}) {
+  return (
+    <article
+      className={css('Button-component', className)}
+      style={style}
+      name={name}
+    >
+      <button type="button" className="btn-primary" onClick={onClick}>
+        {children}
+      </button>
+    </article>
+  )
+}

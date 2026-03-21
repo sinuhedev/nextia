@@ -1,6 +1,6 @@
 {
-  "name": "test-webapp",
-  "description": "test-webapp",
+  "name": "boostrap",
+  "description": "description",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -12,23 +12,18 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check --reporter=summary",
-    "page": "npm create nextia page",
-    "component": "npm create nextia component",
-    "container": "npm create nextia container",
-    "test": "vitest run",
-    "test:name": "vitest run --testNamePattern",
-    "test:silent": "vitest run --silent",
-    "test:coverage": "vitest run --silent --coverage"
+    "page": "nextia page",
+    "component": "nextia component",
+    "container": "nextia container"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/coverage-v8": "^4.0.18",
-    "jsdom": "^29.0.1",
-    "vite": "^8.0.1",
-    "vitest": "^4.0.18"
+    "bootstrap": "^5.3.8",
+    "sass": "1.78.0",
+    "vite": "^8.0.1"
   },
   "dependencies": {
-    "nextia": "file:../",
+    "nextia": "file:../../",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   }

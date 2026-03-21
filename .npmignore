@@ -1,6 +1,7 @@
 .git
 .gitignore
 
+my-app
 node_modules
 out
 
@@ -13,8 +14,8 @@ out
 .next
 .swc
 
-test
-test-webapp
+templates/**/package-lock.json
+/test
+/test-webapp
 
-biome.json
 vitest.config.js

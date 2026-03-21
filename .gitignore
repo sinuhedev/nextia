@@ -1,3 +1,4 @@
+my-app
 node_modules
 out
 
@@ -10,5 +11,5 @@ out
 .next
 .swc
 
-test-webapp/package-lock.json
-test-webapp/pnpm-lock.yaml
+templates/**/package-lock.json
+test-webapp/**/package-lock.json
