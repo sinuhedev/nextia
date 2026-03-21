@@ -25,6 +25,6 @@ node --run preview
  
 ```env
 PUBLIC_TITLE=TITLE
-PUBLIC_LOGGER=false
-PUBLIC_VIEW_TRANSITION=false
+PUBLIC_LOGGER=true
+PUBLIC_VIEW_TRANSITION=true
 ```

@@ -9,7 +9,7 @@
 
 import { createContext, use, useReducer } from 'react'
 
-const LOGGER = import.meta.env.DEV || process.env.NODE_ENV === 'dev'
+const LOGGER = import.meta.env.DEV && import.meta.env.PUBLIC_LOGGER !== 'false'
 const PagesContext = createContext()
 
 /**

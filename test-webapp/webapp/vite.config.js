@@ -5,15 +5,17 @@ import { version } from './package.json'
 
 export default defineConfig(({ mode }) => {
   const CWD = process.cwd()
+  const host = '0.0.0.0'
   const port = 3000
 
   return {
     server: {
-      host: '0.0.0.0',
+      host,
       port
     },
 
     preview: {
+      host,
       port
     },
 
