@@ -56,10 +56,12 @@ export default defineConfig(({ mode }) => {
               .trim()
           } catch {}
 
-          return html.replaceAll(
+          html.replaceAll(
             '%VERSION%',
             `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`
           )
+
+          return html
         }
       }
     ],
