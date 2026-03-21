@@ -24,3 +24,26 @@ export function useQueryString() {
 
   return queryString
 }
+
+export function useResize() {
+  const getResize = useCallback(
+    () => ({
+      width: window.innerWidth,
+      height: window.innerHeight
+    }),
+    []
+  )
+
+  const [resize, setResize] = useState(getResize)
+
+  useEffect(() => {
+    const handleResize = () => setResize(getResize())
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [getResize])
+
+  return resize
+}

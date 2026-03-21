@@ -176,13 +176,6 @@ async function createProject(name) {
   }
 
   try {
-    const response = await fetch(`https://registry.npmjs.org/nextia`)
-
-    if (!response.ok) {
-      console.error(`Package not found: nextia`)
-      return
-    }
-
     const __dirname = dirname(fileURLToPath(import.meta.url))
     const templatePath = `${__dirname}/../templates/vitejs`
 

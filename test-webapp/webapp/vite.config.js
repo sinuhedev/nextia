@@ -1,5 +1,4 @@
 import { execSync } from 'node:child_process'
-import { readFile } from 'node:fs/promises'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { version } from './package.json'

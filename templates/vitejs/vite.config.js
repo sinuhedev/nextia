@@ -1,7 +1,5 @@
 import { execSync } from 'node:child_process'
-import { readFile } from 'node:fs/promises'
 import react from '@vitejs/plugin-react'
-import autoprefixer from 'autoprefixer'
 import { defineConfig } from 'vite'
 import { version } from './package.json'
 
@@ -21,6 +19,7 @@ export default defineConfig(({ mode }) => {
 
     base: '',
     envDir: CWD,
+    envPrefix: 'PUBLIC_',
     root: `${CWD}/src`,
     publicDir: `${CWD}/public`,
 
@@ -34,15 +33,13 @@ export default defineConfig(({ mode }) => {
     },
 
     build: {
-      outDir: '../target',
+      outDir: '../out',
       assetsDir: 'assets',
       emptyOutDir: true
     },
 
     css: {
-      postcss: {
-        plugins: [autoprefixer]
-      }
+      postcss: {}
     },
 
     plugins: [
@@ -61,24 +58,6 @@ export default defineConfig(({ mode }) => {
             '%VERSION%',
             `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`
           )
-        }
-      },
-      {
-        name: 'svg',
-        async transform(_src, id) {
-          let code = id.split('?')[0]
-          const type = id.split('?')[1]
-
-          if (type === 'raw') {
-            code = await readFile(code, 'utf8')
-            code = code
-              .replace(/\s{2,}/g, ' ') // multiple spaces to single space
-              .replace(/\n/g, '') // remove newlines
-              .replace(/\t/g, '') // remove tabs
-              .replace(/>\s+</g, '><') // remove space between tags
-              .trim()
-            return `export default ${JSON.stringify(code)};`
-          }
         }
       }
     ],

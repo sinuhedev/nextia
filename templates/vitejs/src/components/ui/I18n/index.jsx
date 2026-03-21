@@ -6,7 +6,7 @@ export default function I18n({ value, args = [] }) {
 
   try {
     let text = value.split('.').reduce((ac, el) => ac[el], i18nFile)
-    text = text[i18nFile.locales.indexOf(context.state.i18n)]
+    text = text[i18nFile.locales.indexOf(context.state.i18n.currentLocale)]
 
     if (args) {
       text = text.replace(

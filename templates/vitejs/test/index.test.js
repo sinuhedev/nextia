@@ -1,6 +1,12 @@
+import { env, sum } from 'utils'
 import { test } from 'vitest'
-import { env } from 'utils'
 
-test('env', () => {
-  console.info(env.VITE_TITLE)
+test('test', () => {})
+
+test('sumTest', () => {
+  console.info(sum(1, 20))
+})
+
+test('envTest', () => {
+  console.info(`PUBLIC_TITLE : ${env.PUBLIC_TITLE}`)
 })

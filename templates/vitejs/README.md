@@ -24,7 +24,7 @@ node --run preview
  * .env.test
  
 ```env
-VITE_TITLE=TITLE
-VITE_LOGGER=false
-VITE_VIEW_TRANSITION=false
+PUBLIC_TITLE=TITLE
+PUBLIC_LOGGER=false
+PUBLIC_VIEW_TRANSITION=false
 ```
