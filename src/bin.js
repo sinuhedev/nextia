@@ -21,15 +21,16 @@ import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import pkg from '../package.json' with { type: 'json' }
 
-async function createPage(name) {
-  const toPascalCase = (str) =>
-    str
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9 ]/g, ' ') // replace special characters
-      .split(/\s+/) // split by spaces
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('')
+function toPascalCase(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9 ]/g, ' ') // replace special characters
+    .split(/\s+/) // split by spaces
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+}
 
+async function createPage(name) {
   const dirName = `./src/pages/${name}`
   const pageName = `${toPascalCase(name)}Page`
 
@@ -83,7 +84,7 @@ async function createComponent(name) {
 
   try {
     await mkdir(dirName)
-    const componentName = `${name.replaceAll('/', '')}-component`
+    const componentName = toPascalCase(name)
 
     // index.jsx
     writeFile(
@@ -92,7 +93,7 @@ async function createComponent(name) {
 import { useEffect } from 'react'
 import './style.css'
 
-export default function ${name} ({ className, style }) {
+export default function ${componentName} ({ className, style }) {
   return (
     <article className={css('${componentName}', className)} style={style}>
       ${componentName}
@@ -120,7 +121,7 @@ async function createContainer(name) {
 
   try {
     await mkdir(dirName)
-    const containerName = `${name.replaceAll('/', '')}-component`
+    const containerName = toPascalCase(name)
 
     // index.jsx
     writeFile(
@@ -130,7 +131,7 @@ import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function ${name} ({ className, style }) {
+export default function ${containerName} ({ className, style }) {
   const { state, fx } = useFx(functions)
 
   return (
@@ -177,10 +178,7 @@ async function createProject(name) {
 
   try {
     const __dirname = dirname(fileURLToPath(import.meta.url))
-    const templatePath = `${__dirname}/../templates/vitejs`
-
-    const mv = (fileName) =>
-      rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
+    const templatePath = `${__dirname}/../template`
 
     const replaceToken = async (filename, token, value) => {
       const content = await readFile(projectPath + filename, 'utf8')
@@ -194,11 +192,15 @@ async function createProject(name) {
     await cp(templatePath, projectPath, { recursive: true })
     await cp(`${__dirname}/../biome.json`, `${projectPath}/biome.json`)
 
-    await Promise.all(['env.dev', 'env.prod', 'env.test', 'gitignore'].map(mv))
+    await Promise.all(
+      ['env.dev', 'env.prod', 'env.test', 'gitignore'].map((fileName) =>
+        rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
+      )
+    )
 
     await replaceToken('README.md', 'TEMPLATE', name)
     await replaceToken('package.json', 'TEMPLATE', name)
-    await replaceToken('package.json', 'file:../../', pkg.version)
+    await replaceToken('package.json', 'file:../', pkg.version)
 
     console.info(`✔ Project "${name}" created successfully!`)
   } catch (err) {

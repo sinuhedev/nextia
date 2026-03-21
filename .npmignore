@@ -1,9 +1,10 @@
-.git
-.gitignore
-
 my-app
+
 node_modules
 out
+
+.git
+.gitignore
 
 .env
 .env.*
@@ -14,8 +15,9 @@ out
 .next
 .swc
 
-templates/**/package-lock.json
+template/**/package-lock.json
+
 /test
 /test-webapp
 
-vitest.config.js
+/vitest.config.js
