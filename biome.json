@@ -3,6 +3,7 @@
     "indentStyle": "space",
     "indentWidth": 2
   },
+  
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
@@ -11,15 +12,17 @@
       "trailingCommas": "none"
     }
   },
+  
   "css": {
     "parser": {
       "tailwindDirectives": true
-    },
-    "linter": {
-      "rules": {
-        "correctness": {
-          "noUnknownTypeSelector": "off"
-        }
+    }
+  },
+
+  "linter": {
+    "rules": {
+      "correctness": {
+        "noUnknownTypeSelector": "off"
       }
     }
   }

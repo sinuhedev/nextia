@@ -60,28 +60,6 @@ export default defineConfig(({ mode }) => {
             `version=${version}, env=${mode}, release-date=${new Date()}, git-hash=${gitHash}`
           )
         }
-      },
-      {
-        name: 'svg',
-        async transform(_src, id) {
-          let code = id.split('?')[0]
-          const type = id.split('?')[1]
-
-          if (type === 'raw') {
-            code = await readFile(code, 'utf8')
-            code = code
-              .replace(/\s{2,}/g, ' ') // multiple spaces to single space
-              .replace(/\n/g, '') // remove newlines
-              .replace(/\t/g, '') // remove tabs
-              .replace(/>\s+</g, '><') // remove space between tags
-              .trim()
-
-            return {
-              code: `export default ${JSON.stringify(code)};`,
-              moduleType: 'js'
-            }
-          }
-        }
       }
     ],
 

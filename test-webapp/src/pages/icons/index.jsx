@@ -12,7 +12,7 @@ export default function IconsPage() {
       <Icon id="camera" width="32" />
       <Icon id="video" width="32" />
       <Icon id="exit" width="32" />
-      <Icon id="exit" className="exit-anim" width="32" />
+      <Icon id="exit" className="animation" width="32" />
     </section>
   )
 }

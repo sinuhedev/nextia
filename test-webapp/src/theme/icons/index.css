@@ -1,12 +1,11 @@
-.exit-anim {
+svg#exit.animation {
   --primary-color: #821e8f;
-
-  transition: transform 200ms linear 0ms;
+  transition: transform 200ms linear;
 
   #animation {
     transition:
-      stroke-dashoffset 400ms linear 0ms,
-      stroke-dasharray 400ms linear 0ms;
+      stroke-dashoffset 400ms linear,
+      stroke-dasharray 400ms linear;
     stroke: var(--primary-color);
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 1;
@@ -45,15 +44,11 @@
 }
 
 @keyframes arrow {
-  0% {
-    transform: translateY(2px);
-  }
-
-  50% {
-    transform: translateY(6px);
-  }
-
+  0%,
   100% {
     transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(6px);
   }
 }
