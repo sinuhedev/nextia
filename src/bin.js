@@ -230,7 +230,7 @@ async function main() {
 
     default:
       if (ARG1) await createProject(ARG1)
-      else console.info(`v${pkg.version}\nnpm create nextia <ProjectName>`)
+      else console.info(`v${pkg.version}\nnextia <ProjectName>`)
       break
   }
 }
