@@ -1,4 +1,4 @@
-export default function Translate({
+export default function UiTranslate({
   value,
   onChange = () => {},
   className,

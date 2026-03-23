@@ -1,4 +1,4 @@
-export default function Link({ children, href, value = {}, ...props }) {
+export default function UiLink({ children, href, value = {}, ...props }) {
   href ??= window.location.hash.split('?')[0]
   value = Object.keys(value).length
     ? `?${new URLSearchParams(value).toString()}`

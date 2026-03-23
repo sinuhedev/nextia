@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import icons from 'theme/icons/icons.svg?raw'
 
-export default function Icon({
+export default function UiIcon({
   id,
   className,
   style,
