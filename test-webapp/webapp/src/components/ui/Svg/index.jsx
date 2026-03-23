@@ -6,6 +6,7 @@ export default function UiSvg({
   height,
   viewBox = '0 0 48 48',
   fill = 'none',
+  color = 'currentColor',
   stroke = 'currentColor',
   strokeWidth = '2',
   strokeLinecap = 'round',
@@ -24,6 +25,7 @@ export default function UiSvg({
     svg.setAttribute('height', height ?? width)
     svg.setAttribute('viewBox', viewBox)
     svg.setAttribute('fill', fill)
+    svg.setAttribute('color', color)
     svg.setAttribute('stroke', stroke)
     svg.setAttribute('stroke-width', strokeWidth)
     svg.setAttribute('stroke-linecap', strokeLinecap)
@@ -41,6 +43,7 @@ export default function UiSvg({
     height,
     viewBox,
     fill,
+    color,
     stroke,
     strokeWidth,
     strokeLinecap,
