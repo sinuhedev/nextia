@@ -1,7 +1,8 @@
-import { Icon } from 'components'
+import { Icon, Svg } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
+import exitSvg from 'theme/icons/exit.svg?raw'
 
 export default function IconsPage() {
   const { state, fx } = useFx(functions)
@@ -11,8 +12,9 @@ export default function IconsPage() {
       <Icon id="globe" width="32" />
       <Icon id="camera" width="32" />
       <Icon id="video" width="32" />
-      <Icon id="exit" width="32" />
-      <Icon id="exit" className="animation" width="32" />
+      <br />
+      <br />
+      <Svg src={exitSvg} width="32" />
     </section>
   )
 }

@@ -9,6 +9,7 @@ export default function Icon({
   height,
   viewBox = '0 0 48 48',
   fill = 'none',
+  color = 'currentColor',
   stroke = 'currentColor',
   strokeWidth = '2',
   strokeLinecap = 'round',
@@ -18,7 +19,7 @@ export default function Icon({
   const ref = useRef()
 
   useEffect(() => {
-    const svg = new window.DOMParser()
+    const svg = new DOMParser()
       .parseFromString(icons, 'image/svg+xml')
       .documentElement.getElementById(id)
 
@@ -38,6 +39,7 @@ export default function Icon({
       height={height}
       viewBox={viewBox}
       fill={fill}
+      color={color}
       stroke={stroke}
       strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}

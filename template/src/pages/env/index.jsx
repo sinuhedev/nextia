@@ -9,7 +9,7 @@ export default function EnvPage() {
 
   // env
   useEffect(() => {
-    console.log(env)
+    console.log('env:', env)
   }, [])
 
   return (
