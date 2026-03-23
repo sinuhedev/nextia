@@ -18,6 +18,6 @@ out
 template/**/package-lock.json
 
 /test
-/test-webapp
+/examples
 
 /vitest.config.js

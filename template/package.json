@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "clean": "rm -fr node_modules package-lock.json pnpm-lock.yaml .coverage out",
+    "clean": "rm -fr node_modules package-lock.json .coverage out",
     "build": "vite build --mode",
     "preview": "vite preview",
     "format": "biome format",

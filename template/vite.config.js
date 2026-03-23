@@ -1,4 +1,5 @@
 import { execSync } from 'node:child_process'
+import { readFile } from 'node:fs/promises'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { version } from './package.json'
@@ -62,6 +63,22 @@ export default defineConfig(({ mode }) => {
           )
 
           return html
+        }
+      },
+      {
+        name: 'svg',
+        async transform(_src, id) {
+          const [path, query] = id.split('?')
+          if (query !== 'raw') return
+
+          let code = await readFile(path, 'utf8')
+          code = code
+            .replace(/\s{2,}/g, ' ') // multiple spaces to single space
+            .replace(/\n/g, '') // remove newlines
+            .replace(/\t/g, '') // remove tabs
+            .replace(/>\s+</g, '><') // remove space between tags
+            .trim()
+          return `export default ${JSON.stringify(code)};`
         }
       }
     ],

@@ -215,17 +215,17 @@ async function main() {
   switch (ARG1) {
     case 'page':
       if (ARG2) await createPage(ARG2)
-      else console.warn('pnpm create nextia page <page-name>')
+      else console.warn('node --run nextia page <page-name>')
       break
 
     case 'component':
       if (ARG2) await createComponent(ARG2)
-      else console.warn('pnpm create nextia component <ComponentName>')
+      else console.warn('node --run nextia component <ComponentName>')
       break
 
     case 'container':
       if (ARG2) await createContainer(ARG2)
-      else console.warn('pnpm create nextia container <ContainerName>')
+      else console.warn('node --run nextia container <ContainerName>')
       break
 
     default:
