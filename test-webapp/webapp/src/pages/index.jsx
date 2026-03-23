@@ -98,9 +98,6 @@ export default function Pages() {
         <Link href="#/icons" className="mr-2">
           /icons
         </Link>
-        <Link href="#/svg" className="mr-2">
-          /svg
-        </Link>
         <Link href="#/resize" className="mr-2">
           /resize
         </Link>
