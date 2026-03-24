@@ -95,8 +95,8 @@ export default function Pages() {
         <Link href="#/translate" className="mr-2">
           /translate
         </Link>
-        <Link href="#/counter" className="mr-2">
-          /counter
+        <Link href="#/start-view-transition" className="mr-2">
+          /start-view-transition
         </Link>
         <Link href="#/images" className="mr-2">
           /images
@@ -107,8 +107,8 @@ export default function Pages() {
         <Link href="#/resize" className="mr-2">
           /resize
         </Link>
-        <Link href="#/no" className="mr-2">
-          /no
+        <Link href="#/dashboard" className="mr-2">
+          /not-found
         </Link>
       </aside>
 

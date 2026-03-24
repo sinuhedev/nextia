@@ -3,13 +3,13 @@ import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function CounterPage() {
+export default function StartViewTransitionPage() {
   const { state, fx } = useFx(functions)
 
   return (
     <section
       className={css(
-        'CounterPage',
+        'StartViewTransitionPage',
         '',
         'class-test',
         'class-test',
