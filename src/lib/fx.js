@@ -16,25 +16,6 @@ const PagesContext = createContext()
  * util
  */
 
-function css(...classNames) {
-  return classNames
-    .reduce((accumulator, currentValue) => {
-      if (typeof currentValue === 'string') {
-        accumulator.push(currentValue.trim())
-      } else if (
-        !Array.isArray(currentValue) &&
-        typeof currentValue === 'object'
-      ) {
-        for (const e in currentValue) {
-          if (currentValue[e]) accumulator.push(e.trim())
-        }
-      }
-      return accumulator
-    }, [])
-    .filter((e) => e)
-    .join(' ')
-}
-
 function values(state, payload, value) {
   const paths = payload.split('.')
 
@@ -215,4 +196,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { css, PagesContext, useFx }
+export { PagesContext, useFx }

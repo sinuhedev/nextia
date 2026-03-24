@@ -2,11 +2,11 @@
   "name": "nextia",
   "description": "Create fast web applications",
   "version": "7.0.0",
+  "license": "MIT",
+  "type": "module",
   "engines": {
     "node": ">22"
   },
-  "type": "module",
-  "license": "MIT",
   "author": {
     "name": "Sinuhe Maceda",
     "email": "sinuhe.dev@gmail.com",
@@ -23,7 +23,15 @@
   "bin": {
     "nextia": "src/bin.js"
   },
-  "main": "src/lib.js",
+  "exports": {
+    ".": "./src/lib/index.js"
+  },
+  "files": [
+    "src",
+    "template",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "clean": "rm -fr my-app node_modules package-lock.json .coverage out",
     "format": "biome format",

@@ -1,7 +1,13 @@
-import { I18n, Icon, Link, Translate } from 'components'
-import { PagesContext, useFx } from 'nextia'
+import { I18n, Icon, Translate } from 'components'
+import {
+  Link,
+  PagesContext,
+  startViewTransition,
+  useFx,
+  useQueryString,
+  useResize
+} from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
-import { startViewTransition, useQueryString, useResize } from 'utils'
 import functions from './functions.js'
 
 export default function Pages() {

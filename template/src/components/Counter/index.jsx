@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import './style.css'
-import { css } from 'nextia'
-import { startViewTransition } from 'utils'
+import { css, startViewTransition } from 'nextia'
 
 export default function Counter({
   name,

@@ -190,7 +190,6 @@ async function createProject(name) {
     }
 
     await cp(templatePath, projectPath, { recursive: true })
-    await cp(`${__dirname}/../biome.json`, `${projectPath}/biome.json`)
 
     await Promise.all(
       ['env.dev', 'env.prod', 'env.test', 'gitignore'].map((fileName) =>

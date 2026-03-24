@@ -1,6 +1,5 @@
-import { css, useFx } from 'nextia'
+import { css, env, useFx } from 'nextia'
 import { useEffect } from 'react'
-import { env } from 'utils'
 import functions from './functions'
 import './style.css'
 
