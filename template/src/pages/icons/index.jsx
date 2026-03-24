@@ -14,7 +14,7 @@ export default function IconsPage() {
       <Icon id="video" width="32" />
       <br />
       <br />
-      <Svg src={exitSvg} width="32" />
+      <Svg src={exitSvg} />
     </section>
   )
 }

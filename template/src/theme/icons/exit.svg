@@ -6,7 +6,7 @@
       svg {
          transition: transform 200ms linear;
 
-         #ani {
+         #ring {
             stroke-dasharray: 1, 200;
             stroke-dashoffset: 1;
             transition:
@@ -26,7 +26,7 @@
          &:hover {
             transform: rotate(-90deg);
 
-            #ani {
+            #ring {
                stroke-dasharray: 200, 1;
                stroke: var(--primary-color);
             }
@@ -36,7 +36,7 @@
                stroke: var(--primary-color);
 
                line {
-                  stroke-width: 6px;
+                  stroke-width: 3px;
                }
 
                #right,
@@ -61,11 +61,12 @@
       ]]>
    </style>
 
-   <path id="solid" d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
-   <path id="ani" d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
+   <path id="ring-bg" d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
+   <path id="ring" d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
    <g id="arrow">
       <line id="left" x1="24" y1="25" x2="10" y2="14" />
       <line id="center" x1="24" y1="1" x2="24" y2="25" />
       <line id="right" x1="24" y1="25" x2="35" y2="14" />
    </g>
+
 </svg>
