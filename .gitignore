@@ -13,4 +13,4 @@ out
 .swc
 
 template/package-lock.json
-examples/**/package-lock.json
+test-template/**/package-lock.json
