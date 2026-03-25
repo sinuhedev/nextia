@@ -10,17 +10,17 @@ export default function ImagesPage() {
 
   return (
     <section className={css('ImagesPage', '')}>
-      <br />
       <p>css-img</p>
       <div className="css-img" />
 
-      <br />
       <p>img</p>
-      <img src={image} alt="img" width="128" />
+      <img src={image} alt="img" width="64" />
 
-      <br />
       <p>svg</p>
-      <Svg src={jsSvg} width="128" />
+      <Svg src={jsSvg} width="64" />
+
+      <p>svg+css</p>
+      <Svg id="svg-css" src={jsSvg} width="64" />
     </section>
   )
 }

@@ -1,8 +1,25 @@
 .ImagesPage {
   .css-img {
     background: url("assets/img/image.webp") no-repeat;
-    height: 128px;
+    height: 64px;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  #svg-css {
+    #label {
+      animation: arrow 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes arrow {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(2px);
   }
 }
