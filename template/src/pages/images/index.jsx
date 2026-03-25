@@ -16,17 +16,11 @@ export default function ImagesPage() {
 
       <br />
       <p>img</p>
-      <img src={image} alt="img" width={128} />
+      <img src={image} alt="img" width="128" />
 
       <br />
       <p>svg</p>
-      <Svg
-        src={jsSvg}
-        width="128"
-        stroke="black"
-        fill="black"
-        className="hola"
-      />
+      <Svg src={jsSvg} width="128" />
     </section>
   )
 }

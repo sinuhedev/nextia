@@ -1,9 +1,6 @@
-<svg width="256" height="245" viewBox="0 0 50.155102 48" version="1.1" id="svg2" xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-   <title>js</title>
-   <defs id="defs2" />
-   <title id="title1">js</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 48 48">
+   <title id="title">js</title>
+   <defs id="defs" />
    <path d="m 6.9596e-8,0 h 50.155103930404003 v 48 h -50.155103930404003 z" fill="#f7df1e" id="path1"
       style="stroke-width:1" />
    <path

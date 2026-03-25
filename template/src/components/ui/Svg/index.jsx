@@ -1,54 +1,38 @@
 import { useEffect, useRef } from 'react'
 
-export default function UiSvg({
-  src,
-  width = '48',
-  height,
-  viewBox = '0 0 48 48',
-  fill = 'none',
-  color = 'currentColor',
-  stroke = 'currentColor',
-  strokeWidth = '2',
-  strokeLinecap = 'round',
-  strokeLinejoin = 'round'
-}) {
-  const ref = useRef()
+export default function Svg({ ref, src, width, height, ...props }) {
+  ref ??= useRef()
 
   useEffect(() => {
-    if (!ref.current) return
+    try {
+      const el = ref.current
 
-    const svg = new DOMParser()
-      .parseFromString(src, 'image/svg+xml')
-      .querySelector('svg')
+      // 1. Lee los atributos del DOM directamente (los que React ya aplicó)
+      const savedAttrs = el.getAttributeNames().map((name) => ({
+        name,
+        value: el.getAttribute(name)
+      }))
 
-    svg.setAttribute('width', width)
-    svg.setAttribute('height', height ?? width)
-    svg.setAttribute('viewBox', viewBox)
-    svg.setAttribute('fill', fill)
-    svg.setAttribute('color', color)
-    svg.setAttribute('stroke', stroke)
-    svg.setAttribute('stroke-width', strokeWidth)
-    svg.setAttribute('stroke-linecap', strokeLinecap)
-    svg.setAttribute('stroke-linejoin', strokeLinejoin)
+      // 2. Aplica los atributos del SVG parseado
+      const svg = new window.DOMParser().parseFromString(
+        src,
+        'image/svg+xml'
+      ).documentElement
 
-    const shadow =
-      ref.current.shadowRoot ?? ref.current.attachShadow({ mode: 'open' })
-    shadow.innerHTML = svg.outerHTML
+      Array.from(svg.attributes).forEach((attr) => {
+        el.setAttribute(attr.name, attr.value)
+      })
 
-    ref.current.style.width = `${width}px`
-    ref.current.style.height = `${height ?? width}px`
-  }, [
-    src,
-    width,
-    height,
-    viewBox,
-    fill,
-    color,
-    stroke,
-    strokeWidth,
-    strokeLinecap,
-    strokeLinejoin
-  ])
+      // 3. Reaplica los atributos del DOM (sobreescriben los del SVG)
+      savedAttrs.forEach(({ name, value }) => {
+        el.setAttribute(name, value)
+      })
 
-  return <div ref={ref} />
+      el.replaceChildren(...svg.children)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [ref, src])
+
+  return <svg ref={ref} width={width} height={height ?? width} {...props} />
 }
