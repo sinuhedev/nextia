@@ -4,7 +4,7 @@ export default function Svg({ ref, src, width, height, ...props }) {
   ref ??= useRef()
 
   useEffect(() => {
-    const svg = new window.DOMParser().parseFromString(
+    const svg = new DOMParser().parseFromString(
       src,
       'image/svg+xml'
     ).documentElement

@@ -1,5 +1,5 @@
 import image from 'assets/img/image.webp'
-import { Svg } from 'components'
+import { Svg, SvgShadow } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
@@ -32,6 +32,9 @@ export default function ImagesPage() {
 
         <p>svg+css (one file)</p>
         <Svg src={imageCssSvg} width="64" />
+
+        <p>svg+css (one file and shadow)</p>
+        <SvgShadow src={imageCssSvg} width="64" />
       </article>
     </section>
   )

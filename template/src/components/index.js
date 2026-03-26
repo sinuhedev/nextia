@@ -4,6 +4,7 @@ import Message from './Message'
 import I18n from './ui/I18n'
 import Icon from './ui/Icon'
 import Svg from './ui/Svg'
+import SvgShadow from './ui/SvgShadow'
 import Translate from './ui/Translate'
 
-export { Counter, I18n, Icon, Message, Svg, Translate }
+export { Counter, I18n, Icon, Message, Svg, SvgShadow, Translate }
