@@ -3,24 +3,36 @@ import { Svg } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
-import jsSvg from 'assets/img/js.svg?raw'
+import imageSvg from 'assets/img/image.svg?raw'
+import imageCssSvg from 'assets/img/image_css.svg?raw'
 
 export default function ImagesPage() {
   const { state, fx } = useFx(functions)
 
   return (
     <section className={css('ImagesPage', '')}>
-      <p>css-img</p>
-      <div className="css-img" />
+      <article>
+        <h2>Static</h2>
 
-      <p>img</p>
-      <img src={image} alt="img" width="64" />
+        <p>css-img</p>
+        <div className="css-img" />
 
-      <p>svg</p>
-      <Svg src={jsSvg} width="64" />
+        <p>img</p>
+        <img src={image} alt="img" width="64" />
 
-      <p>svg+css</p>
-      <Svg id="svg-css" src={jsSvg} width="64" />
+        <p>svg</p>
+        <Svg src={imageSvg} width="64" />
+      </article>
+
+      <article>
+        <h2>Animations</h2>
+
+        <p>svg+css</p>
+        <Svg className="svg-css" src={imageSvg} width="64" />
+
+        <p>svg+css (one file)</p>
+        <Svg src={imageCssSvg} width="64" />
+      </article>
     </section>
   )
 }

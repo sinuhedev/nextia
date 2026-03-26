@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 48 48" strokeWidth="1">
-   <title id="title">js</title>
+<svg width="256" height="256" viewBox="0 0 48 48" strokeWidth="1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
    <defs id="defs" />
    <path id="background" d="m 6.9596e-8,0 h 50.155103930404003 v 48 h -50.155103930404003 z" fill="#f7df1e" />
    <path id="label"

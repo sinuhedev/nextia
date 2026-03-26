@@ -36,7 +36,7 @@ export default function UiIcon({
       className={className}
       style={style}
       width={width}
-      height={height}
+      height={height ?? width}
       viewBox={viewBox}
       fill={fill}
       color={color}
