@@ -1,4 +1,4 @@
-import { Icon, Svg, SvgShadow } from 'components'
+import { Icon, Svg } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
@@ -17,10 +17,6 @@ export default function IconsPage() {
 
       <article>
         <Svg src={exitSvg} width="256" />
-      </article>
-
-      <article>
-        <SvgShadow src={exitSvg} width="64" />
       </article>
     </section>
   )
