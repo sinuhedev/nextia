@@ -3,33 +3,12 @@ import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 
-export default function StartViewTransitionPage() {
+export default function ViewTransitionPage() {
   const { state, fx } = useFx(functions)
 
   return (
-    <section
-      className={css(
-        'StartViewTransitionPage',
-        '',
-        'class-test',
-        'class-test',
-        {},
-        null,
-        true,
-        false,
-        [],
-        { 'css-false': false },
-        undefined,
-        { 'css-true': true },
-        { 'css-true': true }
-      )}
-    >
+    <section className={css('ViewTransitionPage')}>
       Counters
-      <div className={css(null)} />
-      <div className={css(undefined)} />
-      <div className={css([])} />
-      <div className={css({})} />
-      <div className={css()} />
       <Counter
         value={state.count}
         animation="count"

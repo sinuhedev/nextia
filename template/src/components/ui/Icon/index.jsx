@@ -1,9 +1,11 @@
+import { css } from 'nextia'
 import { useEffect, useRef } from 'react'
 import icons from 'theme/icons/icons.svg?raw'
 
 export default function UiIcon({
   id,
   className,
+  animate = false,
   style,
   width = '48',
   height,
@@ -33,7 +35,7 @@ export default function UiIcon({
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       id={id}
-      className={className}
+      className={css({ 'nextia-animate-icon': animate }, className)}
       style={style}
       width={width}
       height={height ?? width}

@@ -1,8 +1,7 @@
-import { Icon, Svg } from 'components'
+import { Icon } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
-import exitSvg from 'theme/icons/exit.svg?raw'
 
 export default function IconsPage() {
   const { state, fx } = useFx(functions)
@@ -16,7 +15,7 @@ export default function IconsPage() {
       </article>
 
       <article>
-        <Svg src={exitSvg} width="256" />
+        <Icon id="exit" animate width="32" />
       </article>
     </section>
   )

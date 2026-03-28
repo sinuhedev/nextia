@@ -1,6 +1,6 @@
-@import "./util.css";
 @import "./fonts/index.css";
-@import "./animations.css";
+@import "./icons/index.css";
+@import "./utils/index.css";
 
 :root {
   --primary-color: #344188;

@@ -95,8 +95,8 @@ export default function Pages() {
         <Link href="#/translate" className="mr-2">
           /translate
         </Link>
-        <Link href="#/start-view-transition" className="mr-2">
-          /start-view-transition
+        <Link href="#/view-transition" className="mr-2">
+          /view-transition
         </Link>
         <Link href="#/images" className="mr-2">
           /images

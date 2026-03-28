@@ -16,12 +16,11 @@
    inkscape:export-filename="icons.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   aria-hidden="true" 
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <title
-     id="title">icons</title>
   <sodipodi:namedview
      id="namedview"
      pagecolor="#505050"
@@ -96,10 +95,10 @@
      style="display:none"
      sodipodi:insensitive="true">
     <path
-       id="solid"
+       id="background"
        d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
     <path
-       id="animation"
+       id="ring"
        d="M 12,3.4 C 5.8,7.2 1.8,14 1.8,22 1.8,35 12,45 24,45 36,45 46,35 46,22 46,14 42,7.2 36,3.4" />
     <g
        id="arrow">
