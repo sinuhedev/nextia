@@ -1,4 +1,4 @@
-import { Icon, Svg } from 'components'
+import { Icon, Svg, SvgShadow } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
@@ -9,12 +9,19 @@ export default function IconsPage() {
 
   return (
     <section className={css('IconsPage', '')}>
-      <Icon id="globe" width="32" />
-      <Icon id="camera" width="32" />
-      <Icon id="video" width="32" />
-      <br />
-      <br />
-      <Svg src={exitSvg} width="32" />
+      <article>
+        <Icon id="globe" width="32" />
+        <Icon id="camera" width="32" />
+        <Icon id="video" width="32" />
+      </article>
+
+      <article>
+        <Svg src={exitSvg} width="256" />
+      </article>
+
+      <article>
+        <SvgShadow src={exitSvg} width="64" />
+      </article>
     </section>
   )
 }

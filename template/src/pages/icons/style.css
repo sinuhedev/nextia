@@ -1,4 +1,7 @@
 .IconsPage {
+  display: flex;
+  justify-content: space-around;
+
   svg {
     margin-right: 10px;
   }
