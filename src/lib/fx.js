@@ -10,7 +10,7 @@
 import { createContext, use, useReducer } from 'react'
 
 const LOGGER = import.meta.env.DEV && import.meta.env.PUBLIC_LOGGER !== 'false'
-const PagesContext = createContext()
+const PagesFx = createContext()
 
 /**
  * util
@@ -147,7 +147,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useFx(functions = { initialState: {} }) {
-  const pageContext = use(PagesContext)
+  const pageContext = use(PagesFx)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     LOGGER ? reducerLogger : reducer,
@@ -196,4 +196,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { PagesContext, useFx }
+export { PagesFx, useFx }

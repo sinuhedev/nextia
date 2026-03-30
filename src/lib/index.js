@@ -1,4 +1,4 @@
-import { PagesContext, useFx } from './fx.js'
+import { PagesFx, useFx } from './fx.js'
 import {
   css,
   env,
@@ -12,7 +12,7 @@ export {
   css,
   env,
   Link,
-  PagesContext,
+  PagesFx,
   startViewTransition,
   useFx,
   useQueryString,
