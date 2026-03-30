@@ -14,21 +14,23 @@ function Link({ children, href, value = {}, ...props }) {
 function I18n({ value, args = [] }) {
   const { context, i18n } = useFx()
 
-  try {
-    let text = value.split('.').reduce((ac, el) => ac[el], i18n)
-    text = text[i18n.locales.indexOf(context.state.i18n.currentLocale)]
+  if (i18n) {
+    try {
+      let text = value.split('.').reduce((ac, el) => ac[el], i18n)
+      text = text[i18n.locales.indexOf(context.state.i18n.currentLocale)]
 
-    if (args) {
-      text = text.replace(
-        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
-        (match, _literal, number) => args[number] || match
-      )
+      if (args) {
+        text = text.replace(
+          /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
+          (match, _literal, number) => args[number] || match
+        )
+      }
+
+      return text
+    } catch {
+      console.error(`Error in [il8n] => ${value}`)
+      return value
     }
-
-    return text
-  } catch {
-    console.error(`Error in [il8n] => ${value}`)
-    return value
   }
 }
 
@@ -52,12 +54,14 @@ function Icon({
   const ref = useRef()
 
   useEffect(() => {
-    const svg = new DOMParser()
-      .parseFromString(icons, 'image/svg+xml')
-      .documentElement.getElementById(id)
+    if (icons) {
+      const svg = new DOMParser()
+        .parseFromString(icons, 'image/svg+xml')
+        .documentElement.getElementById(id)
 
-    if (svg) {
-      ref.current.innerHTML = svg.innerHTML
+      if (svg) {
+        ref.current.innerHTML = svg.innerHTML
+      }
     }
   }, [id, icons])
 
