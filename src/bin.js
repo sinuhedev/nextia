@@ -116,8 +116,8 @@ async function createContainer(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import { useEffect } from 'react'
-import { css, useFx } from 'nextia'
+      `import { css, useFx } from 'nextia'
+import { useEffect } from 'react'
 import functions from './functions'
 import './style.css'
 
