@@ -1,4 +1,4 @@
-.nextia-animate-icon#exit {
+#exit.nextia-animate-icon {
   transition: transform 200ms linear;
 
   #ring {
