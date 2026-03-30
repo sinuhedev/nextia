@@ -1,4 +1,4 @@
-# tailwind
+# TEMPLATE
 
 ## To start
 

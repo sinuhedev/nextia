@@ -6,20 +6,10 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * https://github.com/sinuhedev/create-nextia
+ * https://github.com/sinuhedev/nextia
  */
 
-import {
-  access,
-  cp,
-  mkdir,
-  readFile,
-  rename,
-  writeFile
-} from 'node:fs/promises'
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import pkg from '../package.json' with { type: 'json' }
+import { writeFile } from 'node:fs/promises'
 
 function toPascalCase(str) {
   return str
@@ -165,48 +155,6 @@ export default { initialState }
   }
 }
 
-async function createProject(name) {
-  const projectPath = `${process.cwd()}/${name}/`
-
-  try {
-    await access(projectPath)
-    console.error(`The ${name} already exists`)
-    return
-  } catch {
-    /* directory doesn't exist, proceed */
-  }
-
-  try {
-    const __dirname = dirname(fileURLToPath(import.meta.url))
-    const templatePath = `${__dirname}/../template`
-
-    const replaceToken = async (filename, token, value) => {
-      const content = await readFile(projectPath + filename, 'utf8')
-      await writeFile(
-        projectPath + filename,
-        content.replaceAll(token, value),
-        'utf8'
-      )
-    }
-
-    await cp(templatePath, projectPath, { recursive: true })
-
-    await Promise.all(
-      ['env.dev', 'env.prod', 'env.test', 'gitignore'].map((fileName) =>
-        rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
-      )
-    )
-
-    await replaceToken('README.md', 'TEMPLATE', name)
-    await replaceToken('package.json', 'TEMPLATE', name)
-    await replaceToken('package.json', 'file:../', pkg.version)
-
-    console.info(`✔ Project "${name}" created successfully!`)
-  } catch (err) {
-    console.error(`Failed to create project: ${err.message}`)
-  }
-}
-
 async function main() {
   const ARG1 = process.argv[2]
   const ARG2 = process.argv[3]
@@ -225,11 +173,6 @@ async function main() {
     case 'container':
       if (ARG2) await createContainer(ARG2)
       else console.warn('node --run nextia container <ContainerName>')
-      break
-
-    default:
-      if (ARG1) await createProject(ARG1)
-      else console.info(`v${pkg.version}\nnextia <ProjectName>`)
       break
   }
 }

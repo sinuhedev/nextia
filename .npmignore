@@ -1,5 +1,3 @@
-my-app
-
 node_modules
 out
 
@@ -15,9 +13,7 @@ out
 .next
 .swc
 
-template/**/package-lock.json
+templates
+test
 
-/test
-/test-template
-
-/vitest.config.js
+vitest.config.js

@@ -1,5 +1,3 @@
-my-app
-
 node_modules
 out
 
@@ -12,5 +10,4 @@ out
 .next
 .swc
 
-template/package-lock.json
-test-template/**/package-lock.json
+templates/**/package-lock.json

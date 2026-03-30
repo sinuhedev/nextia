@@ -1,4 +1,4 @@
-# bootstrap
+# TEMPLATE
 
 ## To start
 
