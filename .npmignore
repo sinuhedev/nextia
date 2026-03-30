@@ -16,4 +16,5 @@ out
 templates
 test
 
+biome.json
 vitest.config.js
