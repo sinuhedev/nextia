@@ -49,7 +49,7 @@ export default function Pages() {
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 
-        <Translate value={state.i18n} onChange={fx.changeI18n} />
+        <Translate />
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
