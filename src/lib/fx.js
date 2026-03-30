@@ -147,7 +147,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useFx(functions = { initialState: {} }) {
-  const pageContext = use(PagesFx)
+  const pagesFx = use(PagesFx)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     LOGGER ? reducerLogger : reducer,
@@ -158,7 +158,12 @@ function useFx(functions = { initialState: {} }) {
   const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
     (acc, e) => {
       acc[e] = (payload) =>
-        dispatch({ type: e, payload, initialState, isContext: !pageContext })
+        dispatch({
+          type: e,
+          payload,
+          initialState,
+          isContext: !pagesFx?.context
+        })
       return acc
     },
     {}
@@ -171,10 +176,8 @@ function useFx(functions = { initialState: {} }) {
         const actionsProps = {
           ...commonActions,
           state,
-          payload
-        }
-        if (pageContext) {
-          actionsProps.context = pageContext
+          payload,
+          context: pagesFx?.context
         }
 
         return functions[e](Object.freeze(actionsProps))
@@ -187,10 +190,11 @@ function useFx(functions = { initialState: {} }) {
   const props = {
     initialState,
     state,
-    fx: { ...commonActions, ...actions }
-  }
-  if (pageContext) {
-    props.context = pageContext
+    fx: { ...commonActions, ...actions },
+    //
+    context: pagesFx?.context,
+    icons: pagesFx?.icons,
+    i18n: pagesFx?.i18n
   }
 
   return Object.freeze(props)

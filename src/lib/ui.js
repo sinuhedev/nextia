@@ -1,42 +1,6 @@
-/**
- * Copyright (c) 2025 Sinuhe Maceda https://sinuhe.dev
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * https://github.com/sinuhedev/nextia
- */
-
-import { createElement, useCallback, useEffect, useState } from 'react'
-import { flushSync } from 'react-dom'
-
-/**
- * env
- */
-const env = import.meta.env
-
-/**
- * ui
- */
-
-function css(...classNames) {
-  return classNames
-    .reduce((accumulator, currentValue) => {
-      if (typeof currentValue === 'string') {
-        accumulator.push(currentValue.trim())
-      } else if (
-        !Array.isArray(currentValue) &&
-        typeof currentValue === 'object'
-      ) {
-        for (const e in currentValue) {
-          if (currentValue[e]) accumulator.push(e.trim())
-        }
-      }
-      return accumulator
-    }, [])
-    .filter((e) => e)
-    .join(' ')
-}
+import { createElement, useEffect, useRef } from 'react'
+import { useFx } from './fx'
+import { css } from './utils'
 
 function Link({ children, href, value = {}, ...props }) {
   href ??= window.location.hash.split('?')[0]
@@ -47,69 +11,98 @@ function Link({ children, href, value = {}, ...props }) {
   return createElement('a', { href: href + value, ...props }, children)
 }
 
-/**
- * hooks
- */
+function I18n({ value, args = [] }) {
+  const { context, i18n } = useFx()
 
-function useQueryString() {
-  const getQueryString = useCallback(
-    () => ({
-      hash: window.location.hash.split('?')[0],
-      queryString: Object.fromEntries(
-        new URLSearchParams(window.location.hash.split('?')[1])
+  try {
+    let text = value.split('.').reduce((ac, el) => ac[el], i18n)
+    text = text[i18n.locales.indexOf(context.state.i18n.currentLocale)]
+
+    if (args) {
+      text = text.replace(
+        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
+        (match, _literal, number) => args[number] || match
       )
-    }),
-    []
-  )
+    }
 
-  const [queryString, setQueryString] = useState(getQueryString)
+    return text
+  } catch {
+    console.error(`Error in [il8n] => ${value}`)
+    return value
+  }
+}
+
+function Icon({
+  id,
+  className,
+  animate = false,
+  style,
+  width = '48',
+  height,
+  viewBox = '0 0 48 48',
+  fill = 'none',
+  color = 'currentColor',
+  stroke = 'currentColor',
+  strokeWidth = '2',
+  strokeLinecap = 'round',
+  strokeLinejoin = 'round',
+  ...props
+}) {
+  const { icons } = useFx()
+  const ref = useRef()
 
   useEffect(() => {
-    const handlePopState = () => setQueryString(getQueryString())
+    const svg = new DOMParser()
+      .parseFromString(icons, 'image/svg+xml')
+      .documentElement.getElementById(id)
 
-    window.addEventListener('popstate', handlePopState)
-    return () => {
-      window.removeEventListener('popstate', handlePopState)
+    if (svg) {
+      ref.current.innerHTML = svg.innerHTML
     }
-  }, [getQueryString])
+  }, [id, icons])
 
-  return queryString
+  return createElement('svg', {
+    xmlns: 'http://www.w3.org/2000/svg',
+    ref,
+    id,
+    className: css({ 'nextia-animate-icon': animate }, className),
+    style,
+    width,
+    height: height ?? width,
+    viewBox,
+    fill,
+    color,
+    stroke,
+    strokeWidth,
+    strokeLinecap,
+    strokeLinejoin,
+    ...props
+  })
 }
 
-function useResize() {
-  const getResize = useCallback(
-    () => ({
-      width: window.innerWidth,
-      height: window.innerHeight
-    }),
-    []
-  )
-
-  const [resize, setResize] = useState(getResize)
+function Svg({ ref, src, width, height, ...props }) {
+  ref ??= useRef()
 
   useEffect(() => {
-    const handleResize = () => setResize(getResize())
+    const svg = new DOMParser().parseFromString(
+      src,
+      'image/svg+xml'
+    ).documentElement
 
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
+    for (const { name, value } of svg.attributes) {
+      if (name !== 'width' && name !== 'height')
+        ref.current.setAttribute(name, value)
     }
-  }, [getResize])
 
-  return resize
+    ref.current.replaceChildren(...svg.children)
+  }, [src, ref])
+
+  return createElement('svg', {
+    ref,
+    width,
+    height: height ?? width,
+    ...props
+  })
 }
 
-/**
- * View Transition
- */
-
-async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
-  if (!document.startViewTransition || env.PUBLIC_VIEW_TRANSITION === 'false')
-    return fun()
-
-  ref.style.viewTransitionName = animation
-  await document.startViewTransition(() => flushSync(fun)).finished
-  ref.style.viewTransitionName = ''
-}
-
-export { css, env, Link, startViewTransition, useQueryString, useResize }
+export { I18n, Icon, Link, Svg }

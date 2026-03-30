@@ -1,4 +1,4 @@
-import { I18n } from 'components'
+import { I18n } from 'nextia'
 
 export default function Messages({ name, className, style }) {
   return (

@@ -1,5 +1,8 @@
-import { I18n, Icon, Translate } from 'components'
+import i18nFile from 'assets/i18n'
+import { Translate } from 'components'
 import {
+  I18n,
+  Icon,
   Link,
   PagesFx,
   startViewTransition,
@@ -8,6 +11,7 @@ import {
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
+import iconsFile from 'theme/icons/icons.svg?raw'
 import functions from './functions.js'
 
 export default function Pages() {
@@ -41,7 +45,7 @@ export default function Pages() {
   }, [qs.hash])
 
   return (
-    <PagesFx value={pages}>
+    <PagesFx value={{ context: pages, icons: iconsFile, i18n: i18nFile }}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 

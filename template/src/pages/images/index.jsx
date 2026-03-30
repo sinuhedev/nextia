@@ -1,6 +1,5 @@
 import image from 'assets/img/image.webp'
-import { Svg } from 'components'
-import { css, useFx } from 'nextia'
+import { css, Svg, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 import imageSvg from 'assets/img/image.svg?raw'

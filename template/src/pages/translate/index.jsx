@@ -1,7 +1,7 @@
-import { css, useFx } from 'nextia'
+import { css, I18n, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
-import { I18n, Message } from 'components'
+import { Message } from 'components'
 
 export default function TranslatePage() {
   const { state, fx } = useFx(functions)
