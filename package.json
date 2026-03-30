@@ -26,12 +26,6 @@
   "exports": {
     ".": "./src/lib/index.js"
   },
-  "files": [
-    "src",
-    "template",
-    "LICENSE",
-    "README.md"
-  ],
   "scripts": {
     "clean": "rm -fr my-app node_modules package-lock.json .coverage out",
     "format": "biome format",
