@@ -20,10 +20,10 @@ export default defineConfig(({ mode }) => {
       port
     },
 
-    base: '',
+    base: './',
+    root: `src`,
     envDir: CWD,
     envPrefix: 'PUBLIC_',
-    root: `${CWD}/src`,
     publicDir: `${CWD}/public`,
 
     resolve: {
@@ -88,11 +88,11 @@ export default defineConfig(({ mode }) => {
     test: {
       root: './',
       environment: 'jsdom',
-      include: ['test/**/*.test.{js,jsx,ts,tsx}'],
+      include: ['test/**/*.test.{js,jsx}'],
       coverage: {
         reportsDirectory: '.coverage',
         exclude: ['src/assets', 'src/components/index.js', 'src/index.jsx'],
-        include: ['src/**/*.{js,jsx,ts,tsx}']
+        include: ['src/**/*.{js,jsx}']
       }
     }
   }

@@ -18,10 +18,10 @@ export default defineConfig(() => {
       port
     },
 
-    base: '',
+    base: './',
+    root: `src`,
     envDir: CWD,
     envPrefix: 'PUBLIC_',
-    root: `${CWD}/src`,
     publicDir: `${CWD}/public`,
 
     resolve: {

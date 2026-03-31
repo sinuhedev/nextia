@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config'
 const CWD = process.cwd()
 
 export default defineConfig({
-  root: `${CWD}/src`,
+  root: `src`,
 
   resolve: {
     alias: {
@@ -17,10 +17,10 @@ export default defineConfig({
   test: {
     root: './',
     environment: 'jsdom',
-    include: ['test/**/*.test.{js,jsx,ts,tsx}'],
+    include: ['test/**/*.test.{js,jsx}'],
     coverage: {
       reportsDirectory: '.coverage',
-      include: ['src/**/*.{js,jsx,ts,tsx}']
+      include: ['src/**/*.{js,jsx}']
     }
   }
 })
