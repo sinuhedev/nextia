@@ -79,6 +79,7 @@ export default defineConfig(({ mode }) => {
             .replace(/\t/g, '') // remove tabs
             .replace(/>\s+</g, '><') // remove space between tags
             .trim()
+
           return `export default ${JSON.stringify(code)};`
         }
       }
