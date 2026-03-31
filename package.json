@@ -27,7 +27,7 @@
     ".": "./src/lib/index.js"
   },
   "scripts": {
-    "clean": "rm -fr my-app node_modules package-lock.json .coverage out",
+    "clean": "rm -fr node_modules .coverage out package-lock.json",
     "format": "biome format",
     "lint": "biome lint src",
     "check": "biome check --reporter=summary src",

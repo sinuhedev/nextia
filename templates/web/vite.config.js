@@ -27,12 +27,13 @@ export default defineConfig(({ mode }) => {
     publicDir: `${CWD}/public`,
 
     resolve: {
-      alias: Object.fromEntries(
-        ['assets', 'components', 'services', 'theme', 'utils'].map((dir) => [
-          dir,
-          `${CWD}/src/${dir}`
-        ])
-      )
+      alias: {
+        assets: `${CWD}/src/assets`,
+        components: `${CWD}/src/components`,
+        services: `${CWD}/src/services`,
+        theme: `${CWD}/src/theme`,
+        utils: `${CWD}/src/utils`
+      }
     },
 
     build: {
