@@ -7,7 +7,6 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { useCallback, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 
 /**
@@ -30,59 +29,7 @@ async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
 }
 
 /**
- * hooks
- */
-
-function useQueryString() {
-  const getQueryString = useCallback(
-    () => ({
-      hash: window.location.hash.split('?')[0],
-      queryString: Object.fromEntries(
-        new URLSearchParams(window.location.hash.split('?')[1])
-      )
-    }),
-    []
-  )
-
-  const [queryString, setQueryString] = useState(getQueryString)
-
-  useEffect(() => {
-    const handlePopState = () => setQueryString(getQueryString())
-
-    window.addEventListener('popstate', handlePopState)
-    return () => {
-      window.removeEventListener('popstate', handlePopState)
-    }
-  }, [getQueryString])
-
-  return queryString
-}
-
-function useResize() {
-  const getResize = useCallback(
-    () => ({
-      width: window.innerWidth,
-      height: window.innerHeight
-    }),
-    []
-  )
-
-  const [resize, setResize] = useState(getResize)
-
-  useEffect(() => {
-    const handleResize = () => setResize(getResize())
-
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [getResize])
-
-  return resize
-}
-
-/**
- * util
+ * css
  */
 
 function css(...classNames) {
@@ -104,4 +51,4 @@ function css(...classNames) {
     .join(' ')
 }
 
-export { css, env, startViewTransition, useQueryString, useResize }
+export { css, env, startViewTransition }

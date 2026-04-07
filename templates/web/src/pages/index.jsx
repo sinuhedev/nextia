@@ -12,6 +12,7 @@ import {
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
 import iconsFile from 'theme/icons/icons.svg?raw'
+import { WINDOW_RESIZE } from 'utils'
 import functions from './functions.js'
 
 export default function Pages() {
@@ -20,7 +21,7 @@ export default function Pages() {
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
-  const resize = useResize()
+  const resize = useResize(WINDOW_RESIZE)
   const ref = useRef()
 
   useEffect(() => {
