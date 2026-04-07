@@ -1,6 +1,10 @@
-@import "./fonts/index.css";
-@import "./icons/index.css";
-@import "./utils/index.css";
+@import "./fonts.css";
+@import "./icons.css";
+@import "./view-transition.css";
+
+/**
+ * theme
+ */
 
 :root {
   --primary-color: #344188;
@@ -36,4 +40,32 @@ a {
 
 .p-2 {
   padding: 20px;
+}
+
+/**
+ * Scrollbar
+ */
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: var(--primary-color);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color-50);
+  }
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }

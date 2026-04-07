@@ -1,6 +1,9 @@
 @import "tailwindcss";
-@import "./util.css";
-@import "./fonts/index.css";
+@import "./fonts.css";
+
+/**
+ * Theme
+ */
 
 @layer theme, base, components, utilities;
 
@@ -16,5 +19,33 @@
   body {
     background-color: var(--body-bg);
     color: var(--body-color);
+  }
+}
+
+/**
+ * Scrollbar
+ */
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: color-mix(in srgb, var(--primary), transparent 30%);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
+  }
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
   }
 }

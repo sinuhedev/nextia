@@ -25,7 +25,10 @@ node --run preview
  * .env.test
  
 ```env
+
 PUBLIC_TITLE=dev
+
 PUBLIC_LOGGER=true
 PUBLIC_VIEW_TRANSITION=false
+
 ```

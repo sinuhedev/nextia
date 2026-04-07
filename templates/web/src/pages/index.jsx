@@ -1,4 +1,5 @@
 import i18nFile from 'assets/i18n'
+import iconsFile from 'assets/icons/icons.svg?raw'
 import { Translate } from 'components'
 import {
   I18n,
@@ -11,7 +12,6 @@ import {
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
-import iconsFile from 'theme/icons/icons.svg?raw'
 import { WINDOW_RESIZE } from 'utils'
 import functions from './functions.js'
 
