@@ -8,8 +8,9 @@
  */
 
 import { createContext, use, useReducer } from 'react'
+import { env } from './utils.js'
 
-const LOGGER = import.meta.env.DEV && import.meta.env.PUBLIC_LOGGER !== 'false'
+const LOGGER = env.DEV && env.PUBLIC_LOGGER !== 'false'
 const PagesFx = createContext()
 
 /**
