@@ -46,7 +46,7 @@ export default function Pages() {
   }, [qs.hash])
 
   return (
-    <PagesFx value={{ context: pages, icons: iconsFile, i18n: i18nFile }}>
+    <PagesFx value={{ context: pages, iconsFile, i18nFile }}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 

@@ -193,8 +193,8 @@ function useFx(functions = { initialState: {} }) {
     fx: { ...commonActions, ...actions },
     //
     context: pagesFx?.context,
-    icons: pagesFx?.icons,
-    i18n: pagesFx?.i18n
+    iconsFile: pagesFx?.iconsFile,
+    i18nFile: pagesFx?.i18nFile
   }
 
   return Object.freeze(props)
