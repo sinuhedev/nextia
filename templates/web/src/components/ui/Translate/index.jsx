@@ -6,7 +6,7 @@ export default function UiTranslate({ className, style }) {
   return (
     <article className={className} style={style}>
       <select
-        value={context.state?.i18n || ''}
+        value={context.state?.i18n || i18nFile.defaultLocale}
         onChange={context.fx.changeI18n}
       >
         {i18nFile.locales.map((e) => (
