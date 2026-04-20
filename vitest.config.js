@@ -20,6 +20,7 @@ export default defineConfig({
     include: ['test/**/*.test.{js,jsx}'],
     coverage: {
       reportsDirectory: '.coverage',
+      exclude: ['templates'],
       include: ['src/**/*.{js,jsx}']
     }
   }
