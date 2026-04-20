@@ -6,21 +6,13 @@ import { version } from './package.json'
 
 export default defineConfig(({ mode }) => {
   const CWD = process.cwd()
-  const host = '0.0.0.0'
-  const port = 3000
 
   return {
     server: {
-      host,
-      port
+      host: '0.0.0.0',
+      port: 3000
     },
 
-    preview: {
-      host,
-      port
-    },
-
-    base: './',
     root: `src`,
     envDir: CWD,
     envPrefix: 'PUBLIC_',
@@ -31,19 +23,13 @@ export default defineConfig(({ mode }) => {
         assets: `${CWD}/src/assets`,
         components: `${CWD}/src/components`,
         services: `${CWD}/src/services`,
-        theme: `${CWD}/src/theme`,
         utils: `${CWD}/src/utils`
       }
     },
 
     build: {
       outDir: '../out',
-      assetsDir: 'assets',
       emptyOutDir: true
-    },
-
-    css: {
-      postcss: {}
     },
 
     plugins: [
