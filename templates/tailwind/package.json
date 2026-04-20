@@ -8,7 +8,6 @@
     "dev": "vite --mode dev",
     "clean": "rm -fr node_modules .coverage out package-lock.json",
     "build": "vite build --mode",
-    "preview": "vite preview",
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check --reporter=summary",
@@ -17,14 +16,14 @@
     "componentFx": "nextia componentFx"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.2.2",
+    "@tailwindcss/vite": "4.2.3",
     "@vitejs/plugin-react": "6.0.1",
-    "tailwindcss": "4.2.2",
-    "vite": "8.0.6"
+    "tailwindcss": "4.2.3",
+    "vite": "8.0.9"
   },
   "dependencies": {
     "nextia": "file:../../",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   }
 }
