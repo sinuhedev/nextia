@@ -1,7 +1,6 @@
-import { css, env, useFx } from 'nextia'
+import { env, useFx } from 'nextia'
 import { useEffect } from 'react'
 import functions from './functions'
-import './style.css'
 
 export default function EnvPage() {
   const { state, fx } = useFx(functions)
@@ -12,7 +11,7 @@ export default function EnvPage() {
   }, [])
 
   return (
-    <section className={css('EnvPage', '')}>
+    <section>
       <br />
       <br />
 

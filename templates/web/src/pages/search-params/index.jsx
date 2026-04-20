@@ -1,7 +1,6 @@
-import { css, Link, useFx } from 'nextia'
+import { Link, useFx } from 'nextia'
 import { useEffect } from 'react'
 import functions from './functions'
-import './style.css'
 
 export default function SearchParamsPage({ qs }) {
   const { state, fx } = useFx(functions)
@@ -11,7 +10,7 @@ export default function SearchParamsPage({ qs }) {
   }, [qs])
 
   return (
-    <section className={css('SearchParamsPage', '')}>
+    <section>
       <br />
 
       <Link href="/">Go to href=/</Link>

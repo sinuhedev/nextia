@@ -1,4 +1,4 @@
-import { css, I18n, useFx } from 'nextia'
+import { I18n, useFx } from 'nextia'
 import functions from './functions'
 import './style.css'
 import { Message } from 'components'
@@ -7,7 +7,7 @@ export default function TranslatePage() {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('TranslatePage', '')}>
+    <section>
       <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
       <ul>

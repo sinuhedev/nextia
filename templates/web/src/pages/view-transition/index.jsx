@@ -1,13 +1,12 @@
 import { Counter } from 'components'
 import { css, useFx } from 'nextia'
 import functions from './functions'
-import './style.css'
 
 export default function ViewTransitionPage() {
   const { state, fx } = useFx(functions)
 
   return (
-    <section className={css('ViewTransitionPage')}>
+    <section>
       Counters
       <Counter
         value={state.count}

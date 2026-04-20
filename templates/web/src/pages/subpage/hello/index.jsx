@@ -1,11 +1,8 @@
-import { css, useFx } from 'nextia'
+import { useFx } from 'nextia'
 import functions from './functions'
-import './style.css'
 
 export default function SubpageHelloPage() {
   const { state, fx } = useFx(functions)
 
-  return (
-    <section className={css('SubpageHelloPage', '')}>/subpage/hello</section>
-  )
+  return <section>/subpage/hello</section>
 }

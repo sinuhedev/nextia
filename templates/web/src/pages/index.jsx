@@ -38,7 +38,7 @@ export default function Pages() {
         }
       } catch (e) {
         console.error(e)
-        return await import('./http/not-found/index.jsx')
+        return await import('./not-found.jsx')
       }
     })
 
