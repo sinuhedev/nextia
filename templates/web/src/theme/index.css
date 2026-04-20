@@ -1,5 +1,5 @@
-@import "./fonts.css";
 @import "./icons.css";
+@import "./utils.css";
 @import "./view-transition.css";
 
 /**
@@ -14,10 +14,6 @@
   --body-color: #a8a8a8;
   --font-family: "Roboto";
 }
-
-/**
- * html
- */
 
 html,
 body {
@@ -40,32 +36,4 @@ a {
 
 .p-2 {
   padding: 20px;
-}
-
-/**
- * Scrollbar
- */
-
-@media (pointer: fine) {
-  ::-webkit-scrollbar {
-    width: 14px;
-    height: 14px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 14px;
-    border: 3px solid transparent;
-    background-clip: content-box;
-    background-color: var(--primary-color);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--primary-color-50);
-  }
-
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-corner {
-    background-color: transparent;
-  }
 }
