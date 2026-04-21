@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <Pages value={{ context: app, iconsFile, i18nFile }}>
-      <header style={{ display: 'flex', gap: '20px' }}>
+      <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 
         <Translate />
