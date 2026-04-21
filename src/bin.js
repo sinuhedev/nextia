@@ -21,7 +21,7 @@ function toPascalCase(str) {
 }
 
 async function createPage(name) {
-  const dirName = `./src/pages/${name}`
+  const dirName = `./src/app/${name}`
   const pageName = `${toPascalCase(name)}Page`
 
   try {
