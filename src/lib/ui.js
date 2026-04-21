@@ -9,7 +9,6 @@
 
 import { createElement, useEffect, useRef } from 'react'
 import { useFx } from './fx'
-import { css } from './utils'
 
 function Link({ children, href, value = {}, ...props }) {
   href ??= window.location.hash.split('?')[0]
@@ -84,7 +83,7 @@ function Icon({
     xmlns: 'http://www.w3.org/2000/svg',
     ref,
     id,
-    className: css({ 'nextia-animate-icon': animate }, className),
+    className,
     style,
     width,
     height: height ?? width,

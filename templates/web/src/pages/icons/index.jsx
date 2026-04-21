@@ -14,7 +14,7 @@ export default function IconsPage() {
       </article>
 
       <article>
-        <Icon id="exit" animate width="128" />
+        <Icon id="exit" className="animate" width="128" />
       </article>
     </section>
   )
