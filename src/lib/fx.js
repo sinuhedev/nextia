@@ -11,7 +11,7 @@ import { createContext, use, useReducer } from 'react'
 import { env } from './utils.js'
 
 const LOGGER = env.DEV && env.PUBLIC_LOGGER !== 'false'
-const PagesFx = createContext()
+const Pages = createContext()
 
 /**
  * util
@@ -148,7 +148,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useFx(functions = { initialState: {} }) {
-  const pagesFx = use(PagesFx)
+  const pages = use(Pages)
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     LOGGER ? reducerLogger : reducer,
@@ -163,7 +163,7 @@ function useFx(functions = { initialState: {} }) {
           type: e,
           payload,
           initialState,
-          isContext: !pagesFx?.context
+          isContext: !pages?.context
         })
       return acc
     },
@@ -178,7 +178,7 @@ function useFx(functions = { initialState: {} }) {
           ...commonActions,
           state,
           payload,
-          context: pagesFx?.context
+          context: pages?.context
         }
 
         return functions[e](Object.freeze(actionsProps))
@@ -193,12 +193,12 @@ function useFx(functions = { initialState: {} }) {
     state,
     fx: { ...commonActions, ...actions },
     //
-    context: pagesFx?.context,
-    iconsFile: pagesFx?.iconsFile,
-    i18nFile: pagesFx?.i18nFile
+    context: pages?.context,
+    iconsFile: pages?.iconsFile,
+    i18nFile: pages?.i18nFile
   }
 
   return Object.freeze(props)
 }
 
-export { PagesFx, useFx }
+export { Pages, useFx }

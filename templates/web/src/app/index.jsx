@@ -5,7 +5,7 @@ import {
   I18n,
   Icon,
   Link,
-  PagesFx,
+  Pages,
   startViewTransition,
   useFx,
   useQueryString,
@@ -15,7 +15,7 @@ import { lazy, useEffect, useRef, useState } from 'react'
 import { WINDOW_RESIZE } from 'utils'
 import functions from './functions.js'
 
-export default function Pages() {
+export default function App() {
   const pages = useFx(functions)
   const { state, fx } = pages
 
@@ -46,7 +46,7 @@ export default function Pages() {
   }, [qs.hash])
 
   return (
-    <PagesFx value={{ context: pages, iconsFile, i18nFile }}>
+    <Pages value={{ context: pages, iconsFile, i18nFile }}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 
@@ -120,6 +120,6 @@ export default function Pages() {
       <main ref={ref} className="m-2">
         {Page && <Page qs={qs.queryString} resize={resize} />}
       </main>
-    </PagesFx>
+    </Pages>
   )
 }

@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { PagesFx, useFx } from './fx.js'
+import { Pages, useFx } from './fx.js'
 import { useQueryString, useResize } from './hooks.js'
 import { I18n, Icon, Link, Svg } from './ui.js'
 import { css, env, startViewTransition } from './utils.js'
@@ -18,7 +18,7 @@ export {
   I18n,
   Icon,
   Link,
-  PagesFx,
+  Pages,
   Svg,
   startViewTransition,
   useFx,
