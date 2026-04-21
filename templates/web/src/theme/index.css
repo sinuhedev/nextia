@@ -1,5 +1,5 @@
-@import "./icons.css";
 @import "./utils.css";
+@import "./icons/index.css";
 @import "./view-transition.css";
 
 /**
