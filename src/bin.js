@@ -30,12 +30,12 @@ async function createPage(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import { css, useFx } from 'nextia'
-import functions from './functions'
+      `import { css } from 'nextia'
+import useFunctions from './functions'
 import './style.css'
 
-export default function ${pageName} () {
-  const { state, fx } = useFx(functions)
+export default function ${pageName}() {
+  const { state, fx } = useFunctions()
 
   return (
     <section className={css('${pageName}', '')}>
@@ -57,9 +57,15 @@ export default function ${pageName} () {
     // function.js
     writeFile(
       `${dirName}/functions.js`,
-      `const initialState = {}
+      `import { useFx } from 'nextia'
 
-export default { initialState }
+export default () => {
+  const initialState = {}
+
+  return useFx({
+    initialState
+  })
+}
 `
     )
     console.info(`✔ Page "${pageName}" created at ${dirName}`)
@@ -81,7 +87,7 @@ async function createComponent(name) {
       `import { css } from 'nextia'
 import './style.css'
 
-export default function ${componentName} ({ className, style }) {
+export default function ${componentName}({ className, style }) {
   return (
     <article className={css('${componentName}', className)} style={style}>
       ${componentName}
@@ -104,54 +110,6 @@ export default function ${componentName} ({ className, style }) {
   }
 }
 
-async function createComponentFx(name) {
-  const dirName = `./src/components/${name}`
-  const componentFxName = toPascalCase(name)
-
-  try {
-    await mkdir(dirName)
-
-    // index.jsx
-    writeFile(
-      `${dirName}/index.jsx`,
-      `import { css, useFx } from 'nextia'
-import functions from './functions'
-import './style.css'
-
-export default function ${componentFxName} ({ className, style }) {
-  const { state, fx } = useFx(functions)
-
-  return (
-    <article className={css('${componentFxName}', className, '')} style={style}>
-      ${componentFxName}
-    </article>
-  )
-}
-`
-    )
-
-    // style.css
-    writeFile(
-      `${dirName}/style.css`,
-      `.${componentFxName}  {
-}
-`
-    )
-
-    // function.js
-    writeFile(
-      `${dirName}/functions.js`,
-      `const initialState = {}
-
-export default { initialState }
-`
-    )
-    console.info(`✔ ComponentFx "${name}" created at ${dirName}`)
-  } catch (err) {
-    console.error(`Failed to create component:fx: ${err.message}`)
-  }
-}
-
 async function main() {
   const ARG1 = process.argv[2]
   const ARG2 = process.argv[3]
@@ -165,11 +123,6 @@ async function main() {
     case 'component':
       if (ARG2) await createComponent(ARG2)
       else console.warn('node --run component -- <ComponentName>')
-      break
-
-    case 'component:fx':
-      if (ARG2) await createComponentFx(ARG2)
-      else console.warn('node --run component:fx -- <ComponentFxName>')
       break
   }
 }

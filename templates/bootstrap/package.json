@@ -12,8 +12,7 @@
     "lint": "biome lint",
     "check": "biome check --reporter=summary",
     "page": "nextia page",
-    "component": "nextia component",
-    "componentFx": "nextia componentFx"
+    "component": "nextia component"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.0.1",

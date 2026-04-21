@@ -15,8 +15,8 @@ import { WINDOW_RESIZE } from 'utils'
 import useFunctions from './functions.js'
 
 export default function App() {
-  const pages = useFunctions()
-  const { state, fx } = pages
+  const app = useFunctions()
+  const { state, fx } = app
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
@@ -45,7 +45,7 @@ export default function App() {
   }, [qs.hash])
 
   return (
-    <Pages value={{ context: pages, iconsFile, i18nFile }}>
+    <Pages value={{ context: app, iconsFile, i18nFile }}>
       <header style={{ display: 'flex', gap: '20px' }}>
         <Icon id="globe" width="24" />
 
