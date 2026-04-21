@@ -1,5 +1,5 @@
-import './style.css'
 import { css } from 'nextia'
+import './style.css'
 
 export default function Button({
   children,
