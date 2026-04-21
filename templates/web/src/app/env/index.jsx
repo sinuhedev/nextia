@@ -5,7 +5,6 @@ import useFunctions from './functions'
 export default function EnvPage() {
   const { state, fx } = useFunctions
 
-  // env
   useEffect(() => {
     console.log('env:', env)
   }, [])

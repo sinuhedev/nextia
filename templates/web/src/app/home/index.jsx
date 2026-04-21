@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './style.css'
-import { css, useFx } from 'nextia'
+import { css } from 'nextia'
 import { sum } from 'utils'
 import useFunctions from './functions'
 
@@ -73,16 +73,19 @@ export default function HomePage() {
         <div>
           <p>Reset :</p>
           <button type="button" onClick={() => fx.reset('ls')}>
-            Reset (ls)
+            (ls)
           </button>
           <button type="button" onClick={() => fx.reset('form.name')}>
-            Reset (form.name)
+            (form.name)
           </button>
+        </div>
+
+        <div>
           <button
             type="button"
             onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
           >
-            Reset ([channel,msg,form.name])
+            ([channel,msg,form.name])
           </button>
         </div>
 
@@ -93,6 +96,63 @@ export default function HomePage() {
           </button>
           <button type="button" onClick={(e) => fx.decrement(e)}>
             -
+          </button>
+        </div>
+
+        <div>
+          <p>onChange:</p>
+
+          {/* input text */}
+          <input
+            type="text"
+            name="form.name.firstName"
+            value={state.form.name.firstName}
+            onChange={(evt) => fx.change(evt)}
+          />
+
+          {/* select */}
+          <select name="form.year" onChange={(evt) => fx.change(evt)}>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="33">33</option>
+          </select>
+        </div>
+
+        <div style={{ marginLeft: '20px' }}>
+          {/* checkbox */}
+          <input
+            type="checkbox"
+            name="form.funny"
+            checked={state.form.funny}
+            onChange={(evt) => fx.change(evt)}
+          />
+          <label htmlFor="form.funny">Funny</label>
+
+          {/* radio */}
+          <input
+            type="radio"
+            name="form.gender"
+            value="M"
+            checked={state.form.gender === 'M'}
+            onChange={(evt) => fx.change(evt)}
+          />
+          <label htmlFor="M">M</label>
+          <input
+            type="radio"
+            name="form.gender"
+            value="F"
+            checked={state.form.gender === 'F'}
+            onChange={(evt) => fx.change(evt)}
+          />
+          <label htmlFor="F">F</label>
+        </div>
+      </div>
+
+      <div>
+        <div style={{ textAlign: 'center' }}>
+          <button type="button" onClick={() => fx.reset()}>
+            RESET
           </button>
 
           <button
@@ -131,61 +191,7 @@ export default function HomePage() {
           >
             256
           </button>
-        </div>
 
-        <div>
-          <p>onChange:</p>
-
-          {/* input text */}
-          <input
-            type="text"
-            name="form.name.firstName"
-            value={state.form.name.firstName}
-            onChange={(evt) => fx.change(evt)}
-          />
-
-          {/* checkbox */}
-          <input
-            type="checkbox"
-            name="form.funny"
-            checked={state.form.funny}
-            onChange={(evt) => fx.change(evt)}
-          />
-          <label htmlFor="form.funny">Funny</label>
-
-          {/* radio */}
-          <input
-            type="radio"
-            name="form.gender"
-            value="M"
-            checked={state.form.gender === 'M'}
-            onChange={(evt) => fx.change(evt)}
-          />
-          <label htmlFor="M">M</label>
-          <input
-            type="radio"
-            name="form.gender"
-            value="F"
-            checked={state.form.gender === 'F'}
-            onChange={(evt) => fx.change(evt)}
-          />
-          <label htmlFor="F">F</label>
-
-          {/* select */}
-          <select name="form.year" onChange={(evt) => fx.change(evt)}>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="33">33</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <div style={{ textAlign: 'center' }}>
-          <button type="button" onClick={() => fx.reset()}>
-            RESET
-          </button>
           <button
             type="button"
             onClick={() => {
