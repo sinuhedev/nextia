@@ -144,11 +144,21 @@ const reducerLogger = (state, action) => {
 }
 
 /**
- * useFx
+ * useCx and useFx
  */
 
-function useFx(functions = { initialState: {} }) {
+function useCx() {
   const pages = use(Pages)
+
+  return {
+    context: pages?.context,
+    iconsFile: pages?.iconsFile,
+    i18nFile: pages?.i18nFile
+  }
+}
+
+function useFx(functions = { initialState: {} }) {
+  const pages = useCx()
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     LOGGER ? reducerLogger : reducer,
@@ -201,4 +211,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { Pages, useFx }
+export { Pages, useCx, useFx }

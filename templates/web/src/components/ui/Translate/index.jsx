@@ -1,7 +1,7 @@
-import { useFx } from 'nextia'
+import { useCx } from 'nextia'
 
 export default function UiTranslate({ className, style }) {
-  const { context, i18nFile } = useFx()
+  const { context, i18nFile } = useCx()
 
   return (
     <article className={className} style={style}>

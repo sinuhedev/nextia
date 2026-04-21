@@ -8,7 +8,7 @@
  */
 
 import { createElement, useEffect, useRef } from 'react'
-import { useFx } from './fx'
+import { useCx } from './fx'
 
 function Link({ children, href, value = {}, ...props }) {
   href ??= window.location.hash.split('?')[0]
@@ -20,7 +20,7 @@ function Link({ children, href, value = {}, ...props }) {
 }
 
 function I18n({ value, args = [] }) {
-  const { context, i18nFile } = useFx()
+  const { context, i18nFile } = useCx()
 
   if (i18nFile) {
     try {
@@ -64,7 +64,7 @@ function Icon({
   strokeLinejoin = 'round',
   ...props
 }) {
-  const { iconsFile } = useFx()
+  const { iconsFile } = useCx()
   const ref = useRef()
 
   useEffect(() => {
