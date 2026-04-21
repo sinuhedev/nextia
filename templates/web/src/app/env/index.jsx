@@ -1,9 +1,9 @@
-import { env, useFx } from 'nextia'
+import { env } from 'nextia'
 import { useEffect } from 'react'
-import functions from './functions'
+import useFunctions from './functions'
 
 export default function EnvPage() {
-  const { state, fx } = useFx(functions)
+  const { state, fx } = useFunctions
 
   // env
   useEffect(() => {

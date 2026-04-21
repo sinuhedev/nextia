@@ -1,9 +1,8 @@
-import { useFx } from 'nextia'
 import { useEffect } from 'react'
-import functions from './functions'
+import useFunctions from './functions'
 
 export default function MyContext() {
-  const { state, fx, context } = useFx(functions)
+  const { state, fx, context } = useFunctions()
 
   useEffect(() => {
     fx.init()

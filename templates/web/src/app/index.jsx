@@ -7,16 +7,15 @@ import {
   Link,
   Pages,
   startViewTransition,
-  useFx,
   useQueryString,
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
 import { WINDOW_RESIZE } from 'utils'
-import functions from './functions.js'
+import useFunctions from './functions.js'
 
 export default function App() {
-  const pages = useFx(functions)
+  const pages = useFunctions()
   const { state, fx } = pages
 
   const [Page, setPage] = useState()

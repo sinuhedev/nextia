@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import './style.css'
 import { css, useFx } from 'nextia'
 import { sum } from 'utils'
-import functions from './functions'
+import useFunctions from './functions'
 
 export default function HomePage() {
-  const { state, initialState, fx, context } = useFx(functions)
+  const { state, initialState, fx, context } = useFunctions()
 
   useEffect(() => {
     console.info(sum(10, 10))

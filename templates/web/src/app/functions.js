@@ -1,31 +1,35 @@
-const initialState = {
-  i18n: window.localStorage.getItem('i18n'),
-  loading: false,
-  num: 0
-}
+import { useFx } from 'nextia'
 
-function changeI18n({ payload, set }) {
-  const { value } = payload.target
-  set({ i18n: value })
-  window.localStorage.setItem('i18n', value)
-}
+export default () => {
+  const initialState = {
+    i18n: window.localStorage.getItem('i18n'),
+    loading: false,
+    num: 0
+  }
 
-function increment({ state, set }) {
-  set({ num: state.num + 1 })
-}
+  function changeI18n({ payload, set }) {
+    const { value } = payload.target
+    set({ i18n: value })
+    window.localStorage.setItem('i18n', value)
+  }
 
-function decrement({ state, set }) {
-  set({ num: state.num - 1 })
-}
+  function increment({ state, set }) {
+    set({ num: state.num + 1 })
+  }
 
-function zero({ payload, set }) {
-  set({ num: payload.value })
-}
+  function decrement({ state, set }) {
+    set({ num: state.num - 1 })
+  }
 
-export default {
-  initialState,
-  changeI18n,
-  increment,
-  decrement,
-  zero
+  function zero({ payload, set }) {
+    set({ num: payload.value })
+  }
+
+  return useFx({
+    initialState,
+    changeI18n,
+    increment,
+    decrement,
+    zero
+  })
 }

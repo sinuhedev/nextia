@@ -1,7 +1,11 @@
-const initialState = {}
+import { useFx } from 'nextia'
 
-function init({ context }) {
-  context.fx.set({ num: 300 })
+export default () => {
+  const initialState = {}
+
+  function init({ context }) {
+    context.fx.set({ num: 300 })
+  }
+
+  return useFx({ initialState, init })
 }
-
-export default { initialState, init }

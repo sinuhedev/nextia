@@ -1,9 +1,8 @@
 import { Counter } from 'components'
-import { css, useFx } from 'nextia'
-import functions from './functions'
+import useFunctions from './functions'
 
 export default function ViewTransitionPage() {
-  const { state, fx } = useFx(functions)
+  const { state, fx } = useFunctions()
 
   return (
     <section>

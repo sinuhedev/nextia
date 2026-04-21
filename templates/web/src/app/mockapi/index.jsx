@@ -1,9 +1,9 @@
-import { css, useFx } from 'nextia'
-import functions from './functions'
+import { css } from 'nextia'
+import useFunctions from './functions'
 import './style.css'
 
 export default function MockapiPage() {
-  const { initialState, state, fx } = useFx(functions)
+  const { initialState, state, fx } = useFunctions()
 
   return (
     <section className={css('MockapiPage', 'container')}>

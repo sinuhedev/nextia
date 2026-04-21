@@ -1,11 +1,11 @@
-import image from 'assets/img/image.webp'
-import { css, Svg, useFx } from 'nextia'
-import functions from './functions'
-import './style.css'
 import imageSvg from 'assets/img/image.svg?raw'
+import image from 'assets/img/image.webp'
+import { css, Svg } from 'nextia'
+import useFunctions from './functions'
+import './style.css'
 
 export default function ImagesPage() {
-  const { state, fx } = useFx(functions)
+  const { state, fx } = useFunctions()
 
   return (
     <section className={css('ImagesPage', '')}>

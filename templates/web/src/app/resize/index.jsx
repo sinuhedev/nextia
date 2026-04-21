@@ -1,8 +1,7 @@
-import { useFx } from 'nextia'
-import functions from './functions'
+import useFunctions from './functions'
 
 export default function ResizePage({ resize }) {
-  const { state, fx } = useFx(functions)
+  const { state, fx } = useFunctions()
 
   return (
     <section>
