@@ -9,7 +9,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 
 function toPascalCase(str) {
   return str
@@ -31,7 +31,6 @@ async function createPage(name) {
     writeFile(
       `${dirName}/index.jsx`,
       `import { css, useFx } from 'nextia'
-import { useEffect } from 'react'
 import functions from './functions'
 import './style.css'
 
@@ -71,16 +70,15 @@ export default { initialState }
 
 async function createComponent(name) {
   const dirName = `./src/components/${name}`
+  const componentName = toPascalCase(name)
 
   try {
     await mkdir(dirName)
-    const componentName = toPascalCase(name)
 
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
       `import { css } from 'nextia'
-import { useEffect } from 'react'
 import './style.css'
 
 export default function ${componentName} ({ className, style }) {
@@ -106,27 +104,26 @@ export default function ${componentName} ({ className, style }) {
   }
 }
 
-async function createContainer(name) {
+async function createComponentFx(name) {
   const dirName = `./src/components/${name}`
+  const componentFxName = toPascalCase(name)
 
   try {
     await mkdir(dirName)
-    const containerName = toPascalCase(name)
 
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
       `import { css, useFx } from 'nextia'
-import { useEffect } from 'react'
 import functions from './functions'
 import './style.css'
 
-export default function ${containerName} ({ className, style }) {
+export default function ${componentFxName} ({ className, style }) {
   const { state, fx } = useFx(functions)
 
   return (
-    <article className={css('${containerName}', className, '')} style={style}>
-      ${containerName}
+    <article className={css('${componentFxName}', className, '')} style={style}>
+      ${componentFxName}
     </article>
   )
 }
@@ -136,7 +133,7 @@ export default function ${containerName} ({ className, style }) {
     // style.css
     writeFile(
       `${dirName}/style.css`,
-      `.${containerName}  {
+      `.${componentFxName}  {
 }
 `
     )
@@ -149,9 +146,9 @@ export default function ${containerName} ({ className, style }) {
 export default { initialState }
 `
     )
-    console.info(`✔ Container "${name}" created at ${dirName}`)
+    console.info(`✔ ComponentFx "${name}" created at ${dirName}`)
   } catch (err) {
-    console.error(`Failed to create container: ${err.message}`)
+    console.error(`Failed to create component:fx: ${err.message}`)
   }
 }
 
@@ -162,17 +159,17 @@ async function main() {
   switch (ARG1) {
     case 'page':
       if (ARG2) await createPage(ARG2)
-      else console.warn('node --run nextia page <page-name>')
+      else console.warn('node --run page -- <page-name>')
       break
 
     case 'component':
       if (ARG2) await createComponent(ARG2)
-      else console.warn('node --run nextia component <ComponentName>')
+      else console.warn('node --run component -- <ComponentName>')
       break
 
-    case 'container':
-      if (ARG2) await createContainer(ARG2)
-      else console.warn('node --run nextia container <ContainerName>')
+    case 'component:fx':
+      if (ARG2) await createComponentFx(ARG2)
+      else console.warn('node --run component:fx -- <ComponentFxName>')
       break
   }
 }

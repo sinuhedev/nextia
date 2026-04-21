@@ -13,7 +13,7 @@
     "check": "biome check --reporter=summary",
     "page": "nextia page",
     "component": "nextia component",
-    "componentFx": "nextia componentFx",
+    "component:fx": "nextia component:fx",
     "test": "vitest",
     "test:name": "vitest run --testNamePattern",
     "test:silent": "vitest run --silent",
