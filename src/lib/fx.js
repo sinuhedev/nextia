@@ -202,10 +202,7 @@ function useFx(functions = { initialState: {} }) {
     initialState,
     state,
     fx: { ...commonActions, ...actions },
-    //
-    context: pages?.context,
-    iconsFile: pages?.iconsFile,
-    i18nFile: pages?.i18nFile
+    ...pages
   }
 
   return Object.freeze(props)

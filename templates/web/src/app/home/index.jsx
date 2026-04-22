@@ -204,10 +204,10 @@ export default function HomePage() {
         </div>
 
         <div style={{ display: 'flex' }}>
-          <pre style={{ margin: '0 50px 0 50px' }}>
+          <pre style={{ margin: '0 50px 0 50px', minHeight: '750px' }}>
             state = {JSON.stringify(state, undefined, 2)}
           </pre>
-          <pre style={{ margin: '0 50px 0 50px' }}>
+          <pre style={{ margin: '0 50px 0 50px', minHeight: '750px' }}>
             initialState = {JSON.stringify(initialState, undefined, 2)}
           </pre>
         </div>
