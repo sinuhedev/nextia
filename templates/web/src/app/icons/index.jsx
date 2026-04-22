@@ -1,10 +1,7 @@
 import { css, Icon } from 'nextia'
-import useFunctions from './functions'
 import './style.css'
 
 export default function IconsPage() {
-  const { state, fx } = useFunctions()
-
   return (
     <section className={css('IconsPage', '')}>
       <article>

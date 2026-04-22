@@ -1,10 +1,7 @@
 import { env } from 'nextia'
 import { useEffect } from 'react'
-import useFunctions from './functions'
 
 export default function EnvPage() {
-  const { state, fx } = useFunctions
-
   useEffect(() => {
     console.log('env:', env)
   }, [])

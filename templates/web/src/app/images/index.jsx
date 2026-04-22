@@ -1,12 +1,9 @@
 import imageSvg from 'assets/img/image.svg?raw'
 import image from 'assets/img/image.webp'
 import { css, Svg } from 'nextia'
-import useFunctions from './functions'
 import './style.css'
 
 export default function ImagesPage() {
-  const { state, fx } = useFunctions()
-
   return (
     <section className={css('ImagesPage', '')}>
       <p>css-img</p>
