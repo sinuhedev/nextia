@@ -69,13 +69,7 @@ function Icon({
 
   useEffect(() => {
     if (iconsFile) {
-      const svg = new DOMParser()
-        .parseFromString(iconsFile, 'image/svg+xml')
-        .documentElement.getElementById(id)
-
-      if (svg) {
-        ref.current.innerHTML = svg.innerHTML
-      }
+      ref.current.innerHTML = iconsFile.getElementById(id).innerHTML
     }
   }, [id, iconsFile])
 

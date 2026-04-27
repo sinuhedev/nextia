@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useReducer } from 'react'
+import { createContext, use, useEffect, useReducer, useState } from 'react'
 import { env } from './utils.js'
 
 const LOGGER = env.DEV && env.PUBLIC_LOGGER !== 'false'
@@ -149,10 +149,30 @@ const reducerLogger = (state, action) => {
 
 function useCx() {
   const pages = use(Pages)
+  const [iconsFile, setIconsFile] = useState()
+  // const [i18nFile, setI18nFile] = useState()
+
+  // icons
+  useEffect(() => {
+    fetch(pages?.iconsFile)
+      .then((r) => r.text())
+      .then((text) => {
+        setIconsFile(
+          new DOMParser().parseFromString(text, 'image/svg+xml').documentElement
+        )
+      })
+  }, [pages?.iconsFile])
+
+  // // i18n
+  // useEffect(() => {
+  //   fetch(pages?.i18nFile).then((json) => {
+  //     setI18nFile(json)
+  //   })
+  // }, [pages?.i18nFile])
 
   return {
     context: pages?.context,
-    iconsFile: pages?.iconsFile,
+    iconsFile,
     i18nFile: pages?.i18nFile
   }
 }
