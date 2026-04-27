@@ -1,4 +1,4 @@
-import imageSvg from 'assets/img/image.svg?raw'
+import imageSvg from 'assets/img/image.svg'
 import image from 'assets/img/image.webp'
 import { css, Svg } from 'nextia'
 import './style.css'
@@ -16,7 +16,7 @@ export default function ImagesPage() {
       <Svg src={imageSvg} width="64" />
 
       <p>svg+css</p>
-      <Svg className="svg-css" src={imageSvg} width="64" />
+      <Svg src={imageSvg} className="svg-css" width="64" />
     </section>
   )
 }

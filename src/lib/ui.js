@@ -102,17 +102,21 @@ function Svg({ ref, src, width, height, ...props }) {
   ref ??= useRef()
 
   useEffect(() => {
-    const svg = new DOMParser().parseFromString(
-      src,
-      'image/svg+xml'
-    ).documentElement
+    fetch(src)
+      .then((r) => r.text())
+      .then((text) => {
+        const svg = new DOMParser().parseFromString(
+          text,
+          'image/svg+xml'
+        ).documentElement
 
-    for (const { name, value } of svg.attributes) {
-      if (name !== 'width' && name !== 'height')
-        ref.current.setAttribute(name, value)
-    }
+        for (const { name, value } of svg.attributes) {
+          if (name !== 'width' && name !== 'height')
+            ref.current.setAttribute(name, value)
+        }
 
-    ref.current.replaceChildren(...svg.children)
+        ref.current.replaceChildren(...svg.children)
+      })
   }, [src, ref])
 
   return createElement('svg', {

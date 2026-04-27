@@ -1,5 +1,5 @@
-import i18nFile from 'assets/i18n'
-import iconsFile from 'assets/icons/icons.svg?raw'
+import i18nFile from 'assets/i18n.json'
+import iconsFile from 'assets/icons.svg?raw'
 import { Translate } from 'components'
 import {
   I18n,
