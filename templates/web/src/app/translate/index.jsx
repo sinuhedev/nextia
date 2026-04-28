@@ -1,6 +1,5 @@
 import { Message } from 'components'
 import { I18n } from 'nextia'
-import './style.css'
 
 export default function TranslatePage() {
   return (

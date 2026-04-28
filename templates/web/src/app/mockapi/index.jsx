@@ -1,13 +1,11 @@
-import { css } from 'nextia'
 import useFunctions from './functions'
-import './style.css'
 
 export default function MockapiPage() {
   const { initialState, state, fx } = useFunctions()
 
   return (
-    <section className={css('MockapiPage', 'container')}>
-      <div>
+    <section className="flex">
+      <section className="flex-column m-2">
         <button type="button" onClick={() => fx.reset(['users', 'user'])}>
           Reset
         </button>
@@ -61,9 +59,9 @@ export default function MockapiPage() {
         >
           Delete user
         </button>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <h1>MockapiPage</h1>
 
         <div>
@@ -84,7 +82,7 @@ export default function MockapiPage() {
             onChange={(evt) => fx.change(evt)}
           />
         </div>
-      </div>
+      </section>
 
       <section>
         <article style={{ display: 'flex' }}>

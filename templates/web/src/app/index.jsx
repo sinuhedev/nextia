@@ -53,15 +53,27 @@ export default function App() {
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
-        <button type="button" onClick={(e) => fx.increment(e)}>
+        <button
+          type="button"
+          className="btn-md"
+          onClick={(e) => fx.increment(e)}
+        >
           increment
         </button>
         {'  '}
-        <button type="button" onClick={(e) => fx.decrement(e)}>
+        <button
+          type="button"
+          className="btn-md"
+          onClick={(e) => fx.decrement(e)}
+        >
           decrement
         </button>
         {'  '}
-        <button type="button" onClick={() => fx.zero({ value: 0 })}>
+        <button
+          type="button"
+          className="btn-md"
+          onClick={() => fx.zero({ value: 0 })}
+        >
           zero
         </button>
         {'  '}
