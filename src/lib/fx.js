@@ -133,7 +133,7 @@ const reducerLogger = (state, action) => {
   }
 
   console.log(
-    `%c${action.isContext ? 'Pages Context' : 'Page'} %c${action.type}`,
+    `%c${action.isContext ? 'Context' : 'Page'} %c${action.type}`,
     'color: #90b1d1',
     'color: #6592c8',
     payloadLog(action),
@@ -149,27 +149,27 @@ const reducerLogger = (state, action) => {
 
 function useCx() {
   const pages = use(Pages)
-  const [iconsFile, setIconsFile] = useState()
+  const [icons, setIcons] = useState()
 
   useEffect(() => {
-    fetch(pages?.iconsFile)
+    fetch(pages?.icons)
       .then((r) => r.text())
       .then((text) => {
-        setIconsFile(
+        setIcons(
           new DOMParser().parseFromString(text, 'image/svg+xml').documentElement
         )
       })
-  }, [pages?.iconsFile])
+  }, [pages?.icons])
 
   return {
     context: pages?.context,
-    i18nFile: pages?.i18nFile,
-    iconsFile
+    i18n: pages?.i18n,
+    icons
   }
 }
 
 function useFx(functions = { initialState: {} }) {
-  const pages = useCx()
+  const cx = useCx()
   const { initialState } = functions
   const [state, dispatch] = useReducer(
     LOGGER ? reducerLogger : reducer,
@@ -184,7 +184,7 @@ function useFx(functions = { initialState: {} }) {
           type: e,
           payload,
           initialState,
-          isContext: !pages?.context
+          isContext: !cx?.context
         })
       return acc
     },
@@ -199,7 +199,7 @@ function useFx(functions = { initialState: {} }) {
           ...commonActions,
           state,
           payload,
-          context: pages?.context
+          context: cx?.context
         }
 
         return functions[e](Object.freeze(actionsProps))
@@ -208,12 +208,12 @@ function useFx(functions = { initialState: {} }) {
     return ac
   }, {})
 
-  // return initialState, state, actions and context
+  // return initialState, state, actions and app
   const props = {
     initialState,
     state,
     fx: { ...commonActions, ...actions },
-    ...pages
+    context: cx.context
   }
 
   return Object.freeze(props)

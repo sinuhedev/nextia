@@ -20,18 +20,14 @@ function Link({ children, href, value = {}, ...props }) {
 }
 
 function I18n({ value, args = [] }) {
-  const { context, i18nFile } = useCx()
+  const { context, i18n } = useCx()
 
-  if (i18nFile) {
+  if (i18n) {
     try {
-      let text = value.split('.').reduce((ac, el) => ac[el], i18nFile)
+      let text = value.split('.').reduce((ac, el) => ac[el], i18n)
 
       text =
-        text[
-          i18nFile.locales.indexOf(
-            context.state?.i18n || i18nFile.defaultLocale
-          )
-        ]
+        text[i18n.locales.indexOf(context.state?.i18n || i18n.defaultLocale)]
 
       if (args) {
         text = text.replace(
@@ -64,14 +60,14 @@ function Icon({
   strokeLinejoin = 'round',
   ...props
 }) {
-  const { iconsFile } = useCx()
+  const { icons } = useCx()
   const ref = useRef()
 
   useEffect(() => {
-    if (iconsFile) {
-      ref.current.innerHTML = iconsFile.getElementById(id).innerHTML
+    if (icons) {
+      ref.current.innerHTML = icons.getElementById(id).innerHTML
     }
-  }, [id, iconsFile])
+  }, [id, icons])
 
   return createElement('svg', {
     xmlns: 'http://www.w3.org/2000/svg',

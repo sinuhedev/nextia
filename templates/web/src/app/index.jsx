@@ -1,5 +1,5 @@
-import i18nFile from 'assets/i18n.json'
-import iconsFile from 'assets/icons.svg'
+import i18n from 'assets/i18n.json'
+import icons from 'assets/icons.svg'
 import { Translate } from 'components'
 import {
   I18n,
@@ -45,7 +45,7 @@ export default function App() {
   }, [qs.hash])
 
   return (
-    <Pages value={{ context: app, iconsFile, i18nFile }}>
+    <Pages value={{ context: app, icons, i18n }}>
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 
