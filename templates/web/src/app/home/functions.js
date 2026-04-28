@@ -7,6 +7,7 @@ export default () => {
     data: { user: 'Sinuhe MB' },
     myArray: ['A', 'B', 'C'],
     setNameValue: 'name value',
+    crazy: false,
     form: {
       funny: false,
       gender: 'M',

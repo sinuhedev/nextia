@@ -69,7 +69,7 @@ const reducer = (state, action) => {
 
   switch (type) {
     case 'set':
-      // Merge only item
+      // Merge custom items
       if (Object.keys(payload).length === 1) {
         const key = Object.keys(payload)[0]
         return values(state, key, payload[key])
@@ -93,8 +93,19 @@ const reducer = (state, action) => {
           : payload.target.value
       )
 
+    case 'toggle':
+      // toggle custom items
+      if (payload) {
+        const paths = Array.isArray(payload) ? payload : [payload]
+
+        return paths.reduce((ac, path) => {
+          const value = path.split('.').reduce((ac, e) => ac[e], state)
+          return values(ac, path, !value)
+        }, state)
+      } else return state
+
     case 'reset':
-      // value reset
+      // reset custom items
       if (payload) {
         const paths = Array.isArray(payload) ? payload : [payload]
 
@@ -177,19 +188,23 @@ function useFx(functions = { initialState: {} }) {
   )
 
   // Common actions
-  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
-    (acc, e) => {
-      acc[e] = (payload) =>
-        dispatch({
-          type: e,
-          payload,
-          initialState,
-          isContext: !cx?.context
-        })
-      return acc
-    },
-    {}
-  )
+  const commonActions = [
+    'set',
+    'show',
+    'hide',
+    'change',
+    'toggle',
+    'reset'
+  ].reduce((acc, e) => {
+    acc[e] = (payload) =>
+      dispatch({
+        type: e,
+        payload,
+        initialState,
+        isContext: !cx?.context
+      })
+    return acc
+  }, {})
 
   // Actions
   const actions = Object.keys(functions).reduce((ac, e) => {
@@ -208,7 +223,7 @@ function useFx(functions = { initialState: {} }) {
     return ac
   }, {})
 
-  // return initialState, state, actions and app
+  // return initialState, state, actions and context
   const props = {
     initialState,
     state,

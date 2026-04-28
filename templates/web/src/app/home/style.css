@@ -1,12 +1,10 @@
 .HomePage {
-  background-color: #21252b;
-
   &.container {
     display: flex;
   }
 
   p {
-    padding-left: 25px;
+    padding-left: 20px;
     margin: 0px;
   }
 
@@ -18,9 +16,13 @@
   }
 
   button {
-    margin: 12px;
-    height: 50px;
-    width: 190px;
+    cursor: pointer;
+    margin: 10px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   input[type="text"] {
