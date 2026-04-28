@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import './style.css'
 import { css } from 'nextia'
+import { useEffect } from 'react'
 import { sum } from 'utils'
 import useFunctions from './functions'
+import './style.css'
 
 export default function HomePage() {
   const { state, initialState, fx, context } = useFunctions()
