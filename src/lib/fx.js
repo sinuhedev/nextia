@@ -150,9 +150,7 @@ const reducerLogger = (state, action) => {
 function useCx() {
   const pages = use(Pages)
   const [iconsFile, setIconsFile] = useState()
-  // const [i18nFile, setI18nFile] = useState()
 
-  // icons
   useEffect(() => {
     fetch(pages?.iconsFile)
       .then((r) => r.text())
@@ -163,17 +161,10 @@ function useCx() {
       })
   }, [pages?.iconsFile])
 
-  // // i18n
-  // useEffect(() => {
-  //   fetch(pages?.i18nFile).then((json) => {
-  //     setI18nFile(json)
-  //   })
-  // }, [pages?.i18nFile])
-
   return {
     context: pages?.context,
-    iconsFile,
-    i18nFile: pages?.i18nFile
+    i18nFile: pages?.i18nFile,
+    iconsFile
   }
 }
 
