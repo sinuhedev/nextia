@@ -22,25 +22,24 @@ function Link({ children, href, value = {}, ...props }) {
 function I18n({ value, args = [] }) {
   const { context, i18n } = useCx()
 
-  if (i18n) {
-    try {
-      let text = value.split('.').reduce((ac, el) => ac[el], i18n)
+  if (!i18n) return null
 
-      text =
-        text[i18n.locales.indexOf(context.state?.i18n || i18n.defaultLocale)]
+  try {
+    let text = value.split('.').reduce((ac, el) => ac[el], i18n)
 
-      if (args) {
-        text = text.replace(
-          /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
-          (match, _literal, number) => args[number] || match
-        )
-      }
+    text = text[i18n.locales.indexOf(context.state?.i18n || i18n.defaultLocale)]
 
-      return text
-    } catch {
-      console.error(`Error in [il8n] => ${value}`)
-      return value
+    if (args) {
+      text = text.replace(
+        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
+        (match, _literal, number) => args[number] || match
+      )
     }
+
+    return text
+  } catch {
+    console.error(`Error in [il8n] => ${value}`)
+    return value
   }
 }
 
@@ -64,9 +63,8 @@ function Icon({
   const ref = useRef()
 
   useEffect(() => {
-    if (icons) {
-      ref.current.innerHTML = icons.getElementById(id).innerHTML
-    }
+    const el = icons?.getElementById(id)
+    if (ref.current && el) ref.current.innerHTML = el.innerHTML
   }, [id, icons])
 
   return createElement('svg', {

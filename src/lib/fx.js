@@ -163,6 +163,8 @@ function useCx() {
   const [icons, setIcons] = useState()
 
   useEffect(() => {
+    if (!pages?.icons) return
+
     fetch(pages?.icons)
       .then((r) => r.text())
       .then((text) => {
