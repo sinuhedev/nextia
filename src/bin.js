@@ -30,26 +30,16 @@ async function createPage(name) {
     // index.jsx
     writeFile(
       `${dirName}/index.jsx`,
-      `import { css } from 'nextia'
-import useFunctions from './functions'
-import './style.css'
+      `import useFunctions from './functions'
 
 export default function ${pageName}() {
   const { state, fx } = useFunctions()
 
   return (
-    <section className={css('${pageName}', '')}>
+    <section>
       ${pageName}
     </section>
   )
-}
-`
-    )
-
-    // style.sss
-    writeFile(
-      `${dirName}/style.css`,
-      `.${pageName} {
 }
 `
     )
