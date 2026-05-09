@@ -5,7 +5,6 @@ Create fast web applications
 ### To start
 
 ```sh
-gcl git@github.com:sinuhedev/nextia.git
 npm install
 cd templates/web
 npm install
