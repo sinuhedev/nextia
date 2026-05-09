@@ -51,17 +51,6 @@ export default defineConfig(({ mode }) => {
           return html
         }
       }
-    ],
-
-    test: {
-      root: './',
-      environment: 'jsdom',
-      include: ['test/**/*.test.{js,jsx}'],
-      coverage: {
-        reportsDirectory: '.coverage',
-        exclude: ['src/assets', 'src/components/index.js', 'src/index.jsx'],
-        include: ['src/**/*.{js,jsx}']
-      }
-    }
+    ]
   }
 })
