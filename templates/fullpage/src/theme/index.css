@@ -1,0 +1,125 @@
+@import "./utils.css";
+@import "./icons/index.css";
+@import "./view-transition.css";
+
+/**
+ * theme
+ */
+
+:root {
+  --primary-color: #344188;
+  --primary-color-50: #3441887a;
+  --link: #5fac9f;
+  --body-bg: #282c34;
+  --body-color: #a8a8a8;
+  --font-family: "Roboto";
+}
+
+html,
+body {
+  background-color: var(--body-bg);
+  color: var(--body-color);
+  font-family: var(--font-family);
+}
+
+a {
+  color: var(--link);
+}
+
+p {
+  margin: 0px;
+}
+
+pre {
+  color: gray;
+  font-size: 12px;
+  max-height: 700px;
+  overflow: auto;
+}
+
+select {
+  height: 30px;
+  width: 100px;
+}
+
+button {
+  cursor: pointer;
+  margin: 10px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  margin: 20px;
+  height: 30px;
+  width: 180px;
+}
+
+input[type="checkbox"] {
+  height: 30px;
+  width: 30px;
+}
+
+input[type="radio"] {
+  height: 30px;
+  width: 30px;
+}
+
+.btn-md {
+  margin: 0;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.mr-2 {
+  margin-right: 20px;
+}
+
+.m-2 {
+  margin: 20px;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-content {
+  justify-content: space-around;
+}
+
+.css-img {
+  background: url("assets/img/image.webp") no-repeat;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.svg-css {
+  #label {
+    animation: svg-css_arrow 3s ease-in-out infinite;
+  }
+}
+
+@keyframes svg-css_arrow {
+  0%,
+  100% {
+    transform: translateY(-15px);
+  }
+
+  50% {
+    transform: translateY(2px);
+  }
+}
