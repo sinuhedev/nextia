@@ -1,13 +1,12 @@
 import { Button } from 'components'
 import { css } from 'nextia'
 import useFunctions from './functions'
-import './style.css'
 
-export default function App() {
+export default function Pages() {
   const { state, fx } = useFunctions()
 
   return (
-    <section className={css('App', 'container d-flex flex-column')}>
+    <section className={css('container d-flex flex-column')}>
       <div className="d-flex ">
         <Button onClick={(e) => fx.increment(e)}>+</Button>
         <Button onClick={(e) => fx.decrement(e)}>-</Button>

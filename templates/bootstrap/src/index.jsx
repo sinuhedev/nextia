@@ -1,4 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import App from './app'
+import Pages from './pages'
 
-createRoot(document.getElementById('root')).render(<App />)
+createRoot(document.getElementById('root')).render(<Pages />)

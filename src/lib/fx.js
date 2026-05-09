@@ -11,7 +11,7 @@ import { createContext, use, useEffect, useReducer, useState } from 'react'
 import { env } from './utils.js'
 
 const LOGGER = env.DEV && env.PUBLIC_LOGGER !== 'false'
-const Pages = createContext()
+const Pagex = createContext()
 
 /**
  * util
@@ -159,7 +159,7 @@ const reducerLogger = (state, action) => {
  */
 
 function useCx() {
-  const pages = use(Pages)
+  const pages = use(Pagex)
   const [icons, setIcons] = useState()
 
   useEffect(() => {
@@ -236,4 +236,4 @@ function useFx(functions = { initialState: {} }) {
   return Object.freeze(props)
 }
 
-export { Pages, useCx, useFx }
+export { Pagex, useCx, useFx }

@@ -5,7 +5,7 @@ import {
   I18n,
   Icon,
   Link,
-  Pages,
+  Pagex,
   startViewTransition,
   useQueryString,
   useResize
@@ -14,9 +14,9 @@ import { lazy, useEffect, useRef, useState } from 'react'
 import { WINDOW_RESIZE } from 'utils'
 import useFunctions from './functions.js'
 
-export default function App() {
-  const app = useFunctions()
-  const { state, fx } = app
+export default function Pages() {
+  const pages = useFunctions()
+  const { state, fx } = pages
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
@@ -45,7 +45,7 @@ export default function App() {
   }, [qs.hash])
 
   return (
-    <Pages value={{ context: app, icons, i18n }}>
+    <Pagex value={{ context: pages, icons, i18n }}>
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 
@@ -82,9 +82,55 @@ export default function App() {
         {state.loading ? <span> Loading... </span> : <span> View.. </span>}
       </header>
 
+      <aside className="m-2">
+        <Link href="/" className="mr-2">
+          /
+        </Link>
+        <Link href="#/" className="mr-2">
+          /home
+        </Link>
+        <Link href="#/env" className="mr-2">
+          /env
+        </Link>
+        <Link href="#/my-context" className="mr-2">
+          /my-context
+        </Link>
+        <Link href="#/mockapi" className="mr-2">
+          /mockapi
+        </Link>
+        <Link
+          href="#/search-params"
+          value={{ id: 1, user: 'Sinuhe' }}
+          className="mr-2"
+        >
+          /search-params
+        </Link>
+        <Link href="#/subpage/hello" className="mr-2">
+          /subpage/hello
+        </Link>
+        <Link href="#/translate" className="mr-2">
+          /translate
+        </Link>
+        <Link href="#/view-transition" className="mr-2">
+          /view-transition
+        </Link>
+        <Link href="#/images" className="mr-2">
+          /images
+        </Link>
+        <Link href="#/icons" className="mr-2">
+          /icons
+        </Link>
+        <Link href="#/resize" className="mr-2">
+          /resize
+        </Link>
+        <Link href="#/dashboard" className="mr-2">
+          /not-found
+        </Link>
+      </aside>
+
       <main ref={ref} className="m-2">
         {Page && <Page qs={qs.queryString} resize={resize} />}
       </main>
-    </Pages>
+    </Pagex>
   )
 }
