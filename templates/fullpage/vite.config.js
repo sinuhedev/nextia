@@ -36,19 +36,15 @@ export default defineConfig(({ mode }) => {
       {
         name: 'html',
         transformIndexHtml(html) {
-          let gitHash = ''
+          let gitHash = 'unknown'
           try {
-            gitHash = execSync('git rev-parse --short HEAD 2> /dev/null')
-              .toString()
-              .trim()
+            gitHash = execSync('git rev-parse --short HEAD').toString().trim()
           } catch {}
 
-          html = html.replaceAll(
+          return html.replaceAll(
             '%VERSION%',
-            `version=${version}, env=${mode}, date=${new Date()}, commit=${gitHash}`
+            `version=${version}, env=${mode}, date=${new Date().toISOString()}, commit=${gitHash}`
           )
-
-          return html
         }
       }
     ],
