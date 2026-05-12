@@ -1,5 +1,4 @@
-import { env } from 'nextia'
-import { sum } from 'utils'
+import { env, sum } from 'utils'
 import { test } from 'vitest'
 
 test('sumTest', () => {

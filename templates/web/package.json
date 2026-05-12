@@ -12,11 +12,18 @@
     "lint": "biome lint",
     "check": "biome check --reporter=summary",
     "page": "nextia page",
-    "component": "nextia component"
+    "component": "nextia component",
+    "test": "vitest",
+    "test:name": "vitest run --testNamePattern",
+    "test:silent": "vitest run --silent",
+    "test:coverage": "vitest run --silent --coverage"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.0.1",
-    "vite": "8.0.10"
+    "@vitest/coverage-v8": "4.1.5",
+    "jsdom": "29.1.0",
+    "vite": "8.0.10",
+    "vitest": "4.1.5"
   },
   "dependencies": {
     "nextia": "file:../../",
