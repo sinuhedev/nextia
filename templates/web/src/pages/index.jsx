@@ -11,7 +11,7 @@ import {
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
-import { WINDOW_RESIZE } from 'utils'
+import { env, WINDOW_RESIZE } from 'utils'
 import useFunctions from './functions.js'
 
 export default function Pages() {
@@ -41,11 +41,20 @@ export default function Pages() {
       }
     })
 
-    startViewTransition(setPage(page), ref.current)
+    if (env.PUBLIC_VIEW_TRANSITION === 'true')
+      startViewTransition(setPage(page), ref.current)
+    else setPage(page)
   }, [qs.hash])
 
   return (
-    <Pagex value={{ context: pages, icons, i18n }}>
+    <Pagex
+      value={{
+        context: pages,
+        icons,
+        i18n,
+        logger: env.DEV && env.PUBLIC_LOGGER === 'true'
+      }}
+    >
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 

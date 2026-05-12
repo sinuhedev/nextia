@@ -1,4 +1,4 @@
-import { env } from 'nextia'
+import { env } from 'utils'
 import { DELETE, GET, POST, PUT } from './http'
 
 const API = env.PUBLIC_API

@@ -1,6 +1,4 @@
-function sum(a, b) {
-  return a + b
-}
+const env = import.meta.env
 
 const WINDOW_RESIZE = {
   md: 640,
@@ -8,4 +6,8 @@ const WINDOW_RESIZE = {
   xl: 1280
 }
 
-export { sum, WINDOW_RESIZE }
+function sum(a, b) {
+  return a + b
+}
+
+export { env, sum, WINDOW_RESIZE }

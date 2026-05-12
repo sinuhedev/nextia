@@ -1,5 +1,5 @@
-import { env } from 'nextia'
 import { useEffect } from 'react'
+import { env } from 'utils'
 
 export default function EnvPage() {
   useEffect(() => {
