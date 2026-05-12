@@ -10,31 +10,11 @@
 import { flushSync } from 'react-dom'
 
 /**
- * env
- */
-
-const env = import.meta.env
-
-const VERSION = Object.fromEntries(
-  document
-    .querySelector('meta[name="version"]')
-    ?.getAttribute('content')
-    .split(', ')
-    .map((item) => {
-      const [key, value] = item.split('=')
-      return [key, value]
-    }) ?? ''
-)
-
-env.VERSION = VERSION
-
-/**
  * View Transition
  */
 
 async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
-  if (!document.startViewTransition || env.PUBLIC_VIEW_TRANSITION === 'false')
-    return fun()
+  if (!document.startViewTransition) return fun()
 
   ref.style.viewTransitionName = animation
   await document.startViewTransition(() => flushSync(fun)).finished
@@ -64,4 +44,4 @@ function css(...classNames) {
     .join(' ')
 }
 
-export { css, env, startViewTransition }
+export { css, startViewTransition }

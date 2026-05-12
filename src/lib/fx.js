@@ -8,9 +8,7 @@
  */
 
 import { createContext, use, useEffect, useReducer, useState } from 'react'
-import { env } from './utils.js'
 
-const LOGGER = env.DEV && env.PUBLIC_LOGGER !== 'false'
 const Pagex = createContext()
 
 /**
@@ -177,7 +175,8 @@ function useCx() {
   return {
     context: pages?.context,
     i18n: pages?.i18n,
-    icons
+    icons,
+    logger: pages?.logger ?? false
   }
 }
 
@@ -185,7 +184,7 @@ function useFx(functions = { initialState: {} }) {
   const cx = useCx()
   const { initialState } = functions
   const [state, dispatch] = useReducer(
-    LOGGER ? reducerLogger : reducer,
+    cx.logger ? reducerLogger : reducer,
     initialState
   )
 
