@@ -7,8 +7,6 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { flushSync } from 'react-dom'
-
 /**
  * View Transition
  */
@@ -17,7 +15,7 @@ async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
   if (!document.startViewTransition) return fun()
 
   ref.style.viewTransitionName = animation
-  await document.startViewTransition(() => flushSync(fun)).finished
+  await document.startViewTransition(() => fun).finished
   ref.style.viewTransitionName = ''
 }
 
@@ -44,4 +42,20 @@ function css(...classNames) {
     .join(' ')
 }
 
-export { css, startViewTransition }
+/**
+ * getVersion
+ */
+
+const version = () =>
+  Object.fromEntries(
+    document
+      .querySelector('meta[name="version"]')
+      ?.getAttribute('content')
+      .split(', ')
+      .map((item) => {
+        const [key, value] = item.split('=')
+        return [key, value]
+      }) ?? ''
+  )
+
+export { css, startViewTransition, version }

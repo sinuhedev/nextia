@@ -11,7 +11,7 @@ import {
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
-import { env, WINDOW_RESIZE } from 'utils'
+import { env } from 'utils'
 import useFunctions from './functions.js'
 
 export default function Pages() {
@@ -20,7 +20,7 @@ export default function Pages() {
 
   const [Page, setPage] = useState()
   const qs = useQueryString()
-  const resize = useResize(WINDOW_RESIZE)
+  const resize = useResize(env.WINDOW_RESIZE)
   const ref = useRef()
 
   useEffect(() => {

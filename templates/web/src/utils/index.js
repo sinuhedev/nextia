@@ -1,13 +1,17 @@
+import { version } from 'nextia'
+
 const env = import.meta.env
 
-const WINDOW_RESIZE = {
+env.WINDOW_RESIZE = {
   md: 640,
   lg: 1024,
   xl: 1280
 }
 
+env.VERSION = version()
+
 function sum(a, b) {
   return a + b
 }
 
-export { env, sum, WINDOW_RESIZE }
+export { env, sum }
