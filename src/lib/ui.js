@@ -8,7 +8,7 @@
  */
 
 import { createElement, useEffect, useRef } from 'react'
-import { useCx } from './fx'
+import { useCx } from './fx.js'
 
 function Link({ children, href, value = {}, ...props }) {
   href ??= window.location.hash.split('?')[0]
