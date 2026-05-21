@@ -11,14 +11,12 @@
 
 import { mkdir, writeFile } from 'node:fs/promises'
 
-function toPascalCase(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9 ]/g, ' ') // replace special characters
-    .split(/\s+/) // split by spaces
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+const toPascalCase = (str) =>
+  str
+    .split(/[/_ -]+/)
+    .filter(Boolean)
+    .map(([first, ...rest]) => first.toUpperCase() + rest.join(''))
     .join('')
-}
 
 async function createPage(name) {
   const dirName = `./src/pages/${name}`
