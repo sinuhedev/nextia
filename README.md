@@ -6,7 +6,7 @@ Create fast web applications
 
 ```sh
 npm install
-cd example
+cd examples/vitejs
 npm install
 node --run dev
 ```

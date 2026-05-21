@@ -10,4 +10,4 @@ out
 .next
 .swc
 
-example/package-lock.json
+examples/*/package-lock.json
