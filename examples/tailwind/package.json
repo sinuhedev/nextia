@@ -4,11 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "clean": "rm -fr node_modules .coverage out package-lock.json",
     "build": "vite build --mode",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check --reporter=summary",
     "page": "nextia page",
     "component": "nextia component"
   },

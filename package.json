@@ -27,10 +27,6 @@
     ".": "./src/lib/index.js"
   },
   "scripts": {
-    "clean": "rm -fr node_modules .coverage out package-lock.json",
-    "format": "biome format",
-    "lint": "biome lint src",
-    "check": "biome check --reporter=summary src",
     "test": "vitest run",
     "test:name": "vitest run --testNamePattern",
     "test:silent": "vitest run --silent",
