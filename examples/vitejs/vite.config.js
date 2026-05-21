@@ -38,7 +38,9 @@ export default defineConfig(({ mode }) => {
         transformIndexHtml(html) {
           let gitHash = 'unknown'
           try {
-            gitHash = execSync('git rev-parse --short HEAD').toString().trim()
+            gitHash = execSync('git rev-parse --short HEAD', {
+              stdio: 'ignore'
+            })
           } catch {}
 
           return html.replaceAll(
