@@ -1,5 +1,5 @@
 {
-  "name": "TEMPLATE",
+  "name": "example",
   "description": "description",
   "version": "0.0.0",
   "type": "module",
@@ -26,7 +26,7 @@
     "vitest": "4.1.6"
   },
   "dependencies": {
-    "nextia": "file:../../",
+    "nextia": "file:../",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   }

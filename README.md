@@ -6,7 +6,7 @@ Create fast web applications
 
 ```sh
 npm install
-cd templates/web
+cd example
 npm install
 node --run dev
 ```
