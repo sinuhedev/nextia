@@ -4,18 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build --mode",
-    "test": "vitest",
-    "test:name": "vitest run --testNamePattern",
-    "test:silent": "vitest run --silent",
-    "test:coverage": "vitest run --silent --coverage"
+    "build": "vite build --mode"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.0.2",
-    "@vitest/coverage-v8": "4.1.7",
-    "jsdom": "29.1.1",
-    "vite": "8.0.14",
-    "vitest": "4.1.7"
+    "vite": "8.0.14"
   },
   "dependencies": {
     "nextia": "file:../../",

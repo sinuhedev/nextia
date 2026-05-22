@@ -23,19 +23,9 @@
   "exports": {
     ".": "./src/index.js"
   },
-  "scripts": {
-    "test": "vitest run",
-    "test:name": "vitest run --testNamePattern",
-    "test:silent": "vitest run --silent",
-    "test:coverage": "vitest run --silent --coverage"
-  },
+  "scripts": {},
   "peerDependencies": {
     "react": "^19.0.0"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "6.0.2",
-    "@vitest/coverage-v8": "4.1.6",
-    "jsdom": "29.1.1",
-    "vitest": "4.1.6"
-  }
+  "devDependencies": {}
 }
