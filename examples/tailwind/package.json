@@ -4,15 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build --mode",
-    "page": "nextia page",
-    "component": "nextia component"
+    "build": "vite build --mode"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.0",
     "@vitejs/plugin-react": "6.0.2",
     "tailwindcss": "4.3.0",
-    "vite": "8.0.13"
+    "vite": "8.0.14"
   },
   "dependencies": {
     "nextia": "file:../../",

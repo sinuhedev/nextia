@@ -20,11 +20,8 @@
   "keywords": [
     "react"
   ],
-  "bin": {
-    "nextia": "src/bin.js"
-  },
   "exports": {
-    ".": "./src/lib/index.js"
+    ".": "./src/index.js"
   },
   "scripts": {
     "test": "vitest run",
