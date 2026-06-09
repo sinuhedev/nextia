@@ -10,13 +10,14 @@
 import { createElement, useEffect, useRef } from 'react'
 import { useCx } from './fx.js'
 
-function Link({ children, href, value = {}, ...props }) {
-  href ??= window.location.hash.split('?')[0]
-  value = Object.keys(value).length
-    ? `?${new URLSearchParams(value).toString()}`
-    : ''
+function Link({ children, href, value, ...props }) {
+  const base = href ?? window.location.hash.split('?')[0]
+  const query =
+    value && Object.keys(value).length
+      ? `?${new URLSearchParams(value).toString()}`
+      : ''
 
-  return createElement('a', { href: href + value, ...props }, children)
+  return createElement('a', { href: base + query, ...props }, children)
 }
 
 function I18n({ value, args = [] }) {
@@ -25,20 +26,21 @@ function I18n({ value, args = [] }) {
   if (!i18n) return null
 
   try {
-    let text = value.split('.').reduce((ac, el) => ac[el], i18n)
+    const text = value.split('.').reduce((ac, el) => ac[el], i18n)
+    const locale = context.state?.i18n ?? i18n.defaultLocale
+    const index = i18n.locales.indexOf(locale)
+    let translated = text[index]
 
-    text = text[i18n.locales.indexOf(context.state?.i18n || i18n.defaultLocale)]
-
-    if (args) {
-      text = text.replace(
-        /([{}])\\1|[{](.*?)(?:!(.+?))?[}]/g,
-        (match, _literal, number) => args[number] || match
+    if (args?.length) {
+      translated = translated.replace(
+        /([{}])\1|[{](.*?)(?:!(.+?))?[}]/g,
+        (match, _literal, number) => args[number] ?? match
       )
     }
 
-    return text
+    return translated
   } catch {
-    console.error(`Error in [il8n] => ${value}`)
+    console.error(`[i18n] key not found: "${value}"`)
     return value
   }
 }
@@ -46,7 +48,6 @@ function I18n({ value, args = [] }) {
 function Icon({
   id,
   className,
-  animate = false,
   style,
   width = '48',
   height,
@@ -63,8 +64,10 @@ function Icon({
   const ref = useRef()
 
   useEffect(() => {
-    const el = icons?.getElementById(id)
-    if (ref.current && el) ref.current.innerHTML = el.innerHTML
+    if (!ref.current || !icons) return
+
+    const el = icons.getElementById(id)
+    if (el) ref.current.innerHTML = el.innerHTML
   }, [id, icons])
 
   return createElement('svg', {
