@@ -10,16 +10,6 @@
 import { createElement, useEffect, useRef } from 'react'
 import { useCx } from './fx.js'
 
-function Link({ children, href, value, ...props }) {
-  const base = href ?? window.location.hash.split('?')[0]
-  const query =
-    value && Object.keys(value).length
-      ? `?${new URLSearchParams(value).toString()}`
-      : ''
-
-  return createElement('a', { href: base + query, ...props }, children)
-}
-
 function I18n({ value, args = [] }) {
   const { context, i18n } = useCx()
 
@@ -90,6 +80,16 @@ function Icon({
     strokeLinejoin,
     ...props
   })
+}
+
+function Link({ children, href, value, ...props }) {
+  const base = href ?? window.location.hash.split('?')[0]
+  const query =
+    value && Object.keys(value).length
+      ? `?${new URLSearchParams(value).toString()}`
+      : ''
+
+  return createElement('a', { href: base + query, ...props }, children)
 }
 
 function Svg({ ref, src, width, height, ...props }) {

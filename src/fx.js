@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useEffect, useReducer, useState } from 'react'
+import { createContext, use, useReducer } from 'react'
 
 const Pagex = createContext()
 

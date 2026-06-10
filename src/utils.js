@@ -8,18 +8,6 @@
  */
 
 /**
- * View Transition
- */
-
-async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
-  if (!document.startViewTransition) return fun()
-
-  ref.style.viewTransitionName = animation
-  await document.startViewTransition(() => fun).finished
-  ref.style.viewTransitionName = ''
-}
-
-/**
  * css
  */
 
@@ -46,7 +34,7 @@ function css(...classNames) {
  * getVersion
  */
 
-const version = () =>
+const getVersion = () =>
   Object.fromEntries(
     document
       .querySelector('meta[name="version"]')
@@ -58,4 +46,16 @@ const version = () =>
       }) ?? ''
   )
 
-export { css, startViewTransition, version }
+/**
+ * View Transition
+ */
+
+async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
+  if (!document.startViewTransition) return fun()
+
+  ref.style.viewTransitionName = animation
+  await document.startViewTransition(() => fun).finished
+  ref.style.viewTransitionName = ''
+}
+
+export { css, getVersion, startViewTransition }
