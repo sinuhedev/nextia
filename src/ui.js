@@ -66,7 +66,10 @@ function Icon({
   useEffect(() => {
     if (!ref.current || !icons) return
 
-    const el = icons.getElementById(id)
+    const el = new DOMParser()
+      .parseFromString(icons, 'image/svg+xml')
+      .documentElement.getElementById(id)
+
     if (el) ref.current.innerHTML = el.innerHTML
   }, [id, icons])
 

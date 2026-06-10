@@ -158,24 +158,11 @@ const reducerLogger = (state, action) => {
 
 function useCx() {
   const pages = use(Pagex)
-  const [icons, setIcons] = useState()
-
-  useEffect(() => {
-    if (!pages?.icons) return
-
-    fetch(pages?.icons)
-      .then((r) => r.text())
-      .then((text) => {
-        setIcons(
-          new DOMParser().parseFromString(text, 'image/svg+xml').documentElement
-        )
-      })
-  }, [pages?.icons])
 
   return {
     context: pages?.context,
     i18n: pages?.i18n,
-    icons,
+    icons: pages?.icons,
     logger: pages?.logger ?? false
   }
 }
