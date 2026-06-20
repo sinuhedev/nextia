@@ -10,15 +10,13 @@
 import { useCallback, useEffect, useState } from 'react'
 
 function useQueryString() {
-  const getQueryString = useCallback(
-    () => ({
-      hash: window.location.hash.split('?')[0],
-      queryString: Object.fromEntries(
-        new URLSearchParams(window.location.hash.split('?')[1])
-      )
-    }),
-    []
-  )
+  const getQueryString = useCallback(() => {
+    const [hash, search = ''] = window.location.hash.split('?')
+    return {
+      hash,
+      queryString: Object.fromEntries(new URLSearchParams(search))
+    }
+  }, [])
 
   const [queryString, setQueryString] = useState(getQueryString)
 
