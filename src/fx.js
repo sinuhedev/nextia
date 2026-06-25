@@ -62,9 +62,7 @@ function merge(target, source) {
  * reducer
  */
 
-const reducer = (state, action) => {
-  const { type, payload, initialState } = action
-
+const reducer = (state, { type, payload, initialState }) => {
   switch (type) {
     case 'set':
       // Merge custom items
@@ -118,7 +116,7 @@ const reducer = (state, action) => {
   }
 }
 
-const reducerLogger = (state, action) => {
+const reducerWithLogger = (state, action) => {
   const newState = reducer(state, action)
 
   const payloadLog = (action) => {
@@ -168,10 +166,14 @@ function useCx() {
 }
 
 function useFx(functions = { initialState: {} }) {
-  const cx = useCx()
   const { initialState } = functions
+
+  // Context
+  const cx = useCx()
+
+  // Reducer
   const [state, dispatch] = useReducer(
-    cx.logger ? reducerLogger : reducer,
+    cx.logger ? reducerWithLogger : reducer,
     initialState
   )
 
@@ -183,10 +185,10 @@ function useFx(functions = { initialState: {} }) {
     'change',
     'toggle',
     'reset'
-  ].reduce((acc, e) => {
-    acc[e] = (payload) =>
+  ].reduce((acc, type) => {
+    acc[type] = (payload) =>
       dispatch({
-        type: e,
+        type,
         payload,
         initialState,
         isContext: !cx?.context
@@ -211,15 +213,12 @@ function useFx(functions = { initialState: {} }) {
     return ac
   }, {})
 
-  // return initialState, state, actions and context
-  const props = {
+  return Object.freeze({
     initialState,
     state,
     fx: { ...commonActions, ...actions },
     context: cx.context
-  }
-
-  return Object.freeze(props)
+  })
 }
 
 export { Pagex, useCx, useFx }
