@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <section className="flex">
       <div>
-        <div>
+        <article>
           <p>Set</p>
           <button
             type="button"
@@ -36,9 +36,9 @@ export default function HomePage() {
           >
             set Json
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <button
             type="button"
             onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}
@@ -56,9 +56,9 @@ export default function HomePage() {
           >
             set mulit level (Json)
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <p>Show and Hide :</p>
           <button type="button" onClick={() => fx.show('form.funny')}>
             show
@@ -66,9 +66,9 @@ export default function HomePage() {
           <button type="button" onClick={() => fx.hide('form.funny')}>
             hide
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <p>Reset :</p>
           <button type="button" onClick={() => fx.reset('ls')}>
             ('ls')
@@ -76,18 +76,18 @@ export default function HomePage() {
           <button type="button" onClick={() => fx.reset('form.name')}>
             ('form.name')
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <button
             type="button"
             onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
           >
             (['channel', 'msg', 'form.name'])
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <p>Toggle :</p>
           <button type="button" onClick={() => fx.toggle('crazy')}>
             ('crazy')
@@ -95,18 +95,18 @@ export default function HomePage() {
           <button type="button" onClick={() => fx.toggle('form.funny')}>
             ('form.funny')
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <button
             type="button"
             onClick={() => fx.toggle(['crazy', 'form.funny'])}
           >
             (['crazy', 'form.funny'])
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <p>Simple actions/Reducer:</p>
           <button type="button" onClick={(e) => fx.increment(e)}>
             +
@@ -114,9 +114,9 @@ export default function HomePage() {
           <button type="button" onClick={(e) => fx.decrement(e)}>
             -
           </button>
-        </div>
+        </article>
 
-        <div>
+        <article>
           <p>onChange:</p>
 
           {/* input text */}
@@ -134,9 +134,9 @@ export default function HomePage() {
             <option value="22">22</option>
             <option value="33">33</option>
           </select>
-        </div>
+        </article>
 
-        <div style={{ marginLeft: '20px' }}>
+        <article style={{ marginLeft: '20px' }}>
           {/* checkbox */}
           <input
             type="checkbox"
@@ -163,11 +163,11 @@ export default function HomePage() {
             onChange={(evt) => fx.change(evt)}
           />
           <label htmlFor="F">F</label>
-        </div>
+        </article>
       </div>
 
       <div>
-        <div style={{ textAlign: 'center' }}>
+        <article style={{ textAlign: 'center' }}>
           <button type="button" onClick={() => fx.reset()}>
             RESET
           </button>
@@ -212,16 +212,16 @@ export default function HomePage() {
           <button type="button" onClick={() => context.fx.toggle('loading')}>
             loading
           </button>
-        </div>
+        </article>
 
-        <div style={{ display: 'flex' }}>
+        <article style={{ display: 'flex' }}>
           <pre style={{ margin: '0 50px 0 50px', minHeight: '750px' }}>
             state = {JSON.stringify(state, undefined, 2)}
           </pre>
           <pre style={{ margin: '0 50px 0 50px', minHeight: '750px' }}>
             initialState = {JSON.stringify(initialState, undefined, 2)}
           </pre>
-        </div>
+        </article>
       </div>
     </section>
   )
