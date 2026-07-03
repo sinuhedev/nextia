@@ -1,74 +1,68 @@
 import { useFx } from 'nextia'
-import { createUser, deleteUser, getUser, updateUser } from 'services/api'
+import api from 'services/api'
 
 export default () => {
   const initialState = {
     users: {},
     user: {},
+    status: '',
     form: {
       id: 0,
       name: ''
     }
   }
 
-  async function handlerUser({ payload, set }) {
-    try {
-      const { data } = await getUser({ path: { id: payload } })
-      set({ users: data, user: {} })
-    } catch (e) {
-      console.error(e)
+  async function users({ payload, set, reset }) {
+    const { ok, status, data } = await api.getUser({
+      path: { id: payload }
+    })
+    if (ok) {
+      if (payload) set({ status, users: [], user: data })
+      else set({ status, users: data, user: [] })
+    } else {
+      reset(['users', 'user'])
+      set({ status })
     }
   }
 
-  async function handlerCreateUser({ state, set }) {
-    try {
-      const { data } = await createUser({
-        body: {
-          username: state.form.name,
-          profile: {
-            firstName: state.form.name,
-            lastName: state.form.name
-          }
+  async function createUser({ state, set }) {
+    const { data } = await api.createUser({
+      body: {
+        username: state.form.name,
+        profile: {
+          firstName: state.form.name,
+          lastName: state.form.name
         }
-      })
-      set({ users: {}, user: data })
-    } catch (e) {
-      console.error(e)
-    }
+      }
+    })
+    set({ status, users: {}, user: data })
   }
 
-  async function handlerUpdateUser({ payload, state, set }) {
-    try {
-      const { data } = await updateUser({
-        path: { id: payload },
-        body: {
-          username: state.form.name,
-          profile: {
-            firstName: state.form.name,
-            lastName: state.form.name
-          }
+  async function updateUser({ payload, state, set }) {
+    const { data } = await api.updateUser({
+      path: { id: payload },
+      body: {
+        username: state.form.name,
+        profile: {
+          firstName: state.form.name,
+          lastName: state.form.name
         }
-      })
-      set({ users: {}, user: data })
-    } catch (e) {
-      console.error(e)
-    }
+      }
+    })
+
+    set({ status, users: {}, user: data })
   }
 
-  async function handlerDeleteUser({ payload }) {
-    try {
-      const { data } = await deleteUser({ path: { id: payload } })
-      console.info(data)
-    } catch (e) {
-      console.error(e)
-    }
+  async function deleteUser({ payload, set }) {
+    const { status, data } = await api.deleteUser({ path: { id: payload } })
+    set({ status, users: {}, user: data })
   }
 
   return useFx({
     initialState,
-    handlerUser,
-    handlerCreateUser,
-    handlerUpdateUser,
-    handlerDeleteUser
+    users,
+    createUser,
+    updateUser,
+    deleteUser
   })
 }

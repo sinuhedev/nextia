@@ -6,15 +6,14 @@ export default function MockapiPage() {
   return (
     <section className="flex">
       <section className="flex-column m-2">
-        <button type="button" onClick={() => fx.reset(['users', 'user'])}>
+        <button type="button" onClick={() => fx.reset()}>
           Reset
         </button>
 
         <button
           type="button"
           onClick={() => {
-            fx.reset(['users', 'user'])
-            fx.handlerUser()
+            fx.users()
           }}
         >
           Get users
@@ -23,8 +22,7 @@ export default function MockapiPage() {
         <button
           type="button"
           onClick={() => {
-            fx.reset(['users', 'user'])
-            fx.handlerUser(state.form.id)
+            fx.users(state.form.id)
           }}
         >
           Get user
@@ -33,8 +31,7 @@ export default function MockapiPage() {
         <button
           type="button"
           onClick={() => {
-            fx.reset(['users', 'user'])
-            fx.handlerCreateUser()
+            fx.createUser()
           }}
         >
           Create user
@@ -43,8 +40,7 @@ export default function MockapiPage() {
         <button
           type="button"
           onClick={() => {
-            fx.reset(['users', 'user'])
-            fx.handlerUpdateUser(state.form.id)
+            fx.updateUser(state.form.id)
           }}
         >
           Update user
@@ -53,8 +49,7 @@ export default function MockapiPage() {
         <button
           type="button"
           onClick={() => {
-            fx.reset(['users', 'user'])
-            fx.handlerDeleteUser(state.form.id)
+            fx.deleteUser(state.form.id)
           }}
         >
           Delete user

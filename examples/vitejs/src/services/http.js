@@ -7,7 +7,9 @@ function urlTemplate(url, path) {
   }, url)
 }
 
-async function request(method, url, path, body, headers) {
+async function request(method, url, params) {
+  const { path = {}, body = {}, headers = {} } = params
+
   url = urlTemplate(url, path)
 
   if (method === 'GET') {
@@ -24,17 +26,10 @@ async function request(method, url, path, body, headers) {
 
   const { ok, status, statusText } = response
 
-  if (ok) return { ok, status, statusText, data: await response.json() }
-
-  throw new Error(`ok: ${ok} , status: ${status} , statusText: ${statusText}`)
+  return { ok, status, statusText, data: await response.json() }
 }
 
-const factory =
-  (method) =>
-  (url = '', path = {}, body = {}, headers = {}) =>
-    request(method, url, path, body, headers)
-
-export const GET = factory('GET')
-export const POST = factory('POST')
-export const PUT = factory('PUT')
-export const DELETE = factory('DELETE')
+export const GET = (url = '', p) => request('GET', url, p)
+export const POST = (url = '', p) => request('POST', url, p)
+export const PUT = (url = '', p) => request('PUT', url, p)
+export const DELETE = (url = '', p) => request('DELETE', url, p)
