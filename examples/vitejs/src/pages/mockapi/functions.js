@@ -54,8 +54,8 @@ export default () => {
   }
 
   async function deleteUser({ payload, set }) {
-    const { status, data } = await api.deleteUser({ path: { id: payload } })
-    set({ status, users: {}, user: data })
+    const { status } = await api.deleteUser({ path: { id: payload } })
+    set({ status, users: {}, user: {} })
   }
 
   return useFx({
