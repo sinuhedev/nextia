@@ -75,6 +75,19 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>Toggle :</p>
+        <article>
+          <button type="button" onClick={() => fx.set({ crazy: !state.crazy })}>
+            ('crazy')
+          </button>
+          <button
+            type="button"
+            onClick={() => fx.set({ 'form.funny': !state.form.funny })}
+          >
+            ('form.funny')
+          </button>
+        </article>
+
         <p>Show and Hide :</p>
         <article>
           <button type="button" onClick={() => fx.show('form.funny')}>
@@ -99,22 +112,6 @@ export default function HomePage() {
             onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
           >
             (['channel', 'msg', 'form.name'])
-          </button>
-        </article>
-
-        <p>Toggle :</p>
-        <article>
-          <button type="button" onClick={() => fx.toggle('crazy')}>
-            ('crazy')
-          </button>
-          <button type="button" onClick={() => fx.toggle('form.funny')}>
-            ('form.funny')
-          </button>
-          <button
-            type="button"
-            onClick={() => fx.toggle(['crazy', 'form.funny'])}
-          >
-            (['crazy', 'form.funny'])
           </button>
         </article>
 
@@ -215,7 +212,10 @@ export default function HomePage() {
             256
           </button>
 
-          <button type="button" onClick={() => context.fx.toggle('loading')}>
+          <button
+            type="button"
+            onClick={() => context.fx.set({ loading: !context.state.loading })}
+          >
             loading
           </button>
         </article>

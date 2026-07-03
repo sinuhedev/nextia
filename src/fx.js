@@ -89,17 +89,6 @@ const reducer = (state, { type, payload, initialState }) => {
           : payload.target.value
       )
 
-    case 'toggle':
-      // toggle custom items
-      if (payload) {
-        const paths = Array.isArray(payload) ? payload : [payload]
-
-        return paths.reduce((ac, path) => {
-          const value = path.split('.').reduce((ac, e) => ac[e], state)
-          return values(ac, path, !value)
-        }, state)
-      } else return state
-
     case 'reset':
       // reset custom items
       if (payload) {
@@ -181,23 +170,19 @@ function useFx(functions = { initialState: {} }) {
   )
 
   // Common actions
-  const commonActions = [
-    'set',
-    'show',
-    'hide',
-    'change',
-    'toggle',
-    'reset'
-  ].reduce((acc, type) => {
-    acc[type] = (payload) =>
-      dispatch({
-        type,
-        payload,
-        initialState,
-        isContext: !cx?.context
-      })
-    return acc
-  }, {})
+  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
+    (acc, type) => {
+      acc[type] = (payload) =>
+        dispatch({
+          type,
+          payload,
+          initialState,
+          isContext: !cx?.context
+        })
+      return acc
+    },
+    {}
+  )
 
   // Actions
   const actions = Object.keys(functions).reduce((ac, e) => {
