@@ -15,7 +15,8 @@ const Pagex = createContext()
  * util
  */
 
-const isObject = (obj) => obj && typeof obj === 'object'
+const isObject = (obj) =>
+  obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 
 function values(state, payload, value) {
   const paths = payload.split('.')
@@ -117,6 +118,9 @@ const reducer = (state, { type, payload, initialState }) => {
 
       // all reset
       return initialState
+
+    default:
+      return state
   }
 }
 
