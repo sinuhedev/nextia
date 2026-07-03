@@ -10,6 +10,7 @@
 import { createContext, use, useReducer } from 'react'
 
 const Pagex = createContext()
+const COMMON_TYPES = ['set', 'show', 'hide', 'change', 'reset']
 
 /**
  * util
@@ -170,35 +171,30 @@ function useFx(functions = { initialState: {} }) {
   )
 
   // Common actions
-  const commonActions = ['set', 'show', 'hide', 'change', 'reset'].reduce(
-    (acc, type) => {
-      acc[type] = (payload) =>
-        dispatch({
-          type,
-          payload,
-          initialState,
-          isContext: !cx?.context
-        })
-      return acc
-    },
-    {}
-  )
+  const commonActions = COMMON_TYPES.reduce((acc, type) => {
+    acc[type] = (payload) =>
+      dispatch({
+        type,
+        payload,
+        initialState,
+        isContext: !cx?.context
+      })
+    return acc
+  }, {})
 
   // Actions
-  const actions = Object.keys(functions).reduce((ac, e) => {
-    if (functions[e] instanceof Function) {
-      ac[e] = (payload) => {
-        const actionsProps = {
-          ...commonActions,
-          state,
-          payload,
-          context: cx?.context
-        }
-
-        return functions[e](Object.freeze(actionsProps))
-      }
-    }
-    return ac
+  const actions = Object.entries(functions).reduce((acc, [key, fn]) => {
+    if (typeof fn === 'function')
+      acc[key] = (payload) =>
+        fn(
+          Object.freeze({
+            ...commonActions,
+            state,
+            payload,
+            context: cx.context
+          })
+        )
+    return acc
   }, {})
 
   return Object.freeze({
