@@ -21,6 +21,15 @@ export default function HomePage() {
           >
             set Value
           </button>
+
+          <button
+            type="button"
+            className=""
+            onClick={() => fx.set({ myArray: [] })}
+          >
+            set Array
+          </button>
+
           <button
             type="button"
             onClick={() =>
@@ -36,12 +45,22 @@ export default function HomePage() {
           >
             set Json
           </button>
+        </article>
 
+        <p>Set levels</p>
+        <article>
           <button
             type="button"
             onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}
           >
-            set mulit level (Value)
+            set levels (Value)
+          </button>
+
+          <button
+            type="button"
+            onClick={() => fx.set({ 'form.moreArray': [[[]]] })}
+          >
+            set levels (Array)
           </button>
 
           <button
@@ -52,7 +71,7 @@ export default function HomePage() {
               })
             }
           >
-            set mulit level (Json)
+            set levels (Json)
           </button>
         </article>
 
@@ -99,7 +118,7 @@ export default function HomePage() {
           </button>
         </article>
 
-        <p>Simple actions/Reducer:</p>
+        <p>Simple actions</p>
         <article>
           <button type="button" onClick={(e) => fx.increment(e)}>
             +
