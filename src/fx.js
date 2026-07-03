@@ -19,12 +19,12 @@ const isObject = (obj) =>
   obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 
 function values(state, payload, value) {
-  const paths = payload.split('.')
+  const dot = payload.indexOf('.')
 
   // one level
-  if (paths.length === 1) {
+  if (dot === -1) {
     // set Object and exist Object
-    if (isObject(value) && Object.keys(value).length)
+    if (isObject(value) && isObject(state[payload]))
       return { ...state, [payload]: { ...state[payload], ...value } }
 
     // set Value
@@ -34,13 +34,11 @@ function values(state, payload, value) {
     }
   }
 
-  // multi level
-  const stateClone = structuredClone(state)
-  const finalPath = paths.pop()
-  const stateRef = paths.reduce((ac, e) => ac[e], stateClone)
-  stateRef[finalPath] = value
+  // multi levels
+  const key = payload.slice(0, dot)
+  const rest = payload.slice(dot + 1)
 
-  return stateClone
+  return { ...state, [key]: values(state[key] ?? {}, rest, value) }
 }
 
 function merge(target, source) {
@@ -54,10 +52,7 @@ function merge(target, source) {
     const tVal = target[key]
     const sVal = source[key]
 
-    output[key] =
-      isObject(tVal) && isObject(sVal)
-        ? merge(tVal, sVal)
-        : structuredClone(sVal)
+    output[key] = isObject(tVal) && isObject(sVal) ? merge(tVal, sVal) : sVal
   }
 
   return output
