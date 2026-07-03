@@ -12,8 +12,8 @@ export default function HomePage() {
   return (
     <section className="flex">
       <div>
+        <p>Set</p>
         <article>
-          <p>Set</p>
           <button
             type="button"
             className=""
@@ -36,9 +36,7 @@ export default function HomePage() {
           >
             set Json
           </button>
-        </article>
 
-        <article>
           <button
             type="button"
             onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}
@@ -58,8 +56,8 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>Show and Hide :</p>
         <article>
-          <p>Show and Hide :</p>
           <button type="button" onClick={() => fx.show('form.funny')}>
             show
           </button>
@@ -68,17 +66,15 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>Reset :</p>
         <article>
-          <p>Reset :</p>
           <button type="button" onClick={() => fx.reset('ls')}>
             ('ls')
           </button>
           <button type="button" onClick={() => fx.reset('form.name')}>
             ('form.name')
           </button>
-        </article>
 
-        <article>
           <button
             type="button"
             onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
@@ -87,17 +83,14 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>Toggle :</p>
         <article>
-          <p>Toggle :</p>
           <button type="button" onClick={() => fx.toggle('crazy')}>
             ('crazy')
           </button>
           <button type="button" onClick={() => fx.toggle('form.funny')}>
             ('form.funny')
           </button>
-        </article>
-
-        <article>
           <button
             type="button"
             onClick={() => fx.toggle(['crazy', 'form.funny'])}
@@ -106,8 +99,8 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>Simple actions/Reducer:</p>
         <article>
-          <p>Simple actions/Reducer:</p>
           <button type="button" onClick={(e) => fx.increment(e)}>
             +
           </button>
@@ -116,10 +109,8 @@ export default function HomePage() {
           </button>
         </article>
 
+        <p>onChange:</p>
         <article>
-          <p>onChange:</p>
-
-          {/* input text */}
           <input
             type="text"
             name="form.name.firstName"
@@ -127,17 +118,13 @@ export default function HomePage() {
             onChange={(evt) => fx.change(evt)}
           />
 
-          {/* select */}
           <select name="form.year" onChange={(evt) => fx.change(evt)}>
             <option value="20">20</option>
             <option value="21">21</option>
             <option value="22">22</option>
             <option value="33">33</option>
           </select>
-        </article>
 
-        <article style={{ marginLeft: '20px' }}>
-          {/* checkbox */}
           <input
             type="checkbox"
             name="form.funny"
@@ -146,7 +133,6 @@ export default function HomePage() {
           />
           <label htmlFor="form.funny">Funny</label>
 
-          {/* radio */}
           <input
             type="radio"
             name="form.gender"
@@ -155,6 +141,7 @@ export default function HomePage() {
             onChange={(evt) => fx.change(evt)}
           />
           <label htmlFor="M">M</label>
+
           <input
             type="radio"
             name="form.gender"

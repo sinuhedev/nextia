@@ -54,17 +54,19 @@ button {
 }
 
 input[type="text"] {
-  margin: 20px;
+  margin: 10px;
   height: 30px;
   width: 180px;
 }
 
 input[type="checkbox"] {
+  margin: 10px;
   height: 30px;
   width: 30px;
 }
 
 input[type="radio"] {
+  margin: 10px;
   height: 30px;
   width: 30px;
 }
