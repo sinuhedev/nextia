@@ -15,15 +15,16 @@ const Pagex = createContext()
  * util
  */
 
+const isObject = (obj) => obj && typeof obj === 'object'
+
 function values(state, payload, value) {
   const paths = payload.split('.')
 
   // one level
   if (paths.length === 1) {
     // set Object and exist Object
-    if (value && typeof value === 'object' && Object.keys(value).length) {
+    if (isObject(value) && Object.keys(value).length)
       return { ...state, [payload]: { ...state[payload], ...value } }
-    }
 
     // set Value
     return {
@@ -45,15 +46,18 @@ function merge(target, source) {
   // in array return all source
   if (Array.isArray(target)) return source
 
-  const isObject = (obj) => obj && typeof obj === 'object'
   const output = { ...target }
 
   // merge
-  Object.keys(source).forEach((key) => {
-    if (isObject(target[key]) && isObject(source[key])) {
-      output[key] = merge(target[key], source[key])
-    } else output[key] = structuredClone(source[key])
-  })
+  for (const key of Object.keys(source)) {
+    const tVal = target[key]
+    const sVal = source[key]
+
+    output[key] =
+      isObject(tVal) && isObject(sVal)
+        ? merge(tVal, sVal)
+        : structuredClone(sVal)
+  }
 
   return output
 }
