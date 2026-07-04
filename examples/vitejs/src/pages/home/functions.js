@@ -4,7 +4,13 @@ export default () => {
   const initialState = {
     channel: 7,
     msg: 'https://sinuhe.dev',
-    data: { user: 'Sinuhe MB', permissions: { read: true } },
+    data: {
+      user: 'Sinuhe MB',
+      permissions: {
+        read: true,
+        exec: true
+      }
+    },
     myArray: ['A', 'B', 'C'],
     setNameValue: 'name value',
     crazy: false,
@@ -13,7 +19,11 @@ export default () => {
       gender: 'M',
       name: {
         firstName: 'Sinuhe',
-        lastName: 'Maceda'
+        lastName: 'Maceda',
+        company: {
+          email: 'sinuhe.dev@gmail.com',
+          codeName: 'sinuhe.dev'
+        }
       },
       year: 33,
       moreArray: [[[50, 40, 10]]]

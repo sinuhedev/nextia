@@ -34,6 +34,9 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.set({
+                data: {
+                  user: 'sinuhe_dev'
+                },
                 form: {
                   name: {
                     firstName: 'ppppppppppp',
@@ -67,7 +70,13 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.set({
-                'form.name': { firstName: 'SINUHE', lastName: 'MACEDA' }
+                'form.name': {
+                  firstName: 'SINUHE',
+                  lastName: 'MACEDA',
+                  company: {
+                    codeName: 'sdev'
+                  }
+                }
               })
             }
           >
@@ -157,10 +166,10 @@ export default function HomePage() {
             type="text"
             name="form.name.firstName"
             value={state.form.name.firstName}
-            onChange={(evt) => fx.change(evt)}
+            onChange={fx.change}
           />
 
-          <select name="form.year" onChange={(evt) => fx.change(evt)}>
+          <select name="form.year" onChange={fx.change}>
             <option value="20">20</option>
             <option value="21">21</option>
             <option value="22">22</option>
@@ -171,7 +180,7 @@ export default function HomePage() {
             type="checkbox"
             name="form.funny"
             checked={state.form.funny}
-            onChange={(evt) => fx.change(evt)}
+            onChange={fx.change}
           />
           <label htmlFor="form.funny">Funny</label>
 
@@ -180,7 +189,7 @@ export default function HomePage() {
             name="form.gender"
             value="M"
             checked={state.form.gender === 'M'}
-            onChange={(evt) => fx.change(evt)}
+            onChange={fx.change}
           />
           <label htmlFor="M">M</label>
 
@@ -189,7 +198,7 @@ export default function HomePage() {
             name="form.gender"
             value="F"
             checked={state.form.gender === 'F'}
-            onChange={(evt) => fx.change(evt)}
+            onChange={fx.change}
           />
           <label htmlFor="F">F</label>
         </article>
