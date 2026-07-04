@@ -24,9 +24,14 @@ function values(state, payload, value) {
 
   // one level
   if (dot === -1) {
-    // set Object and exist Object
-    if (isObject(value) && isObject(state[payload]))
-      return { ...state, [payload]: { ...state[payload], ...value } }
+    // set Object and empty or exist object
+    if (isObject(state[payload]) && isObject(value))
+      return {
+        ...state,
+        [payload]: Object.keys(value).length
+          ? { ...state[payload], ...value }
+          : {}
+      }
 
     // set Value
     return {
@@ -53,7 +58,12 @@ function merge(target, source) {
     const tVal = target[key]
     const sVal = source[key]
 
-    output[key] = isObject(tVal) && isObject(sVal) ? merge(tVal, sVal) : sVal
+    output[key] =
+      isObject(tVal) && isObject(sVal)
+        ? Object.keys(sVal).length
+          ? merge(tVal, sVal)
+          : {}
+        : sVal
   }
 
   return output
