@@ -12,20 +12,20 @@ export default () => {
     }
   }
 
-  async function users({ payload, set }) {
+  async function users({ payload, put }) {
     const { ok, status, data } = await api.getUser({
       path: { id: payload }
     })
 
     if (ok) {
-      if (payload) set({ status, users: [], user: data })
-      else set({ status, users: data, user: [] })
+      if (payload) put({ status, users: [], user: data })
+      else put({ status, users: data, user: [] })
     } else {
-      set({ status, users: {}, user: {} })
+      put({ status, users: {}, user: {} })
     }
   }
 
-  async function createUser({ state, set }) {
+  async function createUser({ state, put }) {
     const { data, ok, status } = await api.createUser({
       body: {
         username: state.form.name,
@@ -36,10 +36,10 @@ export default () => {
       }
     })
 
-    if (ok) set({ status, users: {}, user: data })
+    if (ok) put({ status, users: {}, user: data })
   }
 
-  async function updateUser({ payload, state, set }) {
+  async function updateUser({ payload, state, put }) {
     const { ok, data, status } = await api.updateUser({
       path: { id: payload },
       body: {
@@ -51,13 +51,13 @@ export default () => {
       }
     })
 
-    if (ok) set({ status, users: {}, user: data })
+    if (ok) put({ status, users: {}, user: data })
   }
 
-  async function deleteUser({ payload, set }) {
+  async function deleteUser({ payload, put }) {
     const { ok, status } = await api.deleteUser({ path: { id: payload } })
 
-    if (ok) set({ status, users: [], user: {} })
+    if (ok) put({ status, users: [], user: {} })
   }
 
   return useFx({

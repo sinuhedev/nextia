@@ -42,12 +42,12 @@ export default () => {
     }
   }
 
-  function increment({ state, set }) {
-    set({ channel: state.channel + 1 })
+  function increment({ state, put }) {
+    put({ channel: state.channel + 1 })
   }
 
-  function decrement({ state, set }) {
-    set({ channel: state.channel - 1 })
+  function decrement({ state, put }) {
+    put({ channel: state.channel - 1 })
   }
 
   return useFx({

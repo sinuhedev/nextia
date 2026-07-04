@@ -12,28 +12,28 @@ export default function HomePage() {
   return (
     <section className="flex">
       <div>
-        <p>Set</p>
+        <p>Put</p>
         <article>
           <button
             type="button"
             className=""
-            onClick={() => fx.set({ setNameValue: 'set 1 level' })}
+            onClick={() => fx.put({ setNameValue: 'put 1 level' })}
           >
-            set Value
+            put Value
           </button>
 
           <button
             type="button"
             className=""
-            onClick={() => fx.set({ myArray: [] })}
+            onClick={() => fx.put({ myArray: [] })}
           >
-            set Array
+            put Array
           </button>
 
           <button
             type="button"
             onClick={() =>
-              fx.set({
+              fx.put({
                 data: {
                   user: 'sinuhe_dev'
                 },
@@ -46,30 +46,30 @@ export default function HomePage() {
               })
             }
           >
-            set Json
+            put Json
           </button>
         </article>
 
-        <p>Set levels</p>
+        <p>Put levels</p>
         <article>
           <button
             type="button"
-            onClick={() => fx.set({ 'form.name.lastName': 'BOUCHAN' })}
+            onClick={() => fx.put({ 'form.name.lastName': 'BOUCHAN' })}
           >
-            set levels (Value)
+            put levels (Value)
           </button>
 
           <button
             type="button"
-            onClick={() => fx.set({ 'form.moreArray': [[[]]] })}
+            onClick={() => fx.put({ 'form.moreArray': [[[]]] })}
           >
-            set levels (Array)
+            put levels (Array)
           </button>
 
           <button
             type="button"
             onClick={() =>
-              fx.set({
+              fx.put({
                 'form.name': {
                   firstName: 'SINUHE',
                   lastName: 'MACEDA',
@@ -80,44 +80,44 @@ export default function HomePage() {
               })
             }
           >
-            set levels (Json)
+            put levels (Json)
           </button>
         </article>
 
-        <p>Set empty</p>
+        <p>Put empty</p>
         <article>
-          <button type="button" onClick={() => fx.set({ data: {} })}>
-            set empty
+          <button type="button" onClick={() => fx.put({ data: {} })}>
+            put empty
           </button>
 
           <button
             type="button"
-            onClick={() => fx.set({ 'data.permissions': {} })}
+            onClick={() => fx.put({ 'data.permissions': {} })}
           >
-            set levels empty
+            put levels empty
           </button>
 
           <button
             type="button"
             onClick={() =>
-              fx.set({
+              fx.put({
                 data: { permissions: {} },
                 ls: {}
               })
             }
           >
-            set json empty
+            put json empty
           </button>
         </article>
 
-        <p>Set toggle :</p>
+        <p>Put toggle :</p>
         <article>
-          <button type="button" onClick={() => fx.set({ crazy: !state.crazy })}>
+          <button type="button" onClick={() => fx.put({ crazy: !state.crazy })}>
             ('crazy')
           </button>
           <button
             type="button"
-            onClick={() => fx.set({ 'form.funny': !state.form.funny })}
+            onClick={() => fx.put({ 'form.funny': !state.form.funny })}
           >
             ('form.funny')
           </button>
@@ -213,7 +213,7 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() =>
-              fx.set({
+              fx.put({
                 channel: 256,
                 msg: 256,
                 data: { user: 256 },
@@ -249,7 +249,7 @@ export default function HomePage() {
 
           <button
             type="button"
-            onClick={() => context.fx.set({ loading: !context.state.loading })}
+            onClick={() => context.fx.put({ loading: !context.state.loading })}
           >
             loading
           </button>

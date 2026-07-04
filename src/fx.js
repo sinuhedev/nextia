@@ -10,7 +10,7 @@
 import { createContext, use, useReducer } from 'react'
 
 const Pagex = createContext()
-const COMMON_TYPES = ['set', 'show', 'hide', 'change', 'reset']
+const COMMON_TYPES = ['put', 'show', 'hide', 'change', 'reset']
 
 /**
  * util
@@ -24,7 +24,7 @@ function values(state, payload, value) {
 
   // one level
   if (dot === -1) {
-    // set Object and empty or exist object
+    // put Object and empty or exist object
     if (isObject(state[payload]) && isObject(value))
       return {
         ...state,
@@ -33,7 +33,7 @@ function values(state, payload, value) {
           : {}
       }
 
-    // set Value
+    // put Value
     return {
       ...state,
       [payload]: value
@@ -75,7 +75,7 @@ function merge(target, source) {
 
 const reducer = (state, { type, payload, initialState }) => {
   switch (type) {
-    case 'set':
+    case 'put':
       // Merge custom items
       if (Object.keys(payload).length === 1) {
         const key = Object.keys(payload)[0]

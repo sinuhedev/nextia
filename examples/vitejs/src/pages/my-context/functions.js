@@ -4,7 +4,7 @@ export default () => {
   const initialState = {}
 
   function init({ context }) {
-    context.fx.set({ num: 300 })
+    context.fx.put({ num: 300 })
   }
 
   return useFx({ initialState, init })
