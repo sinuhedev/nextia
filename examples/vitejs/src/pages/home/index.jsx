@@ -75,7 +75,33 @@ export default function HomePage() {
           </button>
         </article>
 
-        <p>Toggle :</p>
+        <p>Set empty</p>
+        <article>
+          <button type="button" onClick={() => fx.set({ data: {} })}>
+            set empty
+          </button>
+
+          <button
+            type="button"
+            onClick={() => fx.set({ 'data.permissions': {} })}
+          >
+            set levels empty
+          </button>
+
+          <button
+            type="button"
+            onClick={() =>
+              fx.set({
+                data: { permissions: {} },
+                ls: {}
+              })
+            }
+          >
+            set json empty
+          </button>
+        </article>
+
+        <p>Set toggle :</p>
         <article>
           <button type="button" onClick={() => fx.set({ crazy: !state.crazy })}>
             ('crazy')

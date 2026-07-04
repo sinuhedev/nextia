@@ -4,7 +4,7 @@ export default () => {
   const initialState = {
     channel: 7,
     msg: 'https://sinuhe.dev',
-    data: { user: 'Sinuhe MB' },
+    data: { user: 'Sinuhe MB', permissions: { read: true } },
     myArray: ['A', 'B', 'C'],
     setNameValue: 'name value',
     crazy: false,
