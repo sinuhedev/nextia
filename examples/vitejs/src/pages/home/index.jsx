@@ -141,57 +141,73 @@ export default function HomePage() {
 
         <p>Simple actions</p>
         <article>
-          <button type="button" onClick={(e) => fx.increment(e)}>
+          <button
+            type="button"
+            className="fs-25"
+            onClick={(e) => fx.increment(e)}
+          >
             +
           </button>
-          <button type="button" onClick={(e) => fx.decrement(e)}>
+          <button
+            type="button"
+            className="fs-25"
+            onClick={(e) => fx.decrement(e)}
+          >
             -
           </button>
         </article>
 
         <p>onChange:</p>
         <article>
-          <input
-            type="text"
-            name="form.name.firstName"
-            value={state.form.name.firstName}
-            onChange={fx.change}
-          />
-
-          <select name="form.year" value={state.form.year} onChange={fx.change}>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="39">39</option>
-          </select>
-
-          <label>
+          <div>
             <input
-              type="checkbox"
-              name="form.license"
-              checked={state.form.license}
+              type="text"
+              name="form.name.firstName"
+              value={state.form.name.firstName}
               onChange={fx.change}
             />
-            License
-          </label>
 
-          <input
-            type="radio"
-            name="form.gender"
-            value="M"
-            checked={state.form.gender === 'M'}
-            onChange={fx.change}
-          />
-          <label htmlFor="M">M</label>
+            <select
+              name="form.year"
+              value={state.form.year}
+              onChange={fx.change}
+            >
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="39">39</option>
+            </select>
+          </div>
 
-          <input
-            type="radio"
-            name="form.gender"
-            value="F"
-            checked={state.form.gender === 'F'}
-            onChange={fx.change}
-          />
-          <label htmlFor="F">F</label>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                name="form.license"
+                checked={state.form.license}
+                onChange={fx.change}
+              />
+              License
+            </label>
+
+            <input
+              type="radio"
+              name="form.gender"
+              value="M"
+              checked={state.form.gender === 'M'}
+              onChange={fx.change}
+            />
+            <label htmlFor="M">M</label>
+
+            <input
+              type="radio"
+              name="form.gender"
+              value="F"
+              checked={state.form.gender === 'F'}
+              onChange={fx.change}
+            />
+            <label htmlFor="F">F</label>
+          </div>
         </article>
       </div>
 

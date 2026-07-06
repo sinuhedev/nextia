@@ -108,3 +108,7 @@ label {
 .justify-content {
   justify-content: space-around;
 }
+
+.fs-25 {
+  font-size: 25px;
+}
