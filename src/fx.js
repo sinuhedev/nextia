@@ -60,7 +60,6 @@ function merge(target, source) {
 
   const output = { ...target }
 
-  // merge
   for (const key of Object.keys(source)) {
     const tVal = target[key]
     const sVal = source[key]
