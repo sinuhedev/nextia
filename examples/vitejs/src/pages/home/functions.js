@@ -2,52 +2,38 @@ import { useFx } from 'nextia'
 
 export default () => {
   const initialState = {
-    channel: 7,
-    msg: 'https://sinuhe.dev',
-    data: {
-      user: 'Sinuhe MB',
+    id: 0,
+    title: 'TITLE NAME',
+    profiles: ['db', 'web', 'api'],
+    access: {
+      group: 'users',
       permissions: {
         read: true,
         exec: true
       }
     },
-    myArray: ['A', 'B', 'C'],
-    setNameValue: 'name value',
-    crazy: false,
     form: {
-      funny: false,
+      license: false,
       gender: 'M',
+      year: 39,
+      codes: [50, 40, 10],
       name: {
         firstName: 'Sinuhe',
         lastName: 'Maceda',
         company: {
           email: 'sinuhe.dev@gmail.com',
-          codeName: 'sinuhe.dev'
+          codeName: 'sinuhedev'
         }
-      },
-      year: 33,
-      moreArray: [[[50, 40, 10]]]
-    },
-    ls: {
-      users: [
-        {
-          name: 'sinuhe',
-          year: 33
-        },
-        {
-          name: 'alberto',
-          year: 20
-        }
-      ]
+      }
     }
   }
 
   function increment({ state, put }) {
-    put({ channel: state.channel + 1 })
+    put({ id: state.id + 1 })
   }
 
   function decrement({ state, put }) {
-    put({ channel: state.channel - 1 })
+    put({ id: state.id - 1 })
   }
 
   return useFx({

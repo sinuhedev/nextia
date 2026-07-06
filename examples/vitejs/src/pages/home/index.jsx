@@ -17,7 +17,7 @@ export default function HomePage() {
           <button
             type="button"
             className=""
-            onClick={() => fx.put({ setNameValue: 'put 1 level' })}
+            onClick={() => fx.put({ title: 'MY TITLE' })}
           >
             put Value
           </button>
@@ -25,7 +25,7 @@ export default function HomePage() {
           <button
             type="button"
             className=""
-            onClick={() => fx.put({ myArray: [] })}
+            onClick={() => fx.put({ profiles: [] })}
           >
             put Array
           </button>
@@ -34,13 +34,13 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.put({
-                data: {
-                  user: 'sinuhe_dev'
+                access: {
+                  group: 'group'
                 },
                 form: {
                   name: {
-                    firstName: 'ppppppppppp',
-                    lastName: '***********'
+                    firstName: 'FIRST_NAME',
+                    lastName: 'LAST_NAME'
                   }
                 }
               })
@@ -59,10 +59,7 @@ export default function HomePage() {
             put levels (Value)
           </button>
 
-          <button
-            type="button"
-            onClick={() => fx.put({ 'form.moreArray': [[[]]] })}
-          >
+          <button type="button" onClick={() => fx.put({ 'form.codes': [] })}>
             put levels (Array)
           </button>
 
@@ -86,13 +83,13 @@ export default function HomePage() {
 
         <p>Put empty</p>
         <article>
-          <button type="button" onClick={() => fx.put({ data: {} })}>
+          <button type="button" onClick={() => fx.put({ access: {} })}>
             put empty
           </button>
 
           <button
             type="button"
-            onClick={() => fx.put({ 'data.permissions': {} })}
+            onClick={() => fx.put({ 'access.permissions': {} })}
           >
             put levels empty
           </button>
@@ -101,8 +98,7 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.put({
-                data: { permissions: {} },
-                ls: {}
+                access: { permissions: {} }
               })
             }
           >
@@ -112,41 +108,37 @@ export default function HomePage() {
 
         <p>Put toggle :</p>
         <article>
-          <button type="button" onClick={() => fx.put({ crazy: !state.crazy })}>
-            ('crazy')
-          </button>
           <button
             type="button"
-            onClick={() => fx.put({ 'form.funny': !state.form.funny })}
+            onClick={() => fx.put({ 'form.license': !state.form.license })}
           >
-            ('form.funny')
+            ('form.license')
           </button>
         </article>
 
         <p>Show and Hide :</p>
         <article>
-          <button type="button" onClick={() => fx.show('form.funny')}>
+          <button type="button" onClick={() => fx.show('form.license')}>
             show
           </button>
-          <button type="button" onClick={() => fx.hide('form.funny')}>
+          <button type="button" onClick={() => fx.hide('form.license')}>
             hide
           </button>
         </article>
 
         <p>Reset :</p>
         <article>
-          <button type="button" onClick={() => fx.reset('ls')}>
-            ('ls')
+          <button type="button" onClick={() => fx.reset('form')}>
+            ('form')
           </button>
           <button type="button" onClick={() => fx.reset('form.name')}>
             ('form.name')
           </button>
-
-          <button
-            type="button"
-            onClick={() => fx.reset(['channel', 'msg', 'form.name'])}
-          >
-            (['channel', 'msg', 'form.name'])
+          <button type="button" onClick={() => fx.reset('form.name.firstName')}>
+            ('form.name.firstName')
+          </button>
+          <button type="button" onClick={() => fx.reset(['id', 'form.name'])}>
+            (['id', 'form.name'])
           </button>
         </article>
 
@@ -169,20 +161,22 @@ export default function HomePage() {
             onChange={fx.change}
           />
 
-          <select name="form.year" onChange={fx.change}>
+          <select name="form.year" value={state.form.year} onChange={fx.change}>
             <option value="20">20</option>
             <option value="21">21</option>
             <option value="22">22</option>
-            <option value="33">33</option>
+            <option value="39">39</option>
           </select>
 
-          <input
-            type="checkbox"
-            name="form.funny"
-            checked={state.form.funny}
-            onChange={fx.change}
-          />
-          <label htmlFor="form.funny">Funny</label>
+          <label>
+            <input
+              type="checkbox"
+              name="form.license"
+              checked={state.form.license}
+              onChange={fx.change}
+            />
+            License
+          </label>
 
           <input
             type="radio"
@@ -214,37 +208,30 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.put({
-                channel: 256,
-                msg: 256,
-                data: { user: 256 },
-                myArray: ['256', '256', '256'],
-                setNameValue: '256',
-                form: {
-                  // funny: 256,
-                  // gender: '256',
-                  name: {
-                    firstName: '256',
-                    lastName: '256'
-                  },
-                  year: 256,
-                  moreArray: [[[256, 256, 256]]]
+                id: null,
+                title: '_______',
+                profiles: [],
+                access: {
+                  group: '_______'
                 },
-                ls: {
-                  users: [
-                    {
-                      name: '256',
-                      year: 256
-                    },
-                    {
-                      name: '256',
-                      year: 256
+                form: {
+                  license: false,
+                  gender: 'M',
+                  year: '_______',
+                  codes: [],
+                  name: {
+                    firstName: '_______',
+                    lastName: '_______',
+                    company: {
+                      email: '_______',
+                      codeName: '_______'
                     }
-                  ]
+                  }
                 }
               })
             }
           >
-            256
+            _______
           </button>
 
           <button
