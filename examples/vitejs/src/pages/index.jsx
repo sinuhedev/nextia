@@ -51,8 +51,7 @@ export default function Pages() {
       value={{
         context: pages,
         icons,
-        i18n,
-        logger: env.DEV && env.PUBLIC_LOGGER === 'true'
+        i18n
       }}
     >
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>

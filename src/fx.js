@@ -10,7 +10,14 @@
 import { createContext, use, useReducer } from 'react'
 
 const Pagex = createContext()
-const COMMON_TYPES = ['put', 'show', 'hide', 'change', 'reset']
+
+const ACTIONS = {
+  PUT: 'put',
+  SHOW: 'show',
+  HIDE: 'hide',
+  CHANGE: 'change',
+  RESET: 'reset'
+}
 
 /**
  * util
@@ -73,9 +80,11 @@ function merge(target, source) {
  * reducer
  */
 
-const reducer = (state, { type, payload, initialState }) => {
+function reducer(state, action) {
+  const { type, payload, initialState } = action
+
   switch (type) {
-    case 'put':
+    case ACTIONS.PUT:
       // Merge custom items
       if (Object.keys(payload).length === 1) {
         const key = Object.keys(payload)[0]
@@ -85,13 +94,13 @@ const reducer = (state, { type, payload, initialState }) => {
       // Merge all json
       return merge(state, payload)
 
-    case 'show':
+    case ACTIONS.SHOW:
       return values(state, payload, true)
 
-    case 'hide':
+    case ACTIONS.HIDE:
       return values(state, payload, false)
 
-    case 'change':
+    case ACTIONS.CHANGE:
       return values(
         state,
         payload.target.name,
@@ -100,7 +109,7 @@ const reducer = (state, { type, payload, initialState }) => {
           : payload.target.value
       )
 
-    case 'reset':
+    case ACTIONS.RESET:
       // reset custom items
       if (payload) {
         const paths = Array.isArray(payload) ? payload : [payload]
@@ -119,40 +128,6 @@ const reducer = (state, { type, payload, initialState }) => {
   }
 }
 
-const reducerWithLogger = (state, action) => {
-  const newState = reducer(state, action)
-
-  const payloadLog = (action) => {
-    const { type, payload } = action
-
-    if (type === 'change') {
-      const { name, type, checked, value } = payload.target
-      return {
-        name,
-        type,
-        checked,
-        value
-      }
-    }
-
-    if (typeof payload !== 'object') {
-      return `(${payload ?? ''})`
-    }
-
-    return payload
-  }
-
-  console.log(
-    `%c${action.isContext ? 'Context' : 'Page'} %c${action.type}`,
-    'color: #90b1d1',
-    'color: #6592c8',
-    payloadLog(action),
-    { state, new_state: newState }
-  )
-
-  return newState
-}
-
 /**
  * useCx and useFx
  */
@@ -163,8 +138,7 @@ function useCx() {
   return {
     context: pages?.context,
     i18n: pages?.i18n,
-    icons: pages?.icons,
-    logger: pages?.logger ?? false
+    icons: pages?.icons
   }
 }
 
@@ -175,42 +149,38 @@ function useFx(functions = { initialState: {} }) {
   const cx = useCx()
 
   // Reducer
-  const [state, dispatch] = useReducer(
-    cx.logger ? reducerWithLogger : reducer,
-    initialState
-  )
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  // Common actions
-  const commonActions = COMMON_TYPES.reduce((acc, type) => {
-    acc[type] = (payload) =>
+  // Actions
+  const actions = {}
+  for (const type of Object.values(ACTIONS)) {
+    actions[type] = (payload) =>
       dispatch({
         type,
         payload,
-        initialState,
-        isContext: !cx?.context
+        initialState
       })
-    return acc
-  }, {})
+  }
 
-  // Actions
-  const actions = Object.entries(functions).reduce((acc, [key, fn]) => {
+  // Action functions
+  const actionsFx = {}
+  for (const [key, fn] of Object.entries(functions)) {
     if (typeof fn === 'function')
-      acc[key] = (payload) =>
+      actionsFx[key] = (payload) =>
         fn(
           Object.freeze({
-            ...commonActions,
+            ...actions,
             state,
             payload,
             context: cx.context
           })
         )
-    return acc
-  }, {})
+  }
 
   return Object.freeze({
     initialState,
     state,
-    fx: { ...commonActions, ...actions },
+    fx: { ...actions, ...actionsFx },
     context: cx.context
   })
 }
