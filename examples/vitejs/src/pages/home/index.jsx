@@ -131,9 +131,6 @@ export default function HomePage() {
           <button type="button" onClick={() => fx.reset('form')}>
             ('form')
           </button>
-          <button type="button" onClick={() => fx.reset('form.name')}>
-            ('form.name')
-          </button>
           <button type="button" onClick={() => fx.reset('form.name.firstName')}>
             ('form.name.firstName')
           </button>
