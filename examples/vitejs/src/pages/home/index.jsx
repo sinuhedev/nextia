@@ -67,10 +67,7 @@ export default function HomePage() {
             put empty Value
           </button>
 
-          <button
-            type="button"
-            onClick={() => fx.put({ 'access.permissions': {} })}
-          >
+          <button type="button" onClick={() => fx.put({ 'form.codes': [] })}>
             put empty Array
           </button>
 

@@ -83,10 +83,10 @@ function reducer(state, action) {
       )
 
     case ACTIONS.SHOW:
-      return merge(state, { [payload]: true })
+      return merge(state, unflatten({ [payload]: true }))
 
     case ACTIONS.HIDE:
-      return merge(state, { [payload]: false })
+      return merge(state, unflatten({ [payload]: false }))
 
     case ACTIONS.RESET:
       // reset custom items
@@ -111,12 +111,15 @@ function reducer(state, action) {
       return initialState
 
     case ACTIONS.CHANGE:
-      return merge(state, {
-        [payload.target.name]:
-          payload.target.type === 'checkbox'
-            ? payload.target.checked
-            : payload.target.value
-      })
+      return merge(
+        state,
+        unflatten({
+          [payload.target.name]:
+            payload.target.type === 'checkbox'
+              ? payload.target.checked
+              : payload.target.value
+        })
+      )
   }
 }
 
