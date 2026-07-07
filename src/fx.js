@@ -27,23 +27,25 @@ const isObject = (obj) =>
   obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 
 function unflatten(str) {
-  const result = {}
+  const output = {}
 
   for (const [path, value] of Object.entries(str)) {
     const keys = path.split('.')
-    let current = result
 
-    keys.forEach((key, index) => {
-      if (index === keys.length - 1) {
+    let current = output
+    for (const index in keys) {
+      const key = keys[index]
+
+      if (Number(index) === keys.length - 1) {
         current[key] = value
       } else {
         current[key] ??= {}
         current = current[key]
       }
-    })
+    }
   }
 
-  return result
+  return output
 }
 
 function merge(target, source) {
@@ -93,10 +95,18 @@ function reducer(state, action) {
       if (payload) {
         const paths = Array.isArray(payload) ? payload : [payload]
 
-        return paths.reduce((ac, path) => {
-          const value = path.split('.').reduce((ac, e) => ac[e], initialState)
-          return merge(ac, { [path]: value })
-        }, state)
+        let output = state
+        for (const path of paths) {
+          let value = initialState
+
+          for (const key of path.split('.')) {
+            value = value[key]
+          }
+
+          output = merge(output, { [path]: value })
+        }
+
+        return output
       }
 
       // all reset
