@@ -57,7 +57,7 @@ export default function MockapiPage() {
       </section>
 
       <section>
-        <h1>MockapiPage</h1>
+        <h1>API</h1>
 
         <div>
           id:{' '}
