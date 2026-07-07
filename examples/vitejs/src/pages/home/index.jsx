@@ -14,19 +14,11 @@ export default function HomePage() {
       <div>
         <p>Put</p>
         <article>
-          <button
-            type="button"
-            className=""
-            onClick={() => fx.put({ title: 'MY TITLE' })}
-          >
+          <button type="button" onClick={() => fx.put({ title: 'MY TITLE' })}>
             put Value
           </button>
 
-          <button
-            type="button"
-            className=""
-            onClick={() => fx.put({ profiles: [] })}
-          >
+          <button type="button" onClick={() => fx.put({ profiles: [] })}>
             put Array
           </button>
 
@@ -34,13 +26,12 @@ export default function HomePage() {
             type="button"
             onClick={() =>
               fx.put({
+                title: 'ROOT TITLE',
                 access: {
-                  group: 'group'
-                },
-                form: {
-                  name: {
-                    firstName: 'FIRST_NAME',
-                    lastName: 'LAST_NAME'
+                  group: 'guest',
+                  permissions: {
+                    read: false,
+                    exec: false
                   }
                 }
               })
@@ -50,48 +41,40 @@ export default function HomePage() {
           </button>
         </article>
 
-        <p>Put levels</p>
+        <p>Put inline</p>
         <article>
           <button
             type="button"
             onClick={() => fx.put({ 'form.name.lastName': 'BOUCHAN' })}
           >
-            put levels (Value)
+            put inline Value
           </button>
 
           <button type="button" onClick={() => fx.put({ 'form.codes': [] })}>
-            put levels (Array)
+            put inline Array
           </button>
 
           <button
             type="button"
             onClick={() =>
-              fx.put({
-                'form.name': {
-                  firstName: 'SINUHE',
-                  lastName: 'MACEDA',
-                  company: {
-                    codeName: 'sdev'
-                  }
-                }
-              })
+              fx.put({ 'form.name': { company: { email: 'email@gmail.com' } } })
             }
           >
-            put levels (Json)
+            put inline Json
           </button>
         </article>
 
         <p>Put empty</p>
         <article>
           <button type="button" onClick={() => fx.put({ access: {} })}>
-            put empty
+            put empty (Value)
           </button>
 
           <button
             type="button"
             onClick={() => fx.put({ 'access.permissions': {} })}
           >
-            put levels empty
+            put empty (levesl)
           </button>
 
           <button
@@ -102,7 +85,7 @@ export default function HomePage() {
               })
             }
           >
-            put json empty
+            put empty json
           </button>
         </article>
 
@@ -123,37 +106,6 @@ export default function HomePage() {
           </button>
           <button type="button" onClick={() => fx.hide('form.license')}>
             hide
-          </button>
-        </article>
-
-        <p>Reset :</p>
-        <article>
-          <button type="button" onClick={() => fx.reset('form')}>
-            ('form')
-          </button>
-          <button type="button" onClick={() => fx.reset('form.name.firstName')}>
-            ('form.name.firstName')
-          </button>
-          <button type="button" onClick={() => fx.reset(['id', 'form.name'])}>
-            (['id', 'form.name'])
-          </button>
-        </article>
-
-        <p>Simple actions</p>
-        <article>
-          <button
-            type="button"
-            className="fs-25"
-            onClick={(e) => fx.increment(e)}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="fs-25"
-            onClick={(e) => fx.decrement(e)}
-          >
-            -
           </button>
         </article>
 
@@ -208,6 +160,37 @@ export default function HomePage() {
             />
             <label htmlFor="F">F</label>
           </div>
+        </article>
+
+        <p>Reset :</p>
+        <article>
+          <button type="button" onClick={() => fx.reset('form')}>
+            ('form')
+          </button>
+          <button type="button" onClick={() => fx.reset('form.name.firstName')}>
+            ('form.name.firstName')
+          </button>
+          <button type="button" onClick={() => fx.reset(['id', 'form.name'])}>
+            (['id', 'form.name'])
+          </button>
+        </article>
+
+        <p>Simple actions</p>
+        <article>
+          <button
+            type="button"
+            className="fs-25"
+            onClick={(e) => fx.increment(e)}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className="fs-25"
+            onClick={(e) => fx.decrement(e)}
+          >
+            -
+          </button>
         </article>
       </div>
 
