@@ -49,11 +49,6 @@ function unflatten(str) {
 }
 
 function merge(target, source) {
-  // isFlatten
-  if (Object.keys(source)[0].includes('.')) {
-    source = unflatten(source)
-  }
-
   // in array return all source
   if (Array.isArray(target)) return source
 
@@ -82,7 +77,10 @@ function reducer(state, action) {
 
   switch (type) {
     case ACTIONS.PUT:
-      return merge(state, payload)
+      return merge(
+        state,
+        Object.keys(payload)[0].includes('.') ? unflatten(payload) : payload
+      )
 
     case ACTIONS.SHOW:
       return merge(state, { [payload]: true })
@@ -103,7 +101,7 @@ function reducer(state, action) {
             value = value[key]
           }
 
-          output = merge(output, { [path]: value })
+          output = merge(output, unflatten({ [path]: value }))
         }
 
         return output
