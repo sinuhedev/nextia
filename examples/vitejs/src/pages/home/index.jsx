@@ -1,13 +1,7 @@
-import { useEffect } from 'react'
-import { sum } from 'utils'
 import useFunctions from './functions'
 
 export default function HomePage() {
   const { state, initialState, fx, context } = useFunctions()
-
-  useEffect(() => {
-    console.info(sum(10, 10))
-  }, [])
 
   return (
     <section className="flex">
@@ -18,7 +12,7 @@ export default function HomePage() {
             put Value
           </button>
 
-          <button type="button" onClick={() => fx.put({ profiles: [] })}>
+          <button type="button" onClick={() => fx.put({ profiles: ['sys'] })}>
             put Array
           </button>
 
@@ -50,7 +44,10 @@ export default function HomePage() {
             put inline Value
           </button>
 
-          <button type="button" onClick={() => fx.put({ 'form.codes': [] })}>
+          <button
+            type="button"
+            onClick={() => fx.put({ 'form.codes': [0, 1, 2] })}
+          >
             put inline Array
           </button>
 
@@ -67,14 +64,14 @@ export default function HomePage() {
         <p>Put empty</p>
         <article>
           <button type="button" onClick={() => fx.put({ access: {} })}>
-            put empty (Value)
+            put empty Value
           </button>
 
           <button
             type="button"
             onClick={() => fx.put({ 'access.permissions': {} })}
           >
-            put empty (levesl)
+            put empty Array
           </button>
 
           <button
@@ -85,7 +82,7 @@ export default function HomePage() {
               })
             }
           >
-            put empty json
+            put empty Json
           </button>
         </article>
 
@@ -106,6 +103,19 @@ export default function HomePage() {
           </button>
           <button type="button" onClick={() => fx.hide('form.license')}>
             hide
+          </button>
+        </article>
+
+        <p>Reset :</p>
+        <article>
+          <button type="button" onClick={() => fx.reset('form')}>
+            ('form')
+          </button>
+          <button type="button" onClick={() => fx.reset('form.name.firstName')}>
+            ('form.name.firstName')
+          </button>
+          <button type="button" onClick={() => fx.reset(['id', 'form.name'])}>
+            (['id', 'form.name'])
           </button>
         </article>
 
@@ -162,20 +172,7 @@ export default function HomePage() {
           </div>
         </article>
 
-        <p>Reset :</p>
-        <article>
-          <button type="button" onClick={() => fx.reset('form')}>
-            ('form')
-          </button>
-          <button type="button" onClick={() => fx.reset('form.name.firstName')}>
-            ('form.name.firstName')
-          </button>
-          <button type="button" onClick={() => fx.reset(['id', 'form.name'])}>
-            (['id', 'form.name'])
-          </button>
-        </article>
-
-        <p>Simple actions</p>
+        <p>Action functions</p>
         <article>
           <button
             type="button"
