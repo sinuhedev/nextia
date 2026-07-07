@@ -26,35 +26,32 @@ const ACTIONS = {
 const isObject = (obj) =>
   obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 
-function values(state, payload, value) {
-  const dot = payload.indexOf('.')
+function unflatten(str) {
+  const result = {}
 
-  // one level
-  if (dot === -1) {
-    // put Object and empty or exist object
-    if (isObject(state[payload]) && isObject(value))
-      return {
-        ...state,
-        [payload]: Object.keys(value).length
-          ? { ...state[payload], ...value }
-          : {}
+  for (const [path, value] of Object.entries(str)) {
+    const keys = path.split('.')
+    let current = result
+
+    keys.forEach((key, index) => {
+      if (index === keys.length - 1) {
+        current[key] = value
+      } else {
+        current[key] ??= {}
+        current = current[key]
       }
-
-    // put Value
-    return {
-      ...state,
-      [payload]: value
-    }
+    })
   }
 
-  // multi levels
-  const key = payload.slice(0, dot)
-  const rest = payload.slice(dot + 1)
-
-  return { ...state, [key]: values(state[key] ?? {}, rest, value) }
+  return result
 }
 
 function merge(target, source) {
+  // isFlatten
+  if (Object.keys(source)[0].includes('.')) {
+    source = unflatten(source)
+  }
+
   // in array return all source
   if (Array.isArray(target)) return source
 
@@ -64,12 +61,11 @@ function merge(target, source) {
     const tVal = target[key]
     const sVal = source[key]
 
-    output[key] =
-      isObject(tVal) && isObject(sVal)
-        ? Object.keys(sVal).length
-          ? merge(tVal, sVal)
-          : {}
-        : sVal
+    if (isObject(tVal) && isObject(sVal) && Object.keys(sVal).length) {
+      output[key] = merge(tVal, sVal)
+    } else {
+      output[key] = sVal
+    }
   }
 
   return output
@@ -84,29 +80,21 @@ function reducer(state, action) {
 
   switch (type) {
     case ACTIONS.PUT:
-      // Merge custom items
-      if (Object.keys(payload).length === 1) {
-        const key = Object.keys(payload)[0]
-        return values(state, key, payload[key])
-      }
-
-      // Merge all json
       return merge(state, payload)
 
     case ACTIONS.SHOW:
-      return values(state, payload, true)
+      return merge(state, { [payload]: true })
 
     case ACTIONS.HIDE:
-      return values(state, payload, false)
+      return merge(state, { [payload]: false })
 
     case ACTIONS.CHANGE:
-      return values(
-        state,
-        payload.target.name,
-        payload.target.type === 'checkbox'
-          ? payload.target.checked
-          : payload.target.value
-      )
+      return merge(state, {
+        [payload.target.name]:
+          payload.target.type === 'checkbox'
+            ? payload.target.checked
+            : payload.target.value
+      })
 
     case ACTIONS.RESET:
       // reset custom items
@@ -115,15 +103,12 @@ function reducer(state, action) {
 
         return paths.reduce((ac, path) => {
           const value = path.split('.').reduce((ac, e) => ac[e], initialState)
-          return values(ac, path, value)
+          return merge(ac, { [path]: value })
         }, state)
       }
 
       // all reset
       return initialState
-
-    default:
-      return state
   }
 }
 
