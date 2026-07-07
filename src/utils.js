@@ -31,22 +31,6 @@ function css(...classNames) {
 }
 
 /**
- * getVersion
- */
-
-const getVersion = () =>
-  Object.fromEntries(
-    document
-      .querySelector('meta[name="version"]')
-      ?.getAttribute('content')
-      .split(', ')
-      .map((item) => {
-        const [key, value] = item.split('=')
-        return [key, value]
-      }) ?? ''
-  )
-
-/**
  * View Transition
  */
 
@@ -58,4 +42,4 @@ async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
   ref.style.viewTransitionName = ''
 }
 
-export { css, getVersion, startViewTransition }
+export { css, startViewTransition }
