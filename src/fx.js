@@ -136,12 +136,15 @@ function useCx() {
   }
 }
 
-function useFx(initialState = {}, functions = {}) {
+function useFx(functions = { initialState: {} }, init) {
+  // initialState
+  const { initialState } = functions
+
   // Context
   const cx = useCx()
 
   // Reducer
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState, init)
 
   // Actions
   const actions = {}
