@@ -5,7 +5,7 @@ export default function MyContext() {
   const { state, fx, context } = useFunctions()
 
   useEffect(() => {
-    fx.init()
+    fx.start()
   }, [])
 
   return (

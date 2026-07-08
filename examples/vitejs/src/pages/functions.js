@@ -25,8 +25,7 @@ export default () => {
     put({ num: payload.value })
   }
 
-  return useFx({
-    initialState,
+  return useFx(initialState, {
     changeI18n,
     increment,
     decrement,

@@ -36,8 +36,7 @@ export default () => {
     put({ id: state.id - 1 })
   }
 
-  return useFx({
-    initialState,
+  return useFx(initialState, {
     increment,
     decrement
   })

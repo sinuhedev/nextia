@@ -60,8 +60,7 @@ export default () => {
     if (ok) put({ status, users: [], user: {} })
   }
 
-  return useFx({
-    initialState,
+  return useFx(initialState, {
     users,
     createUser,
     updateUser,

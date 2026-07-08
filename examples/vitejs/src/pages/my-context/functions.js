@@ -3,9 +3,9 @@ import { useFx } from 'nextia'
 export default () => {
   const initialState = {}
 
-  function init({ context }) {
+  function start({ context }) {
     context.fx.put({ num: 300 })
   }
 
-  return useFx({ initialState, init })
+  return useFx(initialState, { start })
 }

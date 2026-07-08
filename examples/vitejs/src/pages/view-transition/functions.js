@@ -6,7 +6,5 @@ export default () => {
     count2: 1
   }
 
-  return useFx({
-    initialState
-  })
+  return useFx(initialState)
 }

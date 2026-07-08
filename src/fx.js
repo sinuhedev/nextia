@@ -136,9 +136,7 @@ function useCx() {
   }
 }
 
-function useFx(functions = { initialState: {} }) {
-  const { initialState } = functions
-
+function useFx(initialState = {}, functions = {}) {
   // Context
   const cx = useCx()
 
