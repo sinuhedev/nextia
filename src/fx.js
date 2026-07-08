@@ -26,6 +26,8 @@ const ACTIONS = {
 const isObject = (obj) =>
   obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 
+const isFlatten = (str) => Object.keys(str)[0].includes('.')
+
 function unflatten(str) {
   const output = {}
 
@@ -77,10 +79,7 @@ function reducer(state, action) {
 
   switch (type) {
     case ACTIONS.PUT:
-      return merge(
-        state,
-        Object.keys(payload)[0].includes('.') ? unflatten(payload) : payload
-      )
+      return merge(state, isFlatten(payload) ? unflatten(payload) : payload)
 
     case ACTIONS.SHOW:
       return merge(state, unflatten({ [payload]: true }))
