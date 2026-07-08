@@ -1,12 +1,17 @@
+import { useFx } from 'nextia'
 import { useEffect } from 'react'
-import useFunctions from './functions'
+import functions from './functions'
 
 export default function MyContext() {
-  const { state, fx, context } = useFunctions()
+  const { state, fx, context } = useFx(functions, (initialState) => {
+    return {
+      currentNum: initialState.currentNum + 1
+    }
+  })
 
   useEffect(() => {
-    fx.start()
-  }, [])
+    console.info(state.currentNum)
+  }, [state.currentNum])
 
   return (
     <section>

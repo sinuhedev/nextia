@@ -1,7 +1,8 @@
-import useFunctions from './functions'
+import { useFx } from 'nextia'
+import functions from './functions'
 
 export default function MockapiPage() {
-  const { initialState, state, fx } = useFunctions()
+  const { initialState, state, fx } = useFx(functions)
 
   return (
     <section className="flex">

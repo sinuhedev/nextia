@@ -1,10 +1,8 @@
-import { useFx } from 'nextia'
+const initialState = {
+  count: 1,
+  count2: 1
+}
 
-export default () => {
-  const initialState = {
-    count: 1,
-    count2: 1
-  }
-
-  return useFx(initialState)
+export default {
+  initialState
 }

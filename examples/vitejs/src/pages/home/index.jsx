@@ -1,7 +1,8 @@
-import useFunctions from './functions'
+import { useFx } from 'nextia'
+import functions from './functions'
 
 export default function HomePage() {
-  const { state, initialState, fx, context } = useFunctions()
+  const { state, initialState, fx, context } = useFx(functions)
 
   return (
     <section className="flex">

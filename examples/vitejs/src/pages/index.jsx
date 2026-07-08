@@ -7,15 +7,20 @@ import {
   Link,
   Pagex,
   startViewTransition,
+  useFx,
   useQueryString,
   useResize
 } from 'nextia'
 import { lazy, useEffect, useRef, useState } from 'react'
 import { env } from 'utils'
-import useFunctions from './functions.js'
+import functions from './functions.js'
 
 export default function Pages() {
-  const pages = useFunctions()
+  const pages = useFx(functions, (initialState) => {
+    return {
+      num: 2087
+    }
+  })
   const { state, fx } = pages
 
   const [Page, setPage] = useState()
