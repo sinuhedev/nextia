@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useReducer } from 'react'
+import { createContext, use, useMemo, useReducer } from 'react'
 
 const Pagex = createContext()
 
@@ -147,37 +147,51 @@ function useFx(functions = { initialState: {} }, init) {
   const [state, dispatch] = useReducer(reducer, initialState, init)
 
   // Actions
-  const actions = {}
-  for (const type of Object.values(ACTIONS)) {
-    actions[type] = (payload) =>
-      dispatch({
-        type,
-        payload,
-        initialState
-      })
-  }
+  const actions = useMemo(() => {
+    const acts = {}
+
+    for (const type of Object.values(ACTIONS)) {
+      acts[type] = (payload) =>
+        dispatch({
+          type,
+          payload,
+          initialState
+        })
+    }
+
+    return acts
+  }, [initialState])
 
   // Action functions
-  const actionsFx = {}
-  for (const [key, fn] of Object.entries(functions)) {
-    if (typeof fn === 'function')
-      actionsFx[key] = (payload) =>
-        fn(
-          Object.freeze({
-            ...actions,
-            state,
-            payload,
-            context: cx.context
-          })
-        )
-  }
+  const actionsFx = useMemo(() => {
+    const fxs = {}
 
-  return Object.freeze({
-    initialState,
-    state,
-    fx: { ...actions, ...actionsFx },
-    context: cx.context
-  })
+    for (const [key, fn] of Object.entries(functions)) {
+      if (typeof fn === 'function')
+        fxs[key] = (payload) =>
+          fn(
+            Object.freeze({
+              ...actions,
+              state,
+              payload,
+              context: cx.context
+            })
+          )
+    }
+    return fxs
+  }, [functions, actions, state, cx.context])
+
+  // return
+  return useMemo(
+    () =>
+      Object.freeze({
+        initialState,
+        state,
+        fx: { ...actions, ...actionsFx },
+        context: cx.context
+      }),
+    [initialState, state, actions, actionsFx, cx.context]
+  )
 }
 
 export { Pagex, useCx, useFx }

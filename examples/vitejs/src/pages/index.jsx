@@ -17,9 +17,8 @@ import functions from './functions.js'
 
 export default function Pages() {
   const pages = useFx(functions, (initialState) => {
-    return {
-      num: 2087
-    }
+    initialState.num = 2087
+    return initialState
   })
   const { state, fx } = pages
 
