@@ -42,4 +42,19 @@ async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
   ref.style.viewTransitionName = ''
 }
 
-export { css, startViewTransition }
+/**
+ * getVersion
+ */
+const getVersion = () =>
+  Object.fromEntries(
+    document
+      .querySelector('meta[name="version"]')
+      ?.getAttribute('content')
+      .split(', ')
+      .map((item) => {
+        const [key, value] = item.split('=')
+        return [key, value]
+      }) ?? ''
+  )
+
+export { css, getVersion, startViewTransition }

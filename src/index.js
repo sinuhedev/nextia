@@ -10,10 +10,11 @@
 import { Pagex, useCx, useFx } from './fx.js'
 import { useQueryString, useResize } from './hooks.js'
 import { I18n, Icon, Link, Svg } from './ui.js'
-import { css, startViewTransition } from './utils.js'
+import { css, getVersion, startViewTransition } from './utils.js'
 
 export {
   css,
+  getVersion,
   I18n,
   Icon,
   Link,
