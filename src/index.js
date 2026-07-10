@@ -8,7 +8,7 @@
  */
 
 import { Pagex, useCx, useFx } from './fx.js'
-import { useQueryString, useResize } from './hooks.js'
+import { usePage, useQueryString, useResize } from './hooks.js'
 import { I18n, Icon, Link, Svg } from './ui.js'
 import { css, getVersion, startViewTransition } from './utils.js'
 
@@ -23,6 +23,7 @@ export {
   startViewTransition,
   useCx,
   useFx,
+  usePage,
   useQueryString,
   useResize
 }

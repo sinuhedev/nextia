@@ -21,7 +21,5 @@ node --run build <ENV>
  
 ```env
 PUBLIC_TITLE=dev
-PUBLIC_LOGGER=true
-PUBLIC_VIEW_TRANSITION=true
 PUBLIC_API=https://65fd14fb9fc4425c653119c5.mockapi.io/api/v1
 ```

@@ -31,20 +31,9 @@ function css(...classNames) {
 }
 
 /**
- * View Transition
- */
-
-async function startViewTransition(fun = () => {}, ref, animation = 'fade') {
-  if (!document.startViewTransition) return fun()
-
-  ref.style.viewTransitionName = animation
-  await document.startViewTransition(() => fun).finished
-  ref.style.viewTransitionName = ''
-}
-
-/**
  * getVersion
  */
+
 const getVersion = () =>
   Object.fromEntries(
     document
@@ -56,5 +45,17 @@ const getVersion = () =>
         return [key, value]
       }) ?? ''
   )
+
+/**
+ * View Transition
+ */
+
+async function startViewTransition(fun = () => {}, ref, animation) {
+  if (!document.startViewTransition || !animation) return fun()
+
+  ref.style.viewTransitionName = animation
+  await document.startViewTransition(fun).finished
+  ref.style.viewTransitionName = ''
+}
 
 export { css, getVersion, startViewTransition }

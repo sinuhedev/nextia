@@ -7,7 +7,12 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { useCallback, useEffect, useState } from 'react'
+import { lazy, useCallback, useEffect, useState } from 'react'
+import { startViewTransition } from './utils'
+
+/**
+ * useQueryString
+ */
 
 function useQueryString() {
   const getQueryString = useCallback(() => {
@@ -31,6 +36,10 @@ function useQueryString() {
 
   return queryString
 }
+
+/**
+ * useResize
+ */
 
 function useResize({ md = 768, lg = 1024, xl = 1280 }) {
   const getResize = useCallback(
@@ -59,4 +68,38 @@ function useResize({ md = 768, lg = 1024, xl = 1280 }) {
   return resize
 }
 
-export { useQueryString, useResize }
+/**
+ * usePage
+ */
+
+function usePage({
+  hash,
+  importPage = () => {},
+  viewTransition = {
+    ref: null,
+    name: ''
+  }
+}) {
+  const [Page, setPage] = useState()
+  const { ref, name = '' } = viewTransition
+
+  useEffect(() => {
+    const page = lazy(async () => {
+      const normalizeHash = ['', '#/'].includes(hash) ? '#/home' : hash
+      const path = normalizeHash.substring(2).split('/').filter(Boolean)
+
+      try {
+        return await importPage(path)
+      } catch (e) {
+        console.error(e)
+        return await importPage()
+      }
+    })
+
+    startViewTransition(() => setPage(page), ref.current, name)
+  }, [hash, ref, name])
+
+  return Page
+}
+
+export { usePage, useQueryString, useResize }
