@@ -22,23 +22,21 @@ export default function Pages() {
   })
   const { state, fx } = pages
 
-  const [Page, setPage] = useState()
-  const qs = useQueryString()
   const resize = useResize(env.WINDOW_RESIZE)
+  const qs = useQueryString()
   const ref = useRef()
 
-  useEffect(() => {
-    const hash = ['', '#/'].includes(qs.hash) ? '#/home' : qs.hash
+  const [Page, setPage] = useState()
 
+  useEffect(() => {
     const page = lazy(async () => {
+      const hash = ['', '#/'].includes(qs.hash) ? '#/home' : qs.hash
       const path = hash.substring(2).split('/')
 
       try {
-        if (path.length === 1) {
-          return await import(`./${path[0]}/index.jsx`)
-        } else if (path.length === 2) {
+        if (path.length === 1) return await import(`./${path[0]}/index.jsx`)
+        if (path.length === 2)
           return await import(`./${path[0]}/${path[1]}/index.jsx`)
-        }
       } catch (e) {
         console.error(e)
         return await import('./not-found.jsx')
