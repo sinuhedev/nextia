@@ -73,6 +73,7 @@ function useResize({ md = 768, lg = 1024, xl = 1280 }) {
  */
 
 function usePage({
+  homePage = '#/home',
   hash,
   importPage = () => {},
   viewTransition = {
@@ -85,7 +86,7 @@ function usePage({
 
   useEffect(() => {
     const page = lazy(async () => {
-      const normalizeHash = ['', '#/'].includes(hash) ? '#/home' : hash
+      const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
       const path = normalizeHash.substring(2).split('/').filter(Boolean)
 
       try {

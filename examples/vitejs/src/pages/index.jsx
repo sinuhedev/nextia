@@ -23,10 +23,11 @@ export default function Pages() {
   const { state, fx } = pages
 
   const viewTransitionRef = useRef()
-  const { hash, queryString } = useQueryString()
+  const qs = useQueryString()
   const resize = useResize(env.WINDOW_RESIZE)
   const Page = usePage({
-    hash,
+    hash: qs.hash,
+    homePage: env.HOME_PAGE,
     importPage: async (path) => {
       if (path === undefined) return await import(`./not-found.jsx`)
       if (path.length === 1) return await import(`./${path[0]}/index.jsx`)
@@ -130,7 +131,7 @@ export default function Pages() {
       </aside>
 
       <main ref={viewTransitionRef} className="m-2">
-        {Page && <Page qs={queryString} resize={resize} />}
+        {Page && <Page qs={qs.queryString} resize={resize} />}
       </main>
     </Pagex>
   )
