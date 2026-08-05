@@ -54,6 +54,9 @@ function merge(target, source) {
   // in array return all source
   if (Array.isArray(target)) return source
 
+  // nothing to merge
+  if (!source || Object.keys(source).length === 0) return target
+
   const output = { ...target }
 
   for (const key of Object.keys(source)) {
