@@ -38,37 +38,6 @@ function useQueryString() {
 }
 
 /**
- * useResize
- */
-
-function useResize({ md = 768, lg = 1024, xl = 1280 }) {
-  const getResize = useCallback(
-    () => ({
-      width: window.innerWidth,
-      height: window.innerHeight,
-      sm: window.innerWidth < md,
-      md: window.innerWidth >= md && window.innerWidth < lg,
-      lg: window.innerWidth >= lg && window.innerWidth < xl,
-      xl: window.innerWidth >= xl
-    }),
-    [md, lg, xl]
-  )
-
-  const [resize, setResize] = useState(getResize)
-
-  useEffect(() => {
-    const handleResize = () => setResize(getResize())
-
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [getResize])
-
-  return resize
-}
-
-/**
  * usePage
  */
 
@@ -103,4 +72,4 @@ function usePage({
   return Page
 }
 
-export { usePage, useQueryString, useResize }
+export { usePage, useQueryString }

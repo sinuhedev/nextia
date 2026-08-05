@@ -1,16 +1,7 @@
 import i18n from 'assets/i18n.json'
 import icons from 'assets/icons.svg?raw'
 import { Translate } from 'components'
-import {
-  I18n,
-  Icon,
-  Link,
-  Pagex,
-  useFx,
-  usePage,
-  useQueryString,
-  useResize
-} from 'nextia'
+import { I18n, Icon, Link, Pagex, useFx, usePage, useQueryString } from 'nextia'
 import { useRef } from 'react'
 import { env } from 'utils'
 import functions from './functions.js'
@@ -24,7 +15,6 @@ export default function Pages() {
 
   const viewTransitionRef = useRef()
   const qs = useQueryString()
-  const resize = useResize(env.WINDOW_RESIZE)
   const Page = usePage({
     hash: qs.hash,
     homePage: env.HOME_PAGE,
@@ -122,16 +112,13 @@ export default function Pages() {
         <Link href="#/icons" className="mr-2">
           /icons
         </Link>
-        <Link href="#/resize" className="mr-2">
-          /resize
-        </Link>
         <Link href="#/dashboard" className="mr-2">
           /not-found
         </Link>
       </aside>
 
       <main ref={viewTransitionRef} className="m-2">
-        {Page && <Page qs={qs.queryString} resize={resize} />}
+        {Page && <Page qs={qs.queryString} />}
       </main>
     </Pagex>
   )
