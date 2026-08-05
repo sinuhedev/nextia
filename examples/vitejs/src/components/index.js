@@ -3,6 +3,6 @@ import CssImg from './CssImg'
 import Message from './Message'
 import SvgCss from './SvgCss'
 // ui
-import Translate from './ui/Translate'
+import Translate from './UI/Translate'
 
 export { Counter, CssImg, Message, SvgCss, Translate }
