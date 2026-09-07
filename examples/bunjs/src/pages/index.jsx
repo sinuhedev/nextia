@@ -33,13 +33,8 @@ export default function Pages() {
     hash: qs.hash,
     homePage: env.HOME_PAGE,
     importPage: async (path) => {
-      // if (path === undefined) return await import(`./not-found.jsx`)
-      // if (path.length === 1) return await import(`./${path[0]}/index.jsx`)
-      // if (path.length === 2)
-      //   return await import(`./${path[0]}/${path[1]}/index.jsx`)
-
-      const pagePath = PAGES[path.join('/')] ?? PAGES.notFound
-      return await pagePath()
+      const currentPage = PAGES[path.join('/')] ?? PAGES.notFound
+      return await currentPage()
     },
     viewTransition: {
       ref: viewTransitionRef,
