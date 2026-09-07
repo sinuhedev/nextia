@@ -6,6 +6,20 @@ import { useRef } from 'react'
 import { env } from 'utils'
 import functions from './functions.js'
 
+const PAGES = {
+  env: () => import('./env/index.jsx'),
+  home: () => import('./home/index.jsx'),
+  icons: () => import('./icons/index.jsx'),
+  images: () => import('./images/index.jsx'),
+  mockapi: () => import('./mockapi/index.jsx'),
+  'my-context': () => import('./my-context/index.jsx'),
+  'search-params': () => import('./search-params/index.jsx'),
+  'subpage/hello': () => import('./subpage/hello/index.jsx'),
+  translate: () => import('./translate/index.jsx'),
+  'view-transition': () => import('./view-transition/index.jsx'),
+  notFound: () => import(`./not-found.jsx`)
+}
+
 export default function Pages() {
   const pages = useFx(functions, (initialState) => {
     initialState.num = 2087
@@ -19,11 +33,13 @@ export default function Pages() {
     hash: qs.hash,
     homePage: env.HOME_PAGE,
     importPage: async (path) => {
-      if (path === undefined) return await import(`./not-found.jsx`)
-      // if (path.length === 1) return await import(`./${path[0]}/index.jsx`);
-      if (path.length === 1) return await import(`./home/index.jsx`)
-      if (path.length === 2)
-        return await import(`./${path[0]}/${path[1]}/index.jsx`)
+      // if (path === undefined) return await import(`./not-found.jsx`)
+      // if (path.length === 1) return await import(`./${path[0]}/index.jsx`)
+      // if (path.length === 2)
+      //   return await import(`./${path[0]}/${path[1]}/index.jsx`)
+
+      const pagePath = PAGES[path.join('/')] ?? PAGES.notFound
+      return await pagePath()
     },
     viewTransition: {
       ref: viewTransitionRef,
