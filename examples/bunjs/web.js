@@ -1,6 +1,5 @@
 import { cp, rm } from "bun:fs/promises";
-import path from "node:path";
-import { serve } from "bun";
+import path from "bun:path";
 import index from "./src/index.html";
 
 const ARG = process.argv[2];
@@ -9,7 +8,7 @@ const ARG = process.argv[2];
  * dev
  */
 if (ARG === "dev") {
-	const server = serve({
+	const server = Bun.serve({
 		hostname: "0.0.0.0",
 		port: 3000,
 

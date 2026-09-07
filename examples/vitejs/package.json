@@ -7,8 +7,8 @@
     "build": "vite build --mode"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "6.0.5",
-    "vite": "8.2.0"
+    "@vitejs/plugin-react": "6.1.1",
+    "vite": "8.2.2"
   },
   "dependencies": {
     "nextia": "file:../../",
