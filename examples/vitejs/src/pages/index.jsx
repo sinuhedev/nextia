@@ -24,7 +24,7 @@ export default function Pages() {
       const key = `./${path.join('/')}/index.jsx`
       const currentPage = PAGES[key]
 
-      if (!currentPage) return import('./not-found.jsx')
+      if (!currentPage) return await import('./not-found.jsx')
       return currentPage()
     },
     viewTransition: {
