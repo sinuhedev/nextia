@@ -1,5 +1,4 @@
 import { cp, rm } from 'bun:fs/promises'
-import path from 'bun:path'
 import index from './src/index.html'
 
 const ARG = process.argv[2]
@@ -30,7 +29,8 @@ if (ARG === 'dev') {
  * build
  */
 if (ARG === 'build') {
-  const outdir = path.join(process.cwd(), 'out')
+  const outdir = './out'
+
   await rm(outdir, { recursive: true, force: true })
 
   const result = await Bun.build({
@@ -44,8 +44,7 @@ if (ARG === 'build') {
   await cp('./public', './out', { recursive: true })
 
   for (const output of result.outputs) {
-    console.log(
-      ` ${path.relative(process.cwd(), output.path)}  ${(output.size / 1024).toFixed(1)} KB`
-    )
+    const relative = output.path.replace(`${process.cwd()}/`, '')
+    console.log(` ${relative}  ${(output.size / 1024).toFixed(1)} KB`)
   }
 }
