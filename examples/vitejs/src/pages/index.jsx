@@ -20,11 +20,11 @@ export default function Pages() {
   const Page = usePage({
     hash: qs.hash,
     homePage: env.HOME_PAGE,
-    importPage: async (path) => {
+    importPage: (path) => {
       const key = `./${path.join('/')}/index.jsx`
       const currentPage = PAGES[key]
 
-      if (!currentPage) return await import('./not-found.jsx')
+      if (!currentPage) return import('./not-found.jsx')
       return currentPage()
     },
     viewTransition: {

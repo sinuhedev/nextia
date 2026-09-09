@@ -42,8 +42,8 @@ function useQueryString() {
  */
 
 function usePage({
-  homePage = '#/home',
   hash,
+  homePage = '#/home',
   importPage = () => {},
   viewTransition = {
     ref: null,
@@ -54,20 +54,19 @@ function usePage({
   const { ref, name = '' } = viewTransition
 
   useEffect(() => {
-    const page = lazy(async () => {
+    const page = lazy(() => {
       const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
       const path = normalizeHash.substring(2).split('/').filter(Boolean)
 
-      try {
-        return await importPage(path)
-      } catch (e) {
+      // importPage return to Promise
+      return importPage(path).catch((e) => {
         console.error(e)
-        return await importPage()
-      }
+        return importPage() // fallback
+      })
     })
 
     startViewTransition(() => setPage(page), ref.current, name)
-  }, [hash, ref, name])
+  }, [hash, homePage, ref, name])
 
   return Page
 }
