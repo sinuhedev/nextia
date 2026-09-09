@@ -1,5 +1,5 @@
 import i18n from 'assets/i18n.json'
-import icons from 'assets/icons.svg?raw'
+import icons from 'assets/icons.svg?raw' with { type: 'text' }
 import { Translate } from 'components'
 import { I18n, Icon, Link, Pagex, useFx, usePage, useQueryString } from 'nextia'
 import { useRef } from 'react'
