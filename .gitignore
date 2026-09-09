@@ -11,3 +11,4 @@ out
 .swc
 
 examples/*/package-lock.json
+examples/*/bun.lock
