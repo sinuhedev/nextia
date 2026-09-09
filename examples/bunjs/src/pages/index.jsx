@@ -32,9 +32,9 @@ export default function Pages() {
   const Page = usePage({
     hash: qs.hash,
     homePage: env.HOME_PAGE,
-    importPage: async (path) => {
+    importPage: (path) => {
       const currentPage = PAGES[path.join('/')] ?? PAGES.notFound
-      return await currentPage()
+      return currentPage()
     },
     viewTransition: {
       ref: viewTransitionRef,
