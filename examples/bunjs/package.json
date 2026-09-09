@@ -12,8 +12,8 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "nextia": "10.1.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "nextia": "file:../../",
+    "react": "file:../../node_modules/react",
+    "react-dom": "^19.0.0"
   }
 }
