@@ -6,18 +6,19 @@ npm install
 #
 node --run dev
 node --run test
-node --run build <ENV>
+node --run build:dev
+node --run build:prod
 ```
 
 # env
 ```.env
-.env          # loaded in all cases
-.env.[ENV]    # only loaded in specified ENV [ dev, test, prod ]
+.env       # loaded in all cases
+.env.[ENV] # only loaded in specified ENV [ development, test, production ]
 ```
 
- * .env.dev
- * .env.prod
+ * .env.development
  * .env.test
+ * .env.production
  
 ```env
 PUBLIC_TITLE=dev
