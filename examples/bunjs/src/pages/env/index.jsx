@@ -4,7 +4,6 @@ import { env } from 'utils'
 export default function EnvPage() {
   useEffect(() => {
     console.log('env:', env)
-    console.info('VERSION:', env.VERSION)
   }, [])
 
   return (

@@ -1,11 +1,11 @@
 {
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --env-file=.env.dev ./web.js dev",
-    "build:dev": "bun --env-file=.env.dev ./web.js build",
-    "build:prod": "bun --env-file=.env.prod ./web.js build",
+    "dev": "BUN_ENV=development bun web.js serve",
+    "build:dev": "BUN_ENV=development bun web.js build",
+    "build:prod": "BUN_ENV=production bun web.js build",
     "test": "bun test",
     "test:name": "bun test --test-name-pattern",
     "test:coverage": "bun test --coverage"
