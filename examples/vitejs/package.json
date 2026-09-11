@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite --mode dev",
-    "build:dev": "vite build --mode dev",
-    "build:prod": "vite build --mode prod"
+    "dev": "vite --mode development",
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.1",
