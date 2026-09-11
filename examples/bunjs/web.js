@@ -1,8 +1,9 @@
 import { cp, rm } from 'bun:fs/promises'
 import { $ } from 'bun'
-import { version } from './package.json' with { type: 'json' }
+import pkg from './package.json' with { type: 'json' }
 import index from './src/index.html'
 
+const { version } = pkg
 const ENV = process.env.BUN_ENV
 const ARG = process.argv[2]
 
