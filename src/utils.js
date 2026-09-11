@@ -33,18 +33,14 @@ function css(...classNames) {
 /**
  * getVersion
  */
+const getVersion = () => {
+  if (typeof document === 'undefined') return {}
 
-const getVersion = () =>
-  Object.fromEntries(
-    document
-      .querySelector('meta[name="version"]')
-      ?.getAttribute('content')
-      .split(', ')
-      .map((item) => {
-        const [key, value] = item.split('=')
-        return [key, value]
-      }) ?? ''
-  )
+  const content = document.querySelector('meta[name="version"]')?.content
+  if (!content) return {}
+
+  return Object.fromEntries(content.split(', ').map((item) => item.split('=')))
+}
 
 /**
  * View Transition

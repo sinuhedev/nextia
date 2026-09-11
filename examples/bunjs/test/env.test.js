@@ -1,10 +1,9 @@
 import { test } from 'bun:test'
+import { env } from 'utils'
 
-// import { env } from 'utils'
-
-// test('env', () => {
-//   console.info(env.PUBLIC_TITLE)
-// })
+test('env', () => {
+  console.info(env)
+})
 
 test('hi', () => {
   console.info('hola')
