@@ -7,9 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useMemo, useReducer } from 'react'
-
-const Pagex = createContext()
+import { useMemo, useReducer } from 'react'
 
 const ACTIONS = {
   PUT: 'put',
@@ -126,25 +124,12 @@ function reducer(state, action) {
 }
 
 /**
- * useCx and useFx
+ * useFx
  */
-
-function useCx() {
-  const pages = use(Pagex)
-
-  return {
-    context: pages?.context,
-    i18n: pages?.i18n,
-    icons: pages?.icons
-  }
-}
 
 function useFx(functions = { initialState: {} }, init) {
   // initialState
   const { initialState } = functions
-
-  // Context
-  const cx = useCx()
 
   // Reducer
   const [state, dispatch] = useReducer(reducer, initialState, init)
@@ -176,13 +161,12 @@ function useFx(functions = { initialState: {} }, init) {
             Object.freeze({
               ...actions,
               state,
-              payload,
-              context: cx.context
+              payload
             })
           )
     }
     return fxs
-  }, [functions, actions, state, cx.context])
+  }, [functions, actions, state])
 
   // return
   return useMemo(
@@ -190,11 +174,10 @@ function useFx(functions = { initialState: {} }, init) {
       Object.freeze({
         initialState,
         state,
-        fx: { ...actions, ...actionsFx },
-        context: cx.context
+        fx: { ...actions, ...actionsFx }
       }),
-    [initialState, state, actions, actionsFx, cx.context]
+    [initialState, state, actions, actionsFx]
   )
 }
 
-export { Pagex, useCx, useFx }
+export { useFx }

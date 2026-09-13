@@ -8,7 +8,7 @@
  */
 
 import { lazy, useCallback, useEffect, useState } from 'react'
-import { startViewTransition } from './utils'
+import { Resources, startViewTransition } from './utils'
 
 /**
  * useQueryString
@@ -71,4 +71,12 @@ function usePage({
   return Page
 }
 
-export { usePage, useQueryString }
+function useResources() {
+  const [, setResources] = useState(() => Resources.getInstance().getAll())
+
+  useEffect(() => {
+    return Resources.getInstance().subscribe(setResources)
+  }, [])
+}
+
+export { usePage, useQueryString, useResources }

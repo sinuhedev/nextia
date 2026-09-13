@@ -8,17 +8,19 @@
  */
 
 import { createElement, useEffect, useRef } from 'react'
-import { useCx } from './fx.js'
+import { Resources } from './utils.js'
 
 function I18n({ value, args = [] }) {
-  const { context, i18n } = useCx()
+  const { i18n } = Resources.getInstance()
 
   if (!i18n) return null
 
+  const i18nLocale =
+    Resources.getInstance().get('i18n.locale') || i18n.defaultLocale
+
   try {
     const text = value.split('.').reduce((ac, el) => ac[el], i18n)
-    const locale = context.state?.i18n ?? i18n.defaultLocale
-    const index = i18n.locales.indexOf(locale)
+    const index = i18n.locales.indexOf(i18nLocale)
     let translated = text[index]
 
     if (args?.length) {
@@ -50,7 +52,7 @@ function Icon({
   strokeLinejoin = 'round',
   ...props
 }) {
-  const { icons } = useCx()
+  const { icons } = Resources.getInstance()
   const ref = useRef()
 
   useEffect(() => {

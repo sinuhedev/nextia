@@ -1,19 +1,38 @@
 import i18n from 'assets/i18n.json'
 import icons from 'assets/icons.svg?raw'
 import { Translate } from 'components'
-import { I18n, Icon, Link, Pagex, useFx, usePage, useQueryString } from 'nextia'
+import {
+  I18n,
+  Icon,
+  Link,
+  Resources,
+  useFx,
+  usePage,
+  useQueryString,
+  useResources
+} from 'nextia'
 import { useRef } from 'react'
 import { env } from 'utils'
 import functions from './functions.js'
 
 const PAGES = import.meta.glob('./**/index.jsx')
 
+Resources.getInstance({ i18n, icons })
+Resources.getInstance().set(
+  'i18n.locale',
+  window.localStorage.getItem('i18n.locale')
+)
+
 export default function Pages() {
-  const pages = useFx(functions, (initialState) => {
-    initialState.num = 2087
-    return initialState
+  useResources()
+
+  const pagesContext = useFx(functions, (initialState) => {
+    return {
+      ...initialState,
+      num: 2087
+    }
   })
-  const { state, fx } = pages
+  const { state, fx } = pagesContext
 
   const viewTransitionRef = useRef()
   const qs = useQueryString()
@@ -34,17 +53,19 @@ export default function Pages() {
   })
 
   return (
-    <Pagex
-      value={{
-        context: pages,
-        icons,
-        i18n
-      }}
-    >
+    <>
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 
-        <Translate />
+        <Translate
+          value={Resources.getInstance().get('i18n.locale')}
+          onChange={(payload) => {
+            const { value } = payload.target
+            window.localStorage.setItem('i18n.locale', value)
+            Resources.getInstance().set('i18n.locale', value)
+          }}
+          locales={Resources.getInstance().i18n.locales}
+        />
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
@@ -121,8 +142,8 @@ export default function Pages() {
       </aside>
 
       <main ref={viewTransitionRef} className="m-2">
-        {Page && <Page qs={qs.queryString} />}
+        {Page && <Page qs={qs.queryString} context={pagesContext} />}
       </main>
-    </Pagex>
+    </>
   )
 }

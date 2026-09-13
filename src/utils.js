@@ -54,4 +54,62 @@ async function startViewTransition(fun = () => {}, ref, animation) {
   ref.style.viewTransitionName = ''
 }
 
-export { css, getVersion, startViewTransition }
+class Resources {
+  static #instance = null
+
+  #i18n
+  #icons
+  #state = {}
+  #listeners = new Set() // ← lista de suscriptores
+
+  constructor({ i18n, icons }) {
+    this.#i18n = Object.freeze(i18n)
+    this.#icons = Object.freeze(icons)
+  }
+
+  static getInstance(data) {
+    if (!Resources.#instance) {
+      Resources.#instance = new Resources(data)
+    }
+    return Resources.#instance
+  }
+
+  get i18n() {
+    return this.#i18n
+  }
+
+  get icons() {
+    return this.#icons
+  }
+
+  set(key, value) {
+    this.#state[key] = value
+    this.#notify()
+  }
+
+  get(key) {
+    return this.#state[key]
+  }
+
+  getAll() {
+    return { ...this.#state }
+  }
+
+  clear() {
+    this.#state = {}
+    this.#notify()
+  }
+
+  subscribe(callback) {
+    this.#listeners.add(callback)
+    return () => this.#listeners.delete(callback)
+  }
+
+  #notify() {
+    for (const callback of this.#listeners) {
+      callback(this.getAll())
+    }
+  }
+}
+
+export { css, getVersion, Resources, startViewTransition }
