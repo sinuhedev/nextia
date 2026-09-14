@@ -33,6 +33,7 @@ function css(...classNames) {
 /**
  * getVersion
  */
+
 const getVersion = () => {
   if (typeof document === 'undefined') return {}
 
