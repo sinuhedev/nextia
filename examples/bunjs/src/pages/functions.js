@@ -1,5 +1,5 @@
 const initialState = {
-  i18n: window.localStorage.getItem('i18n'),
+  i18n: '',
   loading: false,
   num: 0
 }

@@ -16,9 +16,9 @@ function I18n({ value, args = [] }) {
   if (!i18n) return null
 
   try {
+    const i18nLocale = context.state?.i18n ?? i18n.defaultLocale
     const text = value.split('.').reduce((ac, el) => ac[el], i18n)
-    const locale = context.state?.i18n ?? i18n.defaultLocale
-    const index = i18n.locales.indexOf(locale)
+    const index = i18n.locales.indexOf(i18nLocale)
     let translated = text[index]
 
     if (args?.length) {

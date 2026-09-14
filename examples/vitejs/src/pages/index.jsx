@@ -10,8 +10,11 @@ const PAGES = import.meta.glob('./**/index.jsx')
 
 export default function Pages() {
   const pages = useFx(functions, (initialState) => {
-    initialState.num = 2087
-    return initialState
+    return {
+      ...initialState,
+      i18n: window.localStorage.getItem('i18n') || i18n.defaultLocale,
+      num: 2087
+    }
   })
   const { state, fx } = pages
 
@@ -44,7 +47,11 @@ export default function Pages() {
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
         <Icon id="globe" width="24" />
 
-        <Translate />
+        <Translate
+          value={state.i18n}
+          onChange={fx.changeI18n}
+          locales={i18n.locales}
+        />
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />
 
