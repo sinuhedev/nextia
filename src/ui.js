@@ -10,6 +10,57 @@
 import { createElement, useEffect, useRef } from 'react'
 import { useCx } from './fx.js'
 
+/**
+ * Link
+ */
+
+function Link({ children, href, value, ...props }) {
+  const base = href ?? window.location.hash.split('?')[0]
+  const query =
+    value && Object.keys(value).length
+      ? `?${new URLSearchParams(value).toString()}`
+      : ''
+
+  return createElement('a', { href: base + query, ...props }, children)
+}
+
+/**
+ * Svg
+ */
+
+function Svg({ ref, src, width, height, ...props }) {
+  ref ??= useRef()
+
+  useEffect(() => {
+    fetch(src)
+      .then((r) => r.text())
+      .then((text) => {
+        const svg = new DOMParser().parseFromString(
+          text,
+          'image/svg+xml'
+        ).documentElement
+
+        for (const { name, value } of svg.attributes) {
+          if (name !== 'width' && name !== 'height')
+            ref.current.setAttribute(name, value)
+        }
+
+        ref.current.replaceChildren(...svg.children)
+      })
+  }, [src, ref])
+
+  return createElement('svg', {
+    ref,
+    width,
+    height: height ?? width,
+    ...props
+  })
+}
+
+/**
+ * I18n
+ */
+
 function I18n({ value, args = [] }) {
   const { context, i18n } = useCx()
 
@@ -34,6 +85,10 @@ function I18n({ value, args = [] }) {
     return value
   }
 }
+
+/**
+ * Icon
+ */
 
 function Icon({
   id,
@@ -78,45 +133,6 @@ function Icon({
     strokeWidth,
     strokeLinecap,
     strokeLinejoin,
-    ...props
-  })
-}
-
-function Link({ children, href, value, ...props }) {
-  const base = href ?? window.location.hash.split('?')[0]
-  const query =
-    value && Object.keys(value).length
-      ? `?${new URLSearchParams(value).toString()}`
-      : ''
-
-  return createElement('a', { href: base + query, ...props }, children)
-}
-
-function Svg({ ref, src, width, height, ...props }) {
-  ref ??= useRef()
-
-  useEffect(() => {
-    fetch(src)
-      .then((r) => r.text())
-      .then((text) => {
-        const svg = new DOMParser().parseFromString(
-          text,
-          'image/svg+xml'
-        ).documentElement
-
-        for (const { name, value } of svg.attributes) {
-          if (name !== 'width' && name !== 'height')
-            ref.current.setAttribute(name, value)
-        }
-
-        ref.current.replaceChildren(...svg.children)
-      })
-  }, [src, ref])
-
-  return createElement('svg', {
-    ref,
-    width,
-    height: height ?? width,
     ...props
   })
 }
