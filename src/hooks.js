@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { lazy, useCallback, useEffect, useState } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import { startViewTransition } from './utils'
 
 /**
@@ -15,13 +15,13 @@ import { startViewTransition } from './utils'
  */
 
 function useQueryString() {
-  const getQueryString = useCallback(() => {
+  const getQueryString = () => {
     const [hash, search = ''] = window.location.hash.split('?')
     return {
       hash,
       queryString: Object.fromEntries(new URLSearchParams(search))
     }
-  }, [])
+  }
 
   const [queryString, setQueryString] = useState(getQueryString)
 
@@ -29,10 +29,8 @@ function useQueryString() {
     const handlePopState = () => setQueryString(getQueryString())
 
     window.addEventListener('popstate', handlePopState)
-    return () => {
-      window.removeEventListener('popstate', handlePopState)
-    }
-  }, [getQueryString])
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
 
   return queryString
 }
