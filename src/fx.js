@@ -7,7 +7,16 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useCallback, useMemo, useState } from 'react'
+import {
+  createContext,
+  lazy,
+  use,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
+import { startViewTransition } from './utils'
 
 const Pagex = createContext()
 
@@ -66,6 +75,61 @@ function merge(target, source) {
 }
 
 /**
+ * hooks: useQueryString and usePage
+ */
+
+function useQueryString() {
+  const getQueryString = () => {
+    const [hash, search = ''] = window.location.hash.split('?')
+    return {
+      hash,
+      queryString: Object.fromEntries(new URLSearchParams(search))
+    }
+  }
+
+  const [queryString, setQueryString] = useState(getQueryString)
+
+  useEffect(() => {
+    const handlePopState = () => setQueryString(getQueryString())
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  return queryString
+}
+
+function usePage({
+  hash,
+  homePage = '#/home',
+  importPage = () => {},
+  viewTransition = {
+    ref: null,
+    name: ''
+  }
+}) {
+  const [Page, setPage] = useState()
+  const { ref, name = '' } = viewTransition
+
+  useEffect(() => {
+    const page = lazy(() => {
+      const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
+      const path = normalizeHash.substring(2).split('/').filter(Boolean)
+
+      // importPage return to Promise
+      return importPage(path).catch((e) => {
+        console.error(e)
+        return importPage() // fallback
+      })
+    })
+
+    startViewTransition(() => setPage(page), ref.current, name)
+  }, [hash, homePage, ref, name])
+
+  return Page
+}
+
+/**
  * useCx and useFx
  */
 
@@ -82,6 +146,9 @@ function useCx() {
 function useFx(initialState = {}, functions = {}) {
   // Context
   const cx = useCx()
+
+  // QueryString
+  const qs = useQueryString()
 
   // State
   const [state, setState] = useState(initialState)
@@ -163,12 +230,13 @@ function useFx(initialState = {}, functions = {}) {
               ...actions,
               state,
               payload,
+              qs,
               context: cx.context
             })
           )
     }
     return fxs
-  }, [functions, actions, state, cx.context])
+  }, [functions, actions, state, qs, cx.context])
 
   // return
   return useMemo(
@@ -177,10 +245,11 @@ function useFx(initialState = {}, functions = {}) {
         initialState,
         state,
         fx: { ...actions, ...actionsFx },
+        qs,
         context: cx.context
       }),
-    [initialState, state, actions, actionsFx, cx.context]
+    [initialState, state, actions, actionsFx, qs, cx.context]
   )
 }
 
-export { Pagex, useCx, useFx }
+export { Pagex, useCx, useFx, usePage }
