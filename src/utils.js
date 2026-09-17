@@ -48,11 +48,14 @@ const getVersion = () => {
  */
 
 async function startViewTransition(fun = () => {}, ref, animation) {
-  if (!document.startViewTransition || !animation) return fun()
+  if (!document.startViewTransition || !animation || !ref) return fun()
 
   ref.style.viewTransitionName = animation
-  await document.startViewTransition(fun).finished
-  ref.style.viewTransitionName = ''
+  try {
+    await document.startViewTransition(fun).finished
+  } finally {
+    ref.style.viewTransitionName = ''
+  }
 }
 
 export { css, getVersion, startViewTransition }
