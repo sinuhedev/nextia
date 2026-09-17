@@ -7,17 +7,9 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { createContext, use, useMemo, useReducer } from 'react'
+import { createContext, use, useCallback, useMemo, useState } from 'react'
 
 const Pagex = createContext()
-
-const ACTIONS = {
-  PUT: 'put',
-  SHOW: 'show',
-  HIDE: 'hide',
-  CHANGE: 'change',
-  RESET: 'reset'
-}
 
 /**
  * util
@@ -74,58 +66,6 @@ function merge(target, source) {
 }
 
 /**
- * reducer
- */
-
-function reducer(state, action) {
-  const { type, payload, initialState } = action
-
-  switch (type) {
-    case ACTIONS.PUT:
-      return merge(state, isFlatten(payload) ? unflatten(payload) : payload)
-
-    case ACTIONS.SHOW:
-      return merge(state, unflatten({ [payload]: true }))
-
-    case ACTIONS.HIDE:
-      return merge(state, unflatten({ [payload]: false }))
-
-    case ACTIONS.RESET:
-      // reset custom items
-      if (payload) {
-        const paths = Array.isArray(payload) ? payload : [payload]
-
-        let output = state
-        for (const path of paths) {
-          let value = initialState
-
-          for (const key of path.split('.')) {
-            value = value[key]
-          }
-
-          output = merge(output, unflatten({ [path]: value }))
-        }
-
-        return output
-      }
-
-      // all reset
-      return initialState
-
-    case ACTIONS.CHANGE:
-      return merge(
-        state,
-        unflatten({
-          [payload.target.name]:
-            payload.target.type === 'checkbox'
-              ? payload.target.checked
-              : payload.target.value
-        })
-      )
-  }
-}
-
-/**
  * useCx and useFx
  */
 
@@ -146,24 +86,75 @@ function useFx(functions = { initialState: {} }, init) {
   // Context
   const cx = useCx()
 
-  // Reducer
-  const [state, dispatch] = useReducer(reducer, initialState, init)
+  // State
+  const [state, setState] = useState(
+    typeof init === 'function' ? () => init(initialState) : initialState
+  )
 
   // Actions
-  const actions = useMemo(() => {
-    const acts = {}
+  const put = useCallback((payload) => {
+    setState((prev) =>
+      merge(prev, isFlatten(payload) ? unflatten(payload) : payload)
+    )
+  }, [])
 
-    for (const type of Object.values(ACTIONS)) {
-      acts[type] = (payload) =>
-        dispatch({
-          type,
-          payload,
-          initialState
+  const show = useCallback((payload) => {
+    setState((prev) => merge(prev, unflatten({ [payload]: true })))
+  }, [])
+
+  const hide = useCallback((payload) => {
+    setState((prev) => merge(prev, unflatten({ [payload]: false })))
+  }, [])
+
+  const reset = useCallback(
+    (payload) => {
+      if (payload) {
+        const paths = Array.isArray(payload) ? payload : [payload]
+
+        setState((prev) => {
+          let output = prev
+          for (const path of paths) {
+            let value = initialState
+
+            for (const key of path.split('.')) {
+              value = value[key]
+            }
+
+            output = merge(output, unflatten({ [path]: value }))
+          }
+          return output
         })
-    }
+      } else {
+        setState(initialState)
+      }
+    },
+    [initialState]
+  )
 
-    return acts
-  }, [initialState])
+  const change = useCallback((payload) => {
+    setState((prev) =>
+      merge(
+        prev,
+        unflatten({
+          [payload.target.name]:
+            payload.target.type === 'checkbox'
+              ? payload.target.checked
+              : payload.target.value
+        })
+      )
+    )
+  }, [])
+
+  const actions = useMemo(
+    () => ({
+      put,
+      show,
+      hide,
+      reset,
+      change
+    }),
+    [put, show, hide, reset, change]
+  )
 
   // Action functions
   const actionsFx = useMemo(() => {
