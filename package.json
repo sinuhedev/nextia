@@ -1,7 +1,7 @@
 {
   "name": "nextia",
   "description": "Create fast web applications",
-  "version": "10.1.4",
+  "version": "11.0.0",
   "license": "MIT",
   "type": "module",
   "author": {
