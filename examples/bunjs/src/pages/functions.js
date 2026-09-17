@@ -1,7 +1,7 @@
 const initialState = {
   i18n: '',
   loading: false,
-  num: 0
+  num: 2087
 }
 
 function changeI18n({ payload, put }) {

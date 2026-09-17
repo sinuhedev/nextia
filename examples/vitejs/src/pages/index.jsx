@@ -9,13 +9,10 @@ import functions from './functions.js'
 const PAGES = import.meta.glob('./**/index.jsx')
 
 export default function Pages() {
-  const pages = useFx(functions, (initialState) => {
-    return {
-      ...initialState,
-      i18n: window.localStorage.getItem('i18n') || i18n.defaultLocale,
-      num: 2087
-    }
-  })
+  const pages = useFx(functions, (initialState) => ({
+    ...initialState,
+    i18n: window.localStorage.getItem('i18n') || i18n.defaultLocale
+  }))
   const { state, fx } = pages
 
   const viewTransitionRef = useRef()
