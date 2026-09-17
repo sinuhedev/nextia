@@ -112,14 +112,13 @@ function usePage({
   const { ref, name = '' } = viewTransition
 
   useEffect(() => {
-    const page = lazy(() => {
-      const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
-      const path = normalizeHash.substring(2).split('/').filter(Boolean)
+    const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
+    const path = normalizeHash.substring(2).split('/').filter(Boolean)
 
-      // importPage return to Promise
+    const page = lazy(() => {
       return importPage(path).catch((e) => {
         console.error(e)
-        return importPage() // fallback
+        return importPage()
       })
     })
 
