@@ -79,17 +79,12 @@ function useCx() {
   }
 }
 
-function useFx(functions = { initialState: {} }, init) {
-  // initialState
-  const { initialState } = functions
-
+function useFx(initialState = {}, functions = {}) {
   // Context
   const cx = useCx()
 
   // State
-  const [state, setState] = useState(
-    typeof init === 'function' ? () => init(initialState) : initialState
-  )
+  const [state, setState] = useState(initialState)
 
   // Actions
   const put = useCallback((payload) => {

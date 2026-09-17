@@ -21,10 +21,14 @@ const PAGES = {
 }
 
 export default function Pages() {
-  const pages = useFx(functions, (initialState) => ({
-    ...initialState,
-    i18n: window.localStorage.getItem('i18n') || i18n.defaultLocale
-  }))
+  const pages = useFx(
+    {
+      i18n: window.localStorage.getItem('i18n') || i18n.defaultLocale,
+      loading: false,
+      num: 2087
+    },
+    functions
+  )
   const { state, fx } = pages
 
   const viewTransitionRef = useRef()
