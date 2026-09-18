@@ -10,8 +10,8 @@
 import {
   createContext,
   lazy,
-  use,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState
@@ -133,7 +133,7 @@ function usePage({
  */
 
 function useCx() {
-  const pages = use(Pagex)
+  const pages = useContext(Pagex)
 
   return {
     context: pages?.context,
