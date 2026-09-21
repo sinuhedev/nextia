@@ -146,9 +146,6 @@ function useFx(initialState = {}, functions = {}) {
   // Context
   const cx = useCx()
 
-  // QueryString
-  const qs = useQueryString()
-
   // State
   const [state, setState] = useState(initialState)
 
@@ -229,13 +226,12 @@ function useFx(initialState = {}, functions = {}) {
               ...actions,
               state,
               payload,
-              qs,
               context: cx.context
             })
           )
     }
     return fxs
-  }, [functions, actions, state, qs, cx.context])
+  }, [functions, actions, state, cx.context])
 
   // return
   return useMemo(
@@ -244,11 +240,10 @@ function useFx(initialState = {}, functions = {}) {
         initialState,
         state,
         fx: { ...actions, ...actionsFx },
-        qs,
         context: cx.context
       }),
-    [initialState, state, actions, actionsFx, qs, cx.context]
+    [initialState, state, actions, actionsFx, cx.context]
   )
 }
 
-export { Pagex, useCx, useFx, usePage }
+export { Pagex, useCx, useFx, usePage, useQueryString }
