@@ -1,7 +1,6 @@
 {
   "version": "0.0.0",
   "type": "module",
-  "private": true,
   "scripts": {
     "dev": "BUN_ENV=development bun web.js serve",
     "build:dev": "BUN_ENV=development bun web.js build",
