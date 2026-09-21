@@ -7,8 +7,16 @@
  * https://github.com/sinuhedev/nextia
  */
 
+import {
+  createContext,
+  createElement,
+  useContext,
+  useEffect,
+  useRef
+} from 'react'
+
 /**
- * css
+ * utils
  */
 
 function css(...classNames) {
@@ -30,10 +38,6 @@ function css(...classNames) {
     .join(' ')
 }
 
-/**
- * getVersion
- */
-
 const getVersion = () => {
   if (typeof document === 'undefined') return {}
 
@@ -44,18 +48,134 @@ const getVersion = () => {
 }
 
 /**
- * View Transition
+ * context
  */
 
-async function startViewTransition(fun = () => {}, ref, animation) {
-  if (!document.startViewTransition || !animation || !ref) return fun()
+const Pagex = createContext()
 
-  ref.style.viewTransitionName = animation
-  try {
-    await document.startViewTransition(fun).finished
-  } finally {
-    ref.style.viewTransitionName = ''
+function useCx() {
+  const pages = useContext(Pagex)
+
+  return {
+    context: pages?.context,
+    i18n: pages?.i18n,
+    icons: pages?.icons
   }
 }
 
-export { css, getVersion, startViewTransition }
+/**
+ * UI
+ */
+
+function Link({ children, href, value, ...props }) {
+  const base = href ?? window.location.hash.split('?')[0]
+  const query =
+    value && Object.keys(value).length
+      ? `?${new URLSearchParams(value).toString()}`
+      : ''
+
+  return createElement('a', { href: base + query, ...props }, children)
+}
+
+function Svg({ ref, src, width, height, ...props }) {
+  ref ??= useRef()
+
+  useEffect(() => {
+    fetch(src)
+      .then((r) => r.text())
+      .then((text) => {
+        const svg = new DOMParser().parseFromString(
+          text,
+          'image/svg+xml'
+        ).documentElement
+
+        for (const { name, value } of svg.attributes) {
+          if (name !== 'width' && name !== 'height')
+            ref.current.setAttribute(name, value)
+        }
+
+        ref.current.replaceChildren(...svg.children)
+      })
+  }, [src, ref])
+
+  return createElement('svg', {
+    ref,
+    width,
+    height: height ?? width,
+    ...props
+  })
+}
+
+function I18n({ value, args = [] }) {
+  const { context, i18n } = useCx()
+
+  if (!i18n) return null
+
+  try {
+    const i18nLocale = context.state?.i18n ?? i18n.defaultLocale
+    const text = value.split('.').reduce((ac, el) => ac[el], i18n)
+    const index = i18n.locales.indexOf(i18nLocale)
+    let translated = text[index]
+
+    if (args?.length) {
+      translated = translated.replace(
+        /([{}])\1|[{](.*?)(?:!(.+?))?[}]/g,
+        (match, _literal, number) => args[number] ?? match
+      )
+    }
+
+    return translated
+  } catch {
+    console.error(`[i18n] key not found: "${value}"`)
+    return value
+  }
+}
+
+function Icon({
+  id,
+  className,
+  style,
+  width = '48',
+  height,
+  viewBox = '0 0 48 48',
+  fill = 'none',
+  color = 'currentColor',
+  stroke = 'currentColor',
+  strokeWidth = '2',
+  strokeLinecap = 'round',
+  strokeLinejoin = 'round',
+  ...props
+}) {
+  const { icons } = useCx()
+  const ref = useRef()
+
+  useEffect(() => {
+    if (!ref.current || !icons) return
+
+    const el = new DOMParser()
+      .parseFromString(icons, 'image/svg+xml')
+      .documentElement.getElementById(id)
+
+    if (el) ref.current.innerHTML = el.innerHTML
+  }, [id, icons])
+
+  return createElement('svg', {
+    xmlns: 'http://www.w3.org/2000/svg',
+    ref,
+    id,
+    className,
+    style,
+    width,
+    height: height ?? width,
+    viewBox,
+    fill,
+    color,
+    stroke,
+    strokeWidth,
+    strokeLinecap,
+    strokeLinejoin,
+    ...props
+  })
+}
+
+export { css, getVersion, I18n, Icon, Link, Pagex, Svg }

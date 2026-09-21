@@ -137,7 +137,7 @@ export default function Pages() {
       </aside>
 
       <main ref={viewTransitionRef} className="m-2">
-        {Page && <Page qs={qs} />}
+        {Page && <Page context={pages} qs={qs} />}
       </main>
     </Pagex>
   )

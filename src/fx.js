@@ -7,22 +7,22 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import {
-  createContext,
-  lazy,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
-import { startViewTransition } from './utils'
-
-const Pagex = createContext()
+import { lazy, useCallback, useEffect, useMemo, useState } from 'react'
 
 /**
- * util
+ * utils
  */
+
+async function startViewTransition(fun = () => {}, ref, animation) {
+  if (!document.startViewTransition || !animation || !ref) return fun()
+
+  ref.style.viewTransitionName = animation
+  try {
+    await document.startViewTransition(fun).finished
+  } finally {
+    ref.style.viewTransitionName = ''
+  }
+}
 
 const isObject = (obj) =>
   obj !== null && typeof obj === 'object' && !Array.isArray(obj)
@@ -75,7 +75,7 @@ function merge(target, source) {
 }
 
 /**
- * hooks: useQueryString and usePage
+ * hooks
  */
 
 function useQueryString() {
@@ -129,23 +129,10 @@ function usePage({
 }
 
 /**
- * useCx and useFx
+ * useFx
  */
 
-function useCx() {
-  const pages = useContext(Pagex)
-
-  return {
-    context: pages?.context,
-    i18n: pages?.i18n,
-    icons: pages?.icons
-  }
-}
-
 function useFx(initialState = {}, functions = {}) {
-  // Context
-  const cx = useCx()
-
   // State
   const [state, setState] = useState(initialState)
 
@@ -225,13 +212,12 @@ function useFx(initialState = {}, functions = {}) {
             Object.freeze({
               ...actions,
               state,
-              payload,
-              context: cx.context
+              payload
             })
           )
     }
     return fxs
-  }, [functions, actions, state, cx.context])
+  }, [functions, actions, state])
 
   // return
   return useMemo(
@@ -239,11 +225,10 @@ function useFx(initialState = {}, functions = {}) {
       Object.freeze({
         initialState,
         state,
-        fx: { ...actions, ...actionsFx },
-        context: cx.context
+        fx: { ...actions, ...actionsFx }
       }),
-    [initialState, state, actions, actionsFx, cx.context]
+    [initialState, state, actions, actionsFx]
   )
 }
 
-export { Pagex, useCx, useFx, usePage, useQueryString }
+export { startViewTransition, useFx, usePage, useQueryString }
