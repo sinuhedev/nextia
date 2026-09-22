@@ -1,9 +1,18 @@
 {
+  "files": {
+    "includes": [
+      "**",
+      "!!**/out",
+      "!!**/examples/out",
+      "!!**/node_modules",
+      "!!**/examples/node_modules",
+      "!!**/.git"
+    ]
+  },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2
   },
-
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
@@ -12,7 +21,6 @@
       "trailingCommas": "none"
     }
   },
-
   "css": {
     "parser": {
       "tailwindDirectives": true
