@@ -100,33 +100,31 @@ function useQueryString() {
 }
 
 function usePage({
-  hash,
+  hashPage = '',
   homePage = '#/home',
-  importPage = () => {},
-  viewTransition = {
-    ref: null,
-    name: ''
-  }
+  currentPage = () => {},
+  viewTransition = null,
+  viewTransitionName = ''
 }) {
   const [Page, setPage] = useState()
-  const { ref, name = '' } = viewTransition
 
   useEffect(() => {
-    const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
+    const normalizeHash = ['', '#/'].includes(hashPage) ? homePage : hashPage
     const path = normalizeHash.substring(2).split('/').filter(Boolean)
+    const importPage = currentPage(path)
 
-    importPage(path)
+    importPage()
       .then((page) => {
         startViewTransition(
           () => setPage(() => page.default),
-          ref.current,
-          name
+          viewTransition.current,
+          viewTransitionName
         )
       })
       .catch((e) => {
         console.error(e)
       })
-  }, [hash, homePage, ref, name])
+  }, [hashPage, homePage, viewTransition, viewTransitionName])
 
   return Page
 }
