@@ -18,7 +18,9 @@ export default function Pages() {
     },
     functions
   )
+
   const { state, fx } = pages
+
   const qs = useQueryString()
   const viewTransitionRef = useRef()
 
