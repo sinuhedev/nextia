@@ -21,7 +21,6 @@
     ".": "./src/index.js"
   },
   "scripts": {},
-  "devDependencies": {},
   "peerDependencies": {
     "react": "^19.0.0"
   }

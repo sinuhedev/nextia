@@ -6,9 +6,14 @@ Create fast web applications
 
 ```sh
 npm install
+
 cd examples/vitejs
 npm install
 node --run dev
+
+cd examples/bunjs
+bun i
+bun dev
 ```
 
 ### links
