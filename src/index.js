@@ -8,7 +8,8 @@
  */
 
 import { startViewTransition, useFx, usePage, useQueryString } from './fx.js'
-import { css, getVersion, I18n, Icon, Link, Pagex, Svg } from './utils.js'
+import { I18n, Icon, Link, Pagex, Svg } from './ui.jsx'
+import { css, getVersion } from './utils.js'
 
 export {
   css,
