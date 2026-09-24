@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 /**
  * utils
@@ -115,14 +115,17 @@ function usePage({
     const normalizeHash = ['', '#/'].includes(hash) ? homePage : hash
     const path = normalizeHash.substring(2).split('/').filter(Boolean)
 
-    const page = lazy(() => {
-      return importPage(path).catch((e) => {
-        console.error(e)
-        return importPage()
+    importPage(path)
+      .then((page) => {
+        startViewTransition(
+          () => setPage(() => page.default),
+          ref.current,
+          name
+        )
       })
-    })
-
-    startViewTransition(() => setPage(page), ref.current, name)
+      .catch((e) => {
+        console.error(e)
+      })
   }, [hash, homePage, ref, name])
 
   return Page
