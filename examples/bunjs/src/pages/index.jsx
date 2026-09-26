@@ -45,9 +45,9 @@ export default function Pages() {
   return (
     <Pagex
       value={{
-        context: pages,
-        icons,
-        i18n
+        i18nLocale: state.i18n,
+        i18n,
+        icons
       }}
     >
       <header style={{ display: 'flex', gap: '20px', margin: '20px' }}>
@@ -55,8 +55,12 @@ export default function Pages() {
 
         <Translate
           value={state.i18n}
-          onChange={fx.changeI18n}
           locales={i18n.locales}
+          onChange={(evt) => {
+            const { value } = evt.target
+            fx.put({ i18n: value })
+            window.localStorage.setItem('i18n', value)
+          }}
         />
 
         <I18n value="page.name" args={['Sinuhe', 'Maceda', 'Bouchan']} />

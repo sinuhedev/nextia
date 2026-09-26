@@ -19,7 +19,7 @@ function useCx() {
   const pages = useContext(Pagex)
 
   return {
-    context: pages?.context,
+    i18nLocale: pages?.i18nLocale ?? pages?.i18n.defaultLocale,
     i18n: pages?.i18n,
     icons: pages?.icons
   }
@@ -68,12 +68,11 @@ function Svg({ ref, src, width, height, ...props }) {
 }
 
 function I18n({ value, args = [] }) {
-  const { context, i18n } = useCx()
+  const { i18nLocale, i18n } = useCx()
 
   if (!i18n) return null
 
   try {
-    const i18nLocale = context.state?.i18n ?? i18n.defaultLocale
     const text = value.split('.').reduce((ac, el) => ac[el], i18n)
     const index = i18n.locales.indexOf(i18nLocale)
     let translated = text[index]
