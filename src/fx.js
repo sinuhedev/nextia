@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 /**
  * utils
@@ -75,6 +75,39 @@ function merge(target, source) {
 }
 
 /**
+ * actions
+ */
+
+const put = (prev, payload) =>
+  merge(prev, isFlatten(payload) ? unflatten(payload) : payload)
+
+const show = (prev, payload) => merge(prev, unflatten({ [payload]: true }))
+
+const hide = (prev, payload) => merge(prev, unflatten({ [payload]: false }))
+
+const change = (prev, payload) =>
+  merge(
+    prev,
+    unflatten({
+      [payload.target.name]:
+        payload.target.type === 'checkbox'
+          ? payload.target.checked
+          : payload.target.value
+    })
+  )
+
+const reset = (prev, payload, initialState) => {
+  if (!payload) return initialState
+
+  const list = Array.isArray(payload) ? payload : [payload]
+
+  return list.reduce((output, path) => {
+    const value = path.split('.').reduce((acc, key) => acc?.[key], initialState)
+    return merge(output, unflatten({ [path]: value }))
+  }, prev)
+}
+
+/**
  * hooks
  */
 
@@ -138,68 +171,15 @@ function useFx(initialState = {}, functions = {}) {
   const [state, setState] = useState(initialState)
 
   // Actions
-  const put = useCallback((payload) => {
-    setState((prev) =>
-      merge(prev, isFlatten(payload) ? unflatten(payload) : payload)
-    )
-  }, [])
-
-  const show = useCallback((payload) => {
-    setState((prev) => merge(prev, unflatten({ [payload]: true })))
-  }, [])
-
-  const hide = useCallback((payload) => {
-    setState((prev) => merge(prev, unflatten({ [payload]: false })))
-  }, [])
-
-  const reset = useCallback(
-    (payload) => {
-      if (payload) {
-        const paths = Array.isArray(payload) ? payload : [payload]
-
-        setState((prev) => {
-          let output = prev
-          for (const path of paths) {
-            let value = initialState
-
-            for (const key of path.split('.')) {
-              value = value[key]
-            }
-
-            output = merge(output, unflatten({ [path]: value }))
-          }
-          return output
-        })
-      } else {
-        setState(initialState)
-      }
-    },
-    [initialState]
-  )
-
-  const change = useCallback((payload) => {
-    setState((prev) =>
-      merge(
-        prev,
-        unflatten({
-          [payload.target.name]:
-            payload.target.type === 'checkbox'
-              ? payload.target.checked
-              : payload.target.value
-        })
-      )
-    )
-  }, [])
-
   const actions = useMemo(
     () => ({
-      put,
-      show,
-      hide,
-      reset,
-      change
+      put: (payload) => setState((prev) => put(prev, payload)),
+      show: (payload) => setState((prev) => show(prev, payload)),
+      hide: (payload) => setState((prev) => hide(prev, payload)),
+      change: (payload) => setState((prev) => change(prev, payload)),
+      reset: (payload) => setState((prev) => reset(prev, payload, initialState))
     }),
-    [put, show, hide, reset, change]
+    [initialState]
   )
 
   // Action functions
