@@ -2,6 +2,7 @@ node_modules
 out
 
 bun.lock
+package-lock.json
 
 .env
 .env.*
