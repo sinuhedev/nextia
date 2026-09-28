@@ -13,5 +13,5 @@ package-lock.json
 .next
 .swc
 
-examples/*/package-lock.json
 examples/*/bun.lock
+examples/*/package-lock.json
