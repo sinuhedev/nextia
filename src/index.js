@@ -7,7 +7,7 @@
  * https://github.com/sinuhedev/nextia
  */
 
-import { startViewTransition, useFx, usePage, useQueryString } from './fx.js'
+import { startViewTransition, useFx, usePage } from './fx.js'
 import { I18n, Icon, Link, Pagex, Svg } from './ui.jsx'
 import { css, getVersion } from './utils.js'
 
@@ -21,6 +21,5 @@ export {
   Svg,
   startViewTransition,
   useFx,
-  usePage,
-  useQueryString
+  usePage
 }

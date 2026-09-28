@@ -170,6 +170,9 @@ function useFx(initialState = {}, functions = {}) {
   // State
   const [state, setState] = useState(initialState)
 
+  // qs
+  const qs = useQueryString()
+
   // Actions
   const actions = useMemo(
     () => ({
@@ -206,10 +209,11 @@ function useFx(initialState = {}, functions = {}) {
       Object.freeze({
         initialState,
         state,
+        qs,
         fx: { ...actions, ...actionsFx }
       }),
-    [initialState, state, actions, actionsFx]
+    [initialState, state, qs, actions, actionsFx]
   )
 }
 
-export { startViewTransition, useFx, usePage, useQueryString }
+export { startViewTransition, useFx, usePage }
