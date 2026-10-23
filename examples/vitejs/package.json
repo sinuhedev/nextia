@@ -13,6 +13,6 @@
   "dependencies": {
     "nextia": "file:../../",
     "react": "file:../../node_modules/react",
-    "react-dom": "^19.0.0"
+    "react-dom": "19.0.0"
   }
 }
