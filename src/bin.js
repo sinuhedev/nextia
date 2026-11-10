@@ -161,13 +161,14 @@ switch (command) {
     break
 
   default:
-    if (command) await createProject(command)
-    else
+    if ([undefined, '--version', '-v', '--help', '-h'].includes(command))
       console.info(`
           nextia v${pkg.version}
 
           npx nextia@latest <ProjectName>
           bun x nextia@latest <ProjectName>
         `)
+    else await createProject(command)
+
     break
 }
