@@ -18,3 +18,11 @@ test
 
 biome.json
 vitest.config.js
+
+my-app
+
+src/templates/*/.env*
+src/templates/*/package-lock.json
+src/templates/*/bun.lock
+
+package-lock.json

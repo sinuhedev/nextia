@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "BUN_ENV=development bun web.js serve",
+    "page": "nextia page",
+    "component": "nextia component",
     "build:dev": "BUN_ENV=development bun web.js build",
     "build:prod": "BUN_ENV=production bun web.js build",
     "test": "bun test",

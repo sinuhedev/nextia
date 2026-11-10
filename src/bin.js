@@ -188,12 +188,12 @@ const name = process.argv[3]
 switch (command) {
   case 'page':
     if (name) await createPage(name)
-    else console.warn('npm create nextia page <page-name>')
+    else console.warn('nextia page <page-name>')
     break
 
   case 'component':
     if (name) await createComponent(name)
-    else console.warn('npm create nextia component <ComponentName>')
+    else console.warn('nextia component <ComponentName>')
     break
 
   default:
@@ -202,9 +202,8 @@ switch (command) {
       console.info(`
           nextia v${pkg.version}
 
-          npm create nextia <ProjectName>
-          npm create nextia page <page-name>
-          npm create nextia component <ComponentName>
+          npx nextia@latest <ProjectName>
+          bun x nextia@latest <ProjectName>
         `)
     break
 }

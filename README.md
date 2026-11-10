@@ -2,6 +2,11 @@
 
 Create fast web applications
 
+```sh
+npx nextia@latest
+bun x nextia@latest
+```
+
 ### To start
 
 ```sh

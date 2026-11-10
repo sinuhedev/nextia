@@ -25,9 +25,7 @@
   },
   "scripts": {
     "test": "src/bin.js",
-    "test:my-app": "src/bin.js my-app",
-    "test:page": "cd my-app ; ../src/bin.js page my-page",
-    "test:component": "cd my-app ; ../src/bin.js component MyComponent"
+    "test:my-app": "[[ -d 'my-app' ]] && rm -rf 'my-app' ; src/bin.js my-app"
   },
   "peerDependencies": {
     "react": "^19.0.0"
