@@ -15,3 +15,9 @@ package-lock.json
 
 examples/*/bun.lock
 examples/*/package-lock.json
+
+my-app
+
+src/templates/*/.env*
+src/templates/*/package-lock.json
+src/templates/*/bun.lock

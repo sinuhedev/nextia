@@ -17,10 +17,18 @@
   "keywords": [
     "react"
   ],
-  "exports": {
-    ".": "./src/index.js"
+  "bin": {
+    "nextia": "src/bin.js"
   },
-  "scripts": {},
+  "exports": {
+    ".": "./src/lib/index.js"
+  },
+  "scripts": {
+    "test": "src/bin.js",
+    "test:my-app": "src/bin.js my-app",
+    "test:page": "cd my-app ; ../src/bin.js page my-page",
+    "test:component": "cd my-app ; ../src/bin.js component MyComponent"
+  },
   "peerDependencies": {
     "react": "^19.0.0"
   }
