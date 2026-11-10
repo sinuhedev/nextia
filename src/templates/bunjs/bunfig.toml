@@ -1,3 +1,0 @@
-[serve.static]
-plugins = ["./web.js"]
-env = "PUBLIC_*"

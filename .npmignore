@@ -21,8 +21,8 @@ vitest.config.js
 
 my-app
 
-src/templates/*/.env*
-src/templates/*/package-lock.json
-src/templates/*/bun.lock
+src/template/.env*
+src/template/package-lock.json
+src/template/bun.lock
 
 package-lock.json

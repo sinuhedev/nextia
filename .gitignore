@@ -13,11 +13,11 @@ package-lock.json
 .next
 .swc
 
-examples/*/bun.lock
-examples/*/package-lock.json
+example/bun.lock
+example/package-lock.json
 
 my-app
 
-src/templates/*/.env*
-src/templates/*/package-lock.json
-src/templates/*/bun.lock
+src/template/.env*
+src/template/package-lock.json
+src/template/bun.lock

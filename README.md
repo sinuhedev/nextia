@@ -7,20 +7,6 @@ npx nextia@latest
 bun x nextia@latest
 ```
 
-### To start
-
-```sh
-npm install
-
-cd examples/vitejs
-npm install
-node --run dev
-
-cd examples/bunjs
-bun i
-bun dev
-```
-
 ### links
 
 [github.com/sinuhedev/nextia](https://github.com/sinuhedev/nextia)

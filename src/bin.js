@@ -104,38 +104,8 @@ export default function ${componentName}({ className, style }) {
   }
 }
 
-async function projectType() {
-  const rl = readline.createInterface({ input, output })
-  const options = ['bunjs', 'vitejs']
-
-  console.log(options.map((op, i) => `  ${i + 1}. ${op}`).join('\n'))
-
-  try {
-    let reponse = await rl.question('Option: ')
-    const index = Number(reponse.trim())
-
-    if (Number.isInteger(index) && index >= 1 && index <= options.length)
-      reponse = options[index - 1]
-    else reponse = null
-
-    return reponse
-  } catch (err) {
-    if (err.code === 'ABORT_ERR') {
-      process.exit(0)
-    }
-    throw err
-  } finally {
-    rl.close()
-  }
-}
-
 async function createProject(name) {
-  // Type project
-  const type = await projectType()
-  if (!type) return
-
   // Check project
-
   const projectPath = `${process.cwd()}/${name}/`
   try {
     await access(projectPath)
@@ -143,7 +113,7 @@ async function createProject(name) {
     return
   } catch {}
 
-  const template = `${dirname(fileURLToPath(import.meta.url))}/templates/${type}`
+  const template = `${dirname(fileURLToPath(import.meta.url))}/template`
 
   const mv = (fileName) =>
     rename(`${projectPath}_${fileName}`, `${projectPath}.${fileName}`)
