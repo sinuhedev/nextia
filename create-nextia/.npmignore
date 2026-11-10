@@ -1,0 +1,11 @@
+node_modules
+
+my-app
+
+templates/*/.env*
+templates/*/package-lock.json
+templates/*/bun.lock
+
+/biome.json
+
+package-lock.json
