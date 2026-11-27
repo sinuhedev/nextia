@@ -3,8 +3,7 @@
 Open http://localhost:3000 to view it in the browser.
 
 ```sh
-npm install
-#
+bun install
 bun dev
 bun test
 bun run build:dev

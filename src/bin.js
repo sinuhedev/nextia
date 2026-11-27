@@ -18,8 +18,6 @@ import {
   writeFile
 } from 'node:fs/promises'
 import { dirname } from 'node:path'
-import { stdin as input, stdout as output } from 'node:process'
-import readline from 'node:readline/promises'
 import { fileURLToPath } from 'node:url'
 import pkg from '../package.json' with { type: 'json' }
 
